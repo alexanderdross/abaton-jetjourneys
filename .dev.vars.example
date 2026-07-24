@@ -1,0 +1,18 @@
+# Copy to `.dev.vars` for local development (never commit the real file).
+# Secrets in production are set with `wrangler secret put <NAME>`.
+
+# Resend API key for sending inquiry emails — https://resend.com
+RESEND_API_KEY=""
+
+# Cloudflare Turnstile secret key (server-side verification)
+TURNSTILE_SECRET_KEY=""
+
+# Where inquiries are delivered and the verified sender address
+CONTACT_TO_EMAIL="info@abaton-jetjourneys.com"
+CONTACT_FROM_EMAIL="no-reply@abaton-jetjourneys.com"
+
+# Public site URL (used for canonical/hreflang/sitemap)
+NEXT_PUBLIC_SITE_URL="https://www.abaton-jetjourneys.com"
+
+# Public Turnstile site key (safe to expose in the browser)
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=""

@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   ABATON JetJourneys — Design tokens
+   Editorial luxury palette: bone / ink / champagne
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Brand colours */
+  --color-bone: #f6f2ea;
+  --color-bone-dark: #ece5d8;
+  --color-ink: #14171c;
+  --color-ink-soft: #232a33;
+  --color-slate: #4a5361;
+  --color-champagne: #b8935a;
+  --color-champagne-light: #d8b984;
+  --color-line: #e2dccf;
+
+  /* Semantic aliases */
+  --color-background: var(--color-bone);
+  --color-foreground: var(--color-ink);
+  --color-accent: var(--color-champagne);
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --spacing-section: 6rem;
+  --radius-card: 2px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Utility component classes ------------------------------------------------ */
+@layer components {
+  .display-serif {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-champagne);
+    font-weight: 500;
+  }
+
+  .prose-editorial p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+    color: var(--color-slate);
+  }
+  .prose-editorial h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-ink);
+  }
+  .prose-editorial h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 2rem 0 0.75rem;
+    color: var(--color-ink);
+  }
+}
+
+/* Subtle scroll-reveal used by the Reveal component */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

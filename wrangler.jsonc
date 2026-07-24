@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "abaton-jetjourneys",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-06-05",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    // Non-secret defaults. Secrets (RESEND_API_KEY, TURNSTILE_SECRET_KEY) are set via
+    // `wrangler secret put` and are NOT stored here.
+    "CONTACT_TO_EMAIL": "info@abaton-jetjourneys.com",
+    "CONTACT_FROM_EMAIL": "no-reply@abaton-jetjourneys.com",
+    "NEXT_PUBLIC_SITE_URL": "https://www.abaton-jetjourneys.com",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": ""
+  }
+}
