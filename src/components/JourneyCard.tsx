@@ -14,7 +14,10 @@ export function JourneyCard({
   const t = useTranslations("Journeys");
 
   return (
-    <Link href={`/journeys/${journey.slug}`} className="group block">
+    <Link
+      href={{ pathname: "/journeys/[slug]", params: { slug: journey.slug } }}
+      className="group block"
+    >
       <div className="relative aspect-[4/5] overflow-hidden rounded-[2px] bg-ink">
         <div className="absolute inset-0 transition-transform duration-[1.2s] ease-out group-hover:scale-105">
           <Media

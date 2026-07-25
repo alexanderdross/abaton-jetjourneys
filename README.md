@@ -20,10 +20,12 @@ deployed to **Cloudflare Workers** via the OpenNext adapter.
 
 ## URL scheme
 
-- English: `abaton-jetjourneys.com/…`
-- German: `abaton-jetjourneys.com/de/…`
+- English: `abaton-jetjourneys.com/<path>/` (e.g. `/contact/`)
+- German: `abaton-jetjourneys.com/de/<path-de>/` — **localised segments** (e.g. `/de/kontakt/`, `/de/reisen/`, `/de/philosophie/`)
 
-`hreflang`/canonical are centralised in `src/lib/i18n-urls.ts`.
+Localised route segments are defined in `routing.pathnames` (`src/i18n/routing.ts`).
+Trailing slashes are enforced (`next.config.ts` → `trailingSlash: true`). `hreflang`/
+canonical + the sitemap resolve localised paths via `src/lib/i18n-urls.ts`.
 
 ## Local development
 

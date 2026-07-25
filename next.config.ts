@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  trailingSlash: true,
   images: {
     formats: ["image/avif", "image/webp"],
     // Assets can be served from R2 / Cloudflare Images once configured.

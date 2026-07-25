@@ -11,6 +11,17 @@ const navItems = [
   { key: "contact", href: "/contact" },
 ] as const;
 
+// Routes whose top section is a full-bleed dark hero. Over these, the
+// transparent header needs light content for contrast; everywhere else the
+// page top is light (bone), so the header stays dark.
+function hasDarkHero(pathname: string): boolean {
+  return (
+    pathname === "/" ||
+    pathname === "/about" ||
+    (pathname.startsWith("/journeys/") && pathname !== "/journeys")
+  );
+}
+
 export function Header() {
   const t = useTranslations("Nav");
   const pathname = usePathname();
@@ -29,6 +40,18 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
+  // Light content only while transparent over a dark hero (not scrolled/open).
+  const light = hasDarkHero(pathname) && !scrolled && !open;
+
+  const logoColor = light ? "text-bone" : "text-ink";
+  const navLinkColor = light
+    ? "text-bone/85 hover:text-champagne-light"
+    : "text-ink/80 hover:text-champagne";
+  const ctaColor = light
+    ? "border-bone/50 text-bone hover:bg-bone hover:text-ink"
+    : "border-ink text-ink hover:bg-ink hover:text-bone";
+  const barColor = light ? "bg-bone" : "bg-ink";
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
@@ -41,7 +64,7 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
-            className="font-serif text-2xl tracking-[0.2em] uppercase text-ink"
+            className={`font-serif text-2xl tracking-[0.2em] uppercase transition-colors ${logoColor}`}
             aria-label="ABATON JetJourneys — home"
           >
             Abaton
@@ -53,7 +76,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-xs uppercase tracking-[0.18em] text-ink/80 hover:text-champagne transition-colors"
+                className={`text-xs uppercase tracking-[0.18em] transition-colors ${navLinkColor}`}
               >
                 {t(item.key)}
               </Link>
@@ -61,10 +84,10 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
-            <LanguageSwitcher />
+            <LanguageSwitcher className={light ? "text-bone" : "text-ink"} />
             <Link
               href="/contact"
-              className="text-xs uppercase tracking-[0.14em] font-medium border border-ink px-5 py-2.5 rounded-[2px] hover:bg-ink hover:text-bone transition-colors"
+              className={`text-xs uppercase tracking-[0.14em] font-medium border px-5 py-2.5 rounded-[2px] transition-colors ${ctaColor}`}
             >
               {t("requestCta")}
             </Link>
@@ -79,19 +102,19 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
           >
             <span
-              className={`block h-px w-6 bg-ink transition-transform ${open ? "translate-y-[7px] rotate-45" : ""}`}
+              className={`block h-px w-6 transition-transform ${barColor} ${open ? "translate-y-[7px] rotate-45" : ""}`}
             />
             <span
-              className={`block h-px w-6 bg-ink transition-opacity ${open ? "opacity-0" : ""}`}
+              className={`block h-px w-6 transition-opacity ${barColor} ${open ? "opacity-0" : ""}`}
             />
             <span
-              className={`block h-px w-6 bg-ink transition-transform ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
+              className={`block h-px w-6 transition-transform ${barColor} ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
             />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu (always on the bone panel → dark content) */}
       {open && (
         <nav className="md:hidden border-t border-line bg-bone/98 px-6 py-8">
           <ul className="flex flex-col gap-6">
@@ -107,10 +130,10 @@ export function Header() {
             ))}
           </ul>
           <div className="mt-8 flex items-center justify-between">
-            <LanguageSwitcher />
+            <LanguageSwitcher className="text-ink" />
             <Link
               href="/contact"
-              className="text-xs uppercase tracking-[0.14em] font-medium border border-ink px-5 py-2.5 rounded-[2px]"
+              className="text-xs uppercase tracking-[0.14em] font-medium border border-ink text-ink px-5 py-2.5 rounded-[2px]"
             >
               {t("requestCta")}
             </Link>
