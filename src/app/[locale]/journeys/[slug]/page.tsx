@@ -39,7 +39,10 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: altLinks(locale, `/journeys/${slug}`),
+    alternates: altLinks(locale, {
+      pathname: "/journeys/[slug]",
+      params: { slug },
+    }),
     openGraph: { title, description, type: "article" },
   };
 }

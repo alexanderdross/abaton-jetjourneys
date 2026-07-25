@@ -127,7 +127,10 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
                 <div className="mt-10">
                   <LinkButton
-                    href={`/journeys/${featured.slug}`}
+                    href={{
+                      pathname: "/journeys/[slug]",
+                      params: { slug: featured.slug },
+                    }}
                     variant="outline"
                     className="text-bone"
                   >

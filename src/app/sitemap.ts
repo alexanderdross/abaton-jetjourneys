@@ -1,25 +1,25 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site";
+import { localizedPath, type Href } from "@/lib/i18n-urls";
 import { getJourneySlugs } from "@/lib/journeys";
 
-// Locale-independent paths; English is served at the root, German under /de.
-const staticPaths = ["/", "/journeys", "/about", "/contact"];
+// Internal hrefs; localised + slash-terminated per locale via localizedPath.
+const staticHrefs: Href[] = ["/", "/journeys", "/about", "/contact"];
 
-function entry(path: string): MetadataRoute.Sitemap[number] {
-  const en = path === "/" ? "" : path;
+function entry(href: Href): MetadataRoute.Sitemap[number] {
+  const en = `${siteUrl}${localizedPath("en", href)}`;
+  const de = `${siteUrl}${localizedPath("de", href)}`;
   return {
-    url: `${siteUrl}${en || "/"}`,
+    url: en,
     lastModified: new Date("2026-07-01"),
-    alternates: {
-      languages: {
-        en: `${siteUrl}${en || "/"}`,
-        de: `${siteUrl}/de${en}`,
-      },
-    },
+    alternates: { languages: { en, de } },
   };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const journeyPaths = getJourneySlugs().map((slug) => `/journeys/${slug}`);
-  return [...staticPaths, ...journeyPaths].map(entry);
+  const journeyHrefs: Href[] = getJourneySlugs().map((slug) => ({
+    pathname: "/journeys/[slug]",
+    params: { slug },
+  }));
+  return [...staticHrefs, ...journeyHrefs].map(entry);
 }
