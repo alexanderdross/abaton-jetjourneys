@@ -1,0 +1,88 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Inter, Cormorant_Garamond } from "next/font/google";
+import { routing } from "@/i18n/routing";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { siteUrl } from "@/lib/site";
+import { altLinks } from "@/lib/i18n-urls";
+import type { Locale } from "@/i18n/routing";
+import "../globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: t("defaultTitle"),
+      template: `%s · ${t("siteName")}`,
+    },
+    description: t("defaultDescription"),
+    alternates: altLinks(locale as Locale, "/"),
+    openGraph: {
+      type: "website",
+      siteName: t("siteName"),
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+      locale: locale === "de" ? "de_DE" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+    },
+    icons: { icon: "/favicon.svg" },
+  };
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
+
+  return (
+    <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
+      <body className="min-h-screen flex flex-col">
+        <NextIntlClientProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}

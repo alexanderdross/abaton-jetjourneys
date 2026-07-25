@@ -1,0 +1,37 @@
+"use client";
+
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+
+const labels: Record<string, string> = { en: "EN", de: "DE" };
+
+export function LanguageSwitcher({ className = "" }: { className?: string }) {
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  return (
+    <div
+      className={`flex items-center gap-1 text-xs tracking-[0.15em] ${className}`}
+      role="group"
+      aria-label="Language"
+    >
+      {routing.locales.map((loc, i) => (
+        <span key={loc} className="flex items-center gap-1">
+          {i > 0 && <span className="opacity-30">/</span>}
+          <button
+            type="button"
+            onClick={() => router.replace(pathname, { locale: loc })}
+            aria-current={loc === locale ? "true" : undefined}
+            className={`transition-colors hover:text-champagne ${
+              loc === locale ? "text-champagne" : "opacity-70"
+            }`}
+          >
+            {labels[loc]}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
+}

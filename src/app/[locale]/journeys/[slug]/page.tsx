@@ -1,0 +1,248 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
+import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/Reveal";
+import { Media } from "@/components/ui/Media";
+import { RouteLine } from "@/components/RouteLine";
+import { RequestForm } from "@/components/RequestForm";
+import { JourneyJsonLd } from "@/components/JsonLd";
+import {
+  getJourneyBySlug,
+  getPublishedJourneys,
+  pick,
+} from "@/lib/journeys";
+import { altLinks } from "@/lib/i18n-urls";
+
+type PageProps = {
+  params: Promise<{ locale: Locale; slug: string }>;
+};
+
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    getPublishedJourneys().map((j) => ({ locale, slug: j.slug })),
+  );
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const journey = getJourneyBySlug(slug);
+  if (!journey) return {};
+  const title = pick(journey.title, locale);
+  const description = pick(journey.summary, locale);
+  return {
+    title,
+    description,
+    alternates: altLinks(locale, `/journeys/${slug}`),
+    openGraph: { title, description, type: "article" },
+  };
+}
+
+export default async function JourneyDetailPage({ params }: PageProps) {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const journey = getJourneyBySlug(slug);
+  if (!journey) notFound();
+
+  const t = await getTranslations("JourneyDetail");
+  const jt = await getTranslations("Journeys");
+
+  const facts = [
+    { label: t("duration"), value: jt("nights", { count: journey.nights }) },
+    { label: t("guestsLabel"), value: pick(journey.guestsLabel, locale) },
+    { label: t("departure"), value: pick(journey.departureCity, locale) },
+    { label: t("hotels"), value: pick(journey.hotelCategory, locale) },
+  ];
+
+  return (
+    <>
+      <JourneyJsonLd journey={journey} locale={locale} />
+
+      {/* Hero */}
+      <section className="relative h-[80vh] min-h-[520px] flex items-end">
+        <div className="absolute inset-0">
+          <Media
+            src={journey.heroImage.src}
+            alt={pick(journey.heroImage.alt, locale)}
+            label={pick(journey.title, locale).split("—")[0].trim()}
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/40" />
+        </div>
+        <Container className="relative z-10 pb-16">
+          <Link
+            href="/journeys"
+            className="text-xs uppercase tracking-[0.18em] text-bone/70 hover:text-champagne transition-colors"
+          >
+            ← {t("backToJourneys")}
+          </Link>
+          <h1 className="display-serif mt-5 text-4xl sm:text-5xl lg:text-6xl text-bone max-w-4xl">
+            {pick(journey.title, locale)}
+          </h1>
+          <p className="mt-4 text-lg text-bone/80 max-w-xl">
+            {pick(journey.tagline, locale)}
+          </p>
+        </Container>
+      </section>
+
+      {/* At a glance + overview */}
+      <Section tone="bone">
+        <Container>
+          <div className="grid gap-14 lg:grid-cols-[1fr_320px]">
+            <Reveal>
+              <div className="prose-editorial max-w-none">
+                <p className="eyebrow">{t("overviewTitle")}</p>
+                <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-ink">
+                  {pick(journey.summary, locale)}
+                </h2>
+                <div className="mt-8">
+                  {pick(journey.overview, locale).map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+                <div className="mt-10">
+                  <p className="eyebrow mb-4">{t("route")}</p>
+                  <RouteLine route={journey.route} />
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <aside className="bg-white rounded-[2px] p-8 border border-line lg:sticky lg:top-28">
+                <p className="eyebrow mb-6">{t("atAGlance")}</p>
+                <dl className="space-y-5">
+                  {facts.map((f) => (
+                    <div key={f.label}>
+                      <dt className="text-xs uppercase tracking-[0.14em] text-slate">
+                        {f.label}
+                      </dt>
+                      <dd className="mt-1 text-ink">{f.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <a
+                  href="#request"
+                  className="mt-8 inline-flex w-full items-center justify-center bg-ink text-bone text-xs uppercase tracking-[0.14em] px-6 py-3.5 rounded-[2px] hover:bg-champagne hover:text-ink transition-colors"
+                >
+                  {t("requestCta")}
+                </a>
+              </aside>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Itinerary */}
+      <Section tone="white">
+        <Container size="narrow">
+          <Reveal>
+            <p className="eyebrow text-center">{t("itineraryTitle")}</p>
+            <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-center mb-14">
+              {pick(journey.title, locale).split("—")[0].trim()}
+            </h2>
+          </Reveal>
+          <ol className="space-y-0">
+            {journey.itinerary.map((d, i) => (
+              <Reveal key={d.day} delay={Math.min(i * 60, 300)}>
+                <li className="grid grid-cols-[auto_1fr] gap-6 border-t border-line py-8">
+                  <div className="text-right">
+                    <span className="eyebrow block">{t("day")}</span>
+                    <span className="font-serif text-4xl text-champagne">
+                      {String(d.day).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.14em] text-slate">
+                      {d.city}
+                    </p>
+                    <h3 className="font-serif text-2xl mt-1 mb-2 text-ink">
+                      {pick(d.title, locale)}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-slate">
+                      {pick(d.description, locale)}
+                    </p>
+                  </div>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+
+      {/* Inclusions */}
+      <Section tone="ink">
+        <Container size="narrow">
+          <Reveal>
+            <h2 className="display-serif text-3xl sm:text-4xl text-bone text-center mb-12">
+              {t("inclusionsTitle")}
+            </h2>
+          </Reveal>
+          <ul className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
+            {pick(journey.inclusions, locale).map((item, i) => (
+              <Reveal key={i} delay={Math.min(i * 50, 300)}>
+                <li className="flex gap-3 text-bone/80 border-b border-bone/10 pb-4">
+                  <span className="text-champagne" aria-hidden>
+                    ✦
+                  </span>
+                  <span className="text-sm leading-relaxed">{item}</span>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      {/* Gallery */}
+      {journey.gallery.length > 0 && (
+        <Section tone="bone">
+          <Container>
+            <Reveal>
+              <p className="eyebrow text-center mb-10">{t("galleryTitle")}</p>
+            </Reveal>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {journey.gallery.map((img, i) => (
+                <Reveal key={img.src} delay={Math.min(i * 80, 320)}>
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[2px] bg-ink">
+                    <Media
+                      src={img.src}
+                      alt={pick(img.alt, locale)}
+                      label={pick(img.alt, locale)}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
+
+      {/* Request */}
+      <Section tone="white" id="request">
+        <Container size="narrow">
+          <Reveal>
+            <div className="text-center mb-12">
+              <p className="eyebrow">{t("requestTitle")}</p>
+              <h2 className="display-serif mt-4 text-3xl sm:text-4xl">
+                {pick(journey.title, locale).split("—")[0].trim()}
+              </h2>
+              <p className="mt-4 text-slate">{t("requestBody")}</p>
+              <p className="mt-2 text-xs text-slate/70">{t("priceNote")}</p>
+            </div>
+            <RequestForm
+              defaultJourney={pick(journey.title, locale)}
+              journeySlug={journey.slug}
+            />
+          </Reveal>
+        </Container>
+      </Section>
+    </>
+  );
+}
