@@ -9,6 +9,15 @@ Pushes to non-production branches instead run the **preview deploy command** (`n
 
 > GitHub Actions (`.github/workflows/ci.yml`) is the **quality gate only** (typecheck, lint, tests, build). It does **not** deploy — deployment is exclusively Workers Builds, so no Cloudflare API token is stored in GitHub.
 
+## Current target: interim domain `abaton.drossmedia.de`
+
+The site currently runs on the interim subdomain **`abaton.drossmedia.de`**:
+
+- `wrangler.jsonc` declares it as a **custom domain route** (`routes: [{ pattern: "abaton.drossmedia.de", custom_domain: true }]`) — on deploy Cloudflare provisions the DNS record + TLS certificate automatically. This requires `drossmedia.de` to be an **active Cloudflare zone** and **no pre-existing DNS record** on `abaton`.
+- `NEXT_PUBLIC_SITE_URL` is set to `https://abaton.drossmedia.de` and **`NEXT_PUBLIC_NOINDEX=1`** keeps the interim site out of search engines (robots.txt `Disallow: /` + `<meta name="robots" content="noindex">`).
+
+See **[Going live on the production domain](#going-live-on-the-production-domain)** for the switch-over.
+
 ## One-time setup (Cloudflare dashboard)
 
 The repo → Worker connection must be made in the dashboard; there is no CLI/API step for it.
@@ -31,12 +40,15 @@ Set these under **Worker → Settings → Builds → Build variables and secrets
 
 | Name | Type | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Build variable | Canonical/hreflang/sitemap base URL (`https://www.abaton-jetjourneys.com`) |
+| `NEXT_PUBLIC_SITE_URL` | Build variable | Canonical/hreflang/sitemap base URL — currently `https://abaton.drossmedia.de` |
+| `NEXT_PUBLIC_NOINDEX` | Build variable | `1` on the interim domain (robots `Disallow: /` + meta noindex). Set `0`/remove at go-live |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Build variable | Public Turnstile widget key (inlined at build time) |
 | `RESEND_API_KEY` | Secret | Sending enquiry emails |
 | `TURNSTILE_SECRET_KEY` | Secret | Server-side Turnstile verification |
 | `CONTACT_TO_EMAIL` | Variable | Where enquiries are delivered |
 | `CONTACT_FROM_EMAIL` | Variable | Verified Resend sender address |
+
+> `NEXT_PUBLIC_*` values are **inlined at build time**. They already have defaults in `wrangler.jsonc` (`vars`), but Workers Builds must also carry the same values as **Build variables** for the build to pick them up.
 
 `CONTACT_*` and a placeholder `NEXT_PUBLIC_*` already have non-secret defaults in `wrangler.jsonc` (`vars`). Runtime secrets can alternatively be set from a machine with Wrangler:
 
@@ -47,12 +59,20 @@ wrangler secret put TURNSTILE_SECRET_KEY
 
 ## Custom domain
 
-After the first successful deploy, bind the domain under **Worker → Settings → Domains & Routes → Add → Custom domain**:
+The interim domain `abaton.drossmedia.de` is declared in `wrangler.jsonc` (`routes` with `custom_domain: true`), so **no manual step is needed** — the deploy provisions the DNS record + certificate automatically. Preconditions:
 
-- `abaton-jetjourneys.com`
-- `www.abaton-jetjourneys.com`
+- `drossmedia.de` is an active Cloudflare zone on this account (✓).
+- No pre-existing DNS record on `abaton.drossmedia.de` (a conflicting CNAME blocks custom-domain creation).
 
-Cloudflare provisions the certificate automatically (the domain must be on this Cloudflare account).
+## Going live on the production domain
+
+When ready to move off the interim domain:
+
+1. In `wrangler.jsonc`, replace the route pattern with the production host(s), e.g.
+   `abaton-jetjourneys.com` and `www.abaton-jetjourneys.com`.
+2. Set `NEXT_PUBLIC_SITE_URL` (var **and** Workers Builds build variable) to `https://www.abaton-jetjourneys.com`.
+3. Set `NEXT_PUBLIC_NOINDEX` to `0` (or remove it) so the site becomes indexable.
+4. Push to `main` → Workers Builds redeploys and provisions the production domain.
 
 ## Manual deploy (fallback)
 

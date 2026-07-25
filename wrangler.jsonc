@@ -11,12 +11,21 @@
   "observability": {
     "enabled": true
   },
+  // Interim custom domain. Requires drossmedia.de to be an active Cloudflare zone
+  // and no pre-existing DNS record on `abaton`. On deploy Cloudflare provisions the
+  // DNS record + TLS certificate automatically. Swap for the production domain at go-live.
+  "routes": [{ "pattern": "abaton.drossmedia.de", "custom_domain": true }],
   "vars": {
     // Non-secret defaults. Secrets (RESEND_API_KEY, TURNSTILE_SECRET_KEY) are set via
     // `wrangler secret put` and are NOT stored here.
+    // NOTE: NEXT_PUBLIC_* are inlined at BUILD time — in Workers Builds they must ALSO
+    // be set as Build variables (Settings > Builds) so the build picks them up.
     "CONTACT_TO_EMAIL": "info@abaton-jetjourneys.com",
     "CONTACT_FROM_EMAIL": "no-reply@abaton-jetjourneys.com",
-    "NEXT_PUBLIC_SITE_URL": "https://www.abaton-jetjourneys.com",
-    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": ""
+    "NEXT_PUBLIC_SITE_URL": "https://abaton.drossmedia.de",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
+    // Interim domain: keep search engines out until the production domain goes live.
+    // Set to "0" (or remove) at go-live.
+    "NEXT_PUBLIC_NOINDEX": "1"
   }
 }
