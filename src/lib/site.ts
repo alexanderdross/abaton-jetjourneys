@@ -4,6 +4,9 @@ export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
   "https://www.abaton-jetjourneys.com";
 
+// Interim/staging domains set NEXT_PUBLIC_NOINDEX=1 to stay out of search engines.
+export const noindex = process.env.NEXT_PUBLIC_NOINDEX === "1";
+
 export const company = {
   name: "ABATON JetJourneys GmbH",
   shortName: "ABATON JetJourneys",

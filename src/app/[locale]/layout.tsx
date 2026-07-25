@@ -7,7 +7,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { siteUrl } from "@/lib/site";
+import { siteUrl, noindex } from "@/lib/site";
 import { altLinks } from "@/lib/i18n-urls";
 import type { Locale } from "@/i18n/routing";
 import "../globals.css";
@@ -58,6 +58,8 @@ export async function generateMetadata({
       description: t("defaultDescription"),
     },
     icons: { icon: "/favicon.svg" },
+    // Interim/staging domain: keep it out of search results.
+    ...(noindex ? { robots: { index: false, follow: false } } : {}),
   };
 }
 

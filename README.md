@@ -67,7 +67,8 @@ wrangler secret put TURNSTILE_SECRET_KEY
 | `TURNSTILE_SECRET_KEY` | Server-side Turnstile verification (secret) |
 | `CONTACT_TO_EMAIL` | Where enquiries are delivered |
 | `CONTACT_FROM_EMAIL` | Verified Resend sender address |
-| `NEXT_PUBLIC_SITE_URL` | Canonical/hreflang/sitemap base URL |
+| `NEXT_PUBLIC_SITE_URL` | Canonical/hreflang/sitemap base URL (interim: `https://abaton.drossmedia.de`) |
+| `NEXT_PUBLIC_NOINDEX` | `1` keeps the interim domain out of search engines; `0`/unset at go-live |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public Turnstile widget key |
 
 If `RESEND_API_KEY` or `TURNSTILE_SECRET_KEY` are unset, the form degrades

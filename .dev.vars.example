@@ -12,7 +12,12 @@ CONTACT_TO_EMAIL="info@abaton-jetjourneys.com"
 CONTACT_FROM_EMAIL="no-reply@abaton-jetjourneys.com"
 
 # Public site URL (used for canonical/hreflang/sitemap)
-NEXT_PUBLIC_SITE_URL="https://www.abaton-jetjourneys.com"
+# Interim domain while pre-launch:
+NEXT_PUBLIC_SITE_URL="https://abaton.drossmedia.de"
+
+# Keep the interim/staging domain out of search engines (robots Disallow + meta noindex).
+# Set to "0" or remove at go-live on the production domain.
+NEXT_PUBLIC_NOINDEX="1"
 
 # Public Turnstile site key (safe to expose in the browser)
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=""
