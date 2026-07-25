@@ -73,10 +73,28 @@ wrangler secret put TURNSTILE_SECRET_KEY
 If `RESEND_API_KEY` or `TURNSTILE_SECRET_KEY` are unset, the form degrades
 gracefully (accepts input; Turnstile is skipped) so previews keep working.
 
+## CI & tests
+
+Quality is gated by **GitHub Actions** (`.github/workflows/ci.yml`) on every push and PR:
+`typecheck` → `lint` → `test` (Vitest) → `next build`, plus a separate job that runs the
+real `opennextjs-cloudflare build`. Run the same checks locally:
+
+```bash
+npm run typecheck
+npm run lint
+npm run test          # Vitest — i18n URLs, journey loader, EN/DE translation parity
+npm run build
+```
+
 ## Deploy
+
+Deployment runs through **Cloudflare Workers Builds** (git-connected): a push to `main`
+builds with `npx opennextjs-cloudflare build` and deploys with `npx wrangler deploy`.
+Full setup — dashboard connection, build variables/secrets, custom domain — is in
+**[DEPLOYMENT.md](./DEPLOYMENT.md)**.
+
+Manual deploy from a local machine (fallback):
 
 ```bash
 npm run deploy    # opennextjs-cloudflare build && … deploy
 ```
-
-Then point the `abaton-jetjourneys.com` custom domain at the Worker.
