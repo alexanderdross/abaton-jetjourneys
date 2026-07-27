@@ -1,15 +1,15 @@
-// Journey: The Premiere Edition, Finest of Europe
+// Journey: Finest of Europe (full itinerary)
 // Content-as-code. Add a new file like this and register it in ./index.ts.
 
 const journey = {
-  slug: "the-premiere-edition-finest-of-europe",
+  slug: "finest-of-europe",
   published: true,
   featured: true,
   order: 1,
 
   title: {
-    en: "The Premiere Edition: Finest of Europe",
-    de: "Die Premiere Edition: Das Feinste Europas",
+    en: "Finest of Europe",
+    de: "Das Feinste Europas",
   },
   tagline: {
     en: "Five cultural capitals, one private sky.",

@@ -57,11 +57,17 @@ export default async function JourneyDetailPage({ params }: PageProps) {
   const jt = await getTranslations("Journeys");
 
   const facts = [
-    { label: t("duration"), value: jt("nights", { count: journey.nights }) },
+    journey.nights
+      ? { label: t("duration"), value: jt("nights", { count: journey.nights }) }
+      : null,
     { label: t("guestsLabel"), value: pick(journey.guestsLabel, locale) },
-    { label: t("departure"), value: pick(journey.departureCity, locale) },
-    { label: t("hotels"), value: pick(journey.hotelCategory, locale) },
-  ];
+    journey.departureCity
+      ? { label: t("departure"), value: pick(journey.departureCity, locale) }
+      : null,
+    journey.hotelCategory
+      ? { label: t("hotels"), value: pick(journey.hotelCategory, locale) }
+      : null,
+  ].filter((f): f is { label: string; value: string } => f !== null);
 
   return (
     <>
@@ -110,10 +116,12 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                     <p key={i}>{para}</p>
                   ))}
                 </div>
-                <div className="mt-10">
-                  <p className="eyebrow mb-4">{t("route")}</p>
-                  <RouteLine route={journey.route} />
-                </div>
+                {journey.route.length >= 2 && (
+                  <div className="mt-10">
+                    <p className="eyebrow mb-4">{t("route")}</p>
+                    <RouteLine route={journey.route} />
+                  </div>
+                )}
               </div>
             </Reveal>
 
@@ -143,6 +151,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
       </Section>
 
       {/* Itinerary */}
+      {journey.itinerary.length > 0 && (
       <Section tone="white">
         <Container size="narrow">
           <Reveal>
@@ -178,8 +187,10 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           </ol>
         </Container>
       </Section>
+      )}
 
       {/* Inclusions */}
+      {pick(journey.inclusions, locale).length > 0 && (
       <Section tone="ink">
         <Container size="narrow">
           <Reveal>
@@ -201,6 +212,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           </ul>
         </Container>
       </Section>
+      )}
 
       {/* Gallery */}
       {journey.gallery.length > 0 && (

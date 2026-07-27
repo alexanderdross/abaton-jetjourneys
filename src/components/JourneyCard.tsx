@@ -32,7 +32,8 @@ export function JourneyCard({
 
       <div className="mt-5">
         <p className="eyebrow mb-2">
-          {t("nights", { count: journey.nights })} · {pick(journey.guestsLabel, locale)}
+          {journey.nights ? `${t("nights", { count: journey.nights })} · ` : ""}
+          {pick(journey.guestsLabel, locale)}
         </p>
         <h3 className="font-serif text-2xl text-ink leading-snug group-hover:text-champagne transition-colors">
           {pick(journey.title, locale)}
