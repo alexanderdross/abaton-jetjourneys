@@ -50,9 +50,21 @@ UI strings live in `messages/en.json` and `messages/de.json`.
 
 ## Images
 
-Until real photography is supplied, `src/components/ui/Media.tsx` renders elegant
-placeholders. Drop assets into `public/images/` (matching the paths in the journey
-files) and set `NEXT_PUBLIC_USE_REAL_IMAGES=1` to switch to optimised `<Image>`.
+Assets live under `public/` in a structured layout: `public/logos/` (white/black/gold
+wordmarks) and `public/images/` (`home-hero.jpg`, `about-hero.jpg`,
+`journeys/`, `experiences/`, `aircraft/`, `gallery/`). Large sources are downscaled
+to ≤2560px. `src/components/ui/Media.tsx` renders optimised `next/image`.
+
+Optimisation follows **Cloudflare best practice** via a custom loader
+(`src/lib/imageLoader.ts`): in production it rewrites to `/cdn-cgi/image/…`
+(`format=auto` → AVIF/WebP) so images are transformed at the edge, bypassing the
+Worker `/_next/image` optimiser.
+
+- Requires **Transformations enabled** on the Cloudflare zone
+  (dashboard → *Images → Transformations → Enable for zone*).
+- Gated by `NEXT_PUBLIC_CF_IMAGES`: `1` → edge transformations; unset/`0` → serve
+  the (downscaled) originals directly (safe default until Transformations are on).
+- Local dev always serves originals.
 
 ## Configuration
 
@@ -72,6 +84,7 @@ wrangler secret put TURNSTILE_SECRET_KEY
 | `NEXT_PUBLIC_SITE_URL` | Canonical/hreflang/sitemap base URL (interim: `https://abaton.drossmedia.de`) |
 | `NEXT_PUBLIC_NOINDEX` | `1` keeps the interim domain out of search engines; `0`/unset at go-live |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public Turnstile widget key |
+| `NEXT_PUBLIC_CF_IMAGES` | `1` enables Cloudflare edge image transformations (needs zone Transformations on) |
 
 If `RESEND_API_KEY` or `TURNSTILE_SECRET_KEY` are unset, the form degrades
 gracefully (accepts input; Turnstile is skipped) so previews keep working.

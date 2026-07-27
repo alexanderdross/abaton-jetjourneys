@@ -39,24 +39,30 @@ const journey = {
   },
   gallery: [
     {
-      src: "/images/journeys/vienna.jpg",
-      alt: { en: "Imperial Vienna", de: "Imperiales Wien" },
+      src: "/images/experiences/cultural-discovery.jpg",
+      alt: { en: "Cultural discoveries", de: "Kulturelle Entdeckungen" },
     },
     {
-      src: "/images/journeys/venice.jpg",
-      alt: { en: "The canals of Venice", de: "Die Kanäle Venedigs" },
+      src: "/images/experiences/luxury-hotels.avif",
+      alt: {
+        en: "Hand-selected luxury hotels",
+        de: "Handverlesene Luxushotels",
+      },
     },
     {
-      src: "/images/journeys/rome.jpg",
-      alt: { en: "Timeless Rome", de: "Zeitloses Rom" },
+      src: "/images/experiences/dining.jpg",
+      alt: { en: "Gourmet dining", de: "Gourmet-Dining" },
     },
     {
-      src: "/images/journeys/riviera.jpg",
-      alt: { en: "The Côte d'Azur", de: "Die Côte d'Azur" },
+      src: "/images/experiences/chauffeurs.jpg",
+      alt: { en: "Private chauffeurs", de: "Private Chauffeure" },
     },
     {
-      src: "/images/journeys/paris.jpg",
-      alt: { en: "Elegant Paris", de: "Elegantes Paris" },
+      src: "/images/experiences/luxury-travel.jpeg",
+      alt: {
+        en: "Luxury travel by private jet",
+        de: "Luxusreisen im Privatjet",
+      },
     },
   ],
 

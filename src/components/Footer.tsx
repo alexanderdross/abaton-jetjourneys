@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Container } from "./ui/Container";
@@ -15,10 +16,16 @@ export function Footer() {
       <Container className="py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <p className="font-serif text-3xl tracking-[0.2em] uppercase text-bone">
-              Abaton
-            </p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-bone/60">
+            <div className="relative h-9 w-44">
+              <Image
+                src="/logos/abaton-white.png"
+                alt="ABATON JetJourneys"
+                fill
+                sizes="176px"
+                className="object-contain object-left"
+              />
+            </div>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-bone/60">
               {t("tagline")}
             </p>
           </div>
