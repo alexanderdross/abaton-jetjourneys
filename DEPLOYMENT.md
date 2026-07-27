@@ -42,6 +42,7 @@ Set these under **Worker → Settings → Builds → Build variables and secrets
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Build variable | Canonical/hreflang/sitemap base URL — currently `https://abaton.drossmedia.de` |
 | `NEXT_PUBLIC_NOINDEX` | Build variable | `1` on the interim domain (robots `Disallow: /` + meta noindex). Set `0`/remove at go-live |
+| `NEXT_PUBLIC_CF_IMAGES` | Build variable | `1` = Cloudflare edge image transformations (needs zone Transformations enabled); `0` = serve originals |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Build variable | Public Turnstile widget key (inlined at build time) |
 | `RESEND_API_KEY` | Secret | Sending enquiry emails |
 | `TURNSTILE_SECRET_KEY` | Secret | Server-side Turnstile verification |
@@ -63,6 +64,18 @@ The interim domain `abaton.drossmedia.de` is declared in `wrangler.jsonc` (`rout
 
 - `drossmedia.de` is an active Cloudflare zone on this account (✓).
 - No pre-existing DNS record on `abaton.drossmedia.de` (a conflicting CNAME blocks custom-domain creation).
+
+## Image optimization (Cloudflare best practice)
+
+Images use a custom Next loader (`src/lib/imageLoader.ts`) that rewrites to
+Cloudflare edge transformations (`/cdn-cgi/image/…`, `format=auto`).
+
+1. Enable **Transformations** on the `drossmedia.de` zone:
+   dashboard → **Images → Transformations → Enable for zone** (free monthly allowance).
+2. Set build variable `NEXT_PUBLIC_CF_IMAGES=1` and redeploy.
+
+Until step 1 is done, keep `NEXT_PUBLIC_CF_IMAGES=0` (the default) — the site serves
+the downscaled originals directly, so nothing breaks.
 
 ## Going live on the production domain
 

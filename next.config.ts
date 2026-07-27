@@ -7,12 +7,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
-    formats: ["image/avif", "image/webp"],
-    // Assets can be served from R2 / Cloudflare Images once configured.
-    remotePatterns: [
-      { protocol: "https", hostname: "imagedelivery.net" },
-      { protocol: "https", hostname: "**.r2.dev" },
-    ],
+    // Cloudflare edge transformations via a custom loader (see src/lib/imageLoader.ts).
+    loader: "custom",
+    loaderFile: "./src/lib/imageLoader.ts",
   },
 };
 

@@ -21,3 +21,7 @@ NEXT_PUBLIC_NOINDEX="1"
 
 # Public Turnstile site key (safe to expose in the browser)
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=""
+
+# Cloudflare edge image transformations (/cdn-cgi/image). Set to "1" only after
+# enabling "Transformations" on the zone; "0"/unset serves originals directly.
+NEXT_PUBLIC_CF_IMAGES="0"

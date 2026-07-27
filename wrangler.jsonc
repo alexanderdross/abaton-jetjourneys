@@ -26,6 +26,10 @@
     "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
     // Interim domain: keep search engines out until the production domain goes live.
     // Set to "0" (or remove) at go-live.
-    "NEXT_PUBLIC_NOINDEX": "1"
+    "NEXT_PUBLIC_NOINDEX": "1",
+    // Cloudflare edge image transformations. Set to "1" ONLY after enabling
+    // "Transformations" on the zone (dashboard) — otherwise /cdn-cgi/image 404s.
+    // "0" serves the downscaled originals directly.
+    "NEXT_PUBLIC_CF_IMAGES": "0"
   }
 }

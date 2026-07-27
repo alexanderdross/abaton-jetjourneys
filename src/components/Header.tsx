@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -43,7 +44,6 @@ export function Header() {
   // Light content only while transparent over a dark hero (not scrolled/open).
   const light = hasDarkHero(pathname) && !scrolled && !open;
 
-  const logoColor = light ? "text-bone" : "text-ink";
   const navLinkColor = light
     ? "text-bone/85 hover:text-champagne-light"
     : "text-ink/80 hover:text-champagne";
@@ -64,10 +64,17 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
-            className={`font-serif text-2xl tracking-[0.2em] uppercase transition-colors ${logoColor}`}
+            className="relative block h-7 w-[130px]"
             aria-label="ABATON JetJourneys — home"
           >
-            Abaton
+            <Image
+              src={light ? "/logos/abaton-white.png" : "/logos/abaton-black.png"}
+              alt="ABATON JetJourneys"
+              fill
+              priority
+              sizes="130px"
+              className="object-contain object-left"
+            />
           </Link>
 
           {/* Desktop nav */}
