@@ -18,9 +18,11 @@ export default async function ImprintPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Legal");
+  const de = locale === "de";
 
   return (
     <LegalLayout title={t("imprintTitle")}>
+      <h2>{de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG"}</h2>
       <p>
         <strong>{company.name}</strong>
         <br />
@@ -30,18 +32,99 @@ export default async function ImprintPage({ params }: PageProps) {
         <br />
         {company.country}
       </p>
+
+      <h2>{de ? "Vertreten durch" : "Represented by"}</h2>
+      <p>{company.managingDirector}, {de ? "Geschäftsführerin" : "Managing Director"}</p>
+
+      <h2>{de ? "Kontakt" : "Contact"}</h2>
       <p>
-        {locale === "de" ? "Vertreten durch" : "Represented by"}:{" "}
-        {company.managingDirector}
-      </p>
-      <p>
-        {locale === "de" ? "Telefon" : "Phone"}:{" "}
+        {de ? "Telefon" : "Phone"}:{" "}
         <a href={`tel:${company.phoneHref}`}>{company.phone}</a>
         <br />
-        {locale === "de" ? "E-Mail" : "Email"}:{" "}
+        {de ? "E-Mail" : "Email"}:{" "}
         <a href={`mailto:${company.email}`}>{company.email}</a>
       </p>
-      <p className="text-sm text-slate/70 italic">{t("placeholderNote")}</p>
+
+      <h2>{de ? "Registereintrag" : "Register entry"}</h2>
+      <p>
+        {de ? "Eintragung im Handelsregister." : "Entry in the commercial register."}
+        <br />
+        {de ? "Registergericht" : "Register court"}: {"[Amtsgericht …]"}
+        <br />
+        {de ? "Registernummer" : "Register number"}: {"[HRB …]"}
+      </p>
+
+      <h2>
+        {de
+          ? "Umsatzsteuer-Identifikationsnummer"
+          : "VAT identification number"}
+      </h2>
+      <p>
+        {de
+          ? "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
+          : "VAT identification number pursuant to § 27a of the German VAT Act:"}{" "}
+        {"[DE…]"}
+      </p>
+
+      <h2>
+        {de
+          ? "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV"
+          : "Responsible for content pursuant to § 18 (2) MStV"}
+      </h2>
+      <p>
+        {company.managingDirector}
+        <br />
+        {company.street}, {company.postalCode} {company.city}
+      </p>
+
+      <h2>
+        {de ? "EU-Streitschlichtung" : "EU dispute resolution"}
+      </h2>
+      <p>
+        {de
+          ? "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:"
+          : "The European Commission provides a platform for online dispute resolution (ODR):"}{" "}
+        <a
+          href="https://ec.europa.eu/consumers/odr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://ec.europa.eu/consumers/odr/
+        </a>
+        . {de ? "Unsere E-Mail-Adresse finden Sie oben." : "Our email address is stated above."}
+      </p>
+
+      <h2>
+        {de
+          ? "Verbraucherstreitbeilegung / Universalschlichtungsstelle"
+          : "Consumer dispute resolution"}
+      </h2>
+      <p>
+        {de
+          ? "Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+          : "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."}
+      </p>
+
+      <h2>{de ? "Haftung für Inhalte" : "Liability for content"}</h2>
+      <p>
+        {de
+          ? "Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen."
+          : "As a service provider, we are responsible for our own content on these pages in accordance with general law. However, we are not obliged to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity."}
+      </p>
+
+      <h2>{de ? "Haftung für Links" : "Liability for links"}</h2>
+      <p>
+        {de
+          ? "Unser Angebot enthält gegebenenfalls Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich."
+          : "Our website may contain links to external third-party websites over whose content we have no influence. The respective provider or operator of the linked pages is always responsible for their content."}
+      </p>
+
+      <h2>{de ? "Urheberrecht" : "Copyright"}</h2>
+      <p>
+        {de
+          ? "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet."
+          : "The content and works created by the site operators on these pages are subject to German copyright law. Third-party contributions are marked as such."}
+      </p>
     </LegalLayout>
   );
 }
