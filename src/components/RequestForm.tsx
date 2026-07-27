@@ -26,7 +26,7 @@ export function RequestForm({
 
   if (state.status === "success") {
     return (
-      <div className="text-center py-10">
+      <div className="text-center py-10" role="status" aria-live="polite">
         <p className="font-serif text-2xl text-ink mb-3">{t("successTitle")}</p>
         <p className="text-slate">{t("successBody")}</p>
       </div>
@@ -77,7 +77,12 @@ export function RequestForm({
           <input name="phone" className={inputClass} autoComplete="tel" />
         </Field>
         <Field label={t("guests")}>
-          <input name="guests" inputMode="numeric" className={inputClass} />
+          <input
+            name="guests"
+            inputMode="numeric"
+            autoComplete="off"
+            className={inputClass}
+          />
         </Field>
       </div>
 
@@ -115,7 +120,9 @@ export function RequestForm({
       )}
 
       {state.status === "error" && (
-        <p className="text-sm text-red-700">{errorText}</p>
+        <p className="text-sm text-red-700" role="alert">
+          {errorText}
+        </p>
       )}
 
       <Button type="submit" disabled={pending} className="w-full">
