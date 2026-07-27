@@ -26,7 +26,11 @@ describe("cloudflareLoader", () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("NEXT_PUBLIC_CF_IMAGES", "1");
     expect(
-      cloudflareLoader({ src: "/images/home-hero.jpg", width: 1280, quality: 90 }),
+      cloudflareLoader({
+        src: "/images/home-hero.jpg",
+        width: 1280,
+        quality: 90,
+      }),
     ).toBe(
       "/cdn-cgi/image/width=1280,quality=90,format=auto,fit=scale-down/images/home-hero.jpg",
     );

@@ -47,11 +47,11 @@ function TermsDE() {
 
       <h2>1. Vertragsschluss</h2>
       <p>
-        Mit der Buchung (Reiseanmeldung) bietet der Reisende dem Veranstalter den
-        Abschluss eines Reisevertrags verbindlich an. Der Vertrag kommt mit der
-        Bestätigung (Reisebestätigung) durch den Veranstalter zustande. Weicht
-        die Bestätigung vom Inhalt der Buchung ab, liegt ein neues Angebot vor,
-        an das der Veranstalter befristet gebunden ist.
+        Mit der Buchung (Reiseanmeldung) bietet der Reisende dem Veranstalter
+        den Abschluss eines Reisevertrags verbindlich an. Der Vertrag kommt mit
+        der Bestätigung (Reisebestätigung) durch den Veranstalter zustande.
+        Weicht die Bestätigung vom Inhalt der Buchung ab, liegt ein neues
+        Angebot vor, an das der Veranstalter befristet gebunden ist.
       </p>
 
       <h2>2. Leistungen und Preise</h2>
@@ -68,9 +68,9 @@ function TermsDE() {
       <p>
         Nach Vertragsschluss und Aushändigung des Sicherungsscheins wird eine
         Anzahlung in Höhe von 30 % des Reisepreises fällig. Die Restzahlung ist,
-        sofern der Sicherungsschein übergeben wurde, 30 Tage vor Reisebeginn ohne
-        weitere Aufforderung fällig. Bei Buchungen innerhalb von 30 Tagen vor
-        Reisebeginn ist der gesamte Reisepreis sofort fällig.
+        sofern der Sicherungsschein übergeben wurde, 30 Tage vor Reisebeginn
+        ohne weitere Aufforderung fällig. Bei Buchungen innerhalb von 30 Tagen
+        vor Reisebeginn ist der gesamte Reisepreis sofort fällig.
       </p>
 
       <h2>4. Leistungs- und Preisänderungen</h2>
@@ -92,8 +92,8 @@ function TermsDE() {
         anderweitiger Verwendung der Reiseleistungen. Aufgrund des besonderen
         Charakters dieser Reisen (Privatjet, kleine Gruppe) gelten
         reisespezifische Stornostaffeln, die in der Reisebestätigung ausgewiesen
-        werden. Dem Reisenden bleibt der Nachweis vorbehalten, dass kein oder ein
-        wesentlich geringerer Schaden entstanden ist.
+        werden. Dem Reisenden bleibt der Nachweis vorbehalten, dass kein oder
+        ein wesentlich geringerer Schaden entstanden ist.
       </p>
 
       <h2>6. Umbuchungen und Ersatzperson</h2>
@@ -104,12 +104,16 @@ function TermsDE() {
         gesamtschuldnerisch mit dem Dritten.
       </p>
 
-      <h2>7. Rücktritt des Veranstalters wegen Nichterreichens der Mindestteilnehmerzahl</h2>
+      <h2>
+        7. Rücktritt des Veranstalters wegen Nichterreichens der
+        Mindestteilnehmerzahl
+      </h2>
       <p>
         Die Journeys sind bewusst auf sechs bis zehn Gäste begrenzt. Wird die in
-        der Reisebeschreibung genannte Mindestteilnehmerzahl nicht erreicht, kann
-        der Veranstalter bis zu 20 Tage vor Reisebeginn vom Vertrag zurücktreten.
-        Bereits geleistete Zahlungen werden unverzüglich erstattet.
+        der Reisebeschreibung genannte Mindestteilnehmerzahl nicht erreicht,
+        kann der Veranstalter bis zu 20 Tage vor Reisebeginn vom Vertrag
+        zurücktreten. Bereits geleistete Zahlungen werden unverzüglich
+        erstattet.
       </p>
 
       <h2>8. Kündigung wegen außergewöhnlicher Umstände</h2>
@@ -123,42 +127,43 @@ function TermsDE() {
       <h2>9. Obliegenheiten des Reisenden, Mängelanzeige</h2>
       <p>
         Wird die Reise nicht vertragsgemäß erbracht, kann der Reisende Abhilfe
-        verlangen. Der Reisende ist verpflichtet, auftretende Mängel unverzüglich
-        gegenüber dem Veranstalter oder der örtlichen Reiseleitung anzuzeigen und
-        Gelegenheit zur Abhilfe zu geben.
+        verlangen. Der Reisende ist verpflichtet, auftretende Mängel
+        unverzüglich gegenüber dem Veranstalter oder der örtlichen Reiseleitung
+        anzuzeigen und Gelegenheit zur Abhilfe zu geben.
       </p>
 
       <h2>10. Beschränkung der Haftung</h2>
       <p>
         Die vertragliche Haftung des Veranstalters für Schäden, die nicht
-        Körperschäden sind und nicht schuldhaft herbeigeführt wurden, ist auf den
-        dreifachen Reisepreis beschränkt, soweit gesetzlich zulässig. Weiter
-        gehende internationale Übereinkommen und gesetzliche Vorschriften bleiben
-        unberührt.
+        Körperschäden sind und nicht schuldhaft herbeigeführt wurden, ist auf
+        den dreifachen Reisepreis beschränkt, soweit gesetzlich zulässig. Weiter
+        gehende internationale Übereinkommen und gesetzliche Vorschriften
+        bleiben unberührt.
       </p>
 
       <h2>11. Pass-, Visa-, Zoll-, Devisen- und Gesundheitsbestimmungen</h2>
       <p>
-        Der Reisende ist für die Einhaltung der für die Reise maßgeblichen Pass-,
-        Visa-, Zoll-, Devisen- und Gesundheitsvorschriften selbst verantwortlich.
-        Der Veranstalter informiert über allgemeine Bestimmungen, geht dabei aber
-        von Staatsangehörigen des Landes aus, in dem die Reise angeboten wird.
+        Der Reisende ist für die Einhaltung der für die Reise maßgeblichen
+        Pass-, Visa-, Zoll-, Devisen- und Gesundheitsvorschriften selbst
+        verantwortlich. Der Veranstalter informiert über allgemeine
+        Bestimmungen, geht dabei aber von Staatsangehörigen des Landes aus, in
+        dem die Reise angeboten wird.
       </p>
 
       <h2>12. Insolvenzabsicherung</h2>
       <p>
         Der Reisepreis ist im Rahmen der gesetzlichen Vorgaben gegen die
         Insolvenz des Veranstalters abgesichert. Der Reisende erhält vor
-        Fälligkeit der Anzahlung einen Sicherungsschein des Kundengeldabsicherers{" "}
-        {"[Name des Versicherers / Absicherers]"}.
+        Fälligkeit der Anzahlung einen Sicherungsschein des
+        Kundengeldabsicherers {"[Name des Versicherers / Absicherers]"}.
       </p>
 
       <h2>13. Streitbeilegung und Rechtswahl</h2>
       <p>
-        Der Veranstalter nimmt nicht an einem Streitbeilegungsverfahren vor einer
-        Verbraucherschlichtungsstelle teil. Es gilt deutsches Recht. Für Klagen
-        des Veranstalters gegen Kaufleute gilt als Gerichtsstand der Sitz des
-        Veranstalters.
+        Der Veranstalter nimmt nicht an einem Streitbeilegungsverfahren vor
+        einer Verbraucherschlichtungsstelle teil. Es gilt deutsches Recht. Für
+        Klagen des Veranstalters gegen Kaufleute gilt als Gerichtsstand der Sitz
+        des Veranstalters.
       </p>
     </>
   );
@@ -185,20 +190,20 @@ function TermsEN() {
 
       <h2>2. Services and prices</h2>
       <p>
-        The scope of the contractual services follows from the description of the
-        respective journey and the travel confirmation. Prices are per person in
-        Euro including statutory value added tax where applicable. Personal
-        expenses, gratuities and services not expressly stated as included are
-        not part of the price.
+        The scope of the contractual services follows from the description of
+        the respective journey and the travel confirmation. Prices are per
+        person in Euro including statutory value added tax where applicable.
+        Personal expenses, gratuities and services not expressly stated as
+        included are not part of the price.
       </p>
 
       <h2>3. Payment</h2>
       <p>
-        After conclusion of the contract and handover of the insolvency-protection
-        certificate, a deposit of 30 % of the travel price is due. The balance is
-        due 30 days before departure without further request, provided the
-        certificate has been handed over. For bookings made within 30 days of
-        departure, the full price is due immediately.
+        After conclusion of the contract and handover of the
+        insolvency-protection certificate, a deposit of 30 % of the travel price
+        is due. The balance is due 30 days before departure without further
+        request, provided the certificate has been handed over. For bookings
+        made within 30 days of departure, the full price is due immediately.
       </p>
 
       <h2>4. Changes to services and prices</h2>
@@ -206,8 +211,8 @@ function TermsEN() {
         Changes to essential travel services that become necessary after the
         conclusion of the contract and were not brought about by the Operator in
         bad faith are permitted only where they are not significant and do not
-        impair the overall character of the journey. The Operator will inform the
-        traveller of any changes without undue delay.
+        impair the overall character of the journey. The Operator will inform
+        the traveller of any changes without undue delay.
       </p>
 
       <h2>5. Withdrawal by the traveller, cancellation charges</h2>
@@ -225,33 +230,35 @@ function TermsEN() {
       <h2>6. Rebooking and substitute participants</h2>
       <p>
         Up to departure the traveller may request that a third party assume the
-        rights and obligations under the contract, provided that person meets the
-        specific travel requirements. Additional costs are borne jointly and
+        rights and obligations under the contract, provided that person meets
+        the specific travel requirements. Additional costs are borne jointly and
         severally by the traveller and the third party.
       </p>
 
-      <h2>7. Withdrawal by the Operator if the minimum number is not reached</h2>
+      <h2>
+        7. Withdrawal by the Operator if the minimum number is not reached
+      </h2>
       <p>
         Journeys are intentionally limited to six to ten guests. If the minimum
         number of participants stated in the journey description is not reached,
-        the Operator may withdraw up to 20 days before departure. Payments already
-        made are refunded without undue delay.
+        the Operator may withdraw up to 20 days before departure. Payments
+        already made are refunded without undue delay.
       </p>
 
       <h2>8. Termination for exceptional circumstances</h2>
       <p>
         If the journey is significantly impaired, endangered or affected as a
-        result of unavoidable, extraordinary circumstances not foreseeable at the
-        conclusion of the contract, both parties may terminate the contract in
-        accordance with §§ 651h, 651l BGB.
+        result of unavoidable, extraordinary circumstances not foreseeable at
+        the conclusion of the contract, both parties may terminate the contract
+        in accordance with §§ 651h, 651l BGB.
       </p>
 
       <h2>9. Traveller's duties, notice of defects</h2>
       <p>
         If the journey is not provided in accordance with the contract, the
-        traveller may demand remedy. The traveller must notify the Operator or the
-        local guide of any defects without undue delay and give an opportunity to
-        remedy them.
+        traveller may demand remedy. The traveller must notify the Operator or
+        the local guide of any defects without undue delay and give an
+        opportunity to remedy them.
       </p>
 
       <h2>10. Limitation of liability</h2>
@@ -272,18 +279,18 @@ function TermsEN() {
 
       <h2>12. Insolvency protection</h2>
       <p>
-        The travel price is protected against the Operator's insolvency within the
-        statutory framework. Before the deposit falls due, the traveller receives
-        an insolvency-protection certificate from the customer-funds insurer{" "}
-        {"[name of insurer / protection provider]"}.
+        The travel price is protected against the Operator's insolvency within
+        the statutory framework. Before the deposit falls due, the traveller
+        receives an insolvency-protection certificate from the customer-funds
+        insurer {"[name of insurer / protection provider]"}.
       </p>
 
       <h2>13. Dispute resolution and governing law</h2>
       <p>
-        The Operator does not participate in dispute resolution proceedings before
-        a consumer arbitration board. German law applies. For actions brought by
-        the Operator against merchants, the place of jurisdiction is the
-        Operator's registered office.
+        The Operator does not participate in dispute resolution proceedings
+        before a consumer arbitration board. German law applies. For actions
+        brought by the Operator against merchants, the place of jurisdiction is
+        the Operator's registered office.
       </p>
     </>
   );

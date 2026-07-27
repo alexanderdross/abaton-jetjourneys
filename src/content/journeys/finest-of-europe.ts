@@ -35,7 +35,15 @@ const journey = {
     de: "11.–19. September 2026",
   },
 
-  route: ["Munich", "Vienna", "Venice", "Rome", "Cannes & Monaco", "Paris", "Munich"],
+  route: [
+    "Munich",
+    "Vienna",
+    "Venice",
+    "Rome",
+    "Cannes & Monaco",
+    "Paris",
+    "Munich",
+  ],
 
   heroImage: {
     src: "/images/journeys/premiere-hero.jpg",
@@ -88,7 +96,10 @@ const journey = {
     {
       day: 1,
       city: "Munich",
-      title: { en: "Arrival & Welcome Dinner", de: "Ankunft & Willkommensdinner" },
+      title: {
+        en: "Arrival & Welcome Dinner",
+        de: "Ankunft & Willkommensdinner",
+      },
       description: {
         en: "We gather in Munich, a city where tradition and modern life coexist naturally. A shared welcome dinner brings the group together and sets the tone for the days ahead.",
         de: "Wir versammeln uns in München, einer Stadt, in der Tradition und modernes Leben selbstverständlich nebeneinander bestehen. Ein gemeinsames Willkommensdinner bringt die Gruppe zusammen und stimmt auf die kommenden Tage ein.",

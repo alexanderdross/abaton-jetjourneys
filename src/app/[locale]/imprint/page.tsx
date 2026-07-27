@@ -31,7 +31,9 @@ export default async function ImprintPage({ params }: PageProps) {
         />
       }
     >
-      <h2>{de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG"}</h2>
+      <h2>
+        {de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG"}
+      </h2>
       <p>
         <strong>{company.name}</strong>
         <br />
@@ -43,7 +45,10 @@ export default async function ImprintPage({ params }: PageProps) {
       </p>
 
       <h2>{de ? "Vertreten durch" : "Represented by"}</h2>
-      <p>{company.managingDirector}, {de ? "Geschäftsführerin" : "Managing Director"}</p>
+      <p>
+        {company.managingDirector},{" "}
+        {de ? "Geschäftsführerin" : "Managing Director"}
+      </p>
 
       <h2>{de ? "Kontakt" : "Contact"}</h2>
       <p>
@@ -56,7 +61,9 @@ export default async function ImprintPage({ params }: PageProps) {
 
       <h2>{de ? "Registereintrag" : "Register entry"}</h2>
       <p>
-        {de ? "Eintragung im Handelsregister." : "Entry in the commercial register."}
+        {de
+          ? "Eintragung im Handelsregister."
+          : "Entry in the commercial register."}
         <br />
         {de ? "Registergericht" : "Register court"}: {"[Amtsgericht …]"}
         <br />
@@ -86,9 +93,7 @@ export default async function ImprintPage({ params }: PageProps) {
         {company.street}, {company.postalCode} {company.city}
       </p>
 
-      <h2>
-        {de ? "EU-Streitschlichtung" : "EU dispute resolution"}
-      </h2>
+      <h2>{de ? "EU-Streitschlichtung" : "EU dispute resolution"}</h2>
       <p>
         {de
           ? "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:"
@@ -100,7 +105,10 @@ export default async function ImprintPage({ params }: PageProps) {
         >
           https://ec.europa.eu/consumers/odr/
         </a>
-        . {de ? "Unsere E-Mail-Adresse finden Sie oben." : "Our email address is stated above."}
+        .{" "}
+        {de
+          ? "Unsere E-Mail-Adresse finden Sie oben."
+          : "Our email address is stated above."}
       </p>
 
       <h2>

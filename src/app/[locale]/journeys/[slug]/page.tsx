@@ -188,66 +188,66 @@ export default async function JourneyDetailPage({ params }: PageProps) {
 
       {/* Itinerary */}
       {journey.itinerary.length > 0 && (
-      <Section tone="white">
-        <Container size="narrow">
-          <Reveal>
-            <p className="eyebrow text-center">{t("itineraryTitle")}</p>
-            <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-center mb-14">
-              {pick(journey.title, locale).split(":")[0].trim()}
-            </h2>
-          </Reveal>
-          <ol className="space-y-0">
-            {journey.itinerary.map((d, i) => (
-              <Reveal key={d.day} delay={Math.min(i * 60, 300)}>
-                <li className="grid grid-cols-[auto_1fr] gap-6 border-t border-line py-8">
-                  <div className="text-right">
-                    <span className="eyebrow block">{t("day")}</span>
-                    <span className="font-serif text-4xl text-champagne">
-                      {String(d.day).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.14em] text-slate">
-                      {d.city}
-                    </p>
-                    <h3 className="font-serif text-2xl mt-1 mb-2 text-ink">
-                      {pick(d.title, locale)}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate">
-                      {pick(d.description, locale)}
-                    </p>
-                  </div>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-        </Container>
-      </Section>
+        <Section tone="white">
+          <Container size="narrow">
+            <Reveal>
+              <p className="eyebrow text-center">{t("itineraryTitle")}</p>
+              <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-center mb-14">
+                {pick(journey.title, locale).split(":")[0].trim()}
+              </h2>
+            </Reveal>
+            <ol className="space-y-0">
+              {journey.itinerary.map((d, i) => (
+                <Reveal key={d.day} delay={Math.min(i * 60, 300)}>
+                  <li className="grid grid-cols-[auto_1fr] gap-6 border-t border-line py-8">
+                    <div className="text-right">
+                      <span className="eyebrow block">{t("day")}</span>
+                      <span className="font-serif text-4xl text-champagne">
+                        {String(d.day).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.14em] text-slate">
+                        {d.city}
+                      </p>
+                      <h3 className="font-serif text-2xl mt-1 mb-2 text-ink">
+                        {pick(d.title, locale)}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-slate">
+                        {pick(d.description, locale)}
+                      </p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </Container>
+        </Section>
       )}
 
       {/* Inclusions */}
       {pick(journey.inclusions, locale).length > 0 && (
-      <Section tone="ink">
-        <Container size="narrow">
-          <Reveal>
-            <h2 className="display-serif text-3xl sm:text-4xl text-bone text-center mb-12">
-              {t("inclusionsTitle")}
-            </h2>
-          </Reveal>
-          <ul className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
-            {pick(journey.inclusions, locale).map((item, i) => (
-              <Reveal key={i} delay={Math.min(i * 50, 300)}>
-                <li className="flex gap-3 text-bone/80 border-b border-bone/10 pb-4">
-                  <span className="text-champagne" aria-hidden>
-                    ✦
-                  </span>
-                  <span className="text-sm leading-relaxed">{item}</span>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        </Container>
-      </Section>
+        <Section tone="ink">
+          <Container size="narrow">
+            <Reveal>
+              <h2 className="display-serif text-3xl sm:text-4xl text-bone text-center mb-12">
+                {t("inclusionsTitle")}
+              </h2>
+            </Reveal>
+            <ul className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
+              {pick(journey.inclusions, locale).map((item, i) => (
+                <Reveal key={i} delay={Math.min(i * 50, 300)}>
+                  <li className="flex gap-3 text-bone/80 border-b border-bone/10 pb-4">
+                    <span className="text-champagne" aria-hidden>
+                      ✦
+                    </span>
+                    <span className="text-sm leading-relaxed">{item}</span>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </Container>
+        </Section>
       )}
 
       {/* Gallery */}

@@ -5,7 +5,10 @@ export function RouteLine({ route }: { route: string[] }) {
       {route.map((city, i) => (
         <li key={`${city}-${i}`} className="flex items-center gap-3">
           <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-champagne" aria-hidden />
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-champagne"
+              aria-hidden
+            />
             <span className="text-sm tracking-wide text-ink">{city}</span>
           </span>
           {i < route.length - 1 && (

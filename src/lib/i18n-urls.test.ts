@@ -19,7 +19,10 @@ describe("localizedPath", () => {
   });
 
   it("localises dynamic journey routes", () => {
-    const href = { pathname: "/journeys/[slug]", params: { slug: "x" } } as const;
+    const href = {
+      pathname: "/journeys/[slug]",
+      params: { slug: "x" },
+    } as const;
     expect(localizedPath("en", href)).toBe("/journeys/x/");
     expect(localizedPath("de", href)).toBe("/de/reisen/x/");
   });
@@ -47,7 +50,9 @@ describe("altLinks", () => {
       pathname: "/journeys/[slug]",
       params: { slug: "the-premiere-edition-finest-of-europe" },
     });
-    expect(en.canonical).toBe("/journeys/the-premiere-edition-finest-of-europe/");
+    expect(en.canonical).toBe(
+      "/journeys/the-premiere-edition-finest-of-europe/",
+    );
     expect(en.languages.de).toBe(
       "/de/reisen/the-premiere-edition-finest-of-europe/",
     );
