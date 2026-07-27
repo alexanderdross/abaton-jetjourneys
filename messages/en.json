@@ -1,7 +1,7 @@
 {
   "Meta": {
     "siteName": "ABATON JetJourneys",
-    "defaultTitle": "ABATON JetJourneys — Private Jet Roundtrips",
+    "defaultTitle": "ABATON JetJourneys, Private Jet Roundtrips",
     "defaultDescription": "A founder-led boutique crafting a handful of private jet roundtrips each year. Six to ten guests, hand-selected hotels, and Europe seen the way it was meant to be."
   },
   "Nav": {
@@ -17,17 +17,17 @@
   "Home": {
     "heroEyebrow": "Private Jet Roundtrips",
     "heroTitle": "Europe, uncompromised.",
-    "heroSubtitle": "A handful of journeys each year. Six to ten guests. Places that ordinary travel cannot connect — flown privately, lived intimately.",
+    "heroSubtitle": "A handful of journeys each year. Six to ten guests. Places that ordinary travel cannot connect, flown privately, lived intimately.",
     "heroCta": "Discover the Journeys",
     "heroSecondaryCta": "Our Philosophy",
     "introEyebrow": "The Idea",
     "introTitle": "Founder-led. Deliberately rare.",
-    "introBody": "ABATON was born from a private pilot's love of flying and roots in Europe's finest hospitality. We design only a few journeys each year, connecting regions that are difficult to combine through commercial travel — without long transfers, missed connections or compromise in comfort.",
+    "introBody": "ABATON was born from a private pilot's love of flying and roots in Europe's finest hospitality. We design only a few journeys each year, connecting regions that are difficult to combine through commercial travel, without long transfers, missed connections or compromise in comfort.",
     "pillarsTitle": "What sets a journey apart",
     "pillar1Title": "Private by Air",
-    "pillar1Body": "Every flight aboard a private jet, beginning and ending in Munich. No queues, no terminals — only the sky between one remarkable place and the next.",
+    "pillar1Body": "Every flight aboard a private jet, beginning and ending in Munich. No queues, no terminals, only the sky between one remarkable place and the next.",
     "pillar2Title": "Intimate by Design",
-    "pillar2Body": "Six to ten guests. A journey that feels like travelling with friends who happen to have exquisite taste — never a tour, never a crowd.",
+    "pillar2Body": "Six to ten guests. A journey that feels like travelling with friends who happen to have exquisite taste, never a tour, never a crowd.",
     "pillar3Title": "Hand-Selected Throughout",
     "pillar3Body": "Owner-led hotels with character, authentic tables, and cultural moments that are simply not open to everyone.",
     "featuredEyebrow": "The Current Edition",
@@ -40,7 +40,7 @@
     "step2Title": "A personal conversation",
     "step2Body": "We speak with you directly, answer every question and tailor the details around your party.",
     "step3Title": "Simply arrive",
-    "step3Body": "From the moment you reach Munich, everything is arranged. Flights, hotels, transfers and tables — all considered.",
+    "step3Body": "From the moment you reach Munich, everything is arranged. Flights, hotels, transfers and tables, all considered.",
     "closingTitle": "A few seats. A whole continent.",
     "closingBody": "Journeys are limited by design and fill quietly. If a season speaks to you, begin the conversation early.",
     "closingCta": "Request a Journey"
@@ -69,7 +69,7 @@
     "inclusionsTitle": "What is included",
     "galleryTitle": "Impressions",
     "requestTitle": "Request this journey",
-    "requestBody": "Receive the full brochure with detailed itinerary and pricing — with no obligation.",
+    "requestBody": "Receive the full brochure with detailed itinerary and pricing, with no obligation.",
     "requestCta": "Request a Journey",
     "priceNote": "Prices are per person and shared in your personal brochure."
   },
@@ -82,7 +82,7 @@
     "body3": "We stay in hand-selected, mostly owner-led hotels with genuine character, enjoy authentic culinary experiences, and take part in cultural moments that are not open to everyone.",
     "valuesTitle": "What we believe",
     "value1Title": "Rarity over reach",
-    "value1Body": "A few journeys, done completely — never many, done partly.",
+    "value1Body": "A few journeys, done completely, never many, done partly.",
     "value2Title": "Character over category",
     "value2Body": "We choose places with a soul, not simply a star rating.",
     "value3Title": "Presence over logistics",

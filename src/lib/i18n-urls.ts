@@ -1,7 +1,7 @@
 import { routing, type Locale, type AppPathname } from "@/i18n/routing";
 
 /**
- * Localised canonical + hreflang alternates — a pure function of the routing
+ * Localised canonical + hreflang alternates, a pure function of the routing
  * config (no next-intl navigation import), so it runs anywhere incl. tests.
  *
  * URL scheme (localePrefix: "as-needed", default = en) with localised segments:

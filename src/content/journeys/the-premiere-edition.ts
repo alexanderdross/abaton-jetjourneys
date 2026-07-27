@@ -1,4 +1,4 @@
-// Journey: The Premiere Edition — Finest of Europe
+// Journey: The Premiere Edition, Finest of Europe
 // Content-as-code. Add a new file like this and register it in ./index.ts.
 
 const journey = {
@@ -8,16 +8,16 @@ const journey = {
   order: 1,
 
   title: {
-    en: "The Premiere Edition — Finest of Europe",
-    de: "Die Premiere Edition — Das Feinste Europas",
+    en: "The Premiere Edition: Finest of Europe",
+    de: "Die Premiere Edition: Das Feinste Europas",
   },
   tagline: {
     en: "Five cultural capitals, one private sky.",
     de: "Fünf Kulturmetropolen, ein privater Himmel.",
   },
   summary: {
-    en: "Our inaugural route brings together Europe's cultural capitals — from Vienna's imperial tradition to the canals of Venice, the timeless allure of Rome, the glamour of the Côte d'Azur and the elegance of Paris.",
-    de: "Unsere Eröffnungsroute vereint Europas Kulturmetropolen — von Wiens imperialer Tradition über die Kanäle Venedigs und den zeitlosen Reiz Roms bis zum Glanz der Côte d'Azur und der Eleganz von Paris.",
+    en: "Our inaugural route brings together Europe's cultural capitals, from Vienna's imperial tradition to the canals of Venice, the timeless allure of Rome, the glamour of the Côte d'Azur and the elegance of Paris.",
+    de: "Unsere Eröffnungsroute vereint Europas Kulturmetropolen, von Wiens imperialer Tradition über die Kanäle Venedigs und den zeitlosen Reiz Roms bis zum Glanz der Côte d'Azur und der Eleganz von Paris.",
   },
 
   nights: 8,
@@ -68,11 +68,11 @@ const journey = {
 
   overview: {
     en: [
-      "The Premiere Edition is composed as a single, uninterrupted movement across the continent. Beginning and ending in Munich, every leg is flown privately — so the distance between one remarkable place and the next is measured in comfort, not compromise.",
+      "The Premiere Edition is composed as a single, uninterrupted movement across the continent. Beginning and ending in Munich, every leg is flown privately, so the distance between one remarkable place and the next is measured in comfort, not compromise.",
       "Eight nights unfold in hand-selected, mostly owner-led hotels. Days are shaped around authentic tables, private access and cultural moments arranged especially for our small circle of guests.",
     ],
     de: [
-      "Die Premiere Edition ist als ein einziger, ununterbrochener Bogen über den Kontinent komponiert. Mit Start und Ziel in München wird jede Etappe privat geflogen — so bemisst sich die Distanz zwischen einem besonderen Ort und dem nächsten in Komfort, nicht in Kompromissen.",
+      "Die Premiere Edition ist als ein einziger, ununterbrochener Bogen über den Kontinent komponiert. Mit Start und Ziel in München wird jede Etappe privat geflogen, so bemisst sich die Distanz zwischen einem besonderen Ort und dem nächsten in Komfort, nicht in Kompromissen.",
       "Acht Nächte entfalten sich in handverlesenen, meist inhabergeführten Hotels. Die Tage folgen authentischen Tischen, privaten Zugängen und kulturellen Momenten, die eigens für unseren kleinen Kreis arrangiert werden.",
     ],
   },
@@ -102,7 +102,7 @@ const journey = {
       title: { en: "Across the Alps to Venice", de: "Über die Alpen nach Venedig" },
       description: {
         en: "A short private flight carries us to Venice. We arrive by water to a city that reveals itself slowly, and best, to the few.",
-        de: "Ein kurzer Privatflug bringt uns nach Venedig. Wir kommen über das Wasser an — in eine Stadt, die sich langsam und am schönsten den Wenigen zeigt.",
+        de: "Ein kurzer Privatflug bringt uns nach Venedig. Wir kommen über das Wasser an, in eine Stadt, die sich langsam und am schönsten den Wenigen zeigt.",
       },
     },
     {
@@ -138,7 +138,7 @@ const journey = {
       title: { en: "The Elegance of Paris", de: "Die Eleganz von Paris" },
       description: {
         en: "A final flight north to Paris. We close the journey where elegance is a native language, with a dinner to remember.",
-        de: "Ein letzter Flug nordwärts nach Paris. Wir beschließen die Journey dort, wo Eleganz Muttersprache ist — mit einem Dinner, das bleibt.",
+        de: "Ein letzter Flug nordwärts nach Paris. Wir beschließen die Journey dort, wo Eleganz Muttersprache ist, mit einem Dinner, das bleibt.",
       },
     },
     {
@@ -155,8 +155,8 @@ const journey = {
       city: "Paris → Munich",
       title: { en: "Homeward", de: "Heimwärts" },
       description: {
-        en: "We return privately to Munich, where the journey began — richer for having seen Europe as it was meant to be seen.",
-        de: "Wir kehren privat nach München zurück, wo die Journey begann — reicher, weil wir Europa so gesehen haben, wie es gesehen werden sollte.",
+        en: "We return privately to Munich, where the journey began, richer for having seen Europe as it was meant to be seen.",
+        de: "Wir kehren privat nach München zurück, wo die Journey begann, reicher, weil wir Europa so gesehen haben, wie es gesehen werden sollte.",
       },
     },
   ],

@@ -50,15 +50,15 @@ export default async function PrivacyPage({ params }: PageProps) {
       <h2>{de ? "Reichweitenmessung" : "Analytics"}</h2>
       <p>
         {de
-          ? "Wir nutzen Cloudflare Web Analytics — eine cookielose, datenschutzfreundliche Messung ohne Nachverfolgung einzelner Personen."
-          : "We use Cloudflare Web Analytics — a cookieless, privacy-friendly measurement that does not track individuals."}
+          ? "Wir nutzen Cloudflare Web Analytics, eine cookielose, datenschutzfreundliche Messung ohne Nachverfolgung einzelner Personen."
+          : "We use Cloudflare Web Analytics, a cookieless, privacy-friendly measurement that does not track individuals."}
       </p>
 
       <h2>{de ? "Ihre Rechte" : "Your Rights"}</h2>
       <p>
         {de
-          ? "Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Beschwerderecht bei einer Aufsichtsbehörde. [Platzhalter — bitte finalisieren.]"
-          : "You have the right to access, rectify, erase and restrict the processing of your personal data, as well as the right to lodge a complaint with a supervisory authority. [Placeholder — please finalise.]"}
+          ? "Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Beschwerderecht bei einer Aufsichtsbehörde. [Platzhalter, bitte finalisieren.]"
+          : "You have the right to access, rectify, erase and restrict the processing of your personal data, as well as the right to lodge a complaint with a supervisory authority. [Placeholder, please finalise.]"}
       </p>
     </LegalLayout>
   );

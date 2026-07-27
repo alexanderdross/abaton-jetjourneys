@@ -107,7 +107,7 @@ export default async function HomePage({ params }: PageProps) {
                   <Media
                     src={featured.heroImage.src}
                     alt={pick(featured.heroImage.alt, locale)}
-                    label={pick(featured.title, locale).split("—")[0].trim()}
+                    label={pick(featured.title, locale).split(":")[0].trim()}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>

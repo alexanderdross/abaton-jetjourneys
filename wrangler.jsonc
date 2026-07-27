@@ -18,7 +18,7 @@
   "vars": {
     // Non-secret defaults. Secrets (RESEND_API_KEY, TURNSTILE_SECRET_KEY) are set via
     // `wrangler secret put` and are NOT stored here.
-    // NOTE: NEXT_PUBLIC_* are inlined at BUILD time — in Workers Builds they must ALSO
+    // NOTE: NEXT_PUBLIC_* are inlined at BUILD time, in Workers Builds they must ALSO
     // be set as Build variables (Settings > Builds) so the build picks them up.
     "CONTACT_TO_EMAIL": "info@abaton-jetjourneys.com",
     "CONTACT_FROM_EMAIL": "no-reply@abaton-jetjourneys.com",
@@ -28,7 +28,7 @@
     // Set to "0" (or remove) at go-live.
     "NEXT_PUBLIC_NOINDEX": "1",
     // Cloudflare edge image transformations. Set to "1" ONLY after enabling
-    // "Transformations" on the zone (dashboard) — otherwise /cdn-cgi/image 404s.
+    // "Transformations" on the zone (dashboard), otherwise /cdn-cgi/image 404s.
     // "0" serves the downscaled originals directly.
     "NEXT_PUBLIC_CF_IMAGES": "0"
   }

@@ -23,7 +23,7 @@ export function JourneyCard({
           <Media
             src={journey.heroImage.src}
             alt={pick(journey.heroImage.alt, locale)}
-            label={pick(journey.title, locale).split("—")[0].trim()}
+            label={pick(journey.title, locale).split(":")[0].trim()}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>

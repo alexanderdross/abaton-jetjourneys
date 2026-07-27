@@ -65,7 +65,7 @@ export function Header() {
           <Link
             href="/"
             className="relative block h-7 w-[130px]"
-            aria-label="ABATON JetJourneys — home"
+            aria-label="ABATON JetJourneys, home"
           >
             <Image
               src={light ? "/logos/abaton-white.png" : "/logos/abaton-black.png"}
