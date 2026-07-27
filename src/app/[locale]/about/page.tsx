@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { altLinks } from "@/lib/i18n-urls";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -44,6 +45,11 @@ export default async function AboutPage({ params }: PageProps) {
 
       <Section tone="bone">
         <Container size="narrow">
+          <Breadcrumbs
+            locale={locale}
+            trail={[{ href: "/about", label: t("title") }]}
+            className="mb-10"
+          />
           <Reveal>
             <p className="display-serif text-2xl sm:text-3xl leading-snug text-ink">
               {t("lead")}

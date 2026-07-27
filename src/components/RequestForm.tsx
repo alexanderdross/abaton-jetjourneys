@@ -4,11 +4,10 @@ import { useActionState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Script from "next/script";
 import { submitRequest, type RequestState } from "@/lib/actions";
+import { turnstileSiteKey } from "@/lib/turnstile";
 import { Button } from "./ui/Button";
 
 const initialState: RequestState = { status: "idle" };
-
-const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export function RequestForm({
   defaultJourney,
@@ -36,9 +35,11 @@ export function RequestForm({
   const errorText =
     state.message === "consent"
       ? t("validationConsent")
-      : state.message === "validation"
-        ? t("validationRequired")
-        : t("errorBody");
+      : state.message === "turnstile"
+        ? t("validationTurnstile")
+        : state.message === "validation"
+          ? t("validationRequired")
+          : t("errorBody");
 
   return (
     <form action={formAction} className="space-y-5">
@@ -105,19 +106,17 @@ export function RequestForm({
         <span>{t("consent")}</span>
       </label>
 
-      {siteKey && (
-        <>
-          <Script
-            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-            strategy="lazyOnload"
-          />
-          <div
-            className="cf-turnstile"
-            data-sitekey={siteKey}
-            data-theme="light"
-          />
-        </>
-      )}
+      {/* Turnstile is always present: the form cannot be submitted without a
+          valid challenge token (verified server-side). */}
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        strategy="lazyOnload"
+      />
+      <div
+        className="cf-turnstile"
+        data-sitekey={turnstileSiteKey}
+        data-theme="light"
+      />
 
       {state.status === "error" && (
         <p className="text-sm text-red-700" role="alert">

@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { RequestForm } from "@/components/RequestForm";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
 import { altLinks } from "@/lib/i18n-urls";
 
@@ -29,6 +30,11 @@ export default async function ContactPage({ params }: PageProps) {
   return (
     <div className="pt-32 pb-24">
       <Container>
+        <Breadcrumbs
+          locale={locale}
+          trail={[{ href: "/contact", label: t("title") }]}
+          className="mb-10"
+        />
         <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
           <Reveal>
             <div>

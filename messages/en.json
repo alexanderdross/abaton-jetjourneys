@@ -125,7 +125,8 @@
     "errorBody": "Your enquiry could not be sent. Please try again or email us directly.",
     "validationRequired": "Please complete the required fields.",
     "validationEmail": "Please enter a valid email address.",
-    "validationConsent": "Please confirm your consent to continue."
+    "validationConsent": "Please confirm your consent to continue.",
+    "validationTurnstile": "Please complete the verification and try again."
   },
   "Footer": {
     "tagline": "Private jet roundtrips through the finest of Europe.",
@@ -148,5 +149,9 @@
     "title": "Off the map",
     "body": "The page you are looking for could not be found.",
     "cta": "Return home"
+  },
+  "Breadcrumbs": {
+    "home": "Home",
+    "ariaLabel": "Breadcrumb"
   }
 }

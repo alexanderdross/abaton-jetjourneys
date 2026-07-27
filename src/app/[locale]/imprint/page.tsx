@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -21,7 +22,15 @@ export default async function ImprintPage({ params }: PageProps) {
   const de = locale === "de";
 
   return (
-    <LegalLayout title={t("imprintTitle")}>
+    <LegalLayout
+      title={t("imprintTitle")}
+      breadcrumbs={
+        <Breadcrumbs
+          locale={locale}
+          trail={[{ href: "/imprint", label: t("imprintTitle") }]}
+        />
+      }
+    >
       <h2>{de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG"}</h2>
       <p>
         <strong>{company.name}</strong>

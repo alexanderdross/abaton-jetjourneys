@@ -125,7 +125,8 @@
     "errorBody": "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.",
     "validationRequired": "Bitte füllen Sie die erforderlichen Felder aus.",
     "validationEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-    "validationConsent": "Bitte bestätigen Sie Ihre Einwilligung, um fortzufahren."
+    "validationConsent": "Bitte bestätigen Sie Ihre Einwilligung, um fortzufahren.",
+    "validationTurnstile": "Bitte schließen Sie die Verifizierung ab und versuchen Sie es erneut."
   },
   "Footer": {
     "tagline": "Privatjet-Rundreisen durch das Feinste Europas.",
@@ -148,5 +149,9 @@
     "title": "Abseits der Karte",
     "body": "Die gesuchte Seite konnte nicht gefunden werden.",
     "cta": "Zur Startseite"
+  },
+  "Breadcrumbs": {
+    "home": "Start",
+    "ariaLabel": "Brotkrümelnavigation"
   }
 }

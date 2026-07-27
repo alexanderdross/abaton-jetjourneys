@@ -11,6 +11,7 @@ import { Media } from "@/components/ui/Media";
 import { RouteLine } from "@/components/RouteLine";
 import { RequestForm } from "@/components/RequestForm";
 import { JourneyJsonLd } from "@/components/JsonLd";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import {
   getJourneyBySlug,
   getPublishedJourneys,
@@ -111,6 +112,17 @@ export default async function JourneyDetailPage({ params }: PageProps) {
       {/* At a glance + overview */}
       <Section tone="bone">
         <Container>
+          <Breadcrumbs
+            locale={locale}
+            trail={[
+              { href: "/journeys", label: jt("title") },
+              {
+                href: { pathname: "/journeys/[slug]", params: { slug } },
+                label: pick(journey.title, locale),
+              },
+            ]}
+            className="mb-10"
+          />
           <div className="grid gap-14 lg:grid-cols-[1fr_320px]">
             <Reveal>
               <div className="prose-editorial max-w-none">
