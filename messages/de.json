@@ -1,7 +1,7 @@
 {
   "Meta": {
     "siteName": "ABATON JetJourneys",
-    "defaultTitle": "ABATON JetJourneys — Privatjet-Rundreisen",
+    "defaultTitle": "ABATON JetJourneys, Privatjet-Rundreisen",
     "defaultDescription": "Ein inhabergeführtes Boutique-Unternehmen mit wenigen Privatjet-Rundreisen pro Jahr. Sechs bis zehn Gäste, handverlesene Hotels und Europa, wie es sein sollte."
   },
   "Nav": {
@@ -17,17 +17,17 @@
   "Home": {
     "heroEyebrow": "Privatjet-Rundreisen",
     "heroTitle": "Europa, kompromisslos.",
-    "heroSubtitle": "Wenige Journeys pro Jahr. Sechs bis zehn Gäste. Orte, die gewöhnliches Reisen nicht verbindet — privat geflogen, intim erlebt.",
+    "heroSubtitle": "Wenige Journeys pro Jahr. Sechs bis zehn Gäste. Orte, die gewöhnliches Reisen nicht verbindet, privat geflogen, intim erlebt.",
     "heroCta": "Journeys entdecken",
     "heroSecondaryCta": "Unsere Philosophie",
     "introEyebrow": "Die Idee",
     "introTitle": "Inhabergeführt. Bewusst selten.",
-    "introBody": "ABATON entstand aus der Fliegerleidenschaft eines Privatpiloten und den Wurzeln in Europas feinster Hotellerie. Wir gestalten nur wenige Journeys pro Jahr und verbinden Regionen, die sich über kommerzielle Reisen kaum kombinieren lassen — ohne lange Transfers, verpasste Anschlüsse oder Abstriche beim Komfort.",
+    "introBody": "ABATON entstand aus der Fliegerleidenschaft eines Privatpiloten und den Wurzeln in Europas feinster Hotellerie. Wir gestalten nur wenige Journeys pro Jahr und verbinden Regionen, die sich über kommerzielle Reisen kaum kombinieren lassen, ohne lange Transfers, verpasste Anschlüsse oder Abstriche beim Komfort.",
     "pillarsTitle": "Was eine Journey ausmacht",
     "pillar1Title": "Privat in der Luft",
-    "pillar1Body": "Jeder Flug an Bord eines Privatjets, mit Start und Ziel in München. Keine Warteschlangen, keine Terminals — nur der Himmel zwischen einem besonderen Ort und dem nächsten.",
+    "pillar1Body": "Jeder Flug an Bord eines Privatjets, mit Start und Ziel in München. Keine Warteschlangen, keine Terminals, nur der Himmel zwischen einem besonderen Ort und dem nächsten.",
     "pillar2Title": "Intim gedacht",
-    "pillar2Body": "Sechs bis zehn Gäste. Eine Journey, die sich anfühlt, als reise man mit Freunden von erlesenem Geschmack — niemals eine Tour, niemals eine Menge.",
+    "pillar2Body": "Sechs bis zehn Gäste. Eine Journey, die sich anfühlt, als reise man mit Freunden von erlesenem Geschmack, niemals eine Tour, niemals eine Menge.",
     "pillar3Title": "Durchweg handverlesen",
     "pillar3Body": "Inhabergeführte Hotels mit Charakter, authentische Tische und kulturelle Momente, die schlicht nicht jedem offenstehen.",
     "featuredEyebrow": "Die aktuelle Edition",
@@ -40,7 +40,7 @@
     "step2Title": "Ein persönliches Gespräch",
     "step2Body": "Wir sprechen direkt mit Ihnen, beantworten jede Frage und stimmen die Details auf Ihre Gruppe ab.",
     "step3Title": "Einfach ankommen",
-    "step3Body": "Ab dem Moment, in dem Sie München erreichen, ist alles arrangiert. Flüge, Hotels, Transfers und Tische — an alles ist gedacht.",
+    "step3Body": "Ab dem Moment, in dem Sie München erreichen, ist alles arrangiert. Flüge, Hotels, Transfers und Tische, an alles ist gedacht.",
     "closingTitle": "Wenige Plätze. Ein ganzer Kontinent.",
     "closingBody": "Journeys sind bewusst limitiert und füllen sich leise. Wenn eine Saison Sie anspricht, beginnen Sie das Gespräch früh.",
     "closingCta": "Journey anfragen"
@@ -69,20 +69,20 @@
     "inclusionsTitle": "Im Preis enthalten",
     "galleryTitle": "Impressionen",
     "requestTitle": "Diese Journey anfragen",
-    "requestBody": "Erhalten Sie die vollständige Broschüre mit detailliertem Reiseverlauf und Preisen — unverbindlich.",
+    "requestBody": "Erhalten Sie die vollständige Broschüre mit detailliertem Reiseverlauf und Preisen, unverbindlich.",
     "requestCta": "Journey anfragen",
     "priceNote": "Preise verstehen sich pro Person und werden in Ihrer persönlichen Broschüre genannt."
   },
   "About": {
     "eyebrow": "Philosophie",
     "title": "Reisen, wie es sich anfühlen sollte",
-    "lead": "ABATON JetJourneys ist ein inhabergeführtes Boutique-Unternehmen. Wir sind kein großer Veranstalter — und wollen es nie sein.",
+    "lead": "ABATON JetJourneys ist ein inhabergeführtes Boutique-Unternehmen. Wir sind kein großer Veranstalter, und wollen es nie sein.",
     "body1": "Gegründet von einem Privatpiloten mit Wurzeln in Europas Luxushotellerie. Jede Journey folgt einer persönlichen Vorstellung davon, was echte Qualität, Authentizität und Komfort sein können, wenn nichts dem Zufall überlassen wird.",
     "body2": "Wir gestalten nur wenige Journeys pro Jahr, bewusst limitiert auf sechs bis zehn Gäste. Jede verbindet sorgfältig ausgewählte Regionen, die sich über kommerzielle Reisen nur schwer kombinieren lassen und oft mehrere Flüge, lange Transfers oder Komforteinbußen erfordern.",
     "body3": "Wir logieren in handverlesenen, meist inhabergeführten Hotels mit echtem Charakter, genießen authentische kulinarische Erlebnisse und nehmen an kulturellen Momenten teil, die nicht jedem offenstehen.",
     "valuesTitle": "Woran wir glauben",
     "value1Title": "Seltenheit statt Reichweite",
-    "value1Body": "Wenige Journeys, ganz gemacht — niemals viele, halb gemacht.",
+    "value1Body": "Wenige Journeys, ganz gemacht, niemals viele, halb gemacht.",
     "value2Title": "Charakter statt Kategorie",
     "value2Body": "Wir wählen Orte mit Seele, nicht nur mit Sternebewertung.",
     "value3Title": "Präsenz statt Logistik",

@@ -1,4 +1,4 @@
-// Custom Next.js image loader — Cloudflare best practice.
+// Custom Next.js image loader, Cloudflare best practice.
 //
 // In production, images are optimised at the edge via Cloudflare's URL-based
 // transformations (`/cdn-cgi/image/…`, `format=auto` → AVIF/WebP). This avoids

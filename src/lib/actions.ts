@@ -89,7 +89,7 @@ export async function submitRequest(
 
   // Without an API key (e.g. previews) we accept but cannot deliver.
   if (!env.RESEND_API_KEY) {
-    console.warn("[submitRequest] RESEND_API_KEY missing — email not sent.");
+    console.warn("[submitRequest] RESEND_API_KEY missing, email not sent.");
     return { status: "success" };
   }
 
@@ -97,22 +97,22 @@ export async function submitRequest(
   const from = env.CONTACT_FROM_EMAIL ?? "no-reply@abaton-jetjourneys.com";
 
   const subject = data.journey
-    ? `Journey enquiry — ${data.journey}`
-    : "New enquiry — ABATON JetJourneys";
+    ? `Journey enquiry, ${data.journey}`
+    : "New enquiry, ABATON JetJourneys";
 
   const rows: [string, string][] = [
     ["Name", data.name],
     ["Email", data.email],
-    ["Phone", data.phone || "—"],
-    ["Guests", data.guests || "—"],
+    ["Phone", data.phone || "-"],
+    ["Guests", data.guests || "-"],
     ["Journey", data.journey || "General enquiry"],
     ["Language", data.locale.toUpperCase()],
-    ["Message", data.message || "—"],
+    ["Message", data.message || "-"],
   ];
 
   const html = `
     <div style="font-family:Georgia,serif;color:#14171c;max-width:560px">
-      <h2 style="font-weight:normal;letter-spacing:2px">ABATON — New Enquiry</h2>
+      <h2 style="font-weight:normal;letter-spacing:2px">ABATON, New Enquiry</h2>
       <table style="width:100%;border-collapse:collapse">
         ${rows
           .map(

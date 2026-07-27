@@ -9,7 +9,7 @@ type RevealProps = {
 };
 
 /**
- * Lightweight scroll-reveal using IntersectionObserver — no animation library.
+ * Lightweight scroll-reveal using IntersectionObserver, no animation library.
  * Respects prefers-reduced-motion (the CSS keyframe is disabled globally).
  */
 export function Reveal({ children, className = "", delay = 0 }: RevealProps) {

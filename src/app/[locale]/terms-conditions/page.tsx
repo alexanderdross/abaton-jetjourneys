@@ -26,7 +26,7 @@ export default async function TermsPage({ params }: PageProps) {
           <h2>1. Geltungsbereich</h2>
           <p>
             Diese Allgemeinen Geschäftsbedingungen gelten für alle von der ABATON
-            JetJourneys GmbH veranstalteten Reisen. [Platzhalter — bitte durch die
+            JetJourneys GmbH veranstalteten Reisen. [Platzhalter, bitte durch die
             finalen AGB ersetzen.]
           </p>
           <h2>2. Preise und Leistungen</h2>
@@ -45,7 +45,7 @@ export default async function TermsPage({ params }: PageProps) {
           <h2>1. Scope</h2>
           <p>
             These Terms &amp; Conditions apply to all journeys organised by ABATON
-            JetJourneys GmbH. [Placeholder — replace with the final terms.]
+            JetJourneys GmbH. [Placeholder, replace with the final terms.]
           </p>
           <h2>2. Prices and Services</h2>
           <p>

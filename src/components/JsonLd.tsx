@@ -58,7 +58,7 @@ export function JourneyJsonLd({
           itemListElement: journey.itinerary.map((d) => ({
             "@type": "ListItem",
             position: d.day,
-            name: `${pick(d.title, locale)} — ${d.city}`,
+            name: `${pick(d.title, locale)}, ${d.city}`,
           })),
         },
         provider: {

@@ -73,7 +73,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           <Media
             src={journey.heroImage.src}
             alt={pick(journey.heroImage.alt, locale)}
-            label={pick(journey.title, locale).split("—")[0].trim()}
+            label={pick(journey.title, locale).split(":")[0].trim()}
             priority
             sizes="100vw"
           />
@@ -148,7 +148,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           <Reveal>
             <p className="eyebrow text-center">{t("itineraryTitle")}</p>
             <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-center mb-14">
-              {pick(journey.title, locale).split("—")[0].trim()}
+              {pick(journey.title, locale).split(":")[0].trim()}
             </h2>
           </Reveal>
           <ol className="space-y-0">
@@ -234,7 +234,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
             <div className="text-center mb-12">
               <p className="eyebrow">{t("requestTitle")}</p>
               <h2 className="display-serif mt-4 text-3xl sm:text-4xl">
-                {pick(journey.title, locale).split("—")[0].trim()}
+                {pick(journey.title, locale).split(":")[0].trim()}
               </h2>
               <p className="mt-4 text-slate">{t("requestBody")}</p>
               <p className="mt-2 text-xs text-slate/70">{t("priceNote")}</p>

@@ -1,7 +1,7 @@
 # Copy to `.dev.vars` for local development (never commit the real file).
 # Secrets in production are set with `wrangler secret put <NAME>`.
 
-# Resend API key for sending inquiry emails — https://resend.com
+# Resend API key for sending inquiry emails, https://resend.com
 RESEND_API_KEY=""
 
 # Cloudflare Turnstile secret key (server-side verification)

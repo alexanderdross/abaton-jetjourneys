@@ -1,6 +1,6 @@
 # ABATON JetJourneys
 
-Marketing site for **ABATON JetJourneys GmbH** — a founder-led boutique offering
+Marketing site for **ABATON JetJourneys GmbH**, a founder-led boutique offering
 private jet roundtrips through Europe for six to ten guests.
 
 Rebuilt in **Next.js 15 (App Router)**, bilingual **English / German**, and
@@ -12,16 +12,16 @@ deployed to **Cloudflare Workers** via the OpenNext adapter.
 | --- | --- |
 | Framework | Next.js 15 (App Router, React 19, Server Components) |
 | Hosting | Cloudflare Workers via [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) + Wrangler |
-| i18n | [`next-intl`](https://next-intl.dev) — English at `/`, German at `/de` (`localePrefix: "as-needed"`) |
+| i18n | [`next-intl`](https://next-intl.dev), English at `/`, German at `/de` (`localePrefix: "as-needed"`) |
 | Styling | Tailwind CSS v4 with design tokens (`src/app/globals.css`) |
-| Content | Content-as-code — typed journeys in `src/content/journeys`, validated with `zod` |
+| Content | Content-as-code, typed journeys in `src/content/journeys`, validated with `zod` |
 | Enquiries | Server Action → [Resend](https://resend.com) email, protected by Cloudflare Turnstile |
 | Analytics | Cloudflare Web Analytics (cookieless) |
 
 ## URL scheme
 
 - English: `abaton-jetjourneys.com/<path>/` (e.g. `/contact/`)
-- German: `abaton-jetjourneys.com/de/<path-de>/` — **localised segments** (e.g. `/de/kontakt/`, `/de/reisen/`, `/de/philosophie/`)
+- German: `abaton-jetjourneys.com/de/<path-de>/`, **localised segments** (e.g. `/de/kontakt/`, `/de/reisen/`, `/de/philosophie/`)
 
 Localised route segments are defined in `routing.pathnames` (`src/i18n/routing.ts`).
 Trailing slashes are enforced (`next.config.ts` → `trailingSlash: true`). `hreflang`/
@@ -44,7 +44,7 @@ Journeys live in `src/content/journeys/`. To add one:
 2. Register it in `src/content/journeys/index.ts`.
 
 Each journey carries `en` and `de` fields side by side and is validated at build
-time by `src/lib/journeys.ts` — a malformed journey fails the build.
+time by `src/lib/journeys.ts`, a malformed journey fails the build.
 
 UI strings live in `messages/en.json` and `messages/de.json`.
 
@@ -98,7 +98,7 @@ real `opennextjs-cloudflare build`. Run the same checks locally:
 ```bash
 npm run typecheck
 npm run lint
-npm run test          # Vitest — i18n URLs, journey loader, EN/DE translation parity
+npm run test          # Vitest, i18n URLs, journey loader, EN/DE translation parity
 npm run build
 ```
 
@@ -106,7 +106,7 @@ npm run build
 
 Deployment runs through **Cloudflare Workers Builds** (git-connected): a push to `main`
 builds with `npx opennextjs-cloudflare build` and deploys with `npx wrangler deploy`.
-Full setup — dashboard connection, build variables/secrets, custom domain — is in
+Full setup, dashboard connection, build variables/secrets, custom domain, is in
 **[DEPLOYMENT.md](./DEPLOYMENT.md)**.
 
 Manual deploy from a local machine (fallback):
