@@ -4,6 +4,7 @@ import { Resend } from "resend";
 import { getEnv } from "./env";
 import { company } from "./site";
 import { requestSchema, escapeHtml } from "./request-schema";
+import { TURNSTILE_TEST_SECRET_KEY } from "./turnstile";
 
 export type RequestState = {
   status: "idle" | "success" | "error";
@@ -12,11 +13,10 @@ export type RequestState = {
 
 async function verifyTurnstile(
   token: string | undefined,
-  secret: string | undefined,
+  secret: string,
   ip?: string,
 ): Promise<boolean> {
-  // If Turnstile isn't configured yet, don't block submissions.
-  if (!secret) return true;
+  // Turnstile is always enforced: no token means no submission.
   if (!token) return false;
 
   const form = new FormData();
@@ -57,9 +57,11 @@ export async function submitRequest(
 
   const data = parsed.data;
 
+  // Real secret in production; Cloudflare test secret as a fallback so the
+  // challenge is always verified end to end (see src/lib/turnstile.ts).
   const human = await verifyTurnstile(
     data.token,
-    env.TURNSTILE_SECRET_KEY,
+    env.TURNSTILE_SECRET_KEY || TURNSTILE_TEST_SECRET_KEY,
     undefined,
   );
   if (!human) {

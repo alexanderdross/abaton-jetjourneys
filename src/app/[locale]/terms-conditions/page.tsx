@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -20,7 +21,15 @@ export default async function TermsPage({ params }: PageProps) {
   const t = await getTranslations("Legal");
 
   return (
-    <LegalLayout title={t("termsTitle")}>
+    <LegalLayout
+      title={t("termsTitle")}
+      breadcrumbs={
+        <Breadcrumbs
+          locale={locale}
+          trail={[{ href: "/terms-conditions", label: t("termsTitle") }]}
+        />
+      }
+    >
       {locale === "de" ? <TermsDE /> : <TermsEN />}
     </LegalLayout>
   );

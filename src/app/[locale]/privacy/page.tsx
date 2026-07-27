@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -20,7 +21,15 @@ export default async function PrivacyPage({ params }: PageProps) {
   const t = await getTranslations("Legal");
 
   return (
-    <LegalLayout title={t("privacyTitle")}>
+    <LegalLayout
+      title={t("privacyTitle")}
+      breadcrumbs={
+        <Breadcrumbs
+          locale={locale}
+          trail={[{ href: "/privacy", label: t("privacyTitle") }]}
+        />
+      }
+    >
       {locale === "de" ? <PrivacyDE /> : <PrivacyEN />}
     </LegalLayout>
   );

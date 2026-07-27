@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { JourneyCard } from "@/components/JourneyCard";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getPublishedJourneys } from "@/lib/journeys";
 import { altLinks } from "@/lib/i18n-urls";
 
@@ -30,6 +31,11 @@ export default async function JourneysPage({ params }: PageProps) {
   return (
     <div className="pt-32 pb-24">
       <Container>
+        <Breadcrumbs
+          locale={locale}
+          trail={[{ href: "/journeys", label: t("title") }]}
+          className="mb-10"
+        />
         <Reveal>
           <header className="max-w-2xl">
             <p className="eyebrow">{t("eyebrow")}</p>

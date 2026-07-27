@@ -86,8 +86,12 @@ wrangler secret put TURNSTILE_SECRET_KEY
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public Turnstile widget key |
 | `NEXT_PUBLIC_CF_IMAGES` | `1` enables Cloudflare edge image transformations (needs zone Transformations on) |
 
-If `RESEND_API_KEY` or `TURNSTILE_SECRET_KEY` are unset, the form degrades
-gracefully (accepts input; Turnstile is skipped) so previews keep working.
+Turnstile is always enforced on the contact and journey-request forms: a
+submission without a valid challenge token is rejected. Until real keys are set,
+the forms fall back to Cloudflare's official always-passing test keys, so the
+challenge runs end to end on previews and the interim domain (with no bot
+protection). Set real keys before the public launch. If `RESEND_API_KEY` is
+unset, a validated submission is accepted but no email is delivered.
 
 ## CI & tests
 
