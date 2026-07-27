@@ -12,8 +12,7 @@ import { routing, type Locale, type AppPathname } from "@/i18n/routing";
  */
 
 export type Href =
-  | AppPathname
-  | { pathname: AppPathname; params?: Record<string, string> };
+  AppPathname | { pathname: AppPathname; params?: Record<string, string> };
 
 function withTrailingSlash(path: string): string {
   if (path === "/") return "/";

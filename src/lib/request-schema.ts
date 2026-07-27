@@ -22,8 +22,5 @@ export type RequestInput = z.infer<typeof requestSchema>;
 
 /** Escape user text before embedding it in the notification email HTML. */
 export function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }

@@ -28,7 +28,9 @@ describe("requestSchema", () => {
   });
 
   it("rejects a name shorter than 2 characters", () => {
-    expect(requestSchema.safeParse({ ...valid, name: "A" }).success).toBe(false);
+    expect(requestSchema.safeParse({ ...valid, name: "A" }).success).toBe(
+      false,
+    );
   });
 
   it("rejects an over-long message", () => {

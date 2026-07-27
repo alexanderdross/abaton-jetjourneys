@@ -32,7 +32,12 @@ export default async function AboutPage({ params }: PageProps) {
     <>
       <section className="relative h-[60vh] min-h-[420px] flex items-end">
         <div className="absolute inset-0">
-          <Media src="/images/about-hero.jpg" alt={t("title")} priority sizes="100vw" />
+          <Media
+            src="/images/about-hero.jpg"
+            alt={t("title")}
+            priority
+            sizes="100vw"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-ink/30" />
         </div>
         <Container className="relative z-10 pb-14">
@@ -74,7 +79,9 @@ export default async function AboutPage({ params }: PageProps) {
             {[1, 2, 3].map((n, i) => (
               <Reveal key={n} delay={i * 120}>
                 <div className="text-center">
-                  <span className="font-serif text-champagne text-5xl">0{n}</span>
+                  <span className="font-serif text-champagne text-5xl">
+                    0{n}
+                  </span>
                   <h3 className="font-serif text-2xl mt-4 mb-3 text-ink">
                     {t(`value${n}Title` as "value1Title")}
                   </h3>
@@ -96,7 +103,11 @@ export default async function AboutPage({ params }: PageProps) {
             </h2>
             <p className="mt-6 text-lg text-bone/70">{t("ctaBody")}</p>
             <div className="mt-10">
-              <LinkButton href="/contact" variant="outline" className="text-bone">
+              <LinkButton
+                href="/contact"
+                variant="outline"
+                className="text-bone"
+              >
                 {t("ctaButton")}
               </LinkButton>
             </div>

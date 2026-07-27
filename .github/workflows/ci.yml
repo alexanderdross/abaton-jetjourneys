@@ -32,11 +32,21 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Format check (Prettier)
+        run: npm run format:check
+
       - name: Unit tests
         run: npm run test
 
       - name: Next build
         run: npm run build
+
+      # Blocks only on critical advisories. The tree currently carries high
+      # advisories transitively from Next (sharp/libvips, postcss) that have no
+      # non-breaking fix and are unused at runtime on Workers (custom image
+      # loader), so a "high" gate would fail on issues we cannot act on.
+      - name: Security audit (critical)
+        run: npm audit --audit-level=critical
 
   workers-build:
     name: Cloudflare Workers bundle (OpenNext)

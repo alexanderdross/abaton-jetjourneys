@@ -64,21 +64,21 @@ function PrivacyDE() {
       <p>
         Diese Website wird auf der Infrastruktur der Cloudflare, Inc. (101
         Townsend St, San Francisco, CA 94107, USA) als Auftragsverarbeiter
-        betrieben. Beim Aufruf der Seiten werden technisch notwendige Daten (z. B.
-        IP-Adresse, Datum und Uhrzeit, angeforderte Ressource, Browsertyp) zur
-        Auslieferung und Absicherung verarbeitet. Rechtsgrundlage ist Art. 6 Abs.
-        1 lit. f DSGVO. Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag;
-        Übermittlungen in Drittländer sind durch Standardvertragsklauseln
-        abgesichert.
+        betrieben. Beim Aufruf der Seiten werden technisch notwendige Daten (z.
+        B. IP-Adresse, Datum und Uhrzeit, angeforderte Ressource, Browsertyp)
+        zur Auslieferung und Absicherung verarbeitet. Rechtsgrundlage ist Art. 6
+        Abs. 1 lit. f DSGVO. Mit Cloudflare besteht ein
+        Auftragsverarbeitungsvertrag; Übermittlungen in Drittländer sind durch
+        Standardvertragsklauseln abgesichert.
       </p>
 
       <h2>Kontakt- und Anfrageformular</h2>
       <p>
         Wenn Sie uns über das Anfrageformular kontaktieren, verarbeiten wir die
-        von Ihnen angegebenen Daten (Name, E-Mail-Adresse sowie optional Telefon,
-        Anzahl der Gäste, gewünschte Journey und Nachricht) ausschließlich zur
-        Bearbeitung Ihrer Anfrage und zur Anbahnung eines möglichen
-        Vertragsverhältnisses. Der Versand erfolgt per E-Mail über den
+        von Ihnen angegebenen Daten (Name, E-Mail-Adresse sowie optional
+        Telefon, Anzahl der Gäste, gewünschte Journey und Nachricht)
+        ausschließlich zur Bearbeitung Ihrer Anfrage und zur Anbahnung eines
+        möglichen Vertragsverhältnisses. Der Versand erfolgt per E-Mail über den
         Dienstleister Resend (Resend, Inc., USA) als Auftragsverarbeiter.
         Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und lit. f DSGVO.
       </p>
@@ -86,17 +86,17 @@ function PrivacyDE() {
       <h2>Spam-Schutz (Cloudflare Turnstile)</h2>
       <p>
         Zum Schutz des Formulars vor missbräuchlicher automatisierter Nutzung
-        setzen wir Cloudflare Turnstile ein. Dabei werden technische Informationen
-        zur Unterscheidung menschlicher von automatisierter Nutzung verarbeitet.
-        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+        setzen wir Cloudflare Turnstile ein. Dabei werden technische
+        Informationen zur Unterscheidung menschlicher von automatisierter
+        Nutzung verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
       <h2>Reichweitenmessung (Cloudflare Web Analytics)</h2>
       <p>
         Wir nutzen Cloudflare Web Analytics, eine cookielose, datenschutz-
-        freundliche Reichweitenmessung. Es werden keine Cookies gesetzt und keine
-        einzelnen Personen über Websites hinweg nachverfolgt. Rechtsgrundlage ist
-        Art. 6 Abs. 1 lit. f DSGVO.
+        freundliche Reichweitenmessung. Es werden keine Cookies gesetzt und
+        keine einzelnen Personen über Websites hinweg nachverfolgt.
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
       <h2>Speicherdauer</h2>
@@ -113,15 +113,16 @@ function PrivacyDE() {
         Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16),
         Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18),
         Datenübertragbarkeit (Art. 20) sowie ein Widerspruchsrecht (Art. 21)
-        gegen Verarbeitungen auf Grundlage berechtigter Interessen. Eine erteilte
-        Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.
+        gegen Verarbeitungen auf Grundlage berechtigter Interessen. Eine
+        erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft
+        widerrufen.
       </p>
 
       <h2>Beschwerderecht</h2>
       <p>
-        Ihnen steht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu.
-        Zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA),
-        Promenade 18, 91522 Ansbach.
+        Ihnen steht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde
+        zu. Zuständig ist das Bayerische Landesamt für Datenschutzaufsicht
+        (BayLDA), Promenade 18, 91522 Ansbach.
       </p>
     </>
   );
@@ -154,11 +155,11 @@ function PrivacyEN() {
 
       <h2>Hosting (Cloudflare)</h2>
       <p>
-        This website runs on the infrastructure of Cloudflare, Inc. (101 Townsend
-        St, San Francisco, CA 94107, USA) as a processor. When the pages are
-        accessed, technically necessary data (e.g. IP address, date and time,
-        requested resource, browser type) are processed for delivery and
-        security. The legal basis is Art. 6(1)(f) GDPR. A data-processing
+        This website runs on the infrastructure of Cloudflare, Inc. (101
+        Townsend St, San Francisco, CA 94107, USA) as a processor. When the
+        pages are accessed, technically necessary data (e.g. IP address, date
+        and time, requested resource, browser type) are processed for delivery
+        and security. The legal basis is Art. 6(1)(f) GDPR. A data-processing
         agreement is in place with Cloudflare; transfers to third countries are
         safeguarded by Standard Contractual Clauses.
       </p>
@@ -168,30 +169,31 @@ function PrivacyEN() {
         When you contact us via the enquiry form, we process the details you
         provide (name, email address and, optionally, phone, number of guests,
         preferred journey and message) solely to handle your enquiry and to
-        initiate a possible contractual relationship. Delivery is by email through
-        the provider Resend (Resend, Inc., USA) as a processor. The legal basis is
-        Art. 6(1)(b) and (f) GDPR.
+        initiate a possible contractual relationship. Delivery is by email
+        through the provider Resend (Resend, Inc., USA) as a processor. The
+        legal basis is Art. 6(1)(b) and (f) GDPR.
       </p>
 
       <h2>Spam protection (Cloudflare Turnstile)</h2>
       <p>
         To protect the form against abusive automated use we use Cloudflare
-        Turnstile, which processes technical information to distinguish human from
-        automated use. The legal basis is Art. 6(1)(f) GDPR.
+        Turnstile, which processes technical information to distinguish human
+        from automated use. The legal basis is Art. 6(1)(f) GDPR.
       </p>
 
       <h2>Analytics (Cloudflare Web Analytics)</h2>
       <p>
-        We use Cloudflare Web Analytics, a cookieless, privacy-friendly analytics
-        service. No cookies are set and no individuals are tracked across
-        websites. The legal basis is Art. 6(1)(f) GDPR.
+        We use Cloudflare Web Analytics, a cookieless, privacy-friendly
+        analytics service. No cookies are set and no individuals are tracked
+        across websites. The legal basis is Art. 6(1)(f) GDPR.
       </p>
 
       <h2>Retention</h2>
       <p>
         We retain personal data only for as long as necessary for the stated
         purposes or as required by statutory retention periods. Enquiry data are
-        deleted once they are no longer needed and no retention obligations apply.
+        deleted once they are no longer needed and no retention obligations
+        apply.
       </p>
 
       <h2>Your rights</h2>
@@ -199,15 +201,16 @@ function PrivacyEN() {
         You have the right of access (Art. 15), rectification (Art. 16), erasure
         (Art. 17), restriction of processing (Art. 18), data portability (Art.
         20) and the right to object (Art. 21) to processing based on legitimate
-        interests. You may withdraw any consent given at any time with effect for
-        the future.
+        interests. You may withdraw any consent given at any time with effect
+        for the future.
       </p>
 
       <h2>Right to complain</h2>
       <p>
-        You have the right to lodge a complaint with a data protection supervisory
-        authority. The competent authority is the Bavarian State Office for Data
-        Protection Supervision (BayLDA), Promenade 18, 91522 Ansbach, Germany.
+        You have the right to lodge a complaint with a data protection
+        supervisory authority. The competent authority is the Bavarian State
+        Office for Data Protection Supervision (BayLDA), Promenade 18, 91522
+        Ansbach, Germany.
       </p>
     </>
   );

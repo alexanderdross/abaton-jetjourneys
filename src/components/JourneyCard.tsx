@@ -44,7 +44,9 @@ export function JourneyCard({
         <div className="mt-4 flex items-center justify-between gap-3">
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne">
             {t("viewJourney")}
-            <span className="transition-transform group-hover:translate-x-1">→</span>
+            <span className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
           </span>
           {journey.priceFrom ? (
             <span className="text-xs text-slate whitespace-nowrap">

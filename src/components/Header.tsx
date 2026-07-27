@@ -68,7 +68,9 @@ export function Header() {
             aria-label="ABATON JetJourneys, home"
           >
             <Image
-              src={light ? "/logos/abaton-white.png" : "/logos/abaton-black.png"}
+              src={
+                light ? "/logos/abaton-white.png" : "/logos/abaton-black.png"
+              }
               alt="ABATON JetJourneys"
               fill
               priority

@@ -60,7 +60,12 @@ export function RequestForm({
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t("name")} required>
-          <input name="name" required className={inputClass} autoComplete="name" />
+          <input
+            name="name"
+            required
+            className={inputClass}
+            autoComplete="name"
+          />
         </Field>
         <Field label={t("email")} required>
           <input

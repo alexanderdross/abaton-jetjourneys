@@ -36,17 +36,26 @@ export function Footer() {
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/journeys" className="hover:text-champagne transition-colors">
+                <Link
+                  href="/journeys"
+                  className="hover:text-champagne transition-colors"
+                >
                   {nav("journeys")}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-champagne transition-colors">
+                <Link
+                  href="/about"
+                  className="hover:text-champagne transition-colors"
+                >
                   {nav("about")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-champagne transition-colors">
+                <Link
+                  href="/contact"
+                  className="hover:text-champagne transition-colors"
+                >
                   {nav("contact")}
                 </Link>
               </li>
@@ -88,13 +97,22 @@ export function Footer() {
             <span>
               © {year} {t("company")}. {t("rights")}
             </span>
-            <Link href="/imprint" className="hover:text-champagne transition-colors">
+            <Link
+              href="/imprint"
+              className="hover:text-champagne transition-colors"
+            >
               {t("imprint")}
             </Link>
-            <Link href="/terms-conditions" className="hover:text-champagne transition-colors">
+            <Link
+              href="/terms-conditions"
+              className="hover:text-champagne transition-colors"
+            >
               {t("terms")}
             </Link>
-            <Link href="/privacy" className="hover:text-champagne transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:text-champagne transition-colors"
+            >
               {t("privacy")}
             </Link>
           </div>

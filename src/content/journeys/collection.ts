@@ -83,15 +83,87 @@ export const collectionJourneys = [
       ],
     },
     itinerary: [
-      { day: 1, city: "Zürich", title: { en: "Alpine Welcome", de: "Alpines Willkommen" }, description: { en: "We begin in Zurich, where alpine elegance meets lake serenity, wandering the Old Town's hidden courtyards and toasting the journey ahead.", de: "Wir beginnen in Zürich, wo alpine Eleganz auf die Ruhe des Sees trifft, streifen durch die verborgenen Höfe der Altstadt und stoßen auf die kommende Journey an." } },
-      { day: 2, city: "Zürich → Lake Como", title: { en: "Lakes & Villas", de: "Seen & Villen" }, description: { en: "We fly south and meander along the storied shores of Lake Como, with a visit to a secluded villa and lunch by the water.", de: "Wir fliegen südwärts und ziehen entlang der berühmten Ufer des Comer Sees, mit dem Besuch einer abgeschiedenen Villa und einem Mittagessen am Wasser." } },
-      { day: 3, city: "Lake Como → San Sebastián", title: { en: "Coast & Gastronomy", de: "Küste & Gastronomie" }, description: { en: "San Sebastián welcomes us with its relaxed coastal rhythm and world-renowned gastronomy, where pintxos and sea air create their own kind of poetry.", de: "San Sebastián empfängt uns mit entspanntem Küstenrhythmus und weltbekannter Gastronomie, wo Pintxos und Meeresluft ihre eigene Poesie schaffen." } },
-      { day: 4, city: "San Sebastián → Porto", title: { en: "Douro & Vineyards", de: "Douro & Weinberge" }, description: { en: "In Porto we glide down the Douro past vineyard-covered hills before a countryside tasting deep in wine country.", de: "In Porto gleiten wir den Douro hinab, vorbei an weinbedeckten Hügeln, vor einer Verkostung tief im Weinland." } },
-      { day: 5, city: "Porto → Provence", title: { en: "Lavender & Light", de: "Lavendel & Licht" }, description: { en: "Provence follows, bathed in lavender and light, where hilltop villages and golden evenings stir the senses, with a dinner among olive groves.", de: "Es folgt die Provence, gebadet in Lavendel und Licht, wo Bergdörfer und goldene Abende die Sinne wecken, mit einem Dinner zwischen Olivenhainen." } },
-      { day: 6, city: "Provence → Florence", title: { en: "Renaissance Bloom", de: "Renaissance in voller Blüte" }, description: { en: "Florence arrives in full Renaissance bloom, with private access to artistic treasures and intimate encounters with local artisans.", de: "Florenz erscheint in voller Renaissance-Blüte, mit privatem Zugang zu Kunstschätzen und persönlichen Begegnungen mit lokalen Handwerkern." } },
-      { day: 7, city: "Florence", title: { en: "Art & Artisans", de: "Kunst & Handwerk" }, description: { en: "A day for the Uffizi and the workshops where past and present connect in rich detail.", de: "Ein Tag für die Uffizien und die Werkstätten, in denen sich Vergangenheit und Gegenwart in reichem Detail verbinden." } },
-      { day: 8, city: "Florence → Salzburg", title: { en: "Baroque Farewell", de: "Barocker Abschied" }, description: { en: "Salzburg offers a baroque farewell, Mozart melodies in grand halls and a candlelit dinner to close this graceful exploration of Europe's hidden elegance.", de: "Salzburg schenkt einen barocken Abschied, Mozart-Melodien in prächtigen Sälen und ein Dinner bei Kerzenschein, das diese anmutige Erkundung von Europas verborgener Eleganz beschließt." } },
-      { day: 9, city: "Salzburg → Homeward", title: { en: "Homeward", de: "Heimwärts" }, description: { en: "We take our leave after a final Alpine morning.", de: "Wir verabschieden uns nach einem letzten alpinen Morgen." } },
+      {
+        day: 1,
+        city: "Zürich",
+        title: { en: "Alpine Welcome", de: "Alpines Willkommen" },
+        description: {
+          en: "We begin in Zurich, where alpine elegance meets lake serenity, wandering the Old Town's hidden courtyards and toasting the journey ahead.",
+          de: "Wir beginnen in Zürich, wo alpine Eleganz auf die Ruhe des Sees trifft, streifen durch die verborgenen Höfe der Altstadt und stoßen auf die kommende Journey an.",
+        },
+      },
+      {
+        day: 2,
+        city: "Zürich → Lake Como",
+        title: { en: "Lakes & Villas", de: "Seen & Villen" },
+        description: {
+          en: "We fly south and meander along the storied shores of Lake Como, with a visit to a secluded villa and lunch by the water.",
+          de: "Wir fliegen südwärts und ziehen entlang der berühmten Ufer des Comer Sees, mit dem Besuch einer abgeschiedenen Villa und einem Mittagessen am Wasser.",
+        },
+      },
+      {
+        day: 3,
+        city: "Lake Como → San Sebastián",
+        title: { en: "Coast & Gastronomy", de: "Küste & Gastronomie" },
+        description: {
+          en: "San Sebastián welcomes us with its relaxed coastal rhythm and world-renowned gastronomy, where pintxos and sea air create their own kind of poetry.",
+          de: "San Sebastián empfängt uns mit entspanntem Küstenrhythmus und weltbekannter Gastronomie, wo Pintxos und Meeresluft ihre eigene Poesie schaffen.",
+        },
+      },
+      {
+        day: 4,
+        city: "San Sebastián → Porto",
+        title: { en: "Douro & Vineyards", de: "Douro & Weinberge" },
+        description: {
+          en: "In Porto we glide down the Douro past vineyard-covered hills before a countryside tasting deep in wine country.",
+          de: "In Porto gleiten wir den Douro hinab, vorbei an weinbedeckten Hügeln, vor einer Verkostung tief im Weinland.",
+        },
+      },
+      {
+        day: 5,
+        city: "Porto → Provence",
+        title: { en: "Lavender & Light", de: "Lavendel & Licht" },
+        description: {
+          en: "Provence follows, bathed in lavender and light, where hilltop villages and golden evenings stir the senses, with a dinner among olive groves.",
+          de: "Es folgt die Provence, gebadet in Lavendel und Licht, wo Bergdörfer und goldene Abende die Sinne wecken, mit einem Dinner zwischen Olivenhainen.",
+        },
+      },
+      {
+        day: 6,
+        city: "Provence → Florence",
+        title: { en: "Renaissance Bloom", de: "Renaissance in voller Blüte" },
+        description: {
+          en: "Florence arrives in full Renaissance bloom, with private access to artistic treasures and intimate encounters with local artisans.",
+          de: "Florenz erscheint in voller Renaissance-Blüte, mit privatem Zugang zu Kunstschätzen und persönlichen Begegnungen mit lokalen Handwerkern.",
+        },
+      },
+      {
+        day: 7,
+        city: "Florence",
+        title: { en: "Art & Artisans", de: "Kunst & Handwerk" },
+        description: {
+          en: "A day for the Uffizi and the workshops where past and present connect in rich detail.",
+          de: "Ein Tag für die Uffizien und die Werkstätten, in denen sich Vergangenheit und Gegenwart in reichem Detail verbinden.",
+        },
+      },
+      {
+        day: 8,
+        city: "Florence → Salzburg",
+        title: { en: "Baroque Farewell", de: "Barocker Abschied" },
+        description: {
+          en: "Salzburg offers a baroque farewell, Mozart melodies in grand halls and a candlelit dinner to close this graceful exploration of Europe's hidden elegance.",
+          de: "Salzburg schenkt einen barocken Abschied, Mozart-Melodien in prächtigen Sälen und ein Dinner bei Kerzenschein, das diese anmutige Erkundung von Europas verborgener Eleganz beschließt.",
+        },
+      },
+      {
+        day: 9,
+        city: "Salzburg → Homeward",
+        title: { en: "Homeward", de: "Heimwärts" },
+        description: {
+          en: "We take our leave after a final Alpine morning.",
+          de: "Wir verabschieden uns nach einem letzten alpinen Morgen.",
+        },
+      },
     ] as Day[],
     inclusions: {
       en: [
@@ -144,10 +216,20 @@ export const collectionJourneys = [
     priceFrom: 30220,
     priceFromSingle: 34420,
     nextDeparture: { en: "13–21 August 2027", de: "13.–21. August 2027" },
-    route: ["London", "Killarney", "Galway", "Dublin", "Inverness", "Edinburgh"],
+    route: [
+      "London",
+      "Killarney",
+      "Galway",
+      "Dublin",
+      "Inverness",
+      "Edinburgh",
+    ],
     heroImage: {
       src: "/images/experiences/luxury-travel.jpeg",
-      alt: { en: "Luxury travel by private jet", de: "Luxusreisen im Privatjet" },
+      alt: {
+        en: "Luxury travel by private jet",
+        de: "Luxusreisen im Privatjet",
+      },
     },
     gallery,
     overview: {
@@ -161,15 +243,90 @@ export const collectionJourneys = [
       ],
     },
     itinerary: [
-      { day: 1, city: "London", title: { en: "Arrival & Private Dinner", de: "Ankunft & privates Dinner" }, description: { en: "We begin in London with a private dinner to start the journey.", de: "Wir beginnen in London mit einem privaten Dinner zum Auftakt der Journey." } },
-      { day: 2, city: "London → Killarney", title: { en: "Lakes of Killarney", de: "Seen von Killarney" }, description: { en: "We fly west to Killarney, where a private carriage ride leads through the lakes, mountains and forests of Killarney National Park, closing with authentic Irish cuisine and a refined lakeside overnight.", de: "Wir fliegen westwärts nach Killarney, wo eine private Kutschfahrt durch die Seen, Berge und Wälder des Killarney-Nationalparks führt, mit authentischer irischer Küche und einer eleganten Übernachtung am See zum Abschluss." } },
-      { day: 3, city: "Killarney → Galway", title: { en: "Manor & Myth", de: "Herrenhaus & Mythos" }, description: { en: "We arrive in the Galway region and settle into a historic castle estate for two nights, with traditional pursuits such as horseback riding, falconry or clay shooting.", de: "Wir erreichen die Region Galway und lassen uns für zwei Nächte auf einem historischen Schlossgut nieder, mit traditionellen Aktivitäten wie Reiten, Falknerei oder Tontaubenschießen." } },
-      { day: 4, city: "Galway", title: { en: "Country Traditions", de: "Ländliche Traditionen" }, description: { en: "A day of refined dining and quiet estate life in the west of Ireland.", de: "Ein Tag mit feinem Dining und stillem Gutsleben im Westen Irlands." } },
-      { day: 5, city: "Galway → Dublin", title: { en: "The Capital", de: "Die Hauptstadt" }, description: { en: "The journey continues to Dublin for one night, including a guided city exploration and an elegant dinner in the capital.", de: "Die Journey führt weiter nach Dublin für eine Nacht, mit einer geführten Stadterkundung und einem eleganten Dinner in der Hauptstadt." } },
-      { day: 6, city: "Dublin → Inverness", title: { en: "Into the Highlands", de: "Ins Hochland" }, description: { en: "We fly to Inverness for two nights, exploring the Scottish Highlands off-road and enjoying a private boat experience on Loch Ness.", de: "Wir fliegen nach Inverness für zwei Nächte, erkunden die schottischen Highlands abseits der Straße und genießen ein privates Bootserlebnis auf Loch Ness." } },
-      { day: 7, city: "Inverness", title: { en: "Highland Pursuits", de: "Vergnügen im Hochland" }, description: { en: "A visit to a local whisky distillery, followed by a traditional Highland dinner.", de: "Ein Besuch in einer lokalen Whisky-Destillerie, gefolgt von einem traditionellen Highland-Dinner." } },
-      { day: 8, city: "Inverness → Edinburgh", title: { en: "Highland Farewell", de: "Abschied im Hochland" }, description: { en: "The journey ends in Edinburgh with an exclusive whisky masterclass and a farewell dinner in a historic setting overlooking the city.", de: "Die Journey endet in Edinburgh mit einer exklusiven Whisky-Masterclass und einem Abschiedsdinner in historischem Rahmen mit Blick über die Stadt." } },
-      { day: 9, city: "Edinburgh → Homeward", title: { en: "Homeward", de: "Heimwärts" }, description: { en: "We take our leave after a final Scottish morning.", de: "Wir verabschieden uns nach einem letzten schottischen Morgen." } },
+      {
+        day: 1,
+        city: "London",
+        title: {
+          en: "Arrival & Private Dinner",
+          de: "Ankunft & privates Dinner",
+        },
+        description: {
+          en: "We begin in London with a private dinner to start the journey.",
+          de: "Wir beginnen in London mit einem privaten Dinner zum Auftakt der Journey.",
+        },
+      },
+      {
+        day: 2,
+        city: "London → Killarney",
+        title: { en: "Lakes of Killarney", de: "Seen von Killarney" },
+        description: {
+          en: "We fly west to Killarney, where a private carriage ride leads through the lakes, mountains and forests of Killarney National Park, closing with authentic Irish cuisine and a refined lakeside overnight.",
+          de: "Wir fliegen westwärts nach Killarney, wo eine private Kutschfahrt durch die Seen, Berge und Wälder des Killarney-Nationalparks führt, mit authentischer irischer Küche und einer eleganten Übernachtung am See zum Abschluss.",
+        },
+      },
+      {
+        day: 3,
+        city: "Killarney → Galway",
+        title: { en: "Manor & Myth", de: "Herrenhaus & Mythos" },
+        description: {
+          en: "We arrive in the Galway region and settle into a historic castle estate for two nights, with traditional pursuits such as horseback riding, falconry or clay shooting.",
+          de: "Wir erreichen die Region Galway und lassen uns für zwei Nächte auf einem historischen Schlossgut nieder, mit traditionellen Aktivitäten wie Reiten, Falknerei oder Tontaubenschießen.",
+        },
+      },
+      {
+        day: 4,
+        city: "Galway",
+        title: { en: "Country Traditions", de: "Ländliche Traditionen" },
+        description: {
+          en: "A day of refined dining and quiet estate life in the west of Ireland.",
+          de: "Ein Tag mit feinem Dining und stillem Gutsleben im Westen Irlands.",
+        },
+      },
+      {
+        day: 5,
+        city: "Galway → Dublin",
+        title: { en: "The Capital", de: "Die Hauptstadt" },
+        description: {
+          en: "The journey continues to Dublin for one night, including a guided city exploration and an elegant dinner in the capital.",
+          de: "Die Journey führt weiter nach Dublin für eine Nacht, mit einer geführten Stadterkundung und einem eleganten Dinner in der Hauptstadt.",
+        },
+      },
+      {
+        day: 6,
+        city: "Dublin → Inverness",
+        title: { en: "Into the Highlands", de: "Ins Hochland" },
+        description: {
+          en: "We fly to Inverness for two nights, exploring the Scottish Highlands off-road and enjoying a private boat experience on Loch Ness.",
+          de: "Wir fliegen nach Inverness für zwei Nächte, erkunden die schottischen Highlands abseits der Straße und genießen ein privates Bootserlebnis auf Loch Ness.",
+        },
+      },
+      {
+        day: 7,
+        city: "Inverness",
+        title: { en: "Highland Pursuits", de: "Vergnügen im Hochland" },
+        description: {
+          en: "A visit to a local whisky distillery, followed by a traditional Highland dinner.",
+          de: "Ein Besuch in einer lokalen Whisky-Destillerie, gefolgt von einem traditionellen Highland-Dinner.",
+        },
+      },
+      {
+        day: 8,
+        city: "Inverness → Edinburgh",
+        title: { en: "Highland Farewell", de: "Abschied im Hochland" },
+        description: {
+          en: "The journey ends in Edinburgh with an exclusive whisky masterclass and a farewell dinner in a historic setting overlooking the city.",
+          de: "Die Journey endet in Edinburgh mit einer exklusiven Whisky-Masterclass und einem Abschiedsdinner in historischem Rahmen mit Blick über die Stadt.",
+        },
+      },
+      {
+        day: 9,
+        city: "Edinburgh → Homeward",
+        title: { en: "Homeward", de: "Heimwärts" },
+        description: {
+          en: "We take our leave after a final Scottish morning.",
+          de: "Wir verabschieden uns nach einem letzten schottischen Morgen.",
+        },
+      },
     ] as Day[],
     inclusions: {
       en: [
@@ -222,7 +379,15 @@ export const collectionJourneys = [
     priceFrom: 28850,
     priceFromSingle: 32850,
     nextDeparture: { en: "17–25 September 2027", de: "17.–25. September 2027" },
-    route: ["Budapest", "Brașov", "Sofia", "Kotor", "Pula", "Rovinj", "Ljubljana"],
+    route: [
+      "Budapest",
+      "Brașov",
+      "Sofia",
+      "Kotor",
+      "Pula",
+      "Rovinj",
+      "Ljubljana",
+    ],
     heroImage: {
       src: "/images/aircraft/pc12.jpg",
       alt: { en: "The Pilatus PC-12", de: "Die Pilatus PC-12" },
@@ -239,15 +404,87 @@ export const collectionJourneys = [
       ],
     },
     itinerary: [
-      { day: 1, city: "Budapest", title: { en: "Thermal City", de: "Thermalstadt" }, description: { en: "We begin in Budapest, the regal capital of thermal baths and baroque façades.", de: "Wir beginnen in Budapest, der königlichen Hauptstadt der Thermalbäder und barocken Fassaden." } },
-      { day: 2, city: "Budapest → Brașov", title: { en: "Into Transylvania", de: "Nach Transsilvanien" }, description: { en: "We fly directly into the heart of Transylvania. In Brașov, history and myth come alive as we wander cobbled streets and visit a mystic castle nestled in the shadows of the Carpathians.", de: "Wir fliegen direkt ins Herz Transsilvaniens. In Brașov erwachen Geschichte und Mythos, während wir durch Kopfsteinpflastergassen streifen und ein mystisches Schloss im Schatten der Karpaten besuchen." } },
-      { day: 3, city: "Brașov → Sofia", title: { en: "Sacred & Surreal", de: "Heilig & surreal" }, description: { en: "Sofia welcomes us with layers of Orthodox spirituality and Balkan eccentricity, from gold-domed cathedrals to an avant-garde dinner where storytelling meets gastronomy.", de: "Sofia empfängt uns mit Schichten orthodoxer Spiritualität und balkanischer Exzentrik, von golden gekuppelten Kathedralen bis zu einem avantgardistischen Dinner, in dem Erzählkunst auf Gastronomie trifft." } },
-      { day: 4, city: "Sofia → Kotor", title: { en: "The Bay of Kotor", de: "Die Bucht von Kotor" }, description: { en: "In Kotor, mountains meet the Adriatic. The medieval old town and the bay are explored by private boat over two nights.", de: "In Kotor treffen Berge auf die Adria. Die mittelalterliche Altstadt und die Bucht werden über zwei Nächte per privatem Boot erkundet." } },
-      { day: 5, city: "Kotor", title: { en: "Adriatic Charms", de: "Reize der Adria" }, description: { en: "Time to enjoy the region's quiet Mediterranean character at an unhurried pace.", de: "Zeit, den stillen mediterranen Charakter der Region in aller Ruhe zu genießen." } },
-      { day: 6, city: "Kotor → Pula", title: { en: "Roman Coast", de: "Römische Küste" }, description: { en: "The day leads to Pula, where a short visit introduces its Roman heritage and coastal setting.", de: "Der Tag führt nach Pula, wo ein kurzer Besuch das römische Erbe und die Küstenlage vorstellt." } },
-      { day: 7, city: "Pula → Rovinj", title: { en: "Coastal Charms", de: "Küstenreize" }, description: { en: "The journey continues to Rovinj, where two nights allow time to explore the old town, walk along the sea and enjoy relaxed dining above the Mediterranean.", de: "Die Journey führt weiter nach Rovinj, wo zwei Nächte Zeit lassen, die Altstadt zu erkunden, am Meer entlangzugehen und entspanntes Dining über dem Mittelmeer zu genießen." } },
-      { day: 8, city: "Rovinj → Ljubljana", title: { en: "Poetic Finale", de: "Poetisches Finale" }, description: { en: "Finally we land in Ljubljana, Slovenia's green, poetic capital, exploring riverside cafés, charming bridges and quiet castle views before a farewell dinner of seasonal alpine cuisine and local wine.", de: "Schließlich landen wir in Ljubljana, Sloweniens grüner, poetischer Hauptstadt, erkunden Cafés am Fluss, charmante Brücken und stille Schlossblicke vor einem Abschiedsdinner mit saisonaler alpiner Küche und lokalem Wein." } },
-      { day: 9, city: "Ljubljana → Homeward", title: { en: "Homeward", de: "Heimwärts" }, description: { en: "We take our leave after a final morning by the river.", de: "Wir verabschieden uns nach einem letzten Morgen am Fluss." } },
+      {
+        day: 1,
+        city: "Budapest",
+        title: { en: "Thermal City", de: "Thermalstadt" },
+        description: {
+          en: "We begin in Budapest, the regal capital of thermal baths and baroque façades.",
+          de: "Wir beginnen in Budapest, der königlichen Hauptstadt der Thermalbäder und barocken Fassaden.",
+        },
+      },
+      {
+        day: 2,
+        city: "Budapest → Brașov",
+        title: { en: "Into Transylvania", de: "Nach Transsilvanien" },
+        description: {
+          en: "We fly directly into the heart of Transylvania. In Brașov, history and myth come alive as we wander cobbled streets and visit a mystic castle nestled in the shadows of the Carpathians.",
+          de: "Wir fliegen direkt ins Herz Transsilvaniens. In Brașov erwachen Geschichte und Mythos, während wir durch Kopfsteinpflastergassen streifen und ein mystisches Schloss im Schatten der Karpaten besuchen.",
+        },
+      },
+      {
+        day: 3,
+        city: "Brașov → Sofia",
+        title: { en: "Sacred & Surreal", de: "Heilig & surreal" },
+        description: {
+          en: "Sofia welcomes us with layers of Orthodox spirituality and Balkan eccentricity, from gold-domed cathedrals to an avant-garde dinner where storytelling meets gastronomy.",
+          de: "Sofia empfängt uns mit Schichten orthodoxer Spiritualität und balkanischer Exzentrik, von golden gekuppelten Kathedralen bis zu einem avantgardistischen Dinner, in dem Erzählkunst auf Gastronomie trifft.",
+        },
+      },
+      {
+        day: 4,
+        city: "Sofia → Kotor",
+        title: { en: "The Bay of Kotor", de: "Die Bucht von Kotor" },
+        description: {
+          en: "In Kotor, mountains meet the Adriatic. The medieval old town and the bay are explored by private boat over two nights.",
+          de: "In Kotor treffen Berge auf die Adria. Die mittelalterliche Altstadt und die Bucht werden über zwei Nächte per privatem Boot erkundet.",
+        },
+      },
+      {
+        day: 5,
+        city: "Kotor",
+        title: { en: "Adriatic Charms", de: "Reize der Adria" },
+        description: {
+          en: "Time to enjoy the region's quiet Mediterranean character at an unhurried pace.",
+          de: "Zeit, den stillen mediterranen Charakter der Region in aller Ruhe zu genießen.",
+        },
+      },
+      {
+        day: 6,
+        city: "Kotor → Pula",
+        title: { en: "Roman Coast", de: "Römische Küste" },
+        description: {
+          en: "The day leads to Pula, where a short visit introduces its Roman heritage and coastal setting.",
+          de: "Der Tag führt nach Pula, wo ein kurzer Besuch das römische Erbe und die Küstenlage vorstellt.",
+        },
+      },
+      {
+        day: 7,
+        city: "Pula → Rovinj",
+        title: { en: "Coastal Charms", de: "Küstenreize" },
+        description: {
+          en: "The journey continues to Rovinj, where two nights allow time to explore the old town, walk along the sea and enjoy relaxed dining above the Mediterranean.",
+          de: "Die Journey führt weiter nach Rovinj, wo zwei Nächte Zeit lassen, die Altstadt zu erkunden, am Meer entlangzugehen und entspanntes Dining über dem Mittelmeer zu genießen.",
+        },
+      },
+      {
+        day: 8,
+        city: "Rovinj → Ljubljana",
+        title: { en: "Poetic Finale", de: "Poetisches Finale" },
+        description: {
+          en: "Finally we land in Ljubljana, Slovenia's green, poetic capital, exploring riverside cafés, charming bridges and quiet castle views before a farewell dinner of seasonal alpine cuisine and local wine.",
+          de: "Schließlich landen wir in Ljubljana, Sloweniens grüner, poetischer Hauptstadt, erkunden Cafés am Fluss, charmante Brücken und stille Schlossblicke vor einem Abschiedsdinner mit saisonaler alpiner Küche und lokalem Wein.",
+        },
+      },
+      {
+        day: 9,
+        city: "Ljubljana → Homeward",
+        title: { en: "Homeward", de: "Heimwärts" },
+        description: {
+          en: "We take our leave after a final morning by the river.",
+          de: "Wir verabschieden uns nach einem letzten Morgen am Fluss.",
+        },
+      },
     ] as Day[],
     inclusions: {
       en: [
@@ -326,15 +563,87 @@ export const collectionJourneys = [
       ],
     },
     itinerary: [
-      { day: 1, city: "Copenhagen", title: { en: "The North Begins", de: "Der Norden beginnt" }, description: { en: "We gather in Copenhagen, the graceful gateway to the North.", de: "Wir versammeln uns in Kopenhagen, dem anmutigen Tor zum Norden." } },
-      { day: 2, city: "Copenhagen → Stavanger", title: { en: "Fjords & Frontiers", de: "Fjorde & Grenzen" }, description: { en: "We fly to Norway's rugged coast and speed through the Lysefjord on a private RIB safari past towering cliffs and waterfalls.", de: "Wir fliegen an Norwegens raue Küste und rasen auf einer privaten RIB-Safari durch den Lysefjord, vorbei an aufragenden Klippen und Wasserfällen." } },
-      { day: 3, city: "Stavanger → Trondheim", title: { en: "Viking Heritage", de: "Wikingererbe" }, description: { en: "In Trondheim we discover Viking heritage, explore the grand Nidaros Cathedral and taste local farm delicacies in the scenic countryside.", de: "In Trondheim entdecken wir das Wikingererbe, erkunden den prächtigen Nidarosdom und probieren lokale Hofdelikatessen in malerischer Landschaft." } },
-      { day: 4, city: "Trondheim → Andenes", title: { en: "Arctic Wonders", de: "Arktische Wunder" }, description: { en: "Andenes welcomes us to the edge of the Arctic. We set sail on a luxury catamaran for whale watching, then unwind in a Sami-inspired spa before an Arctic feast under the Northern Lights.", de: "Andenes empfängt uns am Rand der Arktis. Wir stechen auf einem Luxus-Katamaran zur Walbeobachtung in See, entspannen dann in einem Sami-inspirierten Spa vor einem arktischen Festmahl unter dem Nordlicht." } },
-      { day: 5, city: "Andenes → Lapland", title: { en: "Frozen Forests", de: "Gefrorene Wälder" }, description: { en: "In Finnish Lapland we race through frozen forests on a husky sled and savour wild flavours in a secluded lodge.", de: "Im finnischen Lappland rasen wir mit dem Husky-Schlitten durch gefrorene Wälder und genießen wilde Aromen in einer abgeschiedenen Lodge." } },
-      { day: 6, city: "Lapland → Helsinki", title: { en: "Nordic Design", de: "Nordisches Design" }, description: { en: "We arrive in Helsinki for a journey through Nordic design and innovation.", de: "Wir kommen in Helsinki an, für eine Reise durch nordisches Design und Innovation." } },
-      { day: 7, city: "Helsinki → Stockholm", title: { en: "Archipelago Elegance", de: "Eleganz der Schären" }, description: { en: "In Stockholm we cruise through the archipelago and walk the royal streets of Gamla Stan.", de: "In Stockholm kreuzen wir durch den Schärengarten und gehen durch die königlichen Gassen von Gamla Stan." } },
-      { day: 8, city: "Stockholm", title: { en: "A Grand Finale", de: "Ein großes Finale" }, description: { en: "We toast to a grand finale in a historic palace hotel.", de: "Wir stoßen auf ein großes Finale in einem historischen Palasthotel an." } },
-      { day: 9, city: "Stockholm → Copenhagen", title: { en: "Homeward", de: "Heimwärts" }, description: { en: "A final flight to Copenhagen closes this unforgettable odyssey through ice, fire and the untamed beauty of the North.", de: "Ein letzter Flug nach Kopenhagen beschließt diese unvergessliche Odyssee durch Eis, Feuer und die ungezähmte Schönheit des Nordens." } },
+      {
+        day: 1,
+        city: "Copenhagen",
+        title: { en: "The North Begins", de: "Der Norden beginnt" },
+        description: {
+          en: "We gather in Copenhagen, the graceful gateway to the North.",
+          de: "Wir versammeln uns in Kopenhagen, dem anmutigen Tor zum Norden.",
+        },
+      },
+      {
+        day: 2,
+        city: "Copenhagen → Stavanger",
+        title: { en: "Fjords & Frontiers", de: "Fjorde & Grenzen" },
+        description: {
+          en: "We fly to Norway's rugged coast and speed through the Lysefjord on a private RIB safari past towering cliffs and waterfalls.",
+          de: "Wir fliegen an Norwegens raue Küste und rasen auf einer privaten RIB-Safari durch den Lysefjord, vorbei an aufragenden Klippen und Wasserfällen.",
+        },
+      },
+      {
+        day: 3,
+        city: "Stavanger → Trondheim",
+        title: { en: "Viking Heritage", de: "Wikingererbe" },
+        description: {
+          en: "In Trondheim we discover Viking heritage, explore the grand Nidaros Cathedral and taste local farm delicacies in the scenic countryside.",
+          de: "In Trondheim entdecken wir das Wikingererbe, erkunden den prächtigen Nidarosdom und probieren lokale Hofdelikatessen in malerischer Landschaft.",
+        },
+      },
+      {
+        day: 4,
+        city: "Trondheim → Andenes",
+        title: { en: "Arctic Wonders", de: "Arktische Wunder" },
+        description: {
+          en: "Andenes welcomes us to the edge of the Arctic. We set sail on a luxury catamaran for whale watching, then unwind in a Sami-inspired spa before an Arctic feast under the Northern Lights.",
+          de: "Andenes empfängt uns am Rand der Arktis. Wir stechen auf einem Luxus-Katamaran zur Walbeobachtung in See, entspannen dann in einem Sami-inspirierten Spa vor einem arktischen Festmahl unter dem Nordlicht.",
+        },
+      },
+      {
+        day: 5,
+        city: "Andenes → Lapland",
+        title: { en: "Frozen Forests", de: "Gefrorene Wälder" },
+        description: {
+          en: "In Finnish Lapland we race through frozen forests on a husky sled and savour wild flavours in a secluded lodge.",
+          de: "Im finnischen Lappland rasen wir mit dem Husky-Schlitten durch gefrorene Wälder und genießen wilde Aromen in einer abgeschiedenen Lodge.",
+        },
+      },
+      {
+        day: 6,
+        city: "Lapland → Helsinki",
+        title: { en: "Nordic Design", de: "Nordisches Design" },
+        description: {
+          en: "We arrive in Helsinki for a journey through Nordic design and innovation.",
+          de: "Wir kommen in Helsinki an, für eine Reise durch nordisches Design und Innovation.",
+        },
+      },
+      {
+        day: 7,
+        city: "Helsinki → Stockholm",
+        title: { en: "Archipelago Elegance", de: "Eleganz der Schären" },
+        description: {
+          en: "In Stockholm we cruise through the archipelago and walk the royal streets of Gamla Stan.",
+          de: "In Stockholm kreuzen wir durch den Schärengarten und gehen durch die königlichen Gassen von Gamla Stan.",
+        },
+      },
+      {
+        day: 8,
+        city: "Stockholm",
+        title: { en: "A Grand Finale", de: "Ein großes Finale" },
+        description: {
+          en: "We toast to a grand finale in a historic palace hotel.",
+          de: "Wir stoßen auf ein großes Finale in einem historischen Palasthotel an.",
+        },
+      },
+      {
+        day: 9,
+        city: "Stockholm → Copenhagen",
+        title: { en: "Homeward", de: "Heimwärts" },
+        description: {
+          en: "A final flight to Copenhagen closes this unforgettable odyssey through ice, fire and the untamed beauty of the North.",
+          de: "Ein letzter Flug nach Kopenhagen beschließt diese unvergessliche Odyssee durch Eis, Feuer und die ungezähmte Schönheit des Nordens.",
+        },
+      },
     ] as Day[],
     inclusions: {
       en: [
