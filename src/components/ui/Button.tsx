@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 type Variant = "primary" | "outline" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center gap-2 text-sm tracking-[0.12em] uppercase font-medium transition-all duration-300 px-7 py-3.5 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 text-sm tracking-[0.12em] uppercase font-medium transition-colors duration-300 px-7 py-3.5 rounded-[2px] touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
