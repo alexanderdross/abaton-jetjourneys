@@ -1,28 +1,14 @@
 "use server";
 
 import { Resend } from "resend";
-import { z } from "zod";
 import { getEnv } from "./env";
 import { company } from "./site";
+import { requestSchema, escapeHtml } from "./request-schema";
 
 export type RequestState = {
   status: "idle" | "success" | "error";
   message?: string;
 };
-
-const schema = z.object({
-  name: z.string().trim().min(2).max(120),
-  email: z.string().trim().email().max(200),
-  phone: z.string().trim().max(60).optional().or(z.literal("")),
-  guests: z.string().trim().max(20).optional().or(z.literal("")),
-  journey: z.string().trim().max(200).optional().or(z.literal("")),
-  message: z.string().trim().max(4000).optional().or(z.literal("")),
-  locale: z.enum(["en", "de"]).default("en"),
-  consent: z.literal("on", {
-    errorMap: () => ({ message: "consent" }),
-  }),
-  token: z.string().optional(),
-});
 
 async function verifyTurnstile(
   token: string | undefined,
@@ -46,20 +32,13 @@ async function verifyTurnstile(
   return data.success === true;
 }
 
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
 export async function submitRequest(
   _prev: RequestState,
   formData: FormData,
 ): Promise<RequestState> {
   const env = getEnv();
 
-  const parsed = schema.safeParse({
+  const parsed = requestSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     phone: formData.get("phone") ?? "",
