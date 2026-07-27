@@ -15,6 +15,7 @@ import {
   getJourneyBySlug,
   getPublishedJourneys,
   pick,
+  formatEUR,
 } from "@/lib/journeys";
 import { altLinks } from "@/lib/i18n-urls";
 
@@ -66,6 +67,12 @@ export default async function JourneyDetailPage({ params }: PageProps) {
       : null,
     journey.hotelCategory
       ? { label: t("hotels"), value: pick(journey.hotelCategory, locale) }
+      : null,
+    journey.nextDeparture
+      ? {
+          label: t("nextDeparture"),
+          value: pick(journey.nextDeparture, locale),
+        }
       : null,
   ].filter((f): f is { label: string; value: string } => f !== null);
 
@@ -138,6 +145,23 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                     </div>
                   ))}
                 </dl>
+                {journey.priceFrom && (
+                  <div className="mt-7 border-t border-line pt-6">
+                    <p className="font-serif text-3xl text-ink">
+                      {t("price", {
+                        price: formatEUR(journey.priceFrom, locale),
+                      })}
+                    </p>
+                    <p className="mt-1 text-xs text-slate">{t("priceUnit")}</p>
+                    {journey.priceFromSingle && (
+                      <p className="mt-1 text-xs text-slate">
+                        {t("priceSingle", {
+                          price: formatEUR(journey.priceFromSingle, locale),
+                        })}
+                      </p>
+                    )}
+                  </div>
+                )}
                 <a
                   href="#request"
                   className="mt-8 inline-flex w-full items-center justify-center bg-ink text-bone text-xs uppercase tracking-[0.14em] px-6 py-3.5 rounded-[2px] hover:bg-champagne hover:text-ink transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2"

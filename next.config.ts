@@ -13,21 +13,22 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     // Preserve the previous site's journey URLs (/jetjourneys/*) for SEO and
-    // inbound links, mapping them to the new /journeys/* paths.
+    // inbound links, mapping them to the current /journeys/* paths. Journeys
+    // that no longer exist as separate editions point to the closest match or
+    // to the collection overview.
     const map: Record<string, string> = {
-      "the-premiere-edition---finest-of-europe": "finest-of-europe",
-      "finest-of-europe": "finest-of-europe",
-      "the-founders-edition-finest-of-europe":
-        "the-founders-edition-finest-of-europe",
-      "secrets-of-europe": "secrets-of-europe",
-      "elegant-islands": "elegant-islands",
-      "fascinating-balkan": "fascinating-balkan",
-      "wild-scandinavia": "wild-scandinavia",
-      "world´s-signature-journeys-": "worlds-signature-journeys",
+      "the-premiere-edition---finest-of-europe": "/journeys/finest-of-europe/",
+      "finest-of-europe": "/journeys/finest-of-europe/",
+      "the-founders-edition-finest-of-europe": "/journeys/finest-of-europe/",
+      "secrets-of-europe": "/journeys/secrets-of-europe/",
+      "elegant-islands": "/journeys/elegant-islands/",
+      "fascinating-balkan": "/journeys/fascinating-balkan/",
+      "wild-scandinavia": "/journeys/wild-scandinavia/",
+      "world´s-signature-journeys-": "/journeys/",
     };
-    return Object.entries(map).map(([from, to]) => ({
+    return Object.entries(map).map(([from, destination]) => ({
       source: `/jetjourneys/${from}`,
-      destination: `/journeys/${to}/`,
+      destination,
       permanent: true,
     }));
   },

@@ -52,6 +52,7 @@
     "nights": "{count, plural, one {# Nacht} other {# Nächte}}",
     "guests": "6–10 Gäste",
     "viewJourney": "Journey ansehen",
+    "fromPrice": "ab {price}",
     "emptyState": "Neue Editionen sind in Vorbereitung. Nehmen Sie Kontakt auf, um zu den Ersten zu gehören, die es erfahren.",
     "detailsLabel": "Auf einen Blick"
   },
@@ -63,6 +64,10 @@
     "guestsLabel": "Gruppengröße",
     "departure": "Abflug",
     "hotels": "Unterbringung",
+    "nextDeparture": "Nächste Abreise",
+    "price": "Ab {price}",
+    "priceUnit": "pro Person im Doppelzimmer",
+    "priceSingle": "Einzelzimmer ab {price}",
     "route": "Route",
     "itineraryTitle": "Tag für Tag",
     "day": "Tag",
@@ -71,7 +76,7 @@
     "requestTitle": "Diese Journey anfragen",
     "requestBody": "Erhalten Sie die vollständige Broschüre mit detailliertem Reiseverlauf und Preisen, unverbindlich.",
     "requestCta": "Journey anfragen",
-    "priceNote": "Preise verstehen sich pro Person und werden in Ihrer persönlichen Broschüre genannt."
+    "priceNote": "Preise sind Richtwerte ab pro Person. Alle Details nennt Ihre persönliche Broschüre."
   },
   "About": {
     "eyebrow": "Philosophie",

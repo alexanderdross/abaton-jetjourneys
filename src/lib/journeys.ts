@@ -44,6 +44,10 @@ export const journeySchema = z.object({
   nights: z.number().int().positive().optional(),
   departureCity: localized(z.string()).optional(),
   hotelCategory: localized(z.string()).optional(),
+  // "from" prices per person (EUR), and the next scheduled departure.
+  priceFrom: z.number().int().positive().optional(),
+  priceFromSingle: z.number().int().positive().optional(),
+  nextDeparture: localized(z.string()).optional(),
   route: z.array(z.string()).default([]),
   gallery: z.array(imageSchema).default([]),
   overview: localizedList.default({ en: [], de: [] }),
@@ -62,6 +66,15 @@ const parsed = z
 /** Pick the value for a locale from a localised field. */
 export function pick<T>(field: { en: T; de: T }, locale: Locale): T {
   return field[locale];
+}
+
+/** Format an amount as a whole-euro currency string for the locale. */
+export function formatEUR(amount: number, locale: Locale): string {
+  return new Intl.NumberFormat(locale === "de" ? "de-DE" : "en-US", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(amount);
 }
 
 /** All published journeys, ordered. */

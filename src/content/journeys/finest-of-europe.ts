@@ -1,5 +1,6 @@
 // Journey: Finest of Europe (full itinerary)
 // Content-as-code. Add a new file like this and register it in ./index.ts.
+// Data reflects the ABATON 2026 brochure (route, inclusions, "from" pricing).
 
 const journey = {
   slug: "finest-of-europe",
@@ -12,12 +13,12 @@ const journey = {
     de: "Das Feinste Europas",
   },
   tagline: {
-    en: "Five cultural capitals, one private sky.",
-    de: "Fünf Kulturmetropolen, ein privater Himmel.",
+    en: "Europe's must-see capitals, one private sky.",
+    de: "Europas Must-see-Metropolen, ein privater Himmel.",
   },
   summary: {
-    en: "Our inaugural route brings together Europe's cultural capitals, from Vienna's imperial tradition to the canals of Venice, the timeless allure of Rome, the glamour of the Côte d'Azur and the elegance of Paris.",
-    de: "Unsere Eröffnungsroute vereint Europas Kulturmetropolen, von Wiens imperialer Tradition über die Kanäle Venedigs und den zeitlosen Reiz Roms bis zum Glanz der Côte d'Azur und der Eleganz von Paris.",
+    en: "The metropolitan journey through Europe's must-see capitals, connected seamlessly by private jet. Vienna, Venice, Rome and Paris meet the Côte d'Azur with Cannes and Monaco, with curated access, refined hotels and dining for a small circle.",
+    de: "Die Metropolen-Journey durch Europas Must-see-Hauptstädte, nahtlos per Privatjet verbunden. Wien, Venedig, Rom und Paris treffen auf die Côte d'Azur mit Cannes und Monaco, mit kuratierten Zugängen, feinen Hotels und Dining für einen kleinen Kreis.",
   },
 
   nights: 8,
@@ -27,8 +28,14 @@ const journey = {
     en: "4★ and 5★ luxury hotels",
     de: "4★- und 5★-Luxushotels",
   },
+  priceFrom: 29980,
+  priceFromSingle: 33880,
+  nextDeparture: {
+    en: "11–19 September 2026",
+    de: "11.–19. September 2026",
+  },
 
-  route: ["Munich", "Vienna", "Venice", "Rome", "Côte d'Azur", "Paris", "Munich"],
+  route: ["Munich", "Vienna", "Venice", "Rome", "Cannes & Monaco", "Paris", "Munich"],
 
   heroImage: {
     src: "/images/journeys/premiere-hero.jpg",
@@ -68,86 +75,86 @@ const journey = {
 
   overview: {
     en: [
-      "The Premiere Edition is composed as a single, uninterrupted movement across the continent. Beginning and ending in Munich, every leg is flown privately, so the distance between one remarkable place and the next is measured in comfort, not compromise.",
-      "Eight nights unfold in hand-selected, mostly owner-led hotels. Days are shaped around authentic tables, private access and cultural moments arranged especially for our small circle of guests.",
+      "Finest of Europe leads through the cultural heart of the continent, shaped by history, craftsmanship and quiet elegance. It begins in Munich, where a shared welcome dinner brings the group together and sets a relaxed, confident tone for the days ahead.",
+      "Every leg is flown privately, so the distance between one remarkable place and the next is measured in comfort, not compromise. Eight nights unfold in hand-selected, mostly owner-led hotels, around authentic tables and private access arranged for our small circle of guests.",
     ],
     de: [
-      "Die Premiere Edition ist als ein einziger, ununterbrochener Bogen über den Kontinent komponiert. Mit Start und Ziel in München wird jede Etappe privat geflogen, so bemisst sich die Distanz zwischen einem besonderen Ort und dem nächsten in Komfort, nicht in Kompromissen.",
-      "Acht Nächte entfalten sich in handverlesenen, meist inhabergeführten Hotels. Die Tage folgen authentischen Tischen, privaten Zugängen und kulturellen Momenten, die eigens für unseren kleinen Kreis arrangiert werden.",
+      "Das Feinste Europas führt durch das kulturelle Herz des Kontinents, geprägt von Geschichte, Handwerkskunst und leiser Eleganz. Es beginnt in München, wo ein gemeinsames Willkommensdinner die Gruppe zusammenbringt und einen entspannten, souveränen Ton für die kommenden Tage setzt.",
+      "Jede Etappe wird privat geflogen, so bemisst sich die Distanz zwischen einem besonderen Ort und dem nächsten in Komfort, nicht in Kompromissen. Acht Nächte entfalten sich in handverlesenen, meist inhabergeführten Hotels, um authentische Tische und private Zugänge für unseren kleinen Kreis.",
     ],
   },
 
   itinerary: [
     {
       day: 1,
-      city: "Munich → Vienna",
-      title: { en: "Departure & Imperial Vienna", de: "Abflug & imperiales Wien" },
+      city: "Munich",
+      title: { en: "Arrival & Welcome Dinner", de: "Ankunft & Willkommensdinner" },
       description: {
-        en: "We gather in Munich and take to the sky privately. By evening we are in Vienna, settling into the rhythm of the imperial city.",
-        de: "Wir versammeln uns in München und heben privat ab. Am Abend sind wir in Wien und finden in den Rhythmus der imperialen Stadt.",
+        en: "We gather in Munich, a city where tradition and modern life coexist naturally. A shared welcome dinner brings the group together and sets the tone for the days ahead.",
+        de: "Wir versammeln uns in München, einer Stadt, in der Tradition und modernes Leben selbstverständlich nebeneinander bestehen. Ein gemeinsames Willkommensdinner bringt die Gruppe zusammen und stimmt auf die kommenden Tage ein.",
       },
     },
     {
       day: 2,
-      city: "Vienna",
-      title: { en: "Palaces & Coffee Houses", de: "Palais & Kaffeehäuser" },
+      city: "Munich → Vienna",
+      title: { en: "Imperial Vienna", de: "Imperiales Wien" },
       description: {
-        en: "A day among Vienna's palaces and legendary coffee houses, with access arranged beyond the ordinary visitor's reach.",
-        de: "Ein Tag zwischen Wiens Palais und legendären Kaffeehäusern, mit Zugängen jenseits des gewöhnlichen Besuchs.",
+        en: "We fly privately to Vienna, where imperial history is still part of everyday life. A private carriage ride offers a different perspective on the city, followed by a behind-the-scenes visit to the State Opera.",
+        de: "Wir fliegen privat nach Wien, wo imperiale Geschichte noch immer Teil des Alltags ist. Eine private Kutschfahrt eröffnet eine andere Perspektive auf die Stadt, gefolgt von einem Blick hinter die Kulissen der Staatsoper.",
       },
     },
     {
       day: 3,
       city: "Vienna → Venice",
-      title: { en: "Across the Alps to Venice", de: "Über die Alpen nach Venedig" },
+      title: { en: "Canals & Palazzi", de: "Kanäle & Palazzi" },
       description: {
-        en: "A short private flight carries us to Venice. We arrive by water to a city that reveals itself slowly, and best, to the few.",
-        de: "Ein kurzer Privatflug bringt uns nach Venedig. Wir kommen über das Wasser an, in eine Stadt, die sich langsam und am schönsten den Wenigen zeigt.",
+        en: "A short private flight carries us to Venice, explored by private boat and on foot, moving beyond the familiar routes into quieter squares, historic palazzi and layers of past centuries.",
+        de: "Ein kurzer Privatflug bringt uns nach Venedig, erkundet per privatem Boot und zu Fuß, abseits der bekannten Wege, hinein in stillere Plätze, historische Palazzi und die Schichten vergangener Jahrhunderte.",
       },
     },
     {
       day: 4,
-      city: "Venice",
-      title: { en: "Canals & Quiet Corners", de: "Kanäle & stille Ecken" },
+      city: "Venice → Rome",
+      title: { en: "The Eternal City", de: "Die Ewige Stadt" },
       description: {
-        en: "Beyond the crowds: private craft, hidden palazzi and a table known only to those who belong.",
-        de: "Jenseits der Menge: private Boote, verborgene Palazzi und ein Tisch, den nur die Eingeweihten kennen.",
+        en: "We continue south to Rome. A guided city tour traces antiquity and Renaissance alike, before an evening at leisure in the Eternal City.",
+        de: "Wir reisen südwärts nach Rom. Eine geführte Stadttour zeichnet Antike wie Renaissance nach, bevor ein Abend zur freien Verfügung in der Ewigen Stadt folgt.",
       },
     },
     {
       day: 5,
-      city: "Venice → Rome",
-      title: { en: "The Eternal City", de: "Die Ewige Stadt" },
+      city: "Rome",
+      title: { en: "Rome in Depth", de: "Rom in der Tiefe" },
       description: {
-        en: "We fly south to Rome, where antiquity and la dolce vita share the same streets. An evening of timeless allure.",
-        de: "Wir fliegen südwärts nach Rom, wo Antike und La Dolce Vita dieselben Straßen teilen. Ein Abend von zeitlosem Reiz.",
+        en: "Rome is given the time it deserves. A second night lets the city unfold gradually, from ancient ruins to Renaissance architecture, closing with a private dinner in a historic palazzo.",
+        de: "Rom bekommt die Zeit, die es verdient. Eine zweite Nacht lässt die Stadt sich langsam entfalten, von antiken Ruinen bis zur Renaissance-Architektur, mit einem privaten Dinner in einem historischen Palazzo zum Abschluss.",
       },
     },
     {
       day: 6,
-      city: "Rome → Côte d'Azur",
-      title: { en: "Riviera Glamour", de: "Glanz der Riviera" },
+      city: "Rome → Cannes",
+      title: { en: "Riviera Rhythms", de: "Rhythmen der Riviera" },
       description: {
-        en: "The private jet delivers us to the Côte d'Azur. Sea light, effortless glamour and long Mediterranean evenings.",
-        de: "Der Privatjet bringt uns an die Côte d'Azur. Meereslicht, müheloser Glanz und lange mediterrane Abende.",
+        en: "The journey continues along the French Riviera, where light, landscape and lifestyle define the rhythm. In Cannes, a visit to a small vineyard introduces local wines and Provençal character.",
+        de: "Die Journey führt weiter entlang der Französischen Riviera, wo Licht, Landschaft und Lebensart den Rhythmus bestimmen. In Cannes führt der Besuch eines kleinen Weinguts zu lokalen Weinen und provenzalischem Charakter.",
       },
     },
     {
       day: 7,
-      city: "Côte d'Azur → Paris",
-      title: { en: "The Elegance of Paris", de: "Die Eleganz von Paris" },
+      city: "Cannes → Monaco",
+      title: { en: "Monte Carlo & the Coast", de: "Monte Carlo & die Küste" },
       description: {
-        en: "A final flight north to Paris. We close the journey where elegance is a native language, with a dinner to remember.",
-        de: "Ein letzter Flug nordwärts nach Paris. Wir beschließen die Journey dort, wo Eleganz Muttersprache ist, mit einem Dinner, das bleibt.",
+        en: "On to Monaco for coastal views and understated elegance, with a sports car ride through Monte Carlo and a private boat tour along the principality's shore.",
+        de: "Weiter nach Monaco, zu Küstenblicken und zurückhaltender Eleganz, mit einer Sportwagenfahrt durch Monte Carlo und einer privaten Bootstour entlang der Küste des Fürstentums.",
       },
     },
     {
       day: 8,
-      city: "Paris",
-      title: { en: "Paris at Leisure", de: "Paris in Muße" },
+      city: "Monaco → Paris",
+      title: { en: "The Elegance of Paris", de: "Die Eleganz von Paris" },
       description: {
-        en: "A day without hurry to make the city your own, before our final evening together.",
-        de: "Ein Tag ohne Eile, um sich die Stadt zu eigen zu machen, vor unserem letzten gemeinsamen Abend.",
+        en: "A final flight north to Paris. The journey concludes with a private guided visit to the Louvre and a farewell dinner overlooking the city from the Eiffel Tower, a quiet and memorable closing moment.",
+        de: "Ein letzter Flug nordwärts nach Paris. Die Journey schließt mit einem privat geführten Besuch des Louvre und einem Abschiedsdinner mit Blick über die Stadt vom Eiffelturm, ein stiller und unvergesslicher Abschluss.",
       },
     },
     {
@@ -163,24 +170,32 @@ const journey = {
 
   inclusions: {
     en: [
-      "All flights by private jet, beginning and ending in Munich",
-      "Luxury ground transportation with private chauffeurs at each destination",
-      "8 nights in 4★ or 5★ luxury hotels",
-      "Daily breakfast at all accommodations",
-      "7 lunches or gourmet lunch boxes",
-      "8 gourmet dinners",
-      "Curated cultural experiences and private access",
-      "Dedicated ABATON host throughout the journey",
+      "Private jet travel throughout",
+      "Luxury ground transport with private chauffeurs",
+      "8 nights in 4★S/5★ hotels including breakfast",
+      "8 dinners and 7 lunches",
+      "Private carriage ride in Vienna",
+      "Behind-the-scenes Vienna State Opera tour",
+      "Private boat ride in Venice",
+      "Guided city tour of Rome",
+      "Wine tasting in Cannes",
+      "Sports car ride in Monte Carlo",
+      "Private boat tour to Monaco",
+      "VIP tour of the Louvre in Paris",
     ],
     de: [
-      "Alle Flüge per Privatjet, mit Start und Ziel in München",
-      "Luxuriöse Bodentransporte mit privaten Chauffeuren an jedem Ziel",
-      "8 Nächte in 4★- oder 5★-Luxushotels",
-      "Tägliches Frühstück in allen Unterkünften",
-      "7 Mittagessen oder Gourmet-Lunchpakete",
-      "8 Gourmet-Abendessen",
-      "Kuratierte kulturelle Erlebnisse und private Zugänge",
-      "Persönliche ABATON-Begleitung während der gesamten Journey",
+      "Privatjet-Flüge während der gesamten Journey",
+      "Luxuriöse Bodentransporte mit privaten Chauffeuren",
+      "8 Nächte in 4★S-/5★-Hotels inklusive Frühstück",
+      "8 Abendessen und 7 Mittagessen",
+      "Private Kutschfahrt in Wien",
+      "Führung hinter den Kulissen der Wiener Staatsoper",
+      "Private Bootsfahrt in Venedig",
+      "Geführte Stadttour durch Rom",
+      "Weinverkostung in Cannes",
+      "Sportwagenfahrt in Monte Carlo",
+      "Private Bootstour nach Monaco",
+      "VIP-Tour durch den Louvre in Paris",
     ],
   },
 } as const;

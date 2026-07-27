@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
-import { type Journey, pick } from "@/lib/journeys";
+import { type Journey, pick, formatEUR } from "@/lib/journeys";
 import { Media } from "./ui/Media";
 
 export function JourneyCard({
@@ -41,10 +41,17 @@ export function JourneyCard({
         <p className="mt-2 text-sm text-slate leading-relaxed line-clamp-2">
           {pick(journey.tagline, locale)}
         </p>
-        <span className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne">
-          {t("viewJourney")}
-          <span className="transition-transform group-hover:translate-x-1">→</span>
-        </span>
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne">
+            {t("viewJourney")}
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </span>
+          {journey.priceFrom ? (
+            <span className="text-xs text-slate whitespace-nowrap">
+              {t("fromPrice", { price: formatEUR(journey.priceFrom, locale) })}
+            </span>
+          ) : null}
+        </div>
       </div>
     </Link>
   );

@@ -66,6 +66,17 @@ export function JourneyJsonLd({
           name: company.name,
           url: siteUrl,
         },
+        ...(journey.priceFrom
+          ? {
+              offers: {
+                "@type": "Offer",
+                price: journey.priceFrom,
+                priceCurrency: "EUR",
+                availability: "https://schema.org/LimitedAvailability",
+                url: `${siteUrl}/${locale}/journeys/${journey.slug}`,
+              },
+            }
+          : {}),
       }}
     />
   );
