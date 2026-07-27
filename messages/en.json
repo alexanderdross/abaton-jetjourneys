@@ -52,6 +52,7 @@
     "nights": "{count, plural, one {# night} other {# nights}}",
     "guests": "6–10 guests",
     "viewJourney": "View journey",
+    "fromPrice": "from {price}",
     "emptyState": "New editions are in preparation. Please get in touch to be among the first to know.",
     "detailsLabel": "At a glance"
   },
@@ -63,6 +64,10 @@
     "guestsLabel": "Group size",
     "departure": "Departure",
     "hotels": "Accommodation",
+    "nextDeparture": "Next departure",
+    "price": "From {price}",
+    "priceUnit": "per person, double occupancy",
+    "priceSingle": "Single room from {price}",
     "route": "Route",
     "itineraryTitle": "Day by day",
     "day": "Day",
@@ -71,7 +76,7 @@
     "requestTitle": "Request this journey",
     "requestBody": "Receive the full brochure with detailed itinerary and pricing, with no obligation.",
     "requestCta": "Request a Journey",
-    "priceNote": "Prices are per person and shared in your personal brochure."
+    "priceNote": "Prices are indicative starting rates per person. The full detail is shared in your personal brochure."
   },
   "About": {
     "eyebrow": "Philosophy",

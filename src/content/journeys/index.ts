@@ -1,6 +1,6 @@
 // Registry of all journeys. To add a journey, create a new file in this folder
 // and add it to the array below. Data is validated by src/lib/journeys.ts.
 import finestOfEurope from "./finest-of-europe";
-import { teaserJourneys } from "./teasers";
+import { collectionJourneys } from "./collection";
 
-export const journeys = [finestOfEurope, ...teaserJourneys];
+export const journeys = [finestOfEurope, ...collectionJourneys];
