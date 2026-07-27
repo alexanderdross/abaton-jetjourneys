@@ -12,6 +12,12 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
+    // Prose-heavy legal pages use natural apostrophes and quotes.
+    rules: {
+      "react/no-unescaped-entities": "off",
+    },
+  },
+  {
     ignores: [".next/**", ".open-next/**", "node_modules/**"],
   },
 ];

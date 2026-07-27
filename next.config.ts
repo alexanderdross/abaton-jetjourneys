@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
     loader: "custom",
     loaderFile: "./src/lib/imageLoader.ts",
   },
+  async redirects() {
+    return [
+      // Preserve the legacy journey URL from the previous site for SEO/inbound links.
+      {
+        source: "/jetjourneys/the-premiere-edition---finest-of-europe",
+        destination: "/journeys/the-premiere-edition-finest-of-europe/",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

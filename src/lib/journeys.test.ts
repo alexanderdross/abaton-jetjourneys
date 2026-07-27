@@ -4,6 +4,7 @@ import {
   getJourneySlugs,
   getJourneyBySlug,
   getFeaturedJourney,
+  journeySchema,
   pick,
 } from "./journeys";
 
@@ -55,5 +56,43 @@ describe("journeys content layer", () => {
         expect(day.description.de.length).toBeGreaterThan(0);
       }
     }
+  });
+});
+
+describe("journey content integrity", () => {
+  const journeys = getPublishedJourneys();
+
+  it("every slug is url-safe", () => {
+    for (const j of journeys) expect(j.slug).toMatch(/^[a-z0-9-]+$/);
+  });
+
+  it("routes have at least two stops", () => {
+    for (const j of journeys) expect(j.route.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("itinerary days are positive and inclusions non-empty in both locales", () => {
+    for (const j of journeys) {
+      expect(j.itinerary.length).toBeGreaterThan(0);
+      for (const d of j.itinerary) expect(d.day).toBeGreaterThan(0);
+      expect(j.inclusions.en.length).toBeGreaterThan(0);
+      expect(j.inclusions.de.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("hero and gallery images point under /images/", () => {
+    for (const j of journeys) {
+      expect(j.heroImage.src.startsWith("/images/")).toBe(true);
+      for (const g of j.gallery) {
+        expect(g.src.startsWith("/images/")).toBe(true);
+        expect(g.alt.en.length).toBeGreaterThan(0);
+        expect(g.alt.de.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("journeySchema rejects a malformed journey", () => {
+    expect(() =>
+      journeySchema.parse({ slug: "Bad Slug!", published: true }),
+    ).toThrow();
   });
 });

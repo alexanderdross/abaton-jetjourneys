@@ -137,8 +137,7 @@
     "imprintTitle": "Imprint",
     "termsTitle": "Terms & Conditions",
     "privacyTitle": "Privacy Policy",
-    "lastUpdated": "Last updated",
-    "placeholderNote": "This text is a placeholder and must be reviewed and finalised by qualified legal counsel before going live."
+    "lastUpdated": "Last updated"
   },
   "NotFound": {
     "title": "Off the map",
