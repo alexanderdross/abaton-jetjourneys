@@ -12,14 +12,24 @@ const nextConfig: NextConfig = {
     loaderFile: "./src/lib/imageLoader.ts",
   },
   async redirects() {
-    return [
-      // Preserve the legacy journey URL from the previous site for SEO/inbound links.
-      {
-        source: "/jetjourneys/the-premiere-edition---finest-of-europe",
-        destination: "/journeys/the-premiere-edition-finest-of-europe/",
-        permanent: true,
-      },
-    ];
+    // Preserve the previous site's journey URLs (/jetjourneys/*) for SEO and
+    // inbound links, mapping them to the new /journeys/* paths.
+    const map: Record<string, string> = {
+      "the-premiere-edition---finest-of-europe": "finest-of-europe",
+      "finest-of-europe": "finest-of-europe",
+      "the-founders-edition-finest-of-europe":
+        "the-founders-edition-finest-of-europe",
+      "secrets-of-europe": "secrets-of-europe",
+      "elegant-islands": "elegant-islands",
+      "fascinating-balkan": "fascinating-balkan",
+      "wild-scandinavia": "wild-scandinavia",
+      "world´s-signature-journeys-": "worlds-signature-journeys",
+    };
+    return Object.entries(map).map(([from, to]) => ({
+      source: `/jetjourneys/${from}`,
+      destination: `/journeys/${to}/`,
+      permanent: true,
+    }));
   },
 };
 

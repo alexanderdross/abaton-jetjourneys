@@ -26,24 +26,29 @@ const itineraryDaySchema = z.object({
   description: localized(z.string()),
 });
 
+const localizedList = localized(z.array(z.string()));
+
 export const journeySchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   published: z.boolean(),
   featured: z.boolean().default(false),
   order: z.number().default(0),
+  // Always present.
   title: localized(z.string()),
   tagline: localized(z.string()),
   summary: localized(z.string()),
-  nights: z.number().int().positive(),
   guestsLabel: localized(z.string()),
-  departureCity: localized(z.string()),
-  hotelCategory: localized(z.string()),
-  route: z.array(z.string()).min(2),
   heroImage: imageSchema,
+  // Detail fields, optional so a journey can be published as a teaser (the full
+  // itinerary and pricing are shared in the personal brochure on request).
+  nights: z.number().int().positive().optional(),
+  departureCity: localized(z.string()).optional(),
+  hotelCategory: localized(z.string()).optional(),
+  route: z.array(z.string()).default([]),
   gallery: z.array(imageSchema).default([]),
-  overview: localized(z.array(z.string())),
-  itinerary: z.array(itineraryDaySchema),
-  inclusions: localized(z.array(z.string())),
+  overview: localizedList.default({ en: [], de: [] }),
+  itinerary: z.array(itineraryDaySchema).default([]),
+  inclusions: localizedList.default({ en: [], de: [] }),
 });
 
 export type Journey = z.infer<typeof journeySchema>;
