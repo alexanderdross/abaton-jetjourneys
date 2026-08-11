@@ -3,7 +3,7 @@
 > **Status.** Phases 1 and 2 are built. The currency set is confirmed as EUR,
 > USD, CAD, JPY, AUD (decision D1). What is still open, and what deliberately
 > was not built, is in sections 9 and 10. Owner decisions are mirrored into
-> [OPEN-DECISIONS.md](./OPEN-DECISIONS.md) section 2.3.
+> [OPEN-DECISIONS.md](./OPEN-DECISIONS.md) section 2.4.
 
 ## 1. Goal and hard constraint
 

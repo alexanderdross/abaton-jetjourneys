@@ -11,7 +11,7 @@
 // tracked in docs/OPEN-DECISIONS.md. Guessing produces a plausible itinerary
 // that ABATON cannot actually operate.
 
-const guests = { en: "6–10 guests", de: "6–10 Gäste" } as const;
+const guests = { en: "6–8 guests", de: "6–8 Gäste" } as const;
 const hotels = {
   en: "4★ and 5★ luxury hotels",
   de: "4★- und 5★-Luxushotels",
@@ -51,8 +51,9 @@ export const collectionJourneys = [
     // Essence replaces this journey or both run.
     slug: "secrets-of-europe",
     published: true,
+    status: "interest_list",
     featured: false,
-    order: 2,
+    order: 3,
     title: { en: "Secrets of Europe", de: "Geheimnisse Europas" },
     tagline: {
       en: "Europe's quieter icons, shaped by taste.",
@@ -207,37 +208,47 @@ export const collectionJourneys = [
   },
 
   {
-    // OPEN DECISION 1.1: route below is SUPERSEDED. Galway and Dublin are
-    // replaced by a single Ashford Castle stop (technical gateway: Ireland West
-    // Airport Knock) on a strict 4-station / 2-nights-per-station format. Route,
-    // itinerary and Signature Moments all need rewriting once confirmed.
-    // Section 6 of the spec also wants this journey featured on the homepage.
+    // Content follows the client briefing "ABATON Elegant Islands Website
+    // Relaunch Briefing 2027" (docs/BRIEFING-ELEGANT-ISLANDS-2027.md), which
+    // supersedes the earlier Galway/Dublin routing. Deliberately withheld per
+    // section 18 of that briefing: Knock as a destination, Inverness as a
+    // headline stop, airport-selection logic and operator names.
     slug: "elegant-islands",
     published: true,
-    featured: false,
-    order: 3,
+    status: "open",
+    featured: true,
+    order: 1,
     title: { en: "Elegant Islands", de: "Elegante Inseln" },
     tagline: {
-      en: "The British Isles, from castles to Highlands.",
-      de: "Die Britischen Inseln, von Schlössern bis ins Hochland.",
+      en: "Castles, wild landscapes and timeless traditions, connected by private jet across Ireland and Scotland.",
+      de: "Schlösser, wilde Landschaften und zeitlose Traditionen, per Privatjet durch Irland und Schottland verbunden.",
     },
     summary: {
-      en: "A private jet journey through the British Isles, from London to Ireland and Scotland. From Galway to the Highlands, expect dramatic nature, rich heritage and signature moments like castle life, whisky culture and understated hospitality.",
-      de: "Eine Privatjet-Journey durch die Britischen Inseln, von London über Irland bis Schottland. Von Galway bis ins Hochland erwarten Sie dramatische Natur, reiches Erbe und besondere Momente wie Schlossleben, Whiskykultur und zurückhaltende Gastfreundschaft.",
+      en: "A founder-hosted private jet journey through Ireland and Scotland for just six to eight guests, from the lakes of Killarney and the estate life of Ashford Castle to the Scottish Highlands and historic Edinburgh.",
+      de: "Eine vom Gründer begleitete Privatjet-Journey durch Irland und Schottland für nur sechs bis acht Gäste, von den Seen von Killarney über das Gutsleben auf Ashford Castle bis in die schottischen Highlands und das historische Edinburgh.",
     },
     nights: 8,
-    guestsLabel: guests,
-    departureCity: { en: "London", de: "London" },
+    guestsLabel: { en: "6–8 guests", de: "6–8 Gäste" },
+    guestsMin: 6,
+    guestsMax: 8,
+    departureCity: { en: "London to London", de: "London nach London" },
     hotelCategory: hotels,
     priceFrom: 30220,
     priceFromSingle: 34420,
     nextDeparture: { en: "13–21 August 2027", de: "13.–21. August 2027" },
+    seoTitle: {
+      en: "Elegant Islands | Private Jet Journey through Ireland & Scotland | ABATON",
+      de: "Elegante Inseln | Privatjet-Reise durch Irland & Schottland | ABATON",
+    },
+    seoDescription: {
+      en: "Discover Ireland and Scotland on a founder-hosted private jet journey for only six to eight guests, from Killarney and Ashford Castle to the Scottish Highlands and Edinburgh.",
+      de: "Entdecken Sie Irland und Schottland auf einer von der Gründerin begleiteten Privatjet-Reise für nur sechs bis acht Gäste, von Killarney und Ashford Castle bis in die schottischen Highlands und nach Edinburgh.",
+    },
     route: [
       "London",
-      "Killarney",
-      "Galway",
-      "Dublin",
-      "Inverness",
+      "Killarney & the Lakes",
+      "Ashford Castle",
+      "Scottish Highlands",
       "Edinburgh",
     ],
     heroImage: {
@@ -250,128 +261,335 @@ export const collectionJourneys = [
     gallery,
     overview: {
       en: [
-        "Elegant Islands crosses seas and centuries along a curated path through the timeless elegance of the UK and Ireland, blending old-world charm with modern luxury.",
-        "From grand castles to candlelit dinners, iconic culture to hidden corners, it is a voyage for the discerning traveller with a love for heritage, refinement and quiet wonder.",
+        "Some of Europe's most memorable places are also among the least effortless to combine. Elegant Islands moves beyond the obvious city itinerary, connecting the lakes of Killarney, the grandeur of Ashford Castle, the untamed Scottish Highlands and historic Edinburgh in one seamless journey.",
+        "Travelling in a small group of just six to eight guests, private flights replace lengthy transfers and inconvenient commercial connections. Days are shaped around landscape, culture, gastronomy and carefully chosen experiences, with time deliberately left to enjoy the places themselves.",
+        "Every Elegant Islands departure is personally hosted by ABATON founder and private pilot Isabell Buchner, creating a journey that feels less like a traditional group tour and more like travelling within a private circle.",
       ],
       de: [
-        "Elegante Inseln durchquert Meere und Jahrhunderte auf einem kuratierten Weg durch die zeitlose Eleganz Großbritanniens und Irlands und verbindet den Charme der alten Welt mit modernem Luxus.",
-        "Von prächtigen Schlössern bis zu Dinners bei Kerzenschein, von ikonischer Kultur bis zu verborgenen Ecken ist es eine Reise für den anspruchsvollen Reisenden mit einer Liebe zu Erbe, Verfeinerung und stiller Verwunderung.",
+        "Einige der eindrücklichsten Orte Europas gehören zugleich zu den am schwersten zu verbindenden. Elegante Inseln geht über die naheliegende Städtereise hinaus und verbindet die Seen von Killarney, die Erhabenheit von Ashford Castle, die ungezähmten schottischen Highlands und das historische Edinburgh zu einer durchgängigen Journey.",
+        "In einer kleinen Gruppe von nur sechs bis acht Gästen ersetzen private Flüge lange Transfers und unbequeme Linienverbindungen. Die Tage folgen Landschaft, Kultur, Gastronomie und sorgfältig gewählten Erlebnissen, mit bewusst freigehaltener Zeit für die Orte selbst.",
+        "Jede Abreise von Elegante Inseln wird persönlich von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet. So entsteht eine Journey, die weniger einer klassischen Gruppenreise gleicht als dem Reisen in einem privaten Kreis.",
       ],
     },
+    signatureMoments: [
+      {
+        title: {
+          en: "Killarney by carriage and lake",
+          de: "Killarney per Kutsche und Boot",
+        },
+        description: {
+          en: "A private journey through the landscapes of Killarney National Park, followed by time on the famous lakes.",
+          de: "Eine private Fahrt durch die Landschaften des Killarney-Nationalparks, gefolgt von Zeit auf den berühmten Seen.",
+        },
+      },
+      {
+        title: { en: "The Gap of Dunloe", de: "Der Gap of Dunloe" },
+        description: {
+          en: "Cross one of Ireland's most dramatic mountain passes in a privately arranged combination of traditional carriage and boat.",
+          de: "Überqueren Sie einen der dramatischsten Bergpässe Irlands in einer privat arrangierten Kombination aus traditioneller Kutsche und Boot.",
+        },
+      },
+      {
+        title: { en: "Life at Ashford Castle", de: "Leben auf Ashford Castle" },
+        description: {
+          en: "Experience the rhythm of a historic Irish estate, from falconry and country pursuits to an elegant castle dinner.",
+          de: "Erleben Sie den Rhythmus eines historischen irischen Anwesens, von Falknerei und ländlichen Aktivitäten bis zum eleganten Dinner im Schloss.",
+        },
+      },
+      {
+        title: { en: "Across Lough Corrib", de: "Über den Lough Corrib" },
+        description: {
+          en: "Take to the water from Ashford Castle for a private perspective on the west of Ireland.",
+          de: "Gehen Sie von Ashford Castle aus aufs Wasser und erleben Sie den Westen Irlands aus privater Perspektive.",
+        },
+      },
+      {
+        title: { en: "Wild Highlands", de: "Wilde Highlands" },
+        description: {
+          en: "Discover Wester Ross through a privately guided landscape experience, shaped to the interests and activity level of the group.",
+          de: "Entdecken Sie Wester Ross bei einem privat geführten Landschaftserlebnis, abgestimmt auf Interessen und Aktivitätsniveau der Gruppe.",
+        },
+      },
+      {
+        title: { en: "Whisky in its homeland", de: "Whisky in seiner Heimat" },
+        description: {
+          en: "Explore Scotland through its most famous spirit, from Highland malts to an intimate tasting in Edinburgh.",
+          de: "Erkunden Sie Schottland über seine berühmteste Spirituose, von Highland-Malts bis zu einer privaten Verkostung in Edinburgh.",
+        },
+      },
+      {
+        title: {
+          en: "Loch Ness by private boat",
+          de: "Loch Ness im privaten Boot",
+        },
+        description: {
+          en: "Experience Scotland's most legendary loch from the water before continuing to the capital.",
+          de: "Erleben Sie Schottlands legendärsten See vom Wasser aus, bevor es weiter in die Hauptstadt geht.",
+        },
+      },
+      {
+        title: {
+          en: "A final evening in Edinburgh",
+          de: "Ein letzter Abend in Edinburgh",
+        },
+        description: {
+          en: "Historic architecture, whisky culture and an elegant farewell dinner close the journey.",
+          de: "Historische Architektur, Whiskykultur und ein elegantes Abschiedsdinner beschließen die Journey.",
+        },
+      },
+    ],
     itinerary: [
       {
         day: 1,
         city: "London",
-        title: {
-          en: "Arrival & Private Dinner",
-          de: "Ankunft & privates Dinner",
-        },
+        title: { en: "London", de: "London" },
         description: {
-          en: "We begin in London with a private dinner to start the journey.",
-          de: "Wir beginnen in London mit einem privaten Dinner zum Auftakt der Journey.",
+          en: "The journey begins in London, where guests arrive individually and settle into Mayfair before meeting the small ABATON circle for the first time. In the evening, a relaxed welcome brings everyone together over dinner and introduces the rhythm of the days ahead.",
+          de: "Die Journey beginnt in London. Die Gäste reisen individuell an und kommen in Mayfair an, bevor sie den kleinen ABATON-Kreis zum ersten Mal treffen. Am Abend führt ein entspanntes Willkommen alle bei einem Dinner zusammen und stimmt auf den Rhythmus der kommenden Tage ein.",
         },
       },
       {
         day: 2,
         city: "London → Killarney",
-        title: { en: "Lakes of Killarney", de: "Seen von Killarney" },
+        title: { en: "London to Killarney", de: "London nach Killarney" },
         description: {
-          en: "We fly west to Killarney, where a private carriage ride leads through the lakes, mountains and forests of Killarney National Park, closing with authentic Irish cuisine and a refined lakeside overnight.",
-          de: "Wir fliegen westwärts nach Killarney, wo eine private Kutschfahrt durch die Seen, Berge und Wälder des Killarney-Nationalparks führt, mit authentischer irischer Küche und einer eleganten Übernachtung am See zum Abschluss.",
+          en: "After breakfast, a private transfer leads to the business aviation terminal for the first private flight of the journey. In little over an hour, London gives way to the green landscapes of southwest Ireland. The afternoon offers a gentle introduction to Killarney National Park and its lakes before dinner overlooking the Irish countryside.",
+          de: "Nach dem Frühstück führt ein privater Transfer zum Business-Aviation-Terminal für den ersten Privatflug der Journey. In gut einer Stunde weicht London den grünen Landschaften Südwestirlands. Der Nachmittag bringt eine ruhige Annäherung an den Killarney-Nationalpark und seine Seen, bevor das Dinner mit Blick über die irische Landschaft folgt.",
         },
       },
       {
         day: 3,
-        city: "Killarney → Galway",
-        title: { en: "Manor & Myth", de: "Herrenhaus & Mythos" },
+        city: "Killarney",
+        title: {
+          en: "Killarney & the Gap of Dunloe",
+          de: "Killarney & der Gap of Dunloe",
+        },
         description: {
-          en: "We arrive in the Galway region and settle into a historic castle estate for two nights, with traditional pursuits such as horseback riding, falconry or clay shooting.",
-          de: "Wir erreichen die Region Galway und lassen uns für zwei Nächte auf einem historischen Schlossgut nieder, mit traditionellen Aktivitäten wie Reiten, Falknerei oder Tontaubenschießen.",
+          en: "Today is devoted to County Kerry at its most atmospheric. A privately arranged experience combines the Gap of Dunloe, the Black Valley and the Lakes of Killarney, using traditional local transport and time on the water. The afternoon returns to a slower pace, with space for the spa, the lake or simply the view.",
+          de: "Dieser Tag gehört County Kerry von seiner stimmungsvollsten Seite. Ein privat arrangiertes Erlebnis verbindet den Gap of Dunloe, das Black Valley und die Seen von Killarney, mit traditionellen lokalen Transportmitteln und Zeit auf dem Wasser. Der Nachmittag wird ruhiger, mit Raum für Spa, See oder einfach die Aussicht.",
         },
       },
       {
         day: 4,
-        city: "Galway",
-        title: { en: "Country Traditions", de: "Ländliche Traditionen" },
+        city: "Killarney → Ashford Castle",
+        title: {
+          en: "Killarney to Ashford Castle",
+          de: "Killarney nach Ashford Castle",
+        },
         description: {
-          en: "A day of refined dining and quiet estate life in the west of Ireland.",
-          de: "Ein Tag mit feinem Dining und stillem Gutsleben im Westen Irlands.",
+          en: "A short private flight replaces hours of driving across Ireland. From the west coast, a chauffeured transfer leads through the countryside to Ashford Castle. After arrival and lunch on the estate, an intimate falconry experience provides an unforgettable first encounter with this historic property.",
+          de: "Ein kurzer Privatflug ersetzt stundenlange Fahrten quer durch Irland. Von der Westküste führt ein Chauffeurtransfer durch die Landschaft nach Ashford Castle. Nach Ankunft und Mittagessen auf dem Anwesen sorgt ein privates Falknerei-Erlebnis für eine unvergessliche erste Begegnung mit diesem historischen Haus.",
         },
       },
       {
         day: 5,
-        city: "Galway → Dublin",
-        title: { en: "The Capital", de: "Die Hauptstadt" },
+        city: "Ashford Castle",
+        title: { en: "Ashford Castle", de: "Ashford Castle" },
         description: {
-          en: "The journey continues to Dublin for one night, including a guided city exploration and an elegant dinner in the capital.",
-          de: "Die Journey führt weiter nach Dublin für eine Nacht, mit einer geführten Stadterkundung und einem eleganten Dinner in der Hauptstadt.",
+          en: "A full day is left for the estate. Guests choose from selected country pursuits such as horseback riding or clay shooting, while those seeking a quieter pace may enjoy the spa or the grounds. Later, the group takes to Lough Corrib before dressing for an elegant evening within the castle.",
+          de: "Ein ganzer Tag bleibt dem Anwesen. Die Gäste wählen aus ländlichen Aktivitäten wie Reiten oder Tontaubenschießen, wer es ruhiger mag, genießt Spa oder Park. Später geht die Gruppe auf den Lough Corrib, bevor man sich für einen eleganten Abend im Schloss kleidet.",
         },
       },
       {
         day: 6,
-        city: "Dublin → Inverness",
-        title: { en: "Into the Highlands", de: "Ins Hochland" },
+        city: "Ireland → Scottish Highlands",
+        title: {
+          en: "Ireland to the Scottish Highlands",
+          de: "Irland in die schottischen Highlands",
+        },
         description: {
-          en: "We fly to Inverness for two nights, exploring the Scottish Highlands off-road and enjoying a private boat experience on Loch Ness.",
-          de: "Wir fliegen nach Inverness für zwei Nächte, erkunden die schottischen Highlands abseits der Straße und genießen ein privates Bootserlebnis auf Loch Ness.",
+          en: "The journey crosses the Irish Sea by private jet and continues by chauffeur into Wester Ross. Here, the landscape becomes larger, quieter and more remote. The afternoon is deliberately unhurried, allowing time to settle into the Highlands before an informal dinner and, for those who wish, a first tasting of Scotch whisky.",
+          de: "Die Journey überquert die Irische See im Privatjet und führt per Chauffeur weiter nach Wester Ross. Hier wird die Landschaft weiter, stiller und abgelegener. Der Nachmittag bleibt bewusst unaufgeregt und lässt Zeit, in den Highlands anzukommen, bevor ein informelles Dinner folgt und, wer mag, eine erste Verkostung schottischen Whiskys.",
         },
       },
       {
         day: 7,
-        city: "Inverness",
-        title: { en: "Highland Pursuits", de: "Vergnügen im Hochland" },
+        city: "Scottish Highlands",
+        title: {
+          en: "The Scottish Highlands",
+          de: "Die schottischen Highlands",
+        },
         description: {
-          en: "A visit to a local whisky distillery, followed by a traditional Highland dinner.",
-          de: "Ein Besuch in einer lokalen Whisky-Destillerie, gefolgt von einem traditionellen Highland-Dinner.",
+          en: "A private Highland day is shaped around the landscape and the interests of the group, from a scenic guided exploration to walking or time on the water. The experience is intentionally personal rather than prescriptive. The evening closes with a destination dinner celebrating Scotland's produce and sense of place.",
+          de: "Ein privater Highland-Tag richtet sich nach der Landschaft und den Interessen der Gruppe, von einer geführten Panorama-Erkundung über Wanderungen bis zu Zeit auf dem Wasser. Das Erlebnis ist bewusst persönlich statt vorgegeben. Der Abend klingt mit einem Dinner aus, das Schottlands Produkte und seinen Charakter feiert.",
         },
       },
       {
         day: 8,
-        city: "Inverness → Edinburgh",
-        title: { en: "Highland Farewell", de: "Abschied im Hochland" },
+        city: "Loch Ness → Edinburgh",
+        title: { en: "Loch Ness to Edinburgh", de: "Loch Ness nach Edinburgh" },
         description: {
-          en: "The journey ends in Edinburgh with an exclusive whisky masterclass and a farewell dinner in a historic setting overlooking the city.",
-          de: "Die Journey endet in Edinburgh mit einer exklusiven Whisky-Masterclass und einem Abschiedsdinner in historischem Rahmen mit Blick über die Stadt.",
+          en: "On the way back east, the group pauses for a private experience on Loch Ness before taking a short private flight to Edinburgh. The afternoon introduces the city's castle and historic centre, followed by an intimate Scotch whisky experience and a final dinner together.",
+          de: "Auf dem Weg zurück nach Osten hält die Gruppe für ein privates Erlebnis auf Loch Ness, bevor ein kurzer Privatflug nach Edinburgh folgt. Der Nachmittag führt zu Schloss und historischer Altstadt der Stadt, danach folgen eine private Whisky-Verkostung und ein letztes gemeinsames Dinner.",
         },
       },
       {
         day: 9,
-        city: "Edinburgh → Homeward",
-        title: { en: "Homeward", de: "Heimwärts" },
+        city: "Edinburgh → London",
+        title: { en: "Edinburgh to London", de: "Edinburgh nach London" },
         description: {
-          en: "We take our leave after a final Scottish morning.",
-          de: "Wir verabschieden uns nach einem letzten schottischen Morgen.",
+          en: "After breakfast, a final private flight returns the group to London. Chauffeur arrangements can then connect guests with central London, Heathrow or individual onward travel.",
+          de: "Nach dem Frühstück bringt ein letzter Privatflug die Gruppe zurück nach London. Chauffeurarrangements verbinden die Gäste anschließend mit der Londoner Innenstadt, Heathrow oder der individuellen Weiterreise.",
         },
       },
     ] as Day[],
+    stays: [
+      {
+        title: { en: "London", de: "London" },
+        description: {
+          en: "A leading five-star address in Mayfair, chosen as a calm starting point within walking distance of the city's best.",
+          de: "Ein führendes Fünf-Sterne-Haus in Mayfair, als ruhiger Ausgangspunkt in Gehweite der besten Adressen der Stadt.",
+        },
+      },
+      {
+        title: { en: "Killarney", de: "Killarney" },
+        description: {
+          en: "A five-star lakeside resort with views across the water to the mountains of County Kerry.",
+          de: "Ein Fünf-Sterne-Resort am See mit Blick über das Wasser auf die Berge von County Kerry.",
+        },
+      },
+      {
+        title: { en: "Ashford Castle", de: "Ashford Castle" },
+        description: {
+          en: "Two nights of estate life in one of Ireland's most celebrated castle hotels, and one of the journey's principal reasons to travel.",
+          de: "Zwei Nächte Gutsleben in einem der berühmtesten Schlosshotels Irlands, und einer der eigentlichen Gründe für diese Journey.",
+        },
+      },
+      {
+        title: { en: "Scottish Highlands", de: "Schottische Highlands" },
+        description: {
+          en: "A characterful five-star Highland retreat in Wester Ross, remote enough that the landscape sets the pace.",
+          de: "Ein charaktervolles Fünf-Sterne-Refugium in Wester Ross, abgelegen genug, dass die Landschaft den Takt vorgibt.",
+        },
+      },
+      {
+        title: { en: "Edinburgh", de: "Edinburgh" },
+        description: {
+          en: "A landmark five-star city hotel for the final night, within the historic centre.",
+          de: "Ein Fünf-Sterne-Haus mit Wahrzeichencharakter für die letzte Nacht, mitten im historischen Zentrum.",
+        },
+      },
+    ],
     inclusions: {
       en: [
-        "Private jet travel throughout",
-        "Luxury ground transport",
-        "8 nights in 4★/5★ hotels with breakfast",
-        "7 lunches and 7 dinners",
-        "Carriage ride in Killarney National Park",
-        "Country traditions in the Galway region",
-        "Private Dublin city tour",
-        "Off-road Highland experience",
-        "Private boat tour on Loch Ness",
-        "Whisky tasting in the Scottish Highlands",
-        "Guided visit of Edinburgh Castle",
+        "8 nights in carefully selected five-star hotels and historic properties",
+        "Private flights between the journey regions, in an aircraft appropriate to the route and group size",
+        "Private airport and scheduled programme transfers during the journey",
+        "Daily breakfast, and selected lunches and dinners as described in the final journey programme",
+        "Curated private and small-group experiences throughout Ireland and Scotland",
+        "Personal hosting by the ABATON founder for the duration of the journey",
+        "Access to the private ABATON guest area after booking confirmation",
+        "Pre-departure concierge support and personal travel-preference management",
       ],
       de: [
-        "Privatjet-Flüge während der gesamten Journey",
-        "Luxuriöse Bodentransporte",
-        "8 Nächte in 4★-/5★-Hotels mit Frühstück",
-        "7 Mittagessen und 7 Abendessen",
-        "Kutschfahrt im Killarney-Nationalpark",
-        "Ländliche Traditionen in der Region Galway",
-        "Private Stadttour in Dublin",
-        "Offroad-Erlebnis im Hochland",
-        "Private Bootstour auf Loch Ness",
-        "Whisky-Verkostung in den schottischen Highlands",
-        "Geführter Besuch von Edinburgh Castle",
+        "8 Nächte in sorgfältig ausgewählten Fünf-Sterne-Hotels und historischen Häusern",
+        "Private Flüge zwischen den Regionen der Journey, in einem der Route und Gruppengröße angemessenen Flugzeug",
+        "Private Flughafen- und Programmtransfers während der Journey",
+        "Täglich Frühstück sowie ausgewählte Mittag- und Abendessen gemäß dem finalen Reiseprogramm",
+        "Kuratierte private und exklusive Erlebnisse in ganz Irland und Schottland",
+        "Persönliche Begleitung durch die ABATON-Gründerin während der gesamten Journey",
+        "Zugang zum privaten ABATON-Gästebereich nach Buchungsbestätigung",
+        "Concierge-Betreuung vor der Abreise und persönliche Verwaltung Ihrer Reisepräferenzen",
       ],
     },
+    exclusions: {
+      en: [
+        "International flights to and from London",
+        "Personal pre- and post-journey hotel nights, unless explicitly included",
+        "Individual chauffeur requests outside the published programme",
+        "Spa treatments and personal purchases",
+        "Travel insurance, unless offered as a defined package component",
+      ],
+      de: [
+        "Internationale Flüge nach und von London",
+        "Persönliche Hotelnächte vor und nach der Journey, sofern nicht ausdrücklich enthalten",
+        "Individuelle Chauffeurwünsche außerhalb des veröffentlichten Programms",
+        "Spa-Anwendungen und persönliche Einkäufe",
+        "Reiseversicherung, sofern nicht als definierter Paketbestandteil angeboten",
+      ],
+    },
+    faq: [
+      {
+        question: {
+          en: "Is this a private charter for one couple or family?",
+          de: "Ist dies ein Privatcharter für ein Paar oder eine Familie?",
+        },
+        answer: {
+          en: "Elegant Islands is a hosted small-group journey limited to six to eight guests. The private aircraft is shared exclusively by the ABATON group during the published flight sectors.",
+          de: "Elegante Inseln ist eine begleitete Journey in kleiner Gruppe, begrenzt auf sechs bis acht Gäste. Das private Flugzeug wird während der veröffentlichten Flugabschnitte ausschließlich von der ABATON-Gruppe genutzt.",
+        },
+      },
+      {
+        question: {
+          en: "Which aircraft will be used?",
+          de: "Welches Flugzeug kommt zum Einsatz?",
+        },
+        answer: {
+          en: "ABATON selects an aircraft suitable for the route, group size and operational requirements. The final aircraft and operator are confirmed before departure and may vary from the illustrative aircraft shown.",
+          de: "ABATON wählt ein Flugzeug, das zu Route, Gruppengröße und betrieblichen Anforderungen passt. Das endgültige Flugzeug und der Betreiber werden vor der Abreise bestätigt und können von der beispielhaft gezeigten Maschine abweichen.",
+        },
+      },
+      {
+        question: {
+          en: "How much luggage can I bring?",
+          de: "Wie viel Gepäck kann ich mitnehmen?",
+        },
+        answer: {
+          en: "Private aircraft have different baggage limitations from commercial airlines. Guests receive a journey-specific baggage guide before departure; soft-sided luggage is generally recommended.",
+          de: "Für private Flugzeuge gelten andere Gepäckgrenzen als für Linienfluggesellschaften. Die Gäste erhalten vor der Abreise einen reisespezifischen Gepäckleitfaden; weiches Gepäck wird generell empfohlen.",
+        },
+      },
+      {
+        question: {
+          en: "How active is the journey?",
+          de: "Wie aktiv ist die Journey?",
+        },
+        answer: {
+          en: "The itinerary balances cultural visits and outdoor experiences with free time. Selected activities can be adapted to different comfort and activity levels wherever possible.",
+          de: "Das Programm verbindet kulturelle Besuche und Erlebnisse im Freien mit freier Zeit. Ausgewählte Aktivitäten lassen sich, wo immer möglich, an unterschiedliche Komfort- und Aktivitätsniveaus anpassen.",
+        },
+      },
+      {
+        question: {
+          en: "Can dietary requirements be accommodated?",
+          de: "Können besondere Ernährungswünsche berücksichtigt werden?",
+        },
+        answer: {
+          en: "Yes. Booked guests can provide allergies, intolerances and preferences in the private guest area before departure. These are shared with the relevant hospitality partners.",
+          de: "Ja. Gebuchte Gäste können Allergien, Unverträglichkeiten und Vorlieben vor der Abreise im privaten Gästebereich hinterlegen. Diese werden an die jeweiligen Gastgeber weitergegeben.",
+        },
+      },
+      {
+        question: {
+          en: "Can I arrive in London earlier or stay longer?",
+          de: "Kann ich früher in London ankommen oder länger bleiben?",
+        },
+        answer: {
+          en: "Yes. Additional hotel nights and individual chauffeur arrangements can be requested through the ABATON concierge service.",
+          de: "Ja. Zusätzliche Hotelnächte und individuelle Chauffeurarrangements können über den ABATON-Concierge-Service angefragt werden.",
+        },
+      },
+      {
+        question: {
+          en: "When is the departure confirmed?",
+          de: "Wann gilt die Abreise als bestätigt?",
+        },
+        answer: {
+          en: "The booking documentation will state the conditions under which the journey is confirmed, including any applicable minimum participant requirement.",
+          de: "Die Buchungsunterlagen nennen die Bedingungen, unter denen die Journey bestätigt wird, einschließlich einer etwaigen Mindestteilnehmerzahl.",
+        },
+      },
+      {
+        question: {
+          en: "Will every programme detail be exactly as published?",
+          de: "Wird jedes Programmdetail genau wie veröffentlicht stattfinden?",
+        },
+        answer: {
+          en: "The character and principal destinations of the journey remain as described. Individual timings, restaurants, activities or routing details may be adjusted where operational conditions or local availability require an equivalent or improved alternative.",
+          de: "Charakter und Hauptziele der Journey bleiben wie beschrieben. Einzelne Zeiten, Restaurants, Aktivitäten oder Routenführungen können angepasst werden, wenn betriebliche Umstände oder örtliche Verfügbarkeit eine gleichwertige oder bessere Alternative erfordern.",
+        },
+      },
+    ],
   },
 
   {
@@ -380,6 +598,7 @@ export const collectionJourneys = [
     // Albanian Riviera (Vlora), still 4 stations.
     slug: "fascinating-balkan",
     published: true,
+    status: "interest_list",
     featured: false,
     order: 4,
     title: { en: "Fascinating Balkan", de: "Faszinierender Balkan" },
@@ -541,6 +760,7 @@ export const collectionJourneys = [
     // has no `status` field yet (spec section 5).
     slug: "wild-scandinavia",
     published: true,
+    status: "interest_list",
     featured: false,
     order: 5,
     title: { en: "Wild Scandinavia", de: "Wildes Skandinavien" },

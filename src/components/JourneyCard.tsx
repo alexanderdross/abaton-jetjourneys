@@ -3,6 +3,7 @@ import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { type Journey, pick, formatEUR } from "@/lib/journeys";
 import { Media } from "./ui/Media";
+import { JourneyStatusBadge } from "./JourneyStatusBadge";
 import { ConvertedPrice } from "./fx/ConvertedPrice";
 
 export function JourneyCard({
@@ -29,6 +30,11 @@ export function JourneyCard({
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+        <JourneyStatusBadge
+          status={journey.status}
+          tone="dark"
+          className="absolute left-4 top-4 backdrop-blur-sm"
+        />
       </div>
 
       <div className="mt-5">
@@ -44,7 +50,9 @@ export function JourneyCard({
         </p>
         <div className="mt-4 flex items-center justify-between gap-3">
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne">
-            {t("viewJourney")}
+            {journey.status === "open"
+              ? t("viewJourney")
+              : t("joinInterestList")}
             <span className="transition-transform group-hover:translate-x-1">
               →
             </span>

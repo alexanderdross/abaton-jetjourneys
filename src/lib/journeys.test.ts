@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
+  getReleasedJourneys,
+  getUpcomingJourneys,
   getPublishedJourneys,
   getJourneySlugs,
   getJourneyBySlug,
@@ -98,5 +100,97 @@ describe("journey content integrity", () => {
     expect(() =>
       journeySchema.parse({ slug: "Bad Slug!", published: true }),
     ).toThrow();
+  });
+});
+
+describe("release status", () => {
+  const journeys = getPublishedJourneys();
+
+  it("marks exactly one journey as open for booking", () => {
+    const open = journeys.filter((j) => j.status === "open");
+    expect(open.map((j) => j.slug)).toEqual(["elegant-islands"]);
+  });
+
+  it("splits the collection into released and upcoming without overlap", () => {
+    const released = getReleasedJourneys();
+    const upcoming = getUpcomingJourneys();
+    expect(released.length + upcoming.length).toBe(journeys.length);
+    const overlap = released.filter((r) =>
+      upcoming.some((u) => u.slug === r.slug),
+    );
+    expect(overlap).toEqual([]);
+  });
+
+  it("features the released journey on the homepage", () => {
+    const featured = journeys.filter((j) => j.featured);
+    expect(featured.map((j) => j.slug)).toEqual(["elegant-islands"]);
+    expect(featured[0].status).toBe("open");
+  });
+});
+
+describe("elegant islands, 2027 briefing", () => {
+  const journey = getJourneyBySlug("elegant-islands");
+
+  it("exists and is open", () => {
+    expect(journey).toBeDefined();
+    expect(journey?.status).toBe("open");
+  });
+
+  it("uses the corrected five-chapter route", () => {
+    expect(journey?.route).toEqual([
+      "London",
+      "Killarney & the Lakes",
+      "Ashford Castle",
+      "Scottish Highlands",
+      "Edinburgh",
+    ]);
+  });
+
+  it("drops the superseded stops", () => {
+    const route = journey?.route.join(" ") ?? "";
+    for (const stale of ["Galway", "Dublin", "Inverness"]) {
+      expect(route).not.toContain(stale);
+    }
+  });
+
+  it("withholds the internal technical gateway", () => {
+    // Briefing section 18: Knock must never appear as a public destination.
+    const publicText = JSON.stringify(journey);
+    expect(publicText).not.toContain("Knock");
+  });
+
+  it("runs nine days with signature moments, exclusions and FAQ", () => {
+    expect(journey?.itinerary).toHaveLength(9);
+    expect(journey?.itinerary.map((d) => d.day)).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8, 9,
+    ]);
+    expect(journey?.signatureMoments.length).toBeGreaterThanOrEqual(6);
+    expect(journey?.exclusions.en.length).toBeGreaterThan(0);
+    expect(journey?.exclusions.de.length).toBeGreaterThan(0);
+    expect(journey?.faq.length).toBeGreaterThanOrEqual(6);
+  });
+
+  it("names no hotel in the stays section", () => {
+    // Client decision: properties are described by category only until the
+    // allocations are contracted (docs/OPEN-DECISIONS.md item 4.6).
+    const named = ["Connaught", "Europe Hotel", "Torridon", "Balmoral"];
+    const stays = JSON.stringify(journey?.stays ?? []);
+    for (const hotel of named) expect(stays).not.toContain(hotel);
+  });
+});
+
+describe("group size", () => {
+  it("is six to eight across every journey", () => {
+    for (const j of getPublishedJourneys()) {
+      expect(j.guestsLabel.en).toContain("8");
+      expect(j.guestsLabel.en).not.toContain("10");
+      expect(j.guestsLabel.de).not.toContain("10");
+    }
+  });
+
+  it("is machine-readable on the released journey", () => {
+    const journey = getJourneyBySlug("elegant-islands");
+    expect(journey?.guestsMin).toBe(6);
+    expect(journey?.guestsMax).toBe(8);
   });
 });

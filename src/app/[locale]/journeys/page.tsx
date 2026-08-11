@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { JourneyCard } from "@/components/JourneyCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FxNote } from "@/components/fx/FxNote";
-import { getPublishedJourneys } from "@/lib/journeys";
+import { getReleasedJourneys, getUpcomingJourneys } from "@/lib/journeys";
 import { altLinks } from "@/lib/i18n-urls";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -29,7 +29,8 @@ export default async function JourneysPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Journeys");
-  const journeys = getPublishedJourneys();
+  const released = getReleasedJourneys();
+  const upcoming = getUpcomingJourneys();
 
   return (
     <div className="pt-32 pb-24">
@@ -51,21 +52,46 @@ export default async function JourneysPage({ params }: PageProps) {
           </header>
         </Reveal>
 
-        {journeys.length > 0 ? (
-          <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {journeys.map((journey, i) => (
-              <Reveal key={journey.slug} delay={i * 100}>
-                <JourneyCard journey={journey} locale={locale} />
-              </Reveal>
-            ))}
-          </div>
-        ) : (
+        {released.length === 0 && upcoming.length === 0 && (
           <p className="mt-16 text-lg text-slate">{t("emptyState")}</p>
+        )}
+
+        {released.length > 0 && (
+          <section className="mt-20">
+            <Reveal>
+              <h2 className="eyebrow">{t("releasedTitle")}</h2>
+            </Reveal>
+            <div className="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {released.map((journey, i) => (
+                <Reveal key={journey.slug} delay={i * 100}>
+                  <JourneyCard journey={journey} locale={locale} />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {upcoming.length > 0 && (
+          <section className="mt-24 border-t border-line pt-16">
+            <Reveal>
+              <h2 className="eyebrow">{t("upcomingTitle")}</h2>
+              <p className="mt-5 max-w-2xl text-slate leading-relaxed">
+                {t("upcomingIntro")}
+              </p>
+            </Reveal>
+            <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {upcoming.map((journey, i) => (
+                <Reveal key={journey.slug} delay={i * 100}>
+                  <JourneyCard journey={journey} locale={locale} />
+                </Reveal>
+              ))}
+            </div>
+          </section>
         )}
 
         {/* Disclaimer for the indicative local-currency figures on the cards.
             Renders only when a conversion is actually shown. */}
-        <FxNote className="mt-10 text-xs leading-relaxed text-slate/70" />
+        <FxNote className="mt-12 text-xs leading-relaxed text-slate/70" />
       </Container>
     </div>
   );
