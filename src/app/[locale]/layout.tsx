@@ -7,6 +7,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FxProvider } from "@/components/fx/FxProvider";
 import { siteUrl, noindex } from "@/lib/site";
 import { altLinks } from "@/lib/i18n-urls";
 import type { Locale } from "@/i18n/routing";
@@ -81,17 +82,19 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-[2px] focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-bone focus:outline-none focus:ring-2 focus:ring-champagne"
-          >
-            {t("skipToContent")}
-          </a>
-          <Header />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <Footer />
+          <FxProvider>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-[2px] focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-bone focus:outline-none focus:ring-2 focus:ring-champagne"
+            >
+              {t("skipToContent")}
+            </a>
+            <Header />
+            <main id="main" className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </FxProvider>
         </NextIntlClientProvider>
       </body>
     </html>

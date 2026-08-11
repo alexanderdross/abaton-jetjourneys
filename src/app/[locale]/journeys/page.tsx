@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { JourneyCard } from "@/components/JourneyCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FxNote } from "@/components/fx/FxNote";
 import { getReleasedJourneys, getUpcomingJourneys } from "@/lib/journeys";
 import { altLinks } from "@/lib/i18n-urls";
 
@@ -87,6 +88,10 @@ export default async function JourneysPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        {/* Disclaimer for the indicative local-currency figures on the cards.
+            Renders only when a conversion is actually shown. */}
+        <FxNote className="mt-12 text-xs leading-relaxed text-slate/70" />
       </Container>
     </div>
   );

@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { type Journey, pick, formatEUR } from "@/lib/journeys";
 import { Media } from "./ui/Media";
 import { JourneyStatusBadge } from "./JourneyStatusBadge";
+import { ConvertedPrice } from "./fx/ConvertedPrice";
 
 export function JourneyCard({
   journey,
@@ -57,8 +58,18 @@ export function JourneyCard({
             </span>
           </span>
           {journey.priceFrom ? (
-            <span className="text-xs text-slate whitespace-nowrap">
-              {t("fromPrice", { price: formatEUR(journey.priceFrom, locale) })}
+            <span className="text-right">
+              <span className="block text-xs text-slate whitespace-nowrap">
+                {t("fromPrice", {
+                  price: formatEUR(journey.priceFrom, locale),
+                })}
+              </span>
+              {/* Reserved line: the converted price appears after hydration and
+                  must not push the EUR figure around. */}
+              <ConvertedPrice
+                amount={journey.priceFrom}
+                className="block h-4 text-[11px] leading-4 text-slate/70 whitespace-nowrap"
+              />
             </span>
           ) : null}
         </div>

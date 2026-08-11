@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { CurrencySwitcher } from "./fx/CurrencySwitcher";
 
 // `titleKey` supplies the SEO title attribute required on every link.
 const navItems = [
@@ -96,6 +97,7 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
+            <CurrencySwitcher className={light ? "text-bone" : "text-ink"} />
             <LanguageSwitcher className={light ? "text-bone" : "text-ink"} />
             <Link
               href="/contact"
@@ -144,7 +146,10 @@ export function Header() {
             ))}
           </ul>
           <div className="mt-8 flex items-center justify-between">
-            <LanguageSwitcher className="text-ink" />
+            <div className="flex items-center gap-5">
+              <LanguageSwitcher className="text-ink" />
+              <CurrencySwitcher className="text-ink" />
+            </div>
             <Link
               href="/contact"
               title={t("requestCtaTitle")}

@@ -15,6 +15,8 @@ import { PillarGrid } from "@/components/ui/PillarGrid";
 import { JourneyStatusBadge } from "@/components/JourneyStatusBadge";
 import { LinkButton } from "@/components/ui/Button";
 import { JourneyJsonLd, JourneyFaqJsonLd } from "@/components/JsonLd";
+import { ConvertedPrice } from "@/components/fx/ConvertedPrice";
+import { FxNote } from "@/components/fx/FxNote";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import {
   getJourneyBySlug,
@@ -185,14 +187,29 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                         price: formatEUR(journey.priceFrom, locale),
                       })}
                     </p>
+                    {/* Reserved lines: the indicative conversion arrives after
+                        hydration and must not move the EUR price or the CTA. */}
+                    <ConvertedPrice
+                      amount={journey.priceFrom}
+                      className="mt-1 block h-5 text-sm leading-5 text-champagne"
+                    />
                     <p className="mt-1 text-xs text-slate">{t("priceUnit")}</p>
                     {journey.priceFromSingle && (
-                      <p className="mt-1 text-xs text-slate">
-                        {t("priceSingle", {
-                          price: formatEUR(journey.priceFromSingle, locale),
-                        })}
-                      </p>
+                      <>
+                        <p className="mt-3 text-xs text-slate">
+                          {t("priceSingle", {
+                            price: formatEUR(journey.priceFromSingle, locale),
+                          })}
+                        </p>
+                        <ConvertedPrice
+                          amount={journey.priceFromSingle}
+                          className="block h-4 text-[11px] leading-4 text-slate/70"
+                        />
+                      </>
                     )}
+                    <div className="mt-4 min-h-[2.5rem]">
+                      <FxNote className="text-[11px] leading-relaxed text-slate/70" />
+                    </div>
                   </div>
                 )}
                 <a

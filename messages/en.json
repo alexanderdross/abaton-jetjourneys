@@ -69,6 +69,12 @@
     "upcomingIntro": "A limited number of ABATON journeys are released each year. Guests registered on our private interest list receive priority information when a new departure is announced.",
     "joinInterestList": "Join the interest list"
   },
+  "Currency": {
+    "switcherLabel": "Currency",
+    "switcherTitle": "Show journey prices in another currency",
+    "approx": "approx. {price}",
+    "rateNote": "Amounts in other currencies are indicative, converted at the ECB euro reference rate of {date}. All journeys are agreed and invoiced in EUR."
+  },
   "JourneyDetail": {
     "backToJourneys": "All journeys",
     "overviewTitle": "The journey",
@@ -89,7 +95,7 @@
     "requestTitle": "Request this journey",
     "requestBody": "Receive the full brochure with detailed itinerary and pricing, with no obligation.",
     "requestCta": "Request a Journey",
-    "priceNote": "Prices are indicative starting rates per person. The full detail is shared in your personal brochure.",
+    "priceNote": "Prices are indicative starting rates per person and are agreed and invoiced in EUR. The full detail is shared in your personal brochure.",
     "backToJourneysTitle": "Back to all ABATON private jet journeys",
     "requestCtaTitle": "Request the full brochure for {journey}",
     "signatureTitle": "Signature moments",
