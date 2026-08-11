@@ -61,6 +61,12 @@
     "emptyState": "Neue Editionen sind in Vorbereitung. Nehmen Sie Kontakt auf, um zu den Ersten zu gehören, die es erfahren.",
     "cardTitle": "{journey}, eine Privatjet-Journey von ABATON"
   },
+  "Currency": {
+    "switcherLabel": "Währung",
+    "switcherTitle": "Journey-Preise in einer anderen Währung anzeigen",
+    "approx": "ca. {price}",
+    "rateNote": "Beträge in anderen Währungen sind Richtwerte, umgerechnet zum EZB-Euro-Referenzkurs vom {date}. Alle Journeys werden in EUR vereinbart und abgerechnet."
+  },
   "JourneyDetail": {
     "backToJourneys": "Alle Journeys",
     "overviewTitle": "Die Journey",
@@ -81,7 +87,7 @@
     "requestTitle": "Diese Journey anfragen",
     "requestBody": "Erhalten Sie die vollständige Broschüre mit detailliertem Reiseverlauf und Preisen, unverbindlich.",
     "requestCta": "Journey anfragen",
-    "priceNote": "Preise sind Richtwerte ab pro Person. Alle Details nennt Ihre persönliche Broschüre.",
+    "priceNote": "Preise sind Richtwerte ab pro Person und werden in EUR vereinbart und abgerechnet. Alle Details nennt Ihre persönliche Broschüre.",
     "backToJourneysTitle": "Zurück zu allen ABATON Privatjet-Journeys",
     "requestCtaTitle": "Die vollständige Broschüre zu {journey} anfragen"
   },

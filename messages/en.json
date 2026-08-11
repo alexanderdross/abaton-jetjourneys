@@ -61,6 +61,12 @@
     "emptyState": "New editions are in preparation. Please get in touch to be among the first to know.",
     "cardTitle": "{journey}, a private jet journey by ABATON"
   },
+  "Currency": {
+    "switcherLabel": "Currency",
+    "switcherTitle": "Show journey prices in another currency",
+    "approx": "approx. {price}",
+    "rateNote": "Amounts in other currencies are indicative, converted at the ECB euro reference rate of {date}. All journeys are agreed and invoiced in EUR."
+  },
   "JourneyDetail": {
     "backToJourneys": "All journeys",
     "overviewTitle": "The journey",
@@ -81,7 +87,7 @@
     "requestTitle": "Request this journey",
     "requestBody": "Receive the full brochure with detailed itinerary and pricing, with no obligation.",
     "requestCta": "Request a Journey",
-    "priceNote": "Prices are indicative starting rates per person. The full detail is shared in your personal brochure.",
+    "priceNote": "Prices are indicative starting rates per person and are agreed and invoiced in EUR. The full detail is shared in your personal brochure.",
     "backToJourneysTitle": "Back to all ABATON private jet journeys",
     "requestCtaTitle": "Request the full brochure for {journey}"
   },

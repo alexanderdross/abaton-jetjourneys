@@ -1,8 +1,9 @@
 # Plan: local currency display via the ECB reference rates
 
-> **Status.** Implementation plan, nothing of this is built yet. Owner decisions
-> are listed in section 10 and mirrored into
-> [OPEN-DECISIONS.md](./OPEN-DECISIONS.md) section 2.
+> **Status.** Phases 1 and 2 are built. The currency set is confirmed as EUR,
+> USD, CAD, JPY, AUD (decision D1). What is still open, and what deliberately
+> was not built, is in sections 9 and 10. Owner decisions are mirrored into
+> [OPEN-DECISIONS.md](./OPEN-DECISIONS.md) section 2.3.
 
 ## 1. Goal and hard constraint
 
@@ -39,13 +40,13 @@ https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
 - Free to reuse with attribution, and explicitly published for information
   purposes rather than for transactions. Our disclaimer has to say so.
 
-**Secondary (fallback if the daily file fails): ECB Data Portal API.**
-
-```
-https://data-api.ecb.europa.eu/service/data/EXR/D.USD+CAD+JPY+GBP+CHF+AUD+SGD.EUR.SP00.A?lastNObservations=1&format=jsondata
-```
-
-Verbose, but a second independent host.
+**Secondary source: deliberately not built.** The obvious candidate is the ECB
+Data Portal (`https://data-api.ecb.europa.eu/service/data/EXR/...`), on a second
+host. It was left out because its exact response shape could not be verified
+from the build sandbox, whose egress proxy blocks the ECB, and a fallback path
+tested only against an assumed fixture is worse than no fallback: it looks
+covered and is not. Revisit once phase 0 confirms the real payload. Until then
+the failure path is the committed snapshot in section 3.1.
 
 **Parsing note (important for the Workers runtime).** There is no `DOMParser` on
 Cloudflare Workers, and `nodejs_compat` does not provide one. Do not add an XML
@@ -63,10 +64,11 @@ currencies present) and reject the whole payload if validation fails. This is th
 same content-validated-at-the-boundary approach `src/lib/journeys.ts` already
 uses.
 
-**Currencies to ship.** Only ECB-covered ones, so the set is limited to what the
-reference rates actually contain: `USD`, `CAD`, `JPY`, `GBP`, `CHF`, `AUD`,
-`SGD`. Note that AED and other Gulf currencies are **not** in the ECB list, so a
-visitor from Dubai stays on EUR. Everything unmapped falls back to EUR.
+**Currencies shipped (confirmed, D1).** `EUR`, `USD`, `CAD`, `JPY`, `AUD`. All
+four non-EUR currencies are in the ECB reference rates, and a payload missing
+any of them is rejected as malformed. Note that AED and other Gulf currencies
+are not published by the ECB at all, so a visitor from Dubai stays on EUR, as
+does every other unmapped country.
 
 ## 3. Delivery architecture
 
@@ -155,8 +157,8 @@ formatPrice(amount, currency, locale) -> string
 Rules:
 
 - **Round up, never down**, to a clean step, so the indicative figure never
-  undersells the actual EUR price after a rate move: nearest 100 for USD, CAD,
-  CHF, GBP, AUD, SGD; nearest 10,000 for JPY.
+  undersells the actual EUR price after a rate move: nearest 100 for USD, CAD
+  and AUD, nearest 10,000 for JPY.
 - No decimals anywhere. `Intl.NumberFormat(locale, { style: "currency", currency,
   maximumFractionDigits: 0 })`, with `locale` being `de-DE` or `en-US` exactly as
   `formatEUR` in `src/lib/journeys.ts` already decides it.
@@ -173,31 +175,37 @@ Rules:
 
 New files:
 
+- `src/lib/fx/currencies.ts`, the shipped currency set, the country map and the
+  two cookie names.
 - `src/lib/fx/ecb.ts`, fetch plus parse plus validate.
-- `src/lib/fx/convert.ts`, conversion, rounding, formatting.
-- `src/lib/fx/country-currency.ts`, country to currency map and supported list.
+- `src/lib/fx/convert.ts`, conversion, rounding, formatting, freshness.
 - `src/lib/fx/fallback-rates.ts`, committed snapshot.
 - `src/app/api/fx/route.ts`, the endpoint.
 - `src/components/fx/FxProvider.tsx`, client context: selected currency, rates,
   `setCurrency` (writes the cookie), single in-flight fetch shared across all
   price instances via a module level promise, result mirrored to
-  `sessionStorage` so navigation inside the site does not refetch.
-- `src/components/fx/CurrencySwitcher.tsx`, a `select` styled like
-  `LanguageSwitcher`, placed next to it in `Header.tsx` for desktop and inside
-  the mobile menu.
-- `src/components/fx/ConvertedPrice.tsx`, renders the secondary line.
+  `sessionStorage` so navigation inside the site does not refetch. Rates are
+  only fetched once a non-EUR currency is in play, so a EUR visitor never pays
+  for the request.
+- `src/components/fx/CurrencySwitcher.tsx`, a native `select` next to
+  `LanguageSwitcher` in the header, desktop and mobile menu.
+- `src/components/fx/ConvertedPrice.tsx`, the secondary price line.
+- `src/components/fx/FxNote.tsx`, the disclaimer, rendered only when a
+  conversion is actually on the page.
 
 Changed files:
 
-- `src/app/[locale]/layout.tsx`, wrap `children` in `FxProvider` (inside the
+- `src/app/[locale]/layout.tsx`, wraps the page in `FxProvider` (inside the
   existing `NextIntlClientProvider`).
-- `src/components/Header.tsx`, mount the switcher.
-- `src/components/JourneyCard.tsx`, add `<ConvertedPrice amount={journey.priceFrom} />`
-  after the existing `fromPrice` span.
-- `src/app/[locale]/journeys/[slug]/page.tsx`, add the converted line under
-  `t("price")` in the sticky aside, plus the rate note under `priceUnit`. The
-  single supplement (`priceSingle`) gets the same treatment.
-- `messages/en.json` and `messages/de.json`, new `Currency` namespace.
+- `src/components/Header.tsx`, mounts the switcher.
+- `src/components/JourneyCard.tsx`, converted line under the `fromPrice` figure.
+- `src/app/[locale]/journeys/[slug]/page.tsx`, converted lines for the double
+  and single price in the sticky aside, plus the note.
+- `src/app/[locale]/journeys/page.tsx` and `src/app/[locale]/page.tsx`, the note
+  under the card grids.
+- `messages/en.json` and `messages/de.json`, new `Currency` namespace, and
+  `JourneyDetail.priceNote` now states that prices are agreed and invoiced in
+  EUR.
 - `src/middleware.ts`, geo cookie.
 - `.dev.vars.example` and `wrangler.jsonc`, only if phase 3 (KV) is built.
 
@@ -206,9 +214,11 @@ Explicitly **not** changed: `src/components/JsonLd.tsx`. The `Offer` keeps
 must see the contractual price, and a converted `Offer` would be both wrong and a
 structured-data policy risk.
 
-**No layout shift.** The converted line is server-rendered as an empty element
-with a reserved height (`min-h-[1.25rem]` on the card, one reserved line in the
-aside) and fades in when the rates arrive. The EUR figure never moves.
+**Layout shift.** Everything that can be in view when the rates arrive reserves
+its height: a 1rem line on the card, a 1.25rem line plus a 2.5rem note block in
+the aside. The EUR figure and the request button never move. The notes under the
+card grids are not reserved, they sit below the fold where a shift costs no CLS
+and an empty reserved block would just be dead space.
 
 ## 6. Copy (new `Currency` namespace, both locales)
 
@@ -218,16 +228,18 @@ parity (`messages/messages.test.ts`). New keys:
 | Key | EN | DE |
 | --- | --- | --- |
 | `approx` | `approx. {price}` | `ca. {price}` |
-| `switcherLabel` | `Currency` | `Waehrung` |
-| `rateNote` | `Indicative conversion at the ECB reference rate of {date}. All journeys are contracted and invoiced in EUR.` | `Unverbindliche Umrechnung zum EZB-Referenzkurs vom {date}. Alle Journeys werden in EUR vereinbart und abgerechnet.` |
-| `source` | `Source: European Central Bank` | `Quelle: Europaeische Zentralbank` |
+| `switcherLabel` | `Currency` | `Währung` |
+| `switcherTitle` | `Show journey prices in another currency` | `Journey-Preise in einer anderen Währung anzeigen` |
+| `rateNote` | `Amounts in other currencies are indicative, converted at the ECB euro reference rate of {date}. All journeys are agreed and invoiced in EUR.` | `Beträge in anderen Währungen sind Richtwerte, umgerechnet zum EZB-Euro-Referenzkurs vom {date}. Alle Journeys werden in EUR vereinbart und abgerechnet.` |
 
-`JourneyDetail.priceNote` gets one sentence appended in both locales, pointing
-out that any non-EUR figure on the page is indicative.
+`rateNote` carries the attribution as well, naming the ECB euro reference rate
+and its date, so no separate source line is needed. `JourneyDetail.priceNote`
+now also states that prices are agreed and invoiced in EUR, which holds whether
+or not a conversion is displayed.
 
-Placement: `approx` next to each converted amount, `rateNote` once per page in
-the price block, `source` once per page in the same small print. The rate date is
-formatted with `Intl.DateTimeFormat` in the page locale.
+Placement: `approx` next to each converted amount, `rateNote` once per page
+wherever converted amounts appear. The rate date is formatted with
+`Intl.DateTimeFormat` in the page locale.
 
 **Staleness rule.** If the payload is older than 7 days (`stale` true and snapshot
 date beyond the window), the component renders nothing. A wrong-looking
@@ -257,40 +269,45 @@ Following the existing vitest patterns (`src/lib/*.test.ts`):
   of a payload missing a required currency.
 - `src/lib/fx/convert.test.ts`, rounding direction and step per currency, JPY
   without decimals, EUR passthrough, `de-DE` and `en-US` formatting.
-- `src/lib/fx/country-currency.test.ts`, US to USD, CA to CAD, JP to JPY, DE to
-  EUR, unknown and missing country to EUR, and that every mapped currency exists
-  in the ECB set.
+- `src/lib/fx/currencies.test.ts`, the shipped set, US to USD, CA to CAD, JP to
+  JPY, AU to AUD, US dollar territories, DE and AE and unknown to EUR, and that
+  the snapshot covers every required rate.
 - `src/app/api/fx/route.test.ts`, mocked `fetch`: success path, upstream 500,
-  timeout, malformed XML. All four must answer 200, the last three with
-  `stale: true`.
+  network failure, timeout, malformed XML. All five answer 200, the four
+  failures with `stale: true`.
 - Existing suites (`messages.test.ts`, `no-em-dashes.test.ts`) cover the new copy
   automatically.
 
+41 tests, run with `npm test` alongside the existing 86. The UI components have
+no unit tests, the vitest config only picks up `.ts`, and the logic they render
+is fully covered in `src/lib/fx`.
+
 ## 9. Phasing and effort
 
-| Phase | Content | Rough effort |
+| Phase | Content | Status |
 | --- | --- | --- |
-| 0 | Verify the live ECB response shape and the exact currency list from a deployed Worker. This could not be checked from the build sandbox, whose egress proxy blocks `ecb.europa.eu`. Everything above assumes the documented format. | 0.5 h |
-| 1 | `src/lib/fx/*`, the API route, the fallback snapshot, tests. No UI. | 4 to 6 h |
-| 2 | Provider, switcher, `ConvertedPrice`, card and detail wiring, copy in both locales, geo cookie in the middleware. | 4 to 6 h |
-| 3 | Optional KV plus cron hardening. | 2 to 3 h |
+| 0 | Verify the live ECB response shape from a deployed Worker, then refresh `fallback-rates.ts` from a real response. The build sandbox has no egress to `ecb.europa.eu`, so the parser is written against the documented format and tested against a fixture of it. **Open, and the one thing to do before trusting this in production.** | open |
+| 1 | `src/lib/fx/*`, the API route, the fallback snapshot, tests. No UI. | done |
+| 2 | Provider, switcher, `ConvertedPrice`, `FxNote`, card and detail wiring, copy in both locales, geo cookie in the middleware. | done |
+| 3 | Optional KV plus cron hardening. | open, 2 to 3 h |
 | 4 | Out of scope here: a `ja` locale for Japanese guests. Currency is not language. JPY display works today with the English UI, but actually serving that audience means new routing, translations and hreflang, which is its own project. | separate |
 
-Phases 1 and 2 are independent of the open pricing decisions and can be built
-now. Going live with visible conversions should still wait for OPEN-DECISIONS
-2.1, since converting a price list that is itself unconfirmed just multiplies the
+The feature is built but the site is still `NEXT_PUBLIC_NOINDEX=1` on the interim
+domain. Going live with visible conversions should wait for OPEN-DECISIONS 2.1,
+since converting a price list that is itself unconfirmed just multiplies the
 uncertainty.
 
 ## 10. Decisions for Isabell
 
-- **D1, currency set.** Ship USD, CAD, JPY, GBP, CHF, AUD, SGD, everything else
-  EUR? AED and other Gulf currencies are not available from the ECB at all.
-- **D2, safety margin.** Recommendation is none beyond rounding up. Confirm, or
-  name a percentage.
-- **D3, automatic detection.** Recommendation is to preselect by visitor country
-  and always keep the switcher visible with EUR as an option. Alternative is
-  manual-only, no geo cookie, no privacy-page change.
-- **D4, placement.** Converted price on both the journey cards and the detail
-  page (recommended), or on the detail page only, to keep the collection grid
-  quiet.
-- **D5, privacy page.** Who signs off on the cookie wording.
+- **D1, currency set. Confirmed:** EUR, USD, CAD, JPY, AUD. Built. AED and other
+  Gulf currencies were not available from the ECB in any case.
+- **D2, safety margin.** Built with none beyond rounding up. Confirm, or name a
+  percentage and the step in `convert.ts` changes.
+- **D3, automatic detection.** Built as recommended: preselect by visitor
+  country, switcher always visible, EUR always selectable. Drop the middleware
+  cookie if manual-only is preferred.
+- **D4, placement.** Built on both the cards and the detail page. Removing the
+  card line is a two-line change if the collection grid should stay quieter.
+- **D5, privacy page.** Still open. The `abaton_fx_geo` and `abaton_fx` cookies
+  are functional, hold nothing but a currency code, and should be named in the
+  privacy page. Who signs off on the wording.

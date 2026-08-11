@@ -9,6 +9,7 @@ import { Media } from "@/components/ui/Media";
 import { JourneyCard } from "@/components/JourneyCard";
 import { getFeaturedJourney, pick } from "@/lib/journeys";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+import { FxNote } from "@/components/fx/FxNote";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -244,6 +245,7 @@ function JourneysTeaser({ locale }: { locale: Locale }) {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <JourneyCard journey={featured} locale={locale} />
         </div>
+        <FxNote className="mt-10 text-xs leading-relaxed text-slate/70" />
       </Container>
     </Section>
   );
