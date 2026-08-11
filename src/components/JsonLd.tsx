@@ -32,7 +32,7 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
         },
         areaServed: "Europe",
         description:
-          "Founder-led boutique offering private jet roundtrips through Europe for six to ten guests.",
+          "Founder-led boutique offering private jet roundtrips through Europe for six to eight guests.",
       }}
     />
   );
@@ -78,11 +78,44 @@ export function JourneyJsonLd({
                 "@type": "Offer",
                 price: journey.priceFrom,
                 priceCurrency: "EUR",
-                availability: "https://schema.org/LimitedAvailability",
+                // Only an "open" journey is actually purchasable; the rest are
+                // interest-list entries and must not claim availability.
+                availability:
+                  journey.status === "open"
+                    ? "https://schema.org/LimitedAvailability"
+                    : "https://schema.org/PreOrder",
                 url: journeyUrl,
               },
             }
           : {}),
+      }}
+    />
+  );
+}
+
+/** FAQPage markup for a journey's question list. Omitted when there are none. */
+export function JourneyFaqJsonLd({
+  journey,
+  locale,
+}: {
+  journey: Journey;
+  locale: Locale;
+}) {
+  if (journey.faq.length === 0) return null;
+
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: journey.faq.map((item) => ({
+          "@type": "Question",
+          name: pick(item.question, locale),
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: pick(item.answer, locale),
+          },
+        })),
       }}
     />
   );

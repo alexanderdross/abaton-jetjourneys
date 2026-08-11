@@ -1,7 +1,7 @@
 # ABATON JetJourneys
 
 Marketing site for **ABATON JetJourneys GmbH**, a founder-led boutique offering
-private jet roundtrips through Europe for six to ten guests.
+private jet roundtrips through Europe for six to eight guests.
 
 Rebuilt in **Next.js 15 (App Router)**, bilingual **English / German**, and
 deployed to **Cloudflare Workers** via the OpenNext adapter.
@@ -11,6 +11,7 @@ deployed to **Cloudflare Workers** via the OpenNext adapter.
 | Document | What it is |
 | --- | --- |
 | [docs/SPEC.md](./docs/SPEC.md) | The client brief, verbatim. Source of truth for what the site is meant to be. |
+| [docs/BRIEFING-ELEGANT-ISLANDS-2027.md](./docs/BRIEFING-ELEGANT-ISLANDS-2027.md) | The 2027 Elegant Islands relaunch briefing. Supersedes the routing in SPEC section 13. |
 | [docs/GAP-ANALYSIS.md](./docs/GAP-ANALYSIS.md) | What is built vs. what the spec asks for, with file references. Start here. |
 | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) | Questions only the client can answer. Several block launch. |
 | [docs/CIRCLE-BACKLOG.md](./docs/CIRCLE-BACKLOG.md) | The member portal, deferred and not started. |
