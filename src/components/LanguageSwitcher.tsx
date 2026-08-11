@@ -1,14 +1,16 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
 const labels: Record<string, string> = { en: "EN", de: "DE" };
+const titleKeys = { en: "switchToEn", de: "switchToDe" } as const;
 
 export function LanguageSwitcher({ className = "" }: { className?: string }) {
   const locale = useLocale();
+  const t = useTranslations("Nav");
   const pathname = usePathname();
   const params = useParams();
   const router = useRouter();
@@ -24,7 +26,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
     <div
       className={`flex items-center gap-1 text-xs tracking-[0.15em] ${className}`}
       role="group"
-      aria-label="Language"
+      aria-label={t("languageLabel")}
     >
       {routing.locales.map((loc, i) => (
         <span key={loc} className="flex items-center gap-1">
@@ -32,6 +34,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
           <button
             type="button"
             onClick={() => switchTo(loc)}
+            title={t(titleKeys[loc])}
             aria-current={loc === locale ? "true" : undefined}
             className={`transition-colors hover:text-champagne ${
               loc === locale ? "text-champagne" : "opacity-70"

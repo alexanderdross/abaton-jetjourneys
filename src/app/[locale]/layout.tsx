@@ -75,13 +75,22 @@ export default async function LocaleLayout({
     notFound();
   }
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Nav" });
 
   return (
     <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-[2px] focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-bone focus:outline-none focus:ring-2 focus:ring-champagne"
+          >
+            {t("skipToContent")}
+          </a>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

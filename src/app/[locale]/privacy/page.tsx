@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
+import { altLinks } from "@/lib/i18n-urls";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -12,7 +13,11 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Legal" });
-  return { title: t("privacyTitle"), robots: { index: false } };
+  return {
+    title: t("privacyTitle"),
+    alternates: altLinks(locale, "/privacy"),
+    robots: { index: false },
+  };
 }
 
 export default async function PrivacyPage({ params }: PageProps) {
@@ -91,12 +96,11 @@ function PrivacyDE() {
         Nutzung verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
-      <h2>Reichweitenmessung (Cloudflare Web Analytics)</h2>
+      <h2>Reichweitenmessung</h2>
       <p>
-        Wir nutzen Cloudflare Web Analytics, eine cookielose, datenschutz-
-        freundliche Reichweitenmessung. Es werden keine Cookies gesetzt und
-        keine einzelnen Personen über Websites hinweg nachverfolgt.
-        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+        Wir setzen auf dieser Website keine Analyse- oder Tracking-Dienste ein.
+        Es werden keine Cookies zu Analysezwecken gesetzt und keine einzelnen
+        Personen über Websites hinweg nachverfolgt.
       </p>
 
       <h2>Speicherdauer</h2>
@@ -181,11 +185,11 @@ function PrivacyEN() {
         from automated use. The legal basis is Art. 6(1)(f) GDPR.
       </p>
 
-      <h2>Analytics (Cloudflare Web Analytics)</h2>
+      <h2>Analytics</h2>
       <p>
-        We use Cloudflare Web Analytics, a cookieless, privacy-friendly
-        analytics service. No cookies are set and no individuals are tracked
-        across websites. The legal basis is Art. 6(1)(f) GDPR.
+        We do not use any analytics or tracking services on this website. No
+        analytics cookies are set and no individuals are tracked across
+        websites.
       </p>
 
       <h2>Retention</h2>

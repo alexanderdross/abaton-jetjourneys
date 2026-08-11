@@ -76,10 +76,10 @@ describe("submitRequest", () => {
     expect(res).toEqual({ status: "error", message: "consent" });
   });
 
-  it("succeeds without a Resend key but does not send email", async () => {
+  it("fails loudly without a Resend key rather than dropping the enquiry", async () => {
     envMock.value = { TURNSTILE_SECRET_KEY: "secret" }; // no RESEND_API_KEY
     const res = await submitRequest(idle, form(validFields));
-    expect(res).toEqual({ status: "success" });
+    expect(res).toEqual({ status: "error", message: "send" });
     expect(sendMock).not.toHaveBeenCalled();
   });
 
@@ -97,6 +97,23 @@ describe("submitRequest", () => {
     const payload = sendMock.mock.calls[0][0];
     expect(payload.replyTo).toBe("ada@example.com");
     expect(payload.subject).toContain("Finest of Europe");
+  });
+
+  it("includes the journey slug submitted by the detail page", async () => {
+    envMock.value = {
+      TURNSTILE_SECRET_KEY: "secret",
+      RESEND_API_KEY: "re_test",
+    };
+    await submitRequest(
+      idle,
+      form({
+        ...validFields,
+        journey: "Finest of Europe",
+        journeySlug: "finest-of-europe",
+      }),
+    );
+    const payload = sendMock.mock.calls[0][0];
+    expect(payload.html).toContain("finest-of-europe");
   });
 
   it("escapes user input in the email HTML", async () => {

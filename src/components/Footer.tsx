@@ -3,13 +3,15 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Container } from "./ui/Container";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { company } from "@/lib/site";
+import { company, buildYear } from "@/lib/site";
 
 export function Footer() {
   const t = useTranslations("Footer");
   const nav = useTranslations("Nav");
 
-  const year = 2024; // static build-time year; avoids runtime Date in edge render
+  // Stamped once at build time. Deliberately not a runtime `new Date()`: the
+  // edge render would make the output non-deterministic across cached responses.
+  const year = buildYear;
 
   return (
     <footer className="bg-ink text-bone/80">
@@ -38,6 +40,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/journeys"
+                  title={nav("journeysTitle")}
                   className="hover:text-champagne transition-colors"
                 >
                   {nav("journeys")}
@@ -46,6 +49,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/about"
+                  title={nav("aboutTitle")}
                   className="hover:text-champagne transition-colors"
                 >
                   {nav("about")}
@@ -54,6 +58,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contact"
+                  title={nav("contactTitle")}
                   className="hover:text-champagne transition-colors"
                 >
                   {nav("contact")}
@@ -75,6 +80,7 @@ export function Footer() {
               <p>
                 <a
                   href={`tel:${company.phoneHref}`}
+                  title={t("phoneTitle")}
                   className="hover:text-champagne transition-colors"
                 >
                   {company.phone}
@@ -83,6 +89,7 @@ export function Footer() {
               <p>
                 <a
                   href={`mailto:${company.email}`}
+                  title={t("emailTitle")}
                   className="hover:text-champagne transition-colors"
                 >
                   {company.email}
@@ -99,18 +106,21 @@ export function Footer() {
             </span>
             <Link
               href="/imprint"
+              title={t("imprintTitle")}
               className="hover:text-champagne transition-colors"
             >
               {t("imprint")}
             </Link>
             <Link
               href="/terms-conditions"
+              title={t("termsTitle")}
               className="hover:text-champagne transition-colors"
             >
               {t("terms")}
             </Link>
             <Link
               href="/privacy"
+              title={t("privacyTitle")}
               className="hover:text-champagne transition-colors"
             >
               {t("privacy")}

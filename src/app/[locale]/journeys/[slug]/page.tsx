@@ -87,7 +87,6 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           <Media
             src={journey.heroImage.src}
             alt={pick(journey.heroImage.alt, locale)}
-            label={pick(journey.title, locale).split(":")[0].trim()}
             priority
             sizes="100vw"
           />
@@ -96,6 +95,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
         <Container className="relative z-10 pb-16">
           <Link
             href="/journeys"
+            title={t("backToJourneysTitle")}
             className="text-xs uppercase tracking-[0.18em] text-bone/70 hover:text-champagne transition-colors"
           >
             ← {t("backToJourneys")}
@@ -176,6 +176,9 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                 )}
                 <a
                   href="#request"
+                  title={t("requestCtaTitle", {
+                    journey: pick(journey.title, locale),
+                  })}
                   className="mt-8 inline-flex w-full items-center justify-center bg-ink text-bone text-xs uppercase tracking-[0.14em] px-6 py-3.5 rounded-[2px] hover:bg-champagne hover:text-ink transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2"
                 >
                   {t("requestCta")}
@@ -264,7 +267,6 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                     <Media
                       src={img.src}
                       alt={pick(img.alt, locale)}
-                      label={pick(img.alt, locale)}
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>

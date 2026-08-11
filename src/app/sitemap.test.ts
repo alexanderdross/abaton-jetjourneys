@@ -26,6 +26,16 @@ describe("sitemap", () => {
       expect(e.alternates?.languages?.de).toBeTruthy();
       // German alternate carries the /de prefix.
       expect(e.alternates?.languages?.de).toContain("/de");
+      // x-default falls back to English.
+      expect(e.alternates?.languages?.["x-default"]).toBe(
+        e.alternates?.languages?.en,
+      );
+    }
+  });
+
+  it("omits the noindex legal pages that robots.txt disallows", () => {
+    for (const path of ["/imprint/", "/privacy/", "/terms-conditions/"]) {
+      expect(urls.some((u) => u.endsWith(path))).toBe(false);
     }
   });
 });

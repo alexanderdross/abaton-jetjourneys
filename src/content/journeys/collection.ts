@@ -3,6 +3,13 @@
 // Content reflects the ABATON 2026 brochure: real routes, included services,
 // "from" pricing and scheduled departures. The full itinerary and final detail
 // are shared in the personal brochure on request.
+//
+// ! CONTESTED CONTENT. Section 13 of docs/SPEC.md records route and portfolio
+// changes that this file does not yet reflect. The per-journey notes below say
+// which parts are superseded. Do NOT "correct" them from the spec alone: the
+// rewrites need Isabell's confirmation plus new day-by-day copy, and are
+// tracked in docs/OPEN-DECISIONS.md. Guessing produces a plausible itinerary
+// that ABATON cannot actually operate.
 
 const guests = { en: "6–10 guests", de: "6–10 Gäste" } as const;
 const hotels = {
@@ -38,6 +45,10 @@ const gallery = [
 
 export const collectionJourneys = [
   {
+    // OPEN DECISION 1.5: overlaps geographically with the newly designed
+    // Mediterranean Essence route (San Sebastian, Provence, Sardinia, Suedtirol),
+    // which does not exist in this repo. Isabell to confirm whether Mediterranean
+    // Essence replaces this journey or both run.
     slug: "secrets-of-europe",
     published: true,
     featured: false,
@@ -196,6 +207,11 @@ export const collectionJourneys = [
   },
 
   {
+    // OPEN DECISION 1.1: route below is SUPERSEDED. Galway and Dublin are
+    // replaced by a single Ashford Castle stop (technical gateway: Ireland West
+    // Airport Knock) on a strict 4-station / 2-nights-per-station format. Route,
+    // itinerary and Signature Moments all need rewriting once confirmed.
+    // Section 6 of the spec also wants this journey featured on the homepage.
     slug: "elegant-islands",
     published: true,
     featured: false,
@@ -359,6 +375,9 @@ export const collectionJourneys = [
   },
 
   {
+    // OPEN DECISION 1.2: route below is SUPERSEDED. Sofia and Ljubljana have
+    // been removed; the current version is Budapest, Brasov, Rovinj/Pula, Kotor,
+    // Albanian Riviera (Vlora), still 4 stations.
     slug: "fascinating-balkan",
     published: true,
     featured: false,
@@ -515,6 +534,11 @@ export const collectionJourneys = [
   },
 
   {
+    // OPEN DECISION 1.3: route below is SUPERSEDED. The redesign starts and ends
+    // in Hamburg, not Copenhagen, with Bergen, Tromsoe, Rovaniemi, Stockholm.
+    // The "Preview 2028" departure also needs confirming. This journey is in
+    // development but renders identically to a bookable one, because the model
+    // has no `status` field yet (spec section 5).
     slug: "wild-scandinavia",
     published: true,
     featured: false,
