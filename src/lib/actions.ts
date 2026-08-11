@@ -44,6 +44,7 @@ export async function submitRequest(
     phone: formData.get("phone") ?? "",
     guests: formData.get("guests") ?? "",
     journey: formData.get("journey") ?? "",
+    journeySlug: formData.get("journeySlug") ?? "",
     message: formData.get("message") ?? "",
     locale: formData.get("locale") ?? "en",
     consent: formData.get("consent"),
@@ -68,10 +69,12 @@ export async function submitRequest(
     return { status: "error", message: "turnstile" };
   }
 
-  // Without an API key (e.g. previews) we accept but cannot deliver.
+  // No API key means the enquiry cannot be delivered anywhere. Reporting
+  // success here would silently drop real leads on a misconfigured deploy, so
+  // fail loudly instead and let the guest fall back to phone or email.
   if (!env.RESEND_API_KEY) {
-    console.warn("[submitRequest] RESEND_API_KEY missing, email not sent.");
-    return { status: "success" };
+    console.error("[submitRequest] RESEND_API_KEY missing, enquiry not sent.");
+    return { status: "error", message: "send" };
   }
 
   const to = env.CONTACT_TO_EMAIL ?? company.email;
@@ -87,6 +90,7 @@ export async function submitRequest(
     ["Phone", data.phone || "-"],
     ["Guests", data.guests || "-"],
     ["Journey", data.journey || "General enquiry"],
+    ["Journey slug", data.journeySlug || "-"],
     ["Language", data.locale.toUpperCase()],
     ["Message", data.message || "-"],
   ];

@@ -19,6 +19,8 @@ type LinkButtonProps = {
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  /** SEO title attribute, required on every link (see docs/SPEC.md, section 3). */
+  title?: string;
 };
 
 export function LinkButton({
@@ -26,9 +28,14 @@ export function LinkButton({
   children,
   variant = "primary",
   className = "",
+  title,
 }: LinkButtonProps) {
   return (
-    <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+    <Link
+      href={href}
+      title={title}
+      className={`${base} ${variants[variant]} ${className}`}
+    >
       {children}
     </Link>
   );

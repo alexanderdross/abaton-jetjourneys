@@ -16,6 +16,7 @@ export function JourneyCard({
   return (
     <Link
       href={{ pathname: "/journeys/[slug]", params: { slug: journey.slug } }}
+      title={t("cardTitle", { journey: pick(journey.title, locale) })}
       className="group block"
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-[2px] bg-ink">
@@ -23,7 +24,6 @@ export function JourneyCard({
           <Media
             src={journey.heroImage.src}
             alt={pick(journey.heroImage.alt, locale)}
-            label={pick(journey.title, locale).split(":")[0].trim()}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>

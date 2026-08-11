@@ -20,6 +20,7 @@ export async function generateMetadata({
     title: t("title"),
     description: t("lead"),
     alternates: altLinks(locale, "/about"),
+    openGraph: { type: "website", title: t("title"), description: t("lead") },
   };
 }
 
@@ -27,6 +28,7 @@ export default async function AboutPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("About");
+  const nav = await getTranslations("Nav");
 
   return (
     <>
@@ -107,6 +109,7 @@ export default async function AboutPage({ params }: PageProps) {
                 href="/contact"
                 variant="outline"
                 className="text-bone"
+                title={nav("contactTitle")}
               >
                 {t("ctaButton")}
               </LinkButton>

@@ -1,6 +1,14 @@
 // Journey: Finest of Europe (full itinerary)
 // Content-as-code. Add a new file like this and register it in ./index.ts.
 // Data reflects the ABATON 2026 brochure (route, inclusions, "from" pricing).
+//
+// ! OPEN DECISION 1.4: section 13 of docs/SPEC.md flags this route for REMOVAL
+// (too generically "reachable by everyone", not aligned with the new
+// positioning) and notes the duplicate "Founders Edition" naming. It is
+// nonetheless the featured homepage journey (`featured: true` below), while
+// section 6 of the spec wants Elegant Islands in that slot. Do not delete or
+// re-point this without Isabell's decision: legacy URLs 301 here
+// (src/lib/legacy-redirects.ts) and the homepage hero depends on it.
 
 const journey = {
   slug: "finest-of-europe",

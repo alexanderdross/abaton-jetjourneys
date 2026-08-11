@@ -19,6 +19,7 @@ export async function generateMetadata({
     title: t("title"),
     description: t("lead"),
     alternates: altLinks(locale, "/contact"),
+    openGraph: { type: "website", title: t("title"), description: t("lead") },
   };
 }
 

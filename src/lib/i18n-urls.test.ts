@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { altLinks, localizedPath } from "./i18n-urls";
+import { absoluteUrl, altLinks, localizedPath } from "./i18n-urls";
+import { siteUrl } from "./site";
 
 describe("localizedPath", () => {
   it("keeps English at the root with a trailing slash", () => {
@@ -56,5 +57,32 @@ describe("altLinks", () => {
     expect(en.languages.de).toBe(
       "/de/reisen/the-premiere-edition-finest-of-europe/",
     );
+  });
+});
+
+// Structured data (src/components/JsonLd.tsx) must emit the same URLs the
+// browser is actually on. The previous hand-built `${siteUrl}/${locale}/...`
+// resolved in neither locale: English has no prefix, German uses /de/reisen/.
+describe("absoluteUrl (structured data)", () => {
+  it("omits the locale prefix for English and localises German segments", () => {
+    const href = {
+      pathname: "/journeys/[slug]" as const,
+      params: { slug: "elegant-islands" },
+    };
+    expect(absoluteUrl("en", href)).toBe(
+      `${siteUrl}/journeys/elegant-islands/`,
+    );
+    expect(absoluteUrl("de", href)).toBe(
+      `${siteUrl}/de/reisen/elegant-islands/`,
+    );
+  });
+
+  it("resolves the home page per locale", () => {
+    expect(absoluteUrl("en", "/")).toBe(`${siteUrl}/`);
+    expect(absoluteUrl("de", "/")).toBe(`${siteUrl}/de/`);
+  });
+
+  it("never emits an /en/ path", () => {
+    expect(absoluteUrl("en", "/contact")).not.toContain("/en/");
   });
 });

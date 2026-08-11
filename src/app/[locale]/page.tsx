@@ -16,6 +16,8 @@ export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Home");
+  const nav = await getTranslations("Nav");
+  const jt = await getTranslations("Journeys");
   const featured = getFeaturedJourney();
 
   return (
@@ -43,10 +45,19 @@ export default async function HomePage({ params }: PageProps) {
               {t("heroSubtitle")}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <LinkButton href="/journeys" variant="primary">
+              <LinkButton
+                href="/journeys"
+                variant="primary"
+                title={nav("journeysTitle")}
+              >
                 {t("heroCta")}
               </LinkButton>
-              <LinkButton href="/about" variant="outline" className="text-bone">
+              <LinkButton
+                href="/about"
+                variant="outline"
+                className="text-bone"
+                title={nav("aboutTitle")}
+              >
                 {t("heroSecondaryCta")}
               </LinkButton>
             </div>
@@ -107,7 +118,6 @@ export default async function HomePage({ params }: PageProps) {
                   <Media
                     src={featured.heroImage.src}
                     alt={pick(featured.heroImage.alt, locale)}
-                    label={pick(featured.title, locale).split(":")[0].trim()}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
@@ -133,6 +143,9 @@ export default async function HomePage({ params }: PageProps) {
                     }}
                     variant="outline"
                     className="text-bone"
+                    title={jt("cardTitle", {
+                      journey: pick(featured.title, locale),
+                    })}
                   >
                     {t("featuredCta")}
                   </LinkButton>
@@ -157,7 +170,9 @@ export default async function HomePage({ params }: PageProps) {
               {t("closingBody")}
             </p>
             <div className="mt-10">
-              <LinkButton href="/contact">{t("closingCta")}</LinkButton>
+              <LinkButton href="/contact" title={nav("contactTitle")}>
+                {t("closingCta")}
+              </LinkButton>
             </div>
           </Reveal>
         </Container>

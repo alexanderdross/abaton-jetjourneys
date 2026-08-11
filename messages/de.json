@@ -5,14 +5,21 @@
     "defaultDescription": "Ein inhabergeführtes Boutique-Unternehmen mit wenigen Privatjet-Rundreisen pro Jahr. Sechs bis zehn Gäste, handverlesene Hotels und Europa, wie es sein sollte."
   },
   "Nav": {
-    "home": "Start",
     "journeys": "Journeys",
     "about": "Philosophie",
     "contact": "Kontakt",
     "requestCta": "Journey anfragen",
     "menu": "Menü",
     "close": "Schließen",
-    "languageLabel": "Sprache"
+    "homeTitle": "ABATON JetJourneys, Privatjet-Rundreisen durch Europa",
+    "journeysTitle": "Die ABATON Kollektion der Privatjet-Journeys entdecken",
+    "aboutTitle": "Die Philosophie hinter ABATON JetJourneys",
+    "contactTitle": "ABATON JetJourneys kontaktieren und persönlich beraten lassen",
+    "requestCtaTitle": "Persönliche Beratung zu einer ABATON Journey anfragen",
+    "languageLabel": "Sprache",
+    "switchToEn": "Switch to English",
+    "switchToDe": "Auf Deutsch wechseln",
+    "skipToContent": "Zum Inhalt springen"
   },
   "Home": {
     "heroEyebrow": "Privatjet-Rundreisen",
@@ -31,7 +38,6 @@
     "pillar3Title": "Durchweg handverlesen",
     "pillar3Body": "Inhabergeführte Hotels mit Charakter, authentische Tische und kulturelle Momente, die schlicht nicht jedem offenstehen.",
     "featuredEyebrow": "Die aktuelle Edition",
-    "featuredTitle": "Die Journey dieser Saison",
     "featuredCta": "Reiseverlauf ansehen",
     "howEyebrow": "So funktioniert es",
     "howTitle": "Von der ersten Zeile zum ersten Flug",
@@ -50,11 +56,10 @@
     "title": "Journeys",
     "intro": "Jede Edition wird einmal komponiert und eine einzige Saison geflogen. Nachfolgend die derzeit für Anfragen geöffneten Journeys.",
     "nights": "{count, plural, one {# Nacht} other {# Nächte}}",
-    "guests": "6–10 Gäste",
     "viewJourney": "Journey ansehen",
     "fromPrice": "ab {price}",
     "emptyState": "Neue Editionen sind in Vorbereitung. Nehmen Sie Kontakt auf, um zu den Ersten zu gehören, die es erfahren.",
-    "detailsLabel": "Auf einen Blick"
+    "cardTitle": "{journey}, eine Privatjet-Journey von ABATON"
   },
   "JourneyDetail": {
     "backToJourneys": "Alle Journeys",
@@ -76,7 +81,9 @@
     "requestTitle": "Diese Journey anfragen",
     "requestBody": "Erhalten Sie die vollständige Broschüre mit detailliertem Reiseverlauf und Preisen, unverbindlich.",
     "requestCta": "Journey anfragen",
-    "priceNote": "Preise sind Richtwerte ab pro Person. Alle Details nennt Ihre persönliche Broschüre."
+    "priceNote": "Preise sind Richtwerte ab pro Person. Alle Details nennt Ihre persönliche Broschüre.",
+    "backToJourneysTitle": "Zurück zu allen ABATON Privatjet-Journeys",
+    "requestCtaTitle": "Die vollständige Broschüre zu {journey} anfragen"
   },
   "About": {
     "eyebrow": "Philosophie",
@@ -131,19 +138,22 @@
   "Footer": {
     "tagline": "Privatjet-Rundreisen durch das Feinste Europas.",
     "explore": "Entdecken",
-    "legal": "Rechtliches",
     "contact": "Kontakt",
     "imprint": "Impressum",
     "terms": "AGB",
     "privacy": "Datenschutz",
     "rights": "Alle Rechte vorbehalten.",
-    "company": "ABATON JetJourneys GmbH"
+    "company": "ABATON JetJourneys GmbH",
+    "imprintTitle": "Impressum und Unternehmensangaben der ABATON JetJourneys GmbH",
+    "termsTitle": "Allgemeine Geschäftsbedingungen für ABATON Journeys",
+    "privacyTitle": "Wie ABATON JetJourneys mit Ihren personenbezogenen Daten umgeht",
+    "phoneTitle": "ABATON JetJourneys anrufen",
+    "emailTitle": "ABATON JetJourneys eine E-Mail schreiben"
   },
   "Legal": {
     "imprintTitle": "Impressum",
     "termsTitle": "Allgemeine Geschäftsbedingungen",
-    "privacyTitle": "Datenschutzerklärung",
-    "lastUpdated": "Zuletzt aktualisiert"
+    "privacyTitle": "Datenschutzerklärung"
   },
   "NotFound": {
     "title": "Abseits der Karte",
@@ -152,6 +162,7 @@
   },
   "Breadcrumbs": {
     "home": "Start",
-    "ariaLabel": "Brotkrümelnavigation"
+    "ariaLabel": "Brotkrümelnavigation",
+    "homeTitle": "Zur Startseite von ABATON JetJourneys"
   }
 }

@@ -18,7 +18,27 @@ export const company = {
   phone: "+49 175 729 31 27",
   phoneHref: "+491757293127",
   email: "info@abaton-jetjourneys.com",
+  // Commercial register. The HRB number is confirmed; the registering court and
+  // the VAT ID are still outstanding from the client (docs/OPEN-DECISIONS.md,
+  // item 5.1). Empty values are omitted from the imprint rather than rendered
+  // as "[…]" placeholders, a German imprint must not ship with visible gaps.
+  registerNumber: "HRB 204597",
+  // Statutory insolvency-protection provider (Kundengeldabsicherer), named in
+  // the T&Cs per § 651r BGB. Outstanding from the client
+  // (docs/OPEN-DECISIONS.md, item 5.5).
+  insolvencyInsurer: "",
+  registerCourt: "",
+  vatId: "",
 } as const;
+
+/**
+ * Year stamped into the footer copyright. Resolved once at build time, because
+ * a runtime `new Date()` in an edge render would vary across cached responses.
+ * Falls back to the current year so a rebuild always refreshes it.
+ */
+export const buildYear = Number(
+  process.env.NEXT_PUBLIC_BUILD_YEAR ?? new Date().getFullYear(),
+);
 
 export const social = {
   instagram: "https://www.instagram.com/",

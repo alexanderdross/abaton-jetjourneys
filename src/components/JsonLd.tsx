@@ -1,5 +1,6 @@
 import type { Locale } from "@/i18n/routing";
 import { siteUrl, company } from "@/lib/site";
+import { absoluteUrl } from "@/lib/i18n-urls";
 import { type Journey, pick } from "@/lib/journeys";
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -19,7 +20,7 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
         name: company.name,
-        url: `${siteUrl}/${locale}`,
+        url: absoluteUrl(locale, "/"),
         telephone: company.phone,
         email: company.email,
         address: {
@@ -44,6 +45,11 @@ export function JourneyJsonLd({
   journey: Journey;
   locale: Locale;
 }) {
+  const journeyUrl = absoluteUrl(locale, {
+    pathname: "/journeys/[slug]",
+    params: { slug: journey.slug },
+  });
+
   return (
     <JsonLd
       data={{
@@ -51,7 +57,7 @@ export function JourneyJsonLd({
         "@type": "TouristTrip",
         name: pick(journey.title, locale),
         description: pick(journey.summary, locale),
-        url: `${siteUrl}/${locale}/journeys/${journey.slug}`,
+        url: journeyUrl,
         touristType: "Luxury travellers",
         itinerary: {
           "@type": "ItemList",
@@ -73,7 +79,7 @@ export function JourneyJsonLd({
                 price: journey.priceFrom,
                 priceCurrency: "EUR",
                 availability: "https://schema.org/LimitedAvailability",
-                url: `${siteUrl}/${locale}/journeys/${journey.slug}`,
+                url: journeyUrl,
               },
             }
           : {}),

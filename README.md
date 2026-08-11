@@ -6,6 +6,19 @@ private jet roundtrips through Europe for six to ten guests.
 Rebuilt in **Next.js 15 (App Router)**, bilingual **English / German**, and
 deployed to **Cloudflare Workers** via the OpenNext adapter.
 
+## Project docs
+
+| Document | What it is |
+| --- | --- |
+| [docs/SPEC.md](./docs/SPEC.md) | The client brief, verbatim. Source of truth for what the site is meant to be. |
+| [docs/GAP-ANALYSIS.md](./docs/GAP-ANALYSIS.md) | What is built vs. what the spec asks for, with file references. Start here. |
+| [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) | Questions only the client can answer. Several block launch. |
+| [docs/CIRCLE-BACKLOG.md](./docs/CIRCLE-BACKLOG.md) | The member portal, deferred and not started. |
+
+> Several journeys in `src/content/journeys/` carry routes the client has since
+> revised. They are flagged in-file and listed in **OPEN-DECISIONS**. Do not
+> "fix" them from the spec without confirmation.
+
 ## Stack
 
 | Concern | Choice |
@@ -16,7 +29,6 @@ deployed to **Cloudflare Workers** via the OpenNext adapter.
 | Styling | Tailwind CSS v4 with design tokens (`src/app/globals.css`) |
 | Content | Content-as-code, typed journeys in `src/content/journeys`, validated with `zod` |
 | Enquiries | Server Action → [Resend](https://resend.com) email, protected by Cloudflare Turnstile |
-| Analytics | Cloudflare Web Analytics (cookieless) |
 
 ## URL scheme
 
@@ -40,7 +52,7 @@ npm run preview                  # build + run in the workerd runtime (prod-like
 
 Journeys live in `src/content/journeys/`. To add one:
 
-1. Create `src/content/journeys/<name>.ts` (see `the-premiere-edition.ts`).
+1. Create `src/content/journeys/<name>.ts` (see `finest-of-europe.ts`).
 2. Register it in `src/content/journeys/index.ts`.
 
 Each journey carries `en` and `de` fields side by side and is validated at build

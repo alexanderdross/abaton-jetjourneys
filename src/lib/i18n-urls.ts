@@ -1,4 +1,5 @@
 import { routing, type Locale, type AppPathname } from "@/i18n/routing";
+import { siteUrl } from "@/lib/site";
 
 /**
  * Localised canonical + hreflang alternates, a pure function of the routing
@@ -39,6 +40,15 @@ export function localizedPath(locale: Locale, href: Href): string {
       : `/${locale}${path === "/" ? "" : path}`;
 
   return withTrailingSlash(prefixed);
+}
+
+/**
+ * Absolute, locale-correct URL. Used by structured data, which needs the same
+ * URLs as canonical/hreflang: English has no locale prefix ("/journeys/x/"),
+ * German uses localised segments ("/de/reisen/x/").
+ */
+export function absoluteUrl(locale: Locale, href: Href): string {
+  return `${siteUrl}${localizedPath(locale, href)}`;
 }
 
 export function altLinks(locale: Locale, href: Href) {

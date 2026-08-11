@@ -19,6 +19,8 @@ export async function generateMetadata({
     title: t("title"),
     description: t("intro"),
     alternates: altLinks(locale, "/journeys"),
+    // Without this the page inherits the site-default OG title/description.
+    openGraph: { type: "website", title: t("title"), description: t("intro") },
   };
 }
 

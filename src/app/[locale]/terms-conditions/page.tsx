@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
+import { altLinks } from "@/lib/i18n-urls";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -12,7 +13,11 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Legal" });
-  return { title: t("termsTitle"), robots: { index: false } };
+  return {
+    title: t("termsTitle"),
+    alternates: altLinks(locale, "/terms-conditions"),
+    robots: { index: false },
+  };
 }
 
 export default async function TermsPage({ params }: PageProps) {
@@ -155,7 +160,8 @@ function TermsDE() {
         Der Reisepreis ist im Rahmen der gesetzlichen Vorgaben gegen die
         Insolvenz des Veranstalters abgesichert. Der Reisende erhält vor
         Fälligkeit der Anzahlung einen Sicherungsschein des
-        Kundengeldabsicherers {"[Name des Versicherers / Absicherers]"}.
+        Kundengeldabsicherers
+        {company.insolvencyInsurer ? ` ${company.insolvencyInsurer}` : ""}.
       </p>
 
       <h2>13. Streitbeilegung und Rechtswahl</h2>
@@ -282,7 +288,8 @@ function TermsEN() {
         The travel price is protected against the Operator's insolvency within
         the statutory framework. Before the deposit falls due, the traveller
         receives an insolvency-protection certificate from the customer-funds
-        insurer {"[name of insurer / protection provider]"}.
+        insurer
+        {company.insolvencyInsurer ? ` ${company.insolvencyInsurer}` : ""}.
       </p>
 
       <h2>13. Dispute resolution and governing law</h2>

@@ -10,6 +10,9 @@ export const requestSchema = z.object({
   phone: z.string().trim().max(60).optional().or(z.literal("")),
   guests: z.string().trim().max(20).optional().or(z.literal("")),
   journey: z.string().trim().max(200).optional().or(z.literal("")),
+  // Machine-readable counterpart to `journey`, submitted by the journey detail
+  // page so the enquiry can be attributed to an exact journey, not just a title.
+  journeySlug: z.string().trim().max(120).optional().or(z.literal("")),
   message: z.string().trim().max(4000).optional().or(z.literal("")),
   locale: z.enum(["en", "de"]).default("en"),
   consent: z.literal("on", {

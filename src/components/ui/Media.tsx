@@ -8,8 +8,6 @@ import Image from "next/image";
 type MediaProps = {
   src: string;
   alt: string;
-  /** Kept for call-site compatibility; not rendered. */
-  label?: string;
   className?: string;
   priority?: boolean;
   sizes?: string;

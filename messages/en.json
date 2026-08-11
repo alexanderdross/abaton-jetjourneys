@@ -5,14 +5,21 @@
     "defaultDescription": "A founder-led boutique crafting a handful of private jet roundtrips each year. Six to ten guests, hand-selected hotels, and Europe seen the way it was meant to be."
   },
   "Nav": {
-    "home": "Home",
     "journeys": "Journeys",
     "about": "Philosophy",
     "contact": "Contact",
     "requestCta": "Request a Journey",
     "menu": "Menu",
     "close": "Close",
-    "languageLabel": "Language"
+    "homeTitle": "ABATON JetJourneys, private jet roundtrips through Europe",
+    "journeysTitle": "Browse the ABATON collection of private jet journeys",
+    "aboutTitle": "The philosophy behind ABATON JetJourneys",
+    "contactTitle": "Contact ABATON JetJourneys and request a private consultation",
+    "requestCtaTitle": "Request a private consultation about an ABATON journey",
+    "languageLabel": "Language",
+    "switchToEn": "Switch to English",
+    "switchToDe": "Auf Deutsch wechseln",
+    "skipToContent": "Skip to content"
   },
   "Home": {
     "heroEyebrow": "Private Jet Roundtrips",
@@ -31,7 +38,6 @@
     "pillar3Title": "Hand-Selected Throughout",
     "pillar3Body": "Owner-led hotels with character, authentic tables, and cultural moments that are simply not open to everyone.",
     "featuredEyebrow": "The Current Edition",
-    "featuredTitle": "This season's journey",
     "featuredCta": "Explore the Itinerary",
     "howEyebrow": "How It Works",
     "howTitle": "From first note to first flight",
@@ -50,11 +56,10 @@
     "title": "Journeys",
     "intro": "Each edition is composed once and flown a single season. Below, the journeys currently open for enquiry.",
     "nights": "{count, plural, one {# night} other {# nights}}",
-    "guests": "6–10 guests",
     "viewJourney": "View journey",
     "fromPrice": "from {price}",
     "emptyState": "New editions are in preparation. Please get in touch to be among the first to know.",
-    "detailsLabel": "At a glance"
+    "cardTitle": "{journey}, a private jet journey by ABATON"
   },
   "JourneyDetail": {
     "backToJourneys": "All journeys",
@@ -76,7 +81,9 @@
     "requestTitle": "Request this journey",
     "requestBody": "Receive the full brochure with detailed itinerary and pricing, with no obligation.",
     "requestCta": "Request a Journey",
-    "priceNote": "Prices are indicative starting rates per person. The full detail is shared in your personal brochure."
+    "priceNote": "Prices are indicative starting rates per person. The full detail is shared in your personal brochure.",
+    "backToJourneysTitle": "Back to all ABATON private jet journeys",
+    "requestCtaTitle": "Request the full brochure for {journey}"
   },
   "About": {
     "eyebrow": "Philosophy",
@@ -131,19 +138,22 @@
   "Footer": {
     "tagline": "Private jet roundtrips through the finest of Europe.",
     "explore": "Explore",
-    "legal": "Legal",
     "contact": "Contact",
     "imprint": "Imprint",
     "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
     "rights": "All rights reserved.",
-    "company": "ABATON JetJourneys GmbH"
+    "company": "ABATON JetJourneys GmbH",
+    "imprintTitle": "Imprint and company details of ABATON JetJourneys GmbH",
+    "termsTitle": "Terms and conditions for ABATON journeys",
+    "privacyTitle": "How ABATON JetJourneys handles your personal data",
+    "phoneTitle": "Call ABATON JetJourneys",
+    "emailTitle": "Email ABATON JetJourneys"
   },
   "Legal": {
     "imprintTitle": "Imprint",
     "termsTitle": "Terms & Conditions",
-    "privacyTitle": "Privacy Policy",
-    "lastUpdated": "Last updated"
+    "privacyTitle": "Privacy Policy"
   },
   "NotFound": {
     "title": "Off the map",
@@ -152,6 +162,7 @@
   },
   "Breadcrumbs": {
     "home": "Home",
-    "ariaLabel": "Breadcrumb"
+    "ariaLabel": "Breadcrumb",
+    "homeTitle": "ABATON JetJourneys home page"
   }
 }

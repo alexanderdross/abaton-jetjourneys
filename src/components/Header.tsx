@@ -6,10 +6,11 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
+// `titleKey` supplies the SEO title attribute required on every link.
 const navItems = [
-  { key: "journeys", href: "/journeys" },
-  { key: "about", href: "/about" },
-  { key: "contact", href: "/contact" },
+  { key: "journeys", titleKey: "journeysTitle", href: "/journeys" },
+  { key: "about", titleKey: "aboutTitle", href: "/about" },
+  { key: "contact", titleKey: "contactTitle", href: "/contact" },
 ] as const;
 
 // Routes whose top section is a full-bleed dark hero. Over these, the
@@ -65,6 +66,7 @@ export function Header() {
           <Link
             href="/"
             className="relative block h-7 w-[130px]"
+            title={t("homeTitle")}
             aria-label="ABATON JetJourneys, home"
           >
             <Image
@@ -85,6 +87,7 @@ export function Header() {
               <Link
                 key={item.key}
                 href={item.href}
+                title={t(item.titleKey)}
                 className={`text-xs uppercase tracking-[0.18em] transition-colors ${navLinkColor}`}
               >
                 {t(item.key)}
@@ -96,6 +99,7 @@ export function Header() {
             <LanguageSwitcher className={light ? "text-bone" : "text-ink"} />
             <Link
               href="/contact"
+              title={t("requestCtaTitle")}
               className={`text-xs uppercase tracking-[0.14em] font-medium border px-5 py-2.5 rounded-[2px] transition-colors ${ctaColor}`}
             >
               {t("requestCta")}
@@ -131,6 +135,7 @@ export function Header() {
               <li key={item.key}>
                 <Link
                   href={item.href}
+                  title={t(item.titleKey)}
                   className="font-serif text-2xl text-ink hover:text-champagne transition-colors"
                 >
                   {t(item.key)}
@@ -142,6 +147,7 @@ export function Header() {
             <LanguageSwitcher className="text-ink" />
             <Link
               href="/contact"
+              title={t("requestCtaTitle")}
               className="text-xs uppercase tracking-[0.14em] font-medium border border-ink text-ink px-5 py-2.5 rounded-[2px]"
             >
               {t("requestCta")}

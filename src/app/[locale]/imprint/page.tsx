@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
+import { altLinks } from "@/lib/i18n-urls";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -12,7 +13,11 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Legal" });
-  return { title: t("imprintTitle"), robots: { index: false } };
+  return {
+    title: t("imprintTitle"),
+    alternates: altLinks(locale, "/imprint"),
+    robots: { index: false },
+  };
 }
 
 export default async function ImprintPage({ params }: PageProps) {
@@ -64,23 +69,31 @@ export default async function ImprintPage({ params }: PageProps) {
         {de
           ? "Eintragung im Handelsregister."
           : "Entry in the commercial register."}
+        {company.registerCourt ? (
+          <>
+            <br />
+            {de ? "Registergericht" : "Register court"}: {company.registerCourt}
+          </>
+        ) : null}
         <br />
-        {de ? "Registergericht" : "Register court"}: {"[Amtsgericht …]"}
-        <br />
-        {de ? "Registernummer" : "Register number"}: {"[HRB …]"}
+        {de ? "Registernummer" : "Register number"}: {company.registerNumber}
       </p>
 
-      <h2>
-        {de
-          ? "Umsatzsteuer-Identifikationsnummer"
-          : "VAT identification number"}
-      </h2>
-      <p>
-        {de
-          ? "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
-          : "VAT identification number pursuant to § 27a of the German VAT Act:"}{" "}
-        {"[DE…]"}
-      </p>
+      {company.vatId ? (
+        <>
+          <h2>
+            {de
+              ? "Umsatzsteuer-Identifikationsnummer"
+              : "VAT identification number"}
+          </h2>
+          <p>
+            {de
+              ? "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
+              : "VAT identification number pursuant to § 27a of the German VAT Act:"}{" "}
+            {company.vatId}
+          </p>
+        </>
+      ) : null}
 
       <h2>
         {de

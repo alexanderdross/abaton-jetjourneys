@@ -7,7 +7,7 @@ import { localizedPath, type Href } from "@/lib/i18n-urls";
 
 type LinkHref = ComponentProps<typeof Link>["href"];
 
-export type Crumb = { href: Href; label: string };
+export type Crumb = { href: Href; label: string; title?: string };
 
 /**
  * Accessible breadcrumb trail with schema.org BreadcrumbList JSON-LD.
@@ -27,7 +27,10 @@ export async function Breadcrumbs({
   className?: string;
 }) {
   const t = await getTranslations({ locale, namespace: "Breadcrumbs" });
-  const items: Crumb[] = [{ href: "/", label: t("home") }, ...trail];
+  const items: Crumb[] = [
+    { href: "/", label: t("home"), title: t("homeTitle") },
+    ...trail,
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -55,6 +58,7 @@ export async function Breadcrumbs({
                 <>
                   <Link
                     href={c.href as LinkHref}
+                    title={c.title ?? c.label}
                     className="hover:text-champagne transition-colors"
                   >
                     {c.label}
