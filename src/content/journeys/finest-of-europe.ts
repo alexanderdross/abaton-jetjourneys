@@ -5,16 +5,17 @@
 // ! OPEN DECISION 1.4: section 13 of docs/SPEC.md flags this route for REMOVAL
 // (too generically "reachable by everyone", not aligned with the new
 // positioning) and notes the duplicate "Founders Edition" naming. It is
-// nonetheless the featured homepage journey (`featured: true` below), while
-// section 6 of the spec wants Elegant Islands in that slot. Do not delete or
-// re-point this without Isabell's decision: legacy URLs 301 here
-// (src/lib/legacy-redirects.ts) and the homepage hero depends on it.
+// still published. The featured homepage slot has since moved to Elegant
+// Islands per the 2027 briefing, and this journey now sits on the Interest
+// List. Do not delete or re-point it without Isabell's decision: legacy URLs
+// 301 here (src/lib/legacy-redirects.ts).
 
 const journey = {
   slug: "finest-of-europe",
   published: true,
-  featured: true,
-  order: 1,
+  status: "interest_list",
+  featured: false,
+  order: 2,
 
   title: {
     en: "Finest of Europe",
@@ -30,7 +31,7 @@ const journey = {
   },
 
   nights: 8,
-  guestsLabel: { en: "6–10 guests", de: "6–10 Gäste" },
+  guestsLabel: { en: "6–8 guests", de: "6–8 Gäste" },
   departureCity: { en: "Munich", de: "München" },
   hotelCategory: {
     en: "4★ and 5★ luxury hotels",

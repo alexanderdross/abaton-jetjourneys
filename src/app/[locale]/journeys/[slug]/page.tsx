@@ -10,7 +10,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { RouteLine } from "@/components/RouteLine";
 import { RequestForm } from "@/components/RequestForm";
-import { JourneyJsonLd } from "@/components/JsonLd";
+import { BulletGrid } from "@/components/ui/BulletGrid";
+import { PillarGrid } from "@/components/ui/PillarGrid";
+import { JourneyStatusBadge } from "@/components/JourneyStatusBadge";
+import { LinkButton } from "@/components/ui/Button";
+import { JourneyJsonLd, JourneyFaqJsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import {
   getJourneyBySlug,
@@ -37,15 +41,23 @@ export async function generateMetadata({
   const journey = getJourneyBySlug(slug);
   if (!journey) return {};
   const title = pick(journey.title, locale);
-  const description = pick(journey.summary, locale);
+  const description = journey.seoDescription
+    ? pick(journey.seoDescription, locale)
+    : pick(journey.summary, locale);
+  // An explicit seoTitle replaces the "%s · ABATON JetJourneys" template so a
+  // journey can carry its own full-length search title.
+  const metaTitle = journey.seoTitle
+    ? { absolute: pick(journey.seoTitle, locale) }
+    : title;
   return {
-    title,
+    title: metaTitle,
     description,
     alternates: altLinks(locale, {
       pathname: "/journeys/[slug]",
       params: { slug },
     }),
     openGraph: { title, description, type: "article" },
+    twitter: { title, description },
   };
 }
 
@@ -77,9 +89,15 @@ export default async function JourneyDetailPage({ params }: PageProps) {
       : null,
   ].filter((f): f is { label: string; value: string } => f !== null);
 
+  const differencePillars = [1, 2, 3, 4, 5, 6].map((n) => ({
+    title: t(`difference${n}Title` as "difference1Title"),
+    body: t(`difference${n}Body` as "difference1Body"),
+  }));
+
   return (
     <>
       <JourneyJsonLd journey={journey} locale={locale} />
+      <JourneyFaqJsonLd journey={journey} locale={locale} />
 
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[520px] flex items-end">
@@ -100,7 +118,10 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           >
             ← {t("backToJourneys")}
           </Link>
-          <h1 className="display-serif mt-5 text-4xl sm:text-5xl lg:text-6xl text-bone max-w-4xl">
+          <div className="mt-5">
+            <JourneyStatusBadge status={journey.status} tone="dark" />
+          </div>
+          <h1 className="display-serif mt-4 text-4xl sm:text-5xl lg:text-6xl text-bone max-w-4xl">
             {pick(journey.title, locale)}
           </h1>
           <p className="mt-4 text-lg text-bone/80 max-w-xl">
@@ -189,6 +210,31 @@ export default async function JourneyDetailPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      {/* Signature moments */}
+      {journey.signatureMoments.length > 0 && (
+        <Section tone="white">
+          <Container>
+            <Reveal>
+              <p className="eyebrow">{t("signatureTitle")}</p>
+            </Reveal>
+            <div className="mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              {journey.signatureMoments.map((moment, i) => (
+                <Reveal key={moment.title.en} delay={Math.min(i * 80, 320)}>
+                  <div className="border-t border-line pt-6">
+                    <h3 className="font-serif text-xl text-ink leading-snug">
+                      {pick(moment.title, locale)}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate">
+                      {pick(moment.description, locale)}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
+
       {/* Itinerary */}
       {journey.itinerary.length > 0 && (
         <Section tone="white">
@@ -228,7 +274,35 @@ export default async function JourneyDetailPage({ params }: PageProps) {
         </Section>
       )}
 
-      {/* Inclusions */}
+      {/* Places to stay */}
+      {journey.stays.length > 0 && (
+        <Section tone="bone">
+          <Container>
+            <Reveal>
+              <p className="eyebrow">{t("staysTitle")}</p>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate">
+                {t("staysIntro")}
+              </p>
+            </Reveal>
+            <dl className="mt-12 grid gap-x-12 gap-y-8 sm:grid-cols-2">
+              {journey.stays.map((stay, i) => (
+                <Reveal key={stay.title.en} delay={Math.min(i * 80, 320)}>
+                  <div className="border-t border-line pt-6">
+                    <dt className="font-serif text-xl text-ink">
+                      {pick(stay.title, locale)}
+                    </dt>
+                    <dd className="mt-3 text-sm leading-relaxed text-slate">
+                      {pick(stay.description, locale)}
+                    </dd>
+                  </div>
+                </Reveal>
+              ))}
+            </dl>
+          </Container>
+        </Section>
+      )}
+
+      {/* Inclusions and exclusions */}
       {pick(journey.inclusions, locale).length > 0 && (
         <Section tone="ink">
           <Container size="narrow">
@@ -236,19 +310,20 @@ export default async function JourneyDetailPage({ params }: PageProps) {
               <h2 className="display-serif text-3xl sm:text-4xl text-bone text-center mb-12">
                 {t("inclusionsTitle")}
               </h2>
+              <BulletGrid items={pick(journey.inclusions, locale)} tone="ink" />
             </Reveal>
-            <ul className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
-              {pick(journey.inclusions, locale).map((item, i) => (
-                <Reveal key={i} delay={Math.min(i * 50, 300)}>
-                  <li className="flex gap-3 text-bone/80 border-b border-bone/10 pb-4">
-                    <span className="text-champagne" aria-hidden>
-                      ✦
-                    </span>
-                    <span className="text-sm leading-relaxed">{item}</span>
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
+            {pick(journey.exclusions, locale).length > 0 && (
+              <Reveal delay={120}>
+                <h3 className="display-serif mt-16 mb-8 text-2xl text-bone/90 text-center">
+                  {t("exclusionsTitle")}
+                </h3>
+                <BulletGrid
+                  items={pick(journey.exclusions, locale)}
+                  tone="ink"
+                  marker="·"
+                />
+              </Reveal>
+            )}
           </Container>
         </Section>
       )}
@@ -277,6 +352,42 @@ export default async function JourneyDetailPage({ params }: PageProps) {
         </Section>
       )}
 
+      {/* The ABATON difference */}
+      <Section tone="white">
+        <Container>
+          <Reveal>
+            <h2 className="display-serif text-3xl sm:text-4xl text-center">
+              {t("differenceTitle")}
+            </h2>
+          </Reveal>
+          <PillarGrid className="mt-16" items={differencePillars} />
+        </Container>
+      </Section>
+
+      {/* Your host */}
+      <Section tone="bone">
+        <Container size="narrow">
+          <Reveal>
+            <h2 className="display-serif text-3xl sm:text-4xl text-ink">
+              {t("hostTitle")}
+            </h2>
+            <div className="prose-editorial mt-8">
+              <p>{t("hostBody1")}</p>
+              <p>{t("hostBody2")}</p>
+            </div>
+            <div className="mt-10">
+              <LinkButton
+                href="/contact"
+                variant="outline"
+                title={t("hostCtaTitle")}
+              >
+                {t("hostCta")}
+              </LinkButton>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
       {/* Request */}
       <Section tone="white" id="request">
         <Container size="narrow">
@@ -296,6 +407,53 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           </Reveal>
         </Container>
       </Section>
+      {/* The ABATON Circle teaser */}
+      <Section tone="ink">
+        <Container size="narrow">
+          <Reveal>
+            <h2 className="display-serif text-3xl sm:text-4xl text-bone">
+              {t("circleTitle")}
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-bone/70">
+              {t("circleBody")}
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* FAQ */}
+      {journey.faq.length > 0 && (
+        <Section tone="bone">
+          <Container size="narrow">
+            <Reveal>
+              <h2 className="display-serif text-3xl sm:text-4xl text-ink">
+                {t("faqTitle")}
+              </h2>
+            </Reveal>
+            <div className="mt-10">
+              {journey.faq.map((item) => (
+                <details
+                  key={item.question.en}
+                  className="group border-b border-line py-5"
+                >
+                  <summary className="flex cursor-pointer items-start justify-between gap-6 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden">
+                    {pick(item.question, locale)}
+                    <span
+                      className="mt-1 shrink-0 text-champagne transition-transform group-open:rotate-45"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
+                    {pick(item.answer, locale)}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      )}
     </>
   );
 }

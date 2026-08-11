@@ -113,6 +113,11 @@ function TermsDE() {
         7. Rücktritt des Veranstalters wegen Nichterreichens der
         Mindestteilnehmerzahl
       </h2>
+      {/* Guest range: the marketing copy moved to 6 to 8 with the 2027 briefing,
+          this clause deliberately did not. It is the minimum-participant term of
+          the package-travel contract, so changing it is a contractual change and
+          needs the legal review the briefing asks for.
+          See docs/OPEN-DECISIONS.md item 3.2. */}
       <p>
         Die Journeys sind bewusst auf sechs bis zehn Gäste begrenzt. Wird die in
         der Reisebeschreibung genannte Mindestteilnehmerzahl nicht erreicht,
@@ -244,6 +249,11 @@ function TermsEN() {
       <h2>
         7. Withdrawal by the Operator if the minimum number is not reached
       </h2>
+      {/* Guest range: the marketing copy moved to 6 to 8 with the 2027 briefing,
+          this clause deliberately did not. It is the minimum-participant term of
+          the package-travel contract, so changing it is a contractual change and
+          needs the legal review the briefing asks for.
+          See docs/OPEN-DECISIONS.md item 3.2. */}
       <p>
         Journeys are intentionally limited to six to ten guests. If the minimum
         number of participants stated in the journey description is not reached,

@@ -71,14 +71,14 @@ not database rows.
 | [~] | `hotelsDescription` | Present as `hotelCategory`, a one-line label, not a description. |
 | [~] | `startEndCity` | Partially: optional `departureCity`, no end city. |
 | [~] | `route` | Degraded: `string[]` of city names, not `RouteStation[]` (no country, no nights-per-station, no order). |
-| [ ] | `status` | **Missing.** Only a boolean `published`. Everything the brief hangs off status is therefore unbuildable: the listing split, per-status CTAs, hiding day-by-day for interest-list journeys, `invitation_only` pricing. Wild Scandinavia reads "Preview 2028" yet renders exactly like a bookable journey. |
+| [x] | `status` | Implemented as a four-value enum defaulting to `interest_list`. Elegant Islands is `open`; the other four sit on the interest list. Drives the listing split, the card badge, the CTA wording and JSON-LD availability. |
 | [ ] | `durationDays` | Missing; days are inferred from `itinerary.length`. |
-| [ ] | `guestsMin` / `guestsMax` | Missing; only the free-text `guestsLabel` ("6 to 10 guests"), not machine-readable. |
+| [~] | `guestsMin` / `guestsMax` | Added to the schema and populated on Elegant Islands (6 / 8). The other journeys still carry only the display string. |
 | [ ] | `currency` | Missing; EUR is hardcoded in `formatEUR()`. |
 | [ ] | `upcomingDates` | Missing; a single free-text `nextDeparture` string, not structured dates. |
 | [ ] | `bookingDeadlineDays` | Missing. |
-| [ ] | `signatureMoments` | Missing. |
-| [ ] | `excluded` | Missing, no exclusions content anywhere. |
+| [x] | `signatureMoments` | Implemented as titled cards. Eight on Elegant Islands, from the 2027 briefing. |
+| [x] | `excluded` | Implemented as `exclusions`, rendered under "Not included" in the same section as the inclusions. |
 | [ ] | `whoThisIsFor` | Missing, the lead-qualification paragraph the brief says to keep. |
 | [ ] | `brochurePdf` | Missing. |
 
@@ -89,7 +89,7 @@ not database rows.
 | [x] | Hero with primary + secondary CTA | Present. |
 | [~] | Four brand pillars | Three pillars. **"Founder Hosted" is absent**, the brief calls it ABATON's actual point of difference against CONSUL, TCS et al. |
 | [x] | "Why ABATON?" paragraph | Present as the intro section. |
-| [!] | Featured journey | Present, but it features **Finest of Europe**, the journey flagged for removal. The brief wants Elegant Islands (OPEN-DECISIONS 1.4). |
+| [x] | Featured journey | Elegant Islands, per the 2027 briefing. Finest of Europe moved to the interest list. |
 | [ ] | Future Journeys section | Missing. The teaser block at the bottom of `src/app/[locale]/page.tsx` just re-renders the same featured journey. |
 | [!] | Copy accuracy | Home copy says journeys begin and end in **Munich**; only Finest of Europe does (OPEN-DECISIONS 3.2). |
 
@@ -97,12 +97,12 @@ not database rows.
 
 | | Item | State |
 |---|---|---|
-| [ ] | Listing split into "Currently Released" / "Journeys in Development" | Flat grid. Blocked on `status`. |
-| [ ] | Interest-list explanatory line | Missing. |
+| [x] | Listing split into "Currently Released" / "Journeys in Development" | Implemented via `getReleasedJourneys()` / `getUpcomingJourneys()`. |
+| [x] | Interest-list explanatory line | Present above the in-development group. |
 | [x] | Detail: hero, tagline, at-a-glance, price, day by day, included, gallery, single CTA | All present, and the CTA wording follows the brief ("Request a Journey", not "Book This Tour"). |
 | [~] | The Route | Renders as a plain text flow line (`src/components/RouteLine.tsx`). The brief asks for a custom-illustrated map per journey in brand colours (OPEN-DECISIONS 4.2). |
-| [ ] | Signature Moments | Missing. |
-| [ ] | Hotels narrative | Only the one-line `hotelCategory`. |
+| [x] | Signature Moments | Rendered before Day by Day, per the briefing's section order. |
+| [x] | Hotels narrative | New `stays` field and a "Places to stay" section. Properties are described by category only, per the client's decision (OPEN-DECISIONS 4.6). |
 | [ ] | Excluded | Missing. |
 | [ ] | Who this journey is for | Missing. |
 | [~] | Request flow | One consistent enquiry path from both journey pages and Contact, correctly non-binding in effect. But the form is missing required fields, below. |
@@ -137,7 +137,7 @@ not database rows.
 | [~] | Founder-led positioning | Conveyed in the abstract ("founded by a private pilot"). |
 | [ ] | Isabell Buchner named | **She is never named publicly**, only as `managingDirector` in `src/lib/site.ts` for the imprint. |
 | [ ] | Founder photo | No portrait asset exists (OPEN-DECISIONS 3.3). |
-| [ ] | "Every journey is personally hosted by the founder who created it." | Absent. The brief calls this exact sentence the moat. |
+| [~] | Founder story and hosting promise | The 2027 briefing's founder copy now runs on the journey detail page ("Your host"), naming Isabell Buchner and her hosting role. The **About page still does not name her**, and still has no portrait. |
 | [~] | "Why ABATON" bullets | Three values, not the six specified. Missing: Aviation Standards (EASA), Legal & Financial Security (German package travel law), Boutique Ownership, Efficient Routing. |
 | [ ] | CTA "Speak with the Founder" | Currently "Request a Journey". |
 
@@ -205,3 +205,32 @@ production build.
 
 Test suite grew from 61 to 86 cases; typecheck, lint, format and
 `next build` all pass.
+
+---
+
+## Added by the Elegant Islands 2027 briefing
+
+Source: [BRIEFING-ELEGANT-ISLANDS-2027.md](./BRIEFING-ELEGANT-ISLANDS-2027.md)
+
+- **Elegant Islands rewritten** to the corrected five-chapter route (London,
+  Killarney & the Lakes, Ashford Castle, Scottish Highlands, Edinburgh), nine
+  itinerary days, eight signature moments, inclusions and exclusions, five
+  stays and eight FAQ entries, both locales. Withheld per briefing section 18:
+  Knock as a destination, Inverness as a headline, airport-selection logic and
+  operator names. A test asserts "Knock" appears nowhere in the public content.
+- **Release status system**, the field the brief needed and never had.
+- **New detail-page sections**: Signature Moments, Places to Stay, The ABATON
+  Difference, Not included, Your Host, The ABATON Circle teaser, FAQ.
+- **FAQPage JSON-LD**, and `Offer.availability` now reflects real status
+  (`LimitedAvailability` when open, `PreOrder` otherwise).
+- **Per-journey SEO overrides** (`seoTitle`, `seoDescription`), so Elegant
+  Islands carries the briefing's exact search title and meta description.
+- **Group size 6 to 8** across the marketing surface. The T&C clause was left
+  unchanged on purpose, see OPEN-DECISIONS 3.2.
+- **Two components extracted** rather than duplicated: `BulletGrid` (used three
+  times) and `PillarGrid` (the tile markup that was inlined three times on Home
+  and About, now supporting a variable item count).
+
+Still open from this briefing: destination photography (OPEN-DECISIONS 4.7),
+hotel allocations (4.6), the price (2.3), and the CRM lead routing plus the
+extra enquiry-form fields the briefing asks for in section 12.
