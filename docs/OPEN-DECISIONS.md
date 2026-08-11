@@ -25,6 +25,7 @@ are not "tidied up" by someone who does not know they are contested.
 |---|---|---|---|
 | 2.1 | **One authoritative price list.** Three sources disagree (Partner Program PDF, Media Information PDF, live site). Example given in the brief: Elegant Islands at EUR 28,850 / EUR 30,220 / EUR 30,220. | The repo holds a fourth snapshot, sourced from the 2026 brochure. Elegant Islands is EUR 30,220 double / EUR 34,420 single. | Publishing any price. This must be settled before the site is indexed. |
 | 2.2 | **Is `priceFrom` double occupancy?** The brief's model names the field `priceFromDoubleOccupancy`. The repo's `priceFrom` has no documented occupancy basis. | `src/lib/journeys.ts`. | Correct labelling on the journey detail page and in JSON-LD `Offer`. |
+| 2.3 | **Local currency display.** US, Canadian and Japanese guests see a EUR-only price today. Five calls to make (currency set, safety margin, automatic detection by visitor country, placement on cards vs. detail page, privacy-page wording), listed as D1 to D5 in [CURRENCY-CONVERSION-PLAN.md](./CURRENCY-CONVERSION-PLAN.md) section 10. | EUR only, `formatEUR` in `src/lib/journeys.ts`. Nothing built yet. | Switching on the converted display. The code can be built beforehand, but it should not go live before 2.1 is settled, since converting an unconfirmed price list only multiplies the uncertainty. |
 
 ## 3. Copy and positioning
 
