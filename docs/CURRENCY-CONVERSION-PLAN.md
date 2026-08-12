@@ -1,8 +1,9 @@
 # Plan: local currency display via the ECB reference rates
 
-> **Status.** Phases 1 and 2 are built. The currency set is confirmed as EUR,
-> USD, CAD, JPY, AUD (decision D1). What is still open, and what deliberately
-> was not built, is in sections 9 and 10. Owner decisions are mirrored into
+> **Status.** Live on the interim domain since 11 August 2026, drawing real ECB
+> rates. The currency set is confirmed as EUR, USD, CAD, JPY, AUD (decision D1).
+> What is still open, and what deliberately was not built, is in sections 9 and
+> 10. Owner decisions are mirrored into
 > [OPEN-DECISIONS.md](./OPEN-DECISIONS.md) section 2.4.
 
 ## 1. Goal and hard constraint
@@ -286,7 +287,7 @@ is fully covered in `src/lib/fx`.
 
 | Phase | Content | Status |
 | --- | --- | --- |
-| 0 | Verify the live ECB response shape from a deployed Worker, then refresh `fallback-rates.ts` from a real response. The build sandbox has no egress to `ecb.europa.eu`, so the parser is written against the documented format and tested against a fixture of it. **Open, and the one thing to do before trusting this in production.** | open |
+| 0 | Verify the live ECB response from a deployed Worker, then refresh `fallback-rates.ts` from it. Confirmed on 11 August 2026: production `/api/fx` answers `"source":"ecb"`, `"stale":false` with that day's reference date and all 29 published currencies, so the parser written against the documented format holds against the real document. Snapshot refreshed from the same response. | done |
 | 1 | `src/lib/fx/*`, the API route, the fallback snapshot, tests. No UI. | done |
 | 2 | Provider, switcher, `ConvertedPrice`, `FxNote`, card and detail wiring, copy in both locales, geo cookie in the middleware. | done |
 | 3 | Optional KV plus cron hardening. | open, 2 to 3 h |
