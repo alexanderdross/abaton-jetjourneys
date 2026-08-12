@@ -309,6 +309,15 @@ uncertainty.
   cookie if manual-only is preferred.
 - **D4, placement.** Built on both the cards and the detail page. Removing the
   card line is a two-line change if the collection grid should stay quieter.
-- **D5, privacy page.** Still open. The `abaton_fx_geo` and `abaton_fx` cookies
-  are functional, hold nothing but a currency code, and should be named in the
-  privacy page. Who signs off on the wording.
+- **D5, privacy page.** Drafted, awaiting legal sign-off. The privacy page had
+  no cookie section at all, so it now has one naming all three cookies the site
+  sets: `NEXT_LOCALE` (session), `abaton_fx` (one year) and `abaton_fx_geo`
+  (30 days). All three are described as strictly necessary under Section 25(2)
+  no. 2 TDDDG. That classification is uncontroversial for the two the visitor
+  triggers themselves. **The one to have confirmed is `abaton_fx_geo`**, which
+  is written without any visitor action, from Cloudflare's country signal. It
+  holds nothing but a currency code and no identifier, which is the usual
+  ground for treating a display preference as necessary, but ABATON's adviser
+  should confirm it. If they would rather not argue it, D3 is the escape hatch:
+  drop the geo preselection, keep the manual switcher, and the cookie
+  disappears with it.

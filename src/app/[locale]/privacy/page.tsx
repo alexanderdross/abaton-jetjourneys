@@ -96,6 +96,45 @@ function PrivacyDE() {
         Nutzung verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
       </p>
 
+      <h2>Cookies</h2>
+      <p>
+        Diese Website verwendet ausschließlich technisch notwendige Cookies. Sie
+        enthalten keine Kennung, mit der sich einzelne Besucherinnen und
+        Besucher wiedererkennen lassen, und werden weder zu Analyse- noch zu
+        Werbezwecken ausgewertet. Rechtsgrundlage für die Speicherung ist § 25
+        Abs. 2 Nr. 2 TDDDG, für die anschließende Verarbeitung Art. 6 Abs. 1
+        lit. f DSGVO.
+      </p>
+      <ul>
+        <li>
+          <strong>NEXT_LOCALE</strong>: speichert die gewählte Sprachfassung,
+          damit Sie beim Wechsel zwischen Seiten in Ihrer Sprache bleiben.
+          Gültigkeit: bis zum Schließen des Browsers.
+        </li>
+        <li>
+          <strong>abaton_fx</strong>: speichert die von Ihnen im Kopfbereich
+          gewählte Anzeigewährung. Gültigkeit: ein Jahr.
+        </li>
+        <li>
+          <strong>abaton_fx_geo</strong>: enthält die aus der Länderkennung
+          Ihres Zugriffs abgeleitete Anzeigewährung, damit Preise ohne weiteres
+          Zutun in einer vertrauten Währung erscheinen. Gespeichert wird
+          ausschließlich ein Währungscode wie „USD", nicht Ihre IP-Adresse. Die
+          Länderkennung stellt unser Hosting-Dienstleister Cloudflare bereit.
+          Gültigkeit: 30 Tage.
+        </li>
+      </ul>
+      <p>
+        Beträge in anderen Währungen als Euro sind eine unverbindliche
+        Umrechnung zum Referenzkurs der Europäischen Zentralbank. Alle Journeys
+        werden ausschließlich in Euro vereinbart und abgerechnet. Die
+        Anzeigewährung, einschließlich Euro, können Sie jederzeit selbst über
+        die Auswahl im Kopfbereich festlegen. Cookies lassen sich darüber hinaus
+        in Ihrem Browser löschen oder blockieren. Beim Einsatz von Cloudflare
+        Turnstile können zusätzlich technisch notwendige Cookies gesetzt werden,
+        siehe den Abschnitt Spam-Schutz.
+      </p>
+
       <h2>Reichweitenmessung</h2>
       <p>
         Wir setzen auf dieser Website keine Analyse- oder Tracking-Dienste ein.
@@ -183,6 +222,43 @@ function PrivacyEN() {
         To protect the form against abusive automated use we use Cloudflare
         Turnstile, which processes technical information to distinguish human
         from automated use. The legal basis is Art. 6(1)(f) GDPR.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        This website uses strictly necessary cookies only. They carry no
+        identifier that would allow an individual visitor to be recognised, and
+        they are not evaluated for analytics or advertising purposes. The legal
+        basis for storage is Section 25(2) no. 2 TDDDG, and for the subsequent
+        processing Art. 6(1)(f) GDPR.
+      </p>
+      <ul>
+        <li>
+          <strong>NEXT_LOCALE</strong>: stores the language version you are
+          reading, so you stay in that language as you move between pages.
+          Lifetime: until you close your browser.
+        </li>
+        <li>
+          <strong>abaton_fx</strong>: stores the display currency you selected
+          in the header. Lifetime: one year.
+        </li>
+        <li>
+          <strong>abaton_fx_geo</strong>: holds the display currency derived
+          from the country your visit originates from, so prices appear in a
+          familiar currency without you having to do anything. Only a currency
+          code such as &quot;USD&quot; is stored, not your IP address. The
+          country signal is provided by our hosting provider Cloudflare.
+          Lifetime: 30 days.
+        </li>
+      </ul>
+      <p>
+        Amounts in currencies other than the euro are an indicative conversion
+        at the European Central Bank reference rate. All journeys are agreed and
+        invoiced exclusively in euro. You can set the display currency yourself
+        at any time, including euro, using the selector in the header, and
+        cookies can also be deleted or blocked in your browser. Cloudflare
+        Turnstile may set further strictly necessary cookies, see the spam
+        protection section.
       </p>
 
       <h2>Analytics</h2>
