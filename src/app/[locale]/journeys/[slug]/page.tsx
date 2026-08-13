@@ -191,7 +191,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                         hydration and must not move the EUR price or the CTA. */}
                     <ConvertedPrice
                       amount={journey.priceFrom}
-                      className="mt-1 block h-5 text-sm leading-5 text-champagne"
+                      className="mt-1 block h-5 text-sm leading-5 text-champagne-ink"
                     />
                     <p className="mt-1 text-xs text-slate">{t("priceUnit")}</p>
                     {journey.priceFromSingle && (
@@ -268,7 +268,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                   <li className="grid grid-cols-[auto_1fr] gap-6 border-t border-line py-8">
                     <div className="text-right">
                       <span className="eyebrow block">{t("day")}</span>
-                      <span className="font-serif text-4xl text-champagne">
+                      <span className="font-serif text-4xl text-champagne-ink">
                         {String(d.day).padStart(2, "0")}
                       </span>
                     </div>
@@ -456,7 +456,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                   <summary className="flex cursor-pointer items-start justify-between gap-6 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden">
                     {pick(item.question, locale)}
                     <span
-                      className="mt-1 shrink-0 text-champagne transition-transform group-open:rotate-45"
+                      className="mt-1 shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
                       aria-hidden
                     >
                       +

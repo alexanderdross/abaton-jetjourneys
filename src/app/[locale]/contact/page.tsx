@@ -57,7 +57,7 @@ export default async function ContactPage({ params }: PageProps) {
                     <dd className="mt-1 text-lg">
                       <a
                         href={`tel:${company.phoneHref}`}
-                        className="hover:text-champagne transition-colors"
+                        className="hover:text-champagne-ink transition-colors"
                       >
                         {company.phone}
                       </a>
@@ -70,7 +70,7 @@ export default async function ContactPage({ params }: PageProps) {
                     <dd className="mt-1 text-lg">
                       <a
                         href={`mailto:${company.email}`}
-                        className="hover:text-champagne transition-colors"
+                        className="hover:text-champagne-ink transition-colors"
                       >
                         {company.email}
                       </a>

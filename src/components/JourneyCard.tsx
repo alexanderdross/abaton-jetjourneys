@@ -42,14 +42,14 @@ export function JourneyCard({
           {journey.nights ? `${t("nights", { count: journey.nights })} · ` : ""}
           {pick(journey.guestsLabel, locale)}
         </p>
-        <h3 className="font-serif text-2xl text-ink leading-snug group-hover:text-champagne transition-colors">
+        <h3 className="font-serif text-2xl text-ink leading-snug group-hover:text-champagne-ink transition-colors">
           {pick(journey.title, locale)}
         </h3>
         <p className="mt-2 text-sm text-slate leading-relaxed line-clamp-2">
           {pick(journey.tagline, locale)}
         </p>
         <div className="mt-4 flex items-center justify-between gap-3">
-          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne">
+          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne-ink">
             {journey.status === "open"
               ? t("viewJourney")
               : t("joinInterestList")}

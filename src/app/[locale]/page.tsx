@@ -93,7 +93,7 @@ export default async function HomePage({ params }: PageProps) {
             {[1, 2, 3].map((n, i) => (
               <Reveal key={n} delay={i * 120}>
                 <div className="text-center">
-                  <span className="font-serif text-champagne text-5xl">
+                  <span className="font-serif text-champagne-ink text-5xl">
                     0{n}
                   </span>
                   <h3 className="font-serif text-2xl mt-4 mb-3 text-ink">

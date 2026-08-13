@@ -8,12 +8,22 @@ import { routing } from "@/i18n/routing";
 const labels: Record<string, string> = { en: "EN", de: "DE" };
 const titleKeys = { en: "switchToEn", de: "switchToDe" } as const;
 
-export function LanguageSwitcher({ className = "" }: { className?: string }) {
+export function LanguageSwitcher({
+  className = "",
+  light = false,
+}: {
+  className?: string;
+  // `light` = rendered over a dark hero, keep the bright gold; otherwise the
+  // accent sits on a light ground and must use the accessible darker gold.
+  light?: boolean;
+}) {
   const locale = useLocale();
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const params = useParams();
   const router = useRouter();
+  const active = light ? "text-champagne" : "text-champagne-ink";
+  const hover = light ? "hover:text-champagne" : "hover:text-champagne-ink";
 
   const switchTo = (loc: string) => {
     // pathname + params together resolve dynamic routes (e.g. /journeys/[slug]).
@@ -36,8 +46,8 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
             onClick={() => switchTo(loc)}
             title={t(titleKeys[loc])}
             aria-current={loc === locale ? "true" : undefined}
-            className={`transition-colors hover:text-champagne ${
-              loc === locale ? "text-champagne" : "opacity-70"
+            className={`transition-colors ${hover} ${
+              loc === locale ? active : "opacity-70"
             }`}
           >
             {labels[loc]}

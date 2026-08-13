@@ -24,7 +24,7 @@ export function PillarGrid({
         <Reveal key={item.title} delay={Math.min(i * 120, 360)}>
           {variant === "centered" ? (
             <div className="text-center">
-              <span className="font-serif text-champagne text-5xl">
+              <span className="font-serif text-champagne-ink text-5xl">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="font-serif text-2xl mt-4 mb-3 text-ink">
