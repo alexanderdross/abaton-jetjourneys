@@ -11,10 +11,12 @@
   "observability": {
     "enabled": true
   },
-  // Interim custom domain. Requires drossmedia.de to be an active Cloudflare zone
-  // and no pre-existing DNS record on `abaton`. On deploy Cloudflare provisions the
-  // DNS record + TLS certificate automatically. Swap for the production domain at go-live.
-  "routes": [{ "pattern": "abaton.drossmedia.de", "custom_domain": true }],
+  // Interim hosting: served on the account's *.workers.dev subdomain, no custom
+  // domain. A Worker can only bind a custom domain whose zone lives in the SAME
+  // Cloudflare account, so no custom route is declared while the Worker lives in
+  // the business account without its own zone. Add the production route at go-live
+  // (see DEPLOYMENT.md, "Going live on the production domain").
+  "workers_dev": true,
   "vars": {
     // Non-secret defaults. Secrets (RESEND_API_KEY, TURNSTILE_SECRET_KEY) are set via
     // `wrangler secret put` and are NOT stored here.
@@ -22,13 +24,16 @@
     // be set as Build variables (Settings > Builds) so the build picks them up.
     "CONTACT_TO_EMAIL": "info@abaton-jetjourneys.com",
     "CONTACT_FROM_EMAIL": "no-reply@abaton-jetjourneys.com",
-    "NEXT_PUBLIC_SITE_URL": "https://abaton.drossmedia.de",
+    // NEXT_PUBLIC_SITE_URL is account-specific on workers.dev, so it is set per
+    // account as a Build variable (e.g. https://abaton-jetjourneys.<subdomain>.workers.dev),
+    // not committed here. When unset, src/lib/site.ts falls back to the production
+    // domain; NEXT_PUBLIC_NOINDEX keeps the interim build out of search anyway.
     "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
-    // Interim domain: keep search engines out until the production domain goes live.
+    // Interim: keep search engines out until the production domain goes live.
     // Set to "0" (or remove) at go-live.
     "NEXT_PUBLIC_NOINDEX": "1",
     // Cloudflare edge image transformations. Set to "1" ONLY after enabling
-    // "Transformations" on the zone (dashboard), otherwise /cdn-cgi/image 404s.
+    // "Transformations" on the (production) zone, otherwise /cdn-cgi/image 404s.
     // "0" serves the downscaled originals directly.
     "NEXT_PUBLIC_CF_IMAGES": "0"
   }

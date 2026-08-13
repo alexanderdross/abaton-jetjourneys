@@ -13,7 +13,7 @@ import type { FxPayload } from "./ecb";
  * Refresh date and rates together, never one without the other, otherwise the
  * freshness check vouches for figures it has no business vouching for.
  *
- *   curl -s https://abaton.drossmedia.de/api/fx/
+ *   curl -s https://www.abaton-jetjourneys.com/api/fx/
  */
 export const FALLBACK_RATES: FxPayload = {
   base: "EUR",

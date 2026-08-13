@@ -94,8 +94,8 @@ wrangler secret put TURNSTILE_SECRET_KEY
 | `TURNSTILE_SECRET_KEY` | Server-side Turnstile verification (secret) |
 | `CONTACT_TO_EMAIL` | Where enquiries are delivered |
 | `CONTACT_FROM_EMAIL` | Verified Resend sender address |
-| `NEXT_PUBLIC_SITE_URL` | Canonical/hreflang/sitemap base URL (interim: `https://abaton.drossmedia.de`) |
-| `NEXT_PUBLIC_NOINDEX` | `1` keeps the interim domain out of search engines; `0`/unset at go-live |
+| `NEXT_PUBLIC_SITE_URL` | Canonical/hreflang/sitemap base URL (interim: the account's `https://abaton-jetjourneys.<subdomain>.workers.dev`) |
+| `NEXT_PUBLIC_NOINDEX` | `1` keeps the interim site out of search engines; `0`/unset at go-live |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public Turnstile widget key |
 | `NEXT_PUBLIC_CF_IMAGES` | `1` enables Cloudflare edge image transformations (needs zone Transformations on) |
 
