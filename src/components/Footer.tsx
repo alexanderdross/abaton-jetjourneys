@@ -126,7 +126,9 @@ export function Footer() {
               {t("privacy")}
             </Link>
           </div>
-          <LanguageSwitcher className="text-bone" />
+          {/* Dark footer: keep the bright champagne accent (champagne-ink is
+              only legible on light grounds). */}
+          <LanguageSwitcher className="text-bone" light />
         </div>
       </Container>
     </footer>
