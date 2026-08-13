@@ -29,7 +29,7 @@ describe("robots.txt", () => {
 
   it("interim domain (noindex): blocks everything and omits the sitemap", async () => {
     vi.doMock("@/lib/site", () => ({
-      siteUrl: "https://abaton.drossmedia.de",
+      siteUrl: "https://abaton-jetjourneys.example.workers.dev",
       noindex: true,
     }));
     const robots = (await import("./robots")).default;
