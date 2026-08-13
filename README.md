@@ -4,7 +4,7 @@ Marketing site for **ABATON JetJourneys GmbH**, a founder-led boutique offering
 private jet roundtrips through Europe for six to eight guests.
 
 Rebuilt in **Next.js 15 (App Router)**, bilingual **English / German**, and
-deployed to **Cloudflare Workers** via the OpenNext adapter.
+deployed to **Cloudflare Workers** via the OpenNext adapter. 
 
 ## Project docs
 
