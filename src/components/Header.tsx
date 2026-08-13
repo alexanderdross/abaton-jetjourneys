@@ -48,7 +48,7 @@ export function Header() {
 
   const navLinkColor = light
     ? "text-bone/85 hover:text-champagne-light"
-    : "text-ink/80 hover:text-champagne";
+    : "text-ink/80 hover:text-champagne-ink";
   const ctaColor = light
     ? "border-bone/50 text-bone hover:bg-bone hover:text-ink"
     : "border-ink text-ink hover:bg-ink hover:text-bone";
@@ -97,8 +97,14 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
-            <CurrencySwitcher className={light ? "text-bone" : "text-ink"} />
-            <LanguageSwitcher className={light ? "text-bone" : "text-ink"} />
+            <CurrencySwitcher
+              className={light ? "text-bone" : "text-ink"}
+              light={light}
+            />
+            <LanguageSwitcher
+              className={light ? "text-bone" : "text-ink"}
+              light={light}
+            />
             <Link
               href="/contact"
               title={t("requestCtaTitle")}
@@ -138,7 +144,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   title={t(item.titleKey)}
-                  className="font-serif text-2xl text-ink hover:text-champagne transition-colors"
+                  className="font-serif text-2xl text-ink hover:text-champagne-ink transition-colors"
                 >
                   {t(item.key)}
                 </Link>

@@ -59,7 +59,7 @@ export async function Breadcrumbs({
                   <Link
                     href={c.href as LinkHref}
                     title={c.title ?? c.label}
-                    className="hover:text-champagne transition-colors"
+                    className="hover:text-champagne-ink transition-colors"
                   >
                     {c.label}
                   </Link>

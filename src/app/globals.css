@@ -13,6 +13,10 @@
   --color-slate: #4a5361;
   --color-champagne: #b8935a;
   --color-champagne-light: #d8b984;
+  /* Darker bronze-gold for gold-coloured TEXT on light (bone/white) grounds.
+     Meets WCAG AA (5.5:1 on bone, 6.2:1 on white); the lighter champagne above
+     stays for decorative lines and text on dark grounds. */
+  --color-champagne-ink: #7a5c28;
   --color-line: #e2dccf;
 
   /* Semantic aliases */
@@ -72,7 +76,9 @@ body {
     font-size: 0.75rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-champagne);
+    /* Accessible gold on light grounds; dark heroes override with
+       `text-champagne-light` for contrast on ink. */
+    color: var(--color-champagne-ink);
     font-weight: 500;
   }
 

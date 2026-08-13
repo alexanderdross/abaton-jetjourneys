@@ -7,7 +7,7 @@ export default function NotFound() {
   const nav = useTranslations("Nav");
   return (
     <Container className="min-h-[70vh] flex flex-col items-center justify-center text-center py-32">
-      <p className="font-serif text-champagne text-7xl">404</p>
+      <p className="font-serif text-champagne-ink text-7xl">404</p>
       <h1 className="display-serif mt-6 text-4xl">{t("title")}</h1>
       <p className="mt-4 text-slate">{t("body")}</p>
       <div className="mt-10">
