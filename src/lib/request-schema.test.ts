@@ -2,8 +2,10 @@ import { describe, it, expect } from "vitest";
 import { requestSchema, escapeHtml } from "./request-schema";
 
 const valid = {
-  name: "Isabell Buchner",
+  firstName: "Isabell",
+  lastName: "Buchner",
   email: "guest@example.com",
+  country: "Germany",
   consent: "on",
 };
 
@@ -27,10 +29,19 @@ describe("requestSchema", () => {
     }
   });
 
-  it("rejects a name shorter than 2 characters", () => {
-    expect(requestSchema.safeParse({ ...valid, name: "A" }).success).toBe(
+  it("requires a first and last name", () => {
+    expect(requestSchema.safeParse({ ...valid, firstName: "" }).success).toBe(
       false,
     );
+    expect(requestSchema.safeParse({ ...valid, lastName: "" }).success).toBe(
+      false,
+    );
+  });
+
+  it("requires a country of residence", () => {
+    const { country: _omitted, ...withoutCountry } = valid;
+    void _omitted;
+    expect(requestSchema.safeParse(withoutCountry).success).toBe(false);
   });
 
   it("rejects an over-long message", () => {

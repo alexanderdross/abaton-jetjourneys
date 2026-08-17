@@ -46,6 +46,31 @@ export default async function ContactPage({ params }: PageProps) {
               <p className="mt-6 text-lg text-slate leading-relaxed max-w-md">
                 {t("lead")}
               </p>
+              <div className="mt-6 space-y-4 text-slate leading-relaxed max-w-md">
+                <p>{t("body1")}</p>
+                <p>{t("body2")}</p>
+              </div>
+
+              <div className="mt-12">
+                <h2 className="eyebrow">{t("reserveTitle")}</h2>
+                <ol className="mt-6 space-y-6">
+                  {[1, 2, 3].map((n) => (
+                    <li key={n} className="flex gap-4">
+                      <span className="font-serif text-2xl text-champagne-ink leading-none">
+                        {String(n).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3 className="font-serif text-lg text-ink">
+                          {t(`reserve${n}Title` as "reserve1Title")}
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-slate">
+                          {t(`reserve${n}Body` as "reserve1Body")}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
 
               <div className="mt-12 space-y-8">
                 <h2 className="eyebrow">{t("directTitle")}</h2>
@@ -86,13 +111,10 @@ export default async function ContactPage({ params }: PageProps) {
                       {company.postalCode} {company.city}, {company.country}
                     </dd>
                   </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-slate">
-                      {t("hoursLabel")}
-                    </dt>
-                    <dd className="mt-1 text-lg">{t("hoursValue")}</dd>
-                  </div>
                 </dl>
+                <p className="text-sm text-slate leading-relaxed max-w-md">
+                  {t("consultNote")}
+                </p>
               </div>
             </div>
           </Reveal>

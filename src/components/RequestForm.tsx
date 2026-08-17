@@ -12,9 +12,11 @@ const initialState: RequestState = { status: "idle" };
 export function RequestForm({
   defaultJourney,
   journeySlug,
+  submitLabel,
 }: {
   defaultJourney?: string;
   journeySlug?: string;
+  submitLabel?: string;
 }) {
   const t = useTranslations("RequestForm");
   const locale = useLocale();
@@ -59,14 +61,25 @@ export function RequestForm({
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t("name")} required>
+        <Field label={t("firstName")} required>
           <input
-            name="name"
+            name="firstName"
             required
             className={inputClass}
-            autoComplete="name"
+            autoComplete="given-name"
           />
         </Field>
+        <Field label={t("lastName")} required>
+          <input
+            name="lastName"
+            required
+            className={inputClass}
+            autoComplete="family-name"
+          />
+        </Field>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t("email")} required>
           <input
             name="email"
@@ -76,11 +89,19 @@ export function RequestForm({
             autoComplete="email"
           />
         </Field>
+        <Field label={t("phone")}>
+          <input name="phone" className={inputClass} autoComplete="tel" />
+        </Field>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t("phone")}>
-          <input name="phone" className={inputClass} autoComplete="tel" />
+        <Field label={t("country")} required>
+          <input
+            name="country"
+            required
+            className={inputClass}
+            autoComplete="country-name"
+          />
         </Field>
         <Field label={t("guests")}>
           <input
@@ -130,7 +151,7 @@ export function RequestForm({
       )}
 
       <Button type="submit" disabled={pending} className="w-full">
-        {pending ? t("submitting") : t("submit")}
+        {pending ? t("submitting") : (submitLabel ?? t("submit"))}
       </Button>
     </form>
   );

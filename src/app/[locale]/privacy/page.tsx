@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
+import { LegalReviewNote, LegalGap } from "@/components/LegalReviewNote";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
 import { altLinks } from "@/lib/i18n-urls";
@@ -24,6 +25,7 @@ export default async function PrivacyPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Legal");
+  const de = locale === "de";
 
   return (
     <LegalLayout
@@ -35,7 +37,38 @@ export default async function PrivacyPage({ params }: PageProps) {
         />
       }
     >
-      {locale === "de" ? <PrivacyDE /> : <PrivacyEN />}
+      <LegalReviewNote
+        heading={
+          de
+            ? "Für die anwaltliche Prüfung, vor Veröffentlichung bestätigen"
+            : "For legal review, confirm before publishing"
+        }
+      >
+        <p>
+          {de
+            ? "Diese Datenschutzerklärung beschreibt die tatsächlich eingesetzten Dienste (Hosting über Cloudflare, Formularversand über Resend, Cloudflare Turnstile, kein Analyse- oder Tracking-Dienst). Bitte folgende Punkte bestätigen, die im Text gelb hervorgehoben sind:"
+            : "This privacy policy describes the services actually in use (hosting via Cloudflare, form delivery via Resend, Cloudflare Turnstile, no analytics or tracking). Please confirm the following points, highlighted in amber in the text:"}
+        </p>
+        <ul className="ml-5 list-disc space-y-1">
+          <li>
+            {de
+              ? "Geschäftsanschrift: bislang Gehrenstraße 7, die frühere Datenschutzerklärung nannte Gehrenstr. 11. Bitte die korrekte Adresse bestätigen."
+              : "Business address: currently Gehrenstraße 7, while the earlier privacy policy stated Gehrenstr. 11. Please confirm the correct address."}
+          </li>
+          <li>
+            {de
+              ? "Cookie abaton_fx_geo: wird ohne Zutun der Besucher aus der Cloudflare-Länderkennung gesetzt und als technisch notwendig (§ 25 Abs. 2 Nr. 2 TDDDG) eingestuft. Bitte diese Einstufung bestätigen oder die automatische Länder-Vorauswahl entfernen lassen."
+              : "Cookie abaton_fx_geo: set without visitor action from Cloudflare's country signal and classified as strictly necessary (§ 25(2) no. 2 TDDDG). Please confirm this classification or have the automatic country preselection removed."}
+          </li>
+          <li>
+            {de
+              ? "Reichweitenmessung: es wird bewusst kein Analyse- oder Tracking-Dienst eingesetzt. Bitte bestätigen, dass dies so bleiben soll (sonst sind Ergänzung und Consent-Banner nötig)."
+              : "Analytics: no analytics or tracking service is used, deliberately. Please confirm this should remain the case (otherwise an addition and a consent banner would be required)."}
+          </li>
+        </ul>
+      </LegalReviewNote>
+
+      {de ? <PrivacyDE /> : <PrivacyEN />}
     </LegalLayout>
   );
 }
@@ -49,7 +82,8 @@ function PrivacyDE() {
         <br />
         {company.name}
         <br />
-        {company.street}, {company.postalCode} {company.city}, {company.country}
+        <LegalGap>{company.street}</LegalGap>, {company.postalCode}{" "}
+        {company.city}, {company.country}
         <br />
         E-Mail: <a href={`mailto:${company.email}`}>{company.email}</a>
         <br />
@@ -137,7 +171,10 @@ function PrivacyDE() {
 
       <h2>Reichweitenmessung</h2>
       <p>
-        Wir setzen auf dieser Website keine Analyse- oder Tracking-Dienste ein.
+        <LegalGap>
+          Wir setzen auf dieser Website keine Analyse- oder Tracking-Dienste
+          ein.
+        </LegalGap>{" "}
         Es werden keine Cookies zu Analysezwecken gesetzt und keine einzelnen
         Personen über Websites hinweg nachverfolgt.
       </p>
@@ -180,7 +217,8 @@ function PrivacyEN() {
         <br />
         {company.name}
         <br />
-        {company.street}, {company.postalCode} {company.city}, {company.country}
+        <LegalGap>{company.street}</LegalGap>, {company.postalCode}{" "}
+        {company.city}, {company.country}
         <br />
         Email: <a href={`mailto:${company.email}`}>{company.email}</a>
         <br />
@@ -263,8 +301,10 @@ function PrivacyEN() {
 
       <h2>Analytics</h2>
       <p>
-        We do not use any analytics or tracking services on this website. No
-        analytics cookies are set and no individuals are tracked across
+        <LegalGap>
+          We do not use any analytics or tracking services on this website.
+        </LegalGap>{" "}
+        No analytics cookies are set and no individuals are tracked across
         websites.
       </p>
 

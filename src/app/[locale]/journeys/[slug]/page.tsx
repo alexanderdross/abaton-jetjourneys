@@ -96,6 +96,16 @@ export default async function JourneyDetailPage({ params }: PageProps) {
     body: t(`difference${n}Body` as "difference1Body"),
   }));
 
+  const isOpen = journey.status === "open";
+
+  // The lead flow differs by status: an open journey moves the guest towards a
+  // reservation; an interest-list journey towards the Private Interest List.
+  const processPrefix = isOpen ? "stepOpen" : "stepInterest";
+  const processSteps = [1, 2, 3, 4].map((n) => ({
+    title: t(`${processPrefix}${n}Title` as "stepOpen1Title"),
+    body: t(`${processPrefix}${n}Body` as "stepOpen1Body"),
+  }));
+
   return (
     <>
       <JourneyJsonLd journey={journey} locale={locale} />
@@ -126,6 +136,11 @@ export default async function JourneyDetailPage({ params }: PageProps) {
           <h1 className="display-serif mt-4 text-4xl sm:text-5xl lg:text-6xl text-bone max-w-4xl">
             {pick(journey.title, locale)}
           </h1>
+          {journey.countries && (
+            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-champagne-light">
+              {pick(journey.countries, locale)}
+            </p>
+          )}
           <p className="mt-4 text-lg text-bone/80 max-w-xl">
             {pick(journey.tagline, locale)}
           </p>
@@ -219,7 +234,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                   })}
                   className="mt-8 inline-flex w-full items-center justify-center bg-ink text-bone text-xs uppercase tracking-[0.14em] px-6 py-3.5 rounded-[2px] hover:bg-champagne hover:text-ink transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2"
                 >
-                  {t("requestCta")}
+                  {isOpen ? t("requestCta") : t("requestCtaInterest")}
                 </a>
               </aside>
             </Reveal>
@@ -262,31 +277,47 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                 {pick(journey.title, locale).split(":")[0].trim()}
               </h2>
             </Reveal>
+            {/* Accordion: only the day title and destination show until a guest
+                opens the day (client brief, journey detail section 5). */}
             <ol className="space-y-0">
               {journey.itinerary.map((d, i) => (
                 <Reveal key={d.day} delay={Math.min(i * 60, 300)}>
-                  <li className="grid grid-cols-[auto_1fr] gap-6 border-t border-line py-8">
-                    <div className="text-right">
-                      <span className="eyebrow block">{t("day")}</span>
-                      <span className="font-serif text-4xl text-champagne-ink">
-                        {String(d.day).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.14em] text-slate">
-                        {d.city}
-                      </p>
-                      <h3 className="font-serif text-2xl mt-1 mb-2 text-ink">
-                        {pick(d.title, locale)}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-slate">
+                  <li>
+                    <details className="group border-t border-line last:border-b">
+                      <summary className="grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-6 py-6 marker:content-none [&::-webkit-details-marker]:hidden">
+                        <span className="font-serif text-3xl text-champagne-ink">
+                          {String(d.day).padStart(2, "0")}
+                        </span>
+                        <span>
+                          <span className="block text-xs uppercase tracking-[0.14em] text-slate">
+                            {t("day")} {d.day}
+                          </span>
+                          <span className="font-serif text-xl text-ink">
+                            {pick(d.title, locale)}
+                          </span>
+                        </span>
+                        <span
+                          className="shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
+                          aria-hidden
+                        >
+                          +
+                        </span>
+                      </summary>
+                      <p className="max-w-2xl pb-8 pl-[calc(2.5rem+1.5rem)] text-sm leading-relaxed text-slate">
                         {pick(d.description, locale)}
                       </p>
-                    </div>
+                    </details>
                   </li>
                 </Reveal>
               ))}
             </ol>
+            {journey.programmeNote && (
+              <Reveal>
+                <p className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-slate/70">
+                  {pick(journey.programmeNote, locale)}
+                </p>
+              </Reveal>
+            )}
           </Container>
         </Section>
       )}
@@ -405,21 +436,56 @@ export default async function JourneyDetailPage({ params }: PageProps) {
         </Container>
       </Section>
 
+      {/* Your reservation / your interest: the status-driven lead flow */}
+      <Section tone="white">
+        <Container>
+          <Reveal>
+            <h2 className="display-serif text-3xl sm:text-4xl text-center">
+              {isOpen ? t("processTitleOpen") : t("processTitleInterest")}
+            </h2>
+          </Reveal>
+          <ol className="mt-16 grid gap-10 md:grid-cols-4">
+            {processSteps.map((step, i) => (
+              <Reveal key={step.title} delay={Math.min(i * 120, 360)}>
+                <li className="border-t border-line pt-6">
+                  <span className="eyebrow">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-serif text-xl mt-3 mb-3 text-ink">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-slate">
+                    {step.body}
+                  </p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+
       {/* Request */}
-      <Section tone="white" id="request">
+      <Section tone="bone" id="request">
         <Container size="narrow">
           <Reveal>
             <div className="text-center mb-12">
-              <p className="eyebrow">{t("requestTitle")}</p>
+              <p className="eyebrow">
+                {isOpen ? t("requestTitle") : t("requestTitleInterest")}
+              </p>
               <h2 className="display-serif mt-4 text-3xl sm:text-4xl">
                 {pick(journey.title, locale).split(":")[0].trim()}
               </h2>
-              <p className="mt-4 text-slate">{t("requestBody")}</p>
-              <p className="mt-2 text-xs text-slate/70">{t("priceNote")}</p>
+              <p className="mt-4 text-slate">
+                {isOpen ? t("requestBody") : t("requestBodyInterest")}
+              </p>
+              {isOpen && (
+                <p className="mt-2 text-xs text-slate/70">{t("priceNote")}</p>
+              )}
             </div>
             <RequestForm
               defaultJourney={pick(journey.title, locale)}
               journeySlug={journey.slug}
+              submitLabel={isOpen ? undefined : t("requestCtaInterest")}
             />
           </Reveal>
         </Container>
@@ -468,6 +534,16 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                 </details>
               ))}
             </div>
+            <p className="mt-8 text-sm text-slate">
+              {t("goodToKnowIntro")}{" "}
+              <Link
+                href="/good-to-know"
+                title={t("goodToKnowTitle")}
+                className="text-champagne-ink underline underline-offset-4 hover:text-ink transition-colors"
+              >
+                {t("goodToKnowLink")}
+              </Link>
+            </p>
           </Container>
         </Section>
       )}

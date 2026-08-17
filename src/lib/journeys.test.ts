@@ -17,11 +17,25 @@ describe("journeys content layer", () => {
     expect(journeys.length).toBeGreaterThan(0);
   });
 
-  it("exposes the finest-of-europe journey by slug", () => {
-    const journey = getJourneyBySlug("finest-of-europe");
+  it("exposes the mediterranean-essence journey by slug", () => {
+    const journey = getJourneyBySlug("mediterranean-essence");
     expect(journey).toBeDefined();
     expect(journey?.nights).toBe(8);
-    expect(journey?.route[0]).toBe("Munich");
+    expect(journey?.route[0]).toBe("Zurich");
+  });
+
+  it("no longer carries the retired journeys", () => {
+    expect(getJourneyBySlug("finest-of-europe")).toBeUndefined();
+    expect(getJourneyBySlug("secrets-of-europe")).toBeUndefined();
+  });
+
+  it("carries exactly the four confirmed journeys", () => {
+    expect(getJourneySlugs().sort()).toEqual([
+      "elegant-islands",
+      "fascinating-balkan",
+      "mediterranean-essence",
+      "wild-scandinavia",
+    ]);
   });
 
   it("returns undefined for an unknown slug", () => {
@@ -164,10 +178,10 @@ describe("elegant islands, 2027 briefing", () => {
     expect(journey?.itinerary.map((d) => d.day)).toEqual([
       1, 2, 3, 4, 5, 6, 7, 8, 9,
     ]);
-    expect(journey?.signatureMoments.length).toBeGreaterThanOrEqual(6);
+    expect(journey?.signatureMoments.length).toBeGreaterThanOrEqual(5);
     expect(journey?.exclusions.en.length).toBeGreaterThan(0);
     expect(journey?.exclusions.de.length).toBeGreaterThan(0);
-    expect(journey?.faq.length).toBeGreaterThanOrEqual(6);
+    expect(journey?.faq.length).toBeGreaterThanOrEqual(3);
   });
 
   it("names no hotel in the stays section", () => {

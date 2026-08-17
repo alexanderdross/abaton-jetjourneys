@@ -25,8 +25,10 @@ function form(fields: Record<string, string | undefined>): FormData {
 }
 
 const validFields = {
-  name: "Ada Lovelace",
+  firstName: "Ada",
+  lastName: "Lovelace",
   email: "ada@example.com",
+  country: "United Kingdom",
   consent: "on",
   locale: "en",
   "cf-turnstile-response": "tok",
@@ -63,7 +65,15 @@ describe("submitRequest", () => {
   it("reports a validation error for a missing name", async () => {
     const res = await submitRequest(
       idle,
-      form({ ...validFields, name: undefined }),
+      form({ ...validFields, firstName: undefined }),
+    );
+    expect(res).toEqual({ status: "error", message: "validation" });
+  });
+
+  it("reports a validation error for a missing country", async () => {
+    const res = await submitRequest(
+      idle,
+      form({ ...validFields, country: undefined }),
     );
     expect(res).toEqual({ status: "error", message: "validation" });
   });

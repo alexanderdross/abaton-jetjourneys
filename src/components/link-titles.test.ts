@@ -65,9 +65,9 @@ describe("link title attributes", () => {
       ["en", en],
       ["de", de],
     ] as const) {
-      const value = (bundle as Record<string, Record<string, string>>)[ns]?.[
-        key
-      ];
+      const value = (
+        bundle as unknown as Record<string, Record<string, string>>
+      )[ns]?.[key];
       expect(typeof value, `${name}: ${path}`).toBe("string");
       // A title that merely repeats the link text adds nothing; require prose.
       expect(value.trim().length, `${name}: ${path}`).toBeGreaterThan(20);

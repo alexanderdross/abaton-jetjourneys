@@ -8,7 +8,14 @@ import { getJourneySlugs } from "@/lib/journeys";
 // Legal pages are deliberately absent: they are noindex and Disallow-ed in
 // robots.ts, and listing URLs a sitemap asks crawlers not to index is a
 // contradiction, not a completeness win.
-const staticHrefs: Href[] = ["/", "/journeys", "/about", "/contact"];
+const staticHrefs: Href[] = [
+  "/",
+  "/journeys",
+  "/experience",
+  "/about",
+  "/good-to-know",
+  "/contact",
+];
 
 function entry(href: Href): MetadataRoute.Sitemap[number] {
   const en = `${siteUrl}${localizedPath("en", href)}`;

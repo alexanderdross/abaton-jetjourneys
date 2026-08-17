@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
@@ -20,6 +20,11 @@ export default async function HomePage({ params }: PageProps) {
   const nav = await getTranslations("Nav");
   const jt = await getTranslations("Journeys");
   const featured = getFeaturedJourney();
+
+  const pillars = [1, 2, 3, 4].map((n) => ({
+    title: t(`pillar${n}Title` as "pillar1Title"),
+    body: t(`pillar${n}Body` as "pillar1Body"),
+  }));
 
   return (
     <>
@@ -54,10 +59,10 @@ export default async function HomePage({ params }: PageProps) {
                 {t("heroCta")}
               </LinkButton>
               <LinkButton
-                href="/about"
+                href="/experience"
                 variant="outline"
                 className="text-bone"
-                title={nav("aboutTitle")}
+                title={nav("experienceTitle")}
               >
                 {t("heroSecondaryCta")}
               </LinkButton>
@@ -77,6 +82,15 @@ export default async function HomePage({ params }: PageProps) {
             <p className="mt-8 text-lg leading-relaxed text-slate">
               {t("introBody")}
             </p>
+            <div className="mt-8">
+              <Link
+                href="/experience"
+                title={nav("experienceTitle")}
+                className="text-xs uppercase tracking-[0.18em] text-champagne-ink hover:text-ink transition-colors"
+              >
+                {t("introLink")} →
+              </Link>
+            </div>
           </Reveal>
         </Container>
       </Section>
@@ -89,19 +103,17 @@ export default async function HomePage({ params }: PageProps) {
               {t("pillarsTitle")}
             </h2>
           </Reveal>
-          <div className="grid gap-12 md:grid-cols-3">
-            {[1, 2, 3].map((n, i) => (
-              <Reveal key={n} delay={i * 120}>
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} delay={Math.min(i * 120, 360)}>
                 <div className="text-center">
                   <span className="font-serif text-champagne-ink text-5xl">
-                    0{n}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="font-serif text-2xl mt-4 mb-3 text-ink">
-                    {t(`pillar${n}Title` as "pillar1Title")}
+                    {p.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-slate">
-                    {t(`pillar${n}Body` as "pillar1Body")}
-                  </p>
+                  <p className="text-sm leading-relaxed text-slate">{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -130,6 +142,11 @@ export default async function HomePage({ params }: PageProps) {
                 <h2 className="display-serif mt-5 text-4xl text-bone">
                   {pick(featured.title, locale)}
                 </h2>
+                {featured.countries && (
+                  <p className="mt-3 text-xs uppercase tracking-[0.2em] text-champagne-light">
+                    {pick(featured.countries, locale)}
+                  </p>
+                )}
                 <p className="mt-6 text-lg text-bone/70 leading-relaxed">
                   {pick(featured.summary, locale)}
                 </p>
@@ -157,8 +174,30 @@ export default async function HomePage({ params }: PageProps) {
         </Section>
       )}
 
-      {/* How it works */}
-      <HowItWorks />
+      {/* Founder */}
+      <Section tone="white">
+        <Container size="narrow" className="text-center">
+          <Reveal>
+            <p className="eyebrow">{t("founderEyebrow")}</p>
+            <h2 className="display-serif mt-5 text-4xl sm:text-5xl">
+              {t("founderTitle")}
+            </h2>
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-slate">
+              <p>{t("founderBody1")}</p>
+              <p>{t("founderBody2")}</p>
+            </div>
+            <div className="mt-10">
+              <LinkButton
+                href="/about"
+                variant="outline"
+                title={nav("aboutTitle")}
+              >
+                {t("founderCta")}
+              </LinkButton>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
 
       {/* Closing CTA */}
       <Section tone="bone">
@@ -179,8 +218,20 @@ export default async function HomePage({ params }: PageProps) {
         </Container>
       </Section>
 
-      {/* Show latest journeys teaser */}
+      {/* Latest journeys teaser */}
       <JourneysTeaser locale={locale} />
+
+      {/* Partners */}
+      <Section tone="white" className="pt-0">
+        <Container className="text-center">
+          <Reveal>
+            <p className="eyebrow">{t("partnersTitle")}</p>
+            <div className="mt-8 flex min-h-[80px] items-center justify-center rounded-[2px] border border-dashed border-line">
+              <span className="text-sm text-slate/60">{t("partnersNote")}</span>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
     </>
   );
 }
@@ -200,39 +251,6 @@ function RouteLineDark({ route }: { route: string[] }) {
         </li>
       ))}
     </ol>
-  );
-}
-
-function HowItWorks() {
-  const t = useTranslations("Home");
-  return (
-    <Section tone="white">
-      <Container>
-        <Reveal>
-          <div className="text-center mb-16">
-            <p className="eyebrow">{t("howEyebrow")}</p>
-            <h2 className="display-serif mt-5 text-4xl sm:text-5xl">
-              {t("howTitle")}
-            </h2>
-          </div>
-        </Reveal>
-        <div className="grid gap-10 md:grid-cols-3">
-          {[1, 2, 3].map((n, i) => (
-            <Reveal key={n} delay={i * 120}>
-              <div className="border-t border-line pt-6">
-                <span className="eyebrow">{String(n).padStart(2, "0")}</span>
-                <h3 className="font-serif text-2xl mt-3 mb-3 text-ink">
-                  {t(`step${n}Title` as "step1Title")}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate">
-                  {t(`step${n}Body` as "step1Body")}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Container>
-    </Section>
   );
 }
 

@@ -8,8 +8,9 @@ describe("sitemap", () => {
 
   it("covers the static pages plus every published journey", () => {
     const slugs = getJourneySlugs();
-    // 4 static hrefs (/, /journeys, /about, /contact) + one per journey.
-    expect(entries.length).toBe(4 + slugs.length);
+    // 6 static hrefs (/, /journeys, /experience, /about, /good-to-know,
+    // /contact) + one per journey.
+    expect(entries.length).toBe(6 + slugs.length);
   });
 
   it("lists every journey detail URL (English, slash-terminated)", () => {

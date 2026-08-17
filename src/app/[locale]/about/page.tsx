@@ -61,56 +61,87 @@ export default async function AboutPage({ params }: PageProps) {
             <p className="display-serif text-2xl sm:text-3xl leading-snug text-ink">
               {t("lead")}
             </p>
-            <div className="prose-editorial mt-10">
-              <p>{t("body1")}</p>
-              <p>{t("body2")}</p>
-              <p>{t("body3")}</p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* The founder */}
+      <Section tone="white">
+        <Container size="narrow">
+          <Reveal>
+            <p className="eyebrow">{t("founderEyebrow")}</p>
+            <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-ink">
+              {t("founderName")}
+            </h2>
+            <p className="mt-2 text-sm uppercase tracking-[0.16em] text-champagne-ink">
+              {t("founderRole")}
+            </p>
+            <div className="prose-editorial mt-8">
+              <p>{t("founderBody1")}</p>
+              <p>{t("founderBody2")}</p>
+              <p>{t("founderBody3")}</p>
             </div>
           </Reveal>
         </Container>
       </Section>
 
-      <Section tone="white">
-        <Container>
+      {/* The idea behind ABATON */}
+      <Section tone="bone">
+        <Container size="narrow">
           <Reveal>
-            <h2 className="display-serif text-3xl sm:text-4xl text-center mb-16">
-              {t("valuesTitle")}
+            <p className="eyebrow">{t("ideaEyebrow")}</p>
+            <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-ink">
+              {t("ideaTitle")}
             </h2>
+            <div className="prose-editorial mt-8">
+              <p>{t("ideaBody1")}</p>
+              <p>{t("ideaBody2")}</p>
+            </div>
           </Reveal>
-          <div className="grid gap-12 md:grid-cols-3">
-            {[1, 2, 3].map((n, i) => (
-              <Reveal key={n} delay={i * 120}>
-                <div className="text-center">
-                  <span className="font-serif text-champagne-ink text-5xl">
-                    0{n}
-                  </span>
-                  <h3 className="font-serif text-2xl mt-4 mb-3 text-ink">
-                    {t(`value${n}Title` as "value1Title")}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-slate">
-                    {t(`value${n}Body` as "value1Body")}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </Container>
       </Section>
 
+      {/* The name */}
       <Section tone="ink">
+        <Container size="narrow">
+          <Reveal>
+            <p className="eyebrow text-champagne-light">{t("nameEyebrow")}</p>
+            <h2 className="display-serif mt-4 text-4xl sm:text-5xl text-bone">
+              {t("nameTitle")}
+            </h2>
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-bone/70">
+              <p>{t("nameBody1")}</p>
+              <p>{t("nameBody2")}</p>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Personally hosted */}
+      <Section tone="white">
+        <Container size="narrow">
+          <Reveal>
+            <p className="eyebrow">{t("hostedEyebrow")}</p>
+            <h2 className="display-serif mt-4 text-3xl sm:text-4xl text-ink">
+              {t("hostedTitle")}
+            </h2>
+            <div className="prose-editorial mt-8">
+              <p>{t("hostedBody1")}</p>
+              <p>{t("hostedBody2")}</p>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section tone="bone">
         <Container size="narrow" className="text-center">
           <Reveal>
-            <h2 className="display-serif text-4xl sm:text-5xl text-bone">
+            <h2 className="display-serif text-4xl sm:text-5xl text-ink">
               {t("ctaTitle")}
             </h2>
-            <p className="mt-6 text-lg text-bone/70">{t("ctaBody")}</p>
+            <p className="mt-6 text-lg text-slate">{t("ctaBody")}</p>
             <div className="mt-10">
-              <LinkButton
-                href="/contact"
-                variant="outline"
-                className="text-bone"
-                title={nav("contactTitle")}
-              >
+              <LinkButton href="/journeys" title={nav("journeysTitle")}>
                 {t("ctaButton")}
               </LinkButton>
             </div>

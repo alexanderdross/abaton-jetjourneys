@@ -45,6 +45,11 @@ export function JourneyCard({
         <h3 className="font-serif text-2xl text-ink leading-snug group-hover:text-champagne-ink transition-colors">
           {pick(journey.title, locale)}
         </h3>
+        {journey.countries && (
+          <p className="mt-1.5 text-xs uppercase tracking-[0.16em] text-champagne-ink">
+            {pick(journey.countries, locale)}
+          </p>
+        )}
         <p className="mt-2 text-sm text-slate leading-relaxed line-clamp-2">
           {pick(journey.tagline, locale)}
         </p>
