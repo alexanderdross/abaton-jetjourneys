@@ -187,7 +187,11 @@ export default async function HomePage({ params }: PageProps) {
               <p>{t("founderBody2")}</p>
             </div>
             <div className="mt-10">
-              <LinkButton href="/about" variant="outline" title={nav("aboutTitle")}>
+              <LinkButton
+                href="/about"
+                variant="outline"
+                title={nav("aboutTitle")}
+              >
                 {t("founderCta")}
               </LinkButton>
             </div>

@@ -448,7 +448,9 @@ export default async function JourneyDetailPage({ params }: PageProps) {
             {processSteps.map((step, i) => (
               <Reveal key={step.title} delay={Math.min(i * 120, 360)}>
                 <li className="border-t border-line pt-6">
-                  <span className="eyebrow">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="eyebrow">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <h3 className="font-serif text-xl mt-3 mb-3 text-ink">
                     {step.title}
                   </h3>

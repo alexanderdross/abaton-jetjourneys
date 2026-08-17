@@ -436,7 +436,10 @@ export const collectionJourneys = [
         },
       },
       {
-        title: { en: "The Tuscan Countryside", de: "Die toskanische Landschaft" },
+        title: {
+          en: "The Tuscan Countryside",
+          de: "Die toskanische Landschaft",
+        },
         description: {
           en: "Spend two nights among vineyards, historic towns and rural landscapes, with a programme shaped around regional food, wine and local life.",
           de: "Verbringen Sie zwei Nächte zwischen Weinbergen, historischen Städtchen und ländlichen Landschaften, mit einem Programm rund um regionale Küche, Wein und lokales Leben.",
@@ -1035,7 +1038,10 @@ export const collectionJourneys = [
       {
         day: 2,
         city: "Copenhagen → Stavanger",
-        title: { en: "Copenhagen to Stavanger", de: "Kopenhagen nach Stavanger" },
+        title: {
+          en: "Copenhagen to Stavanger",
+          de: "Kopenhagen nach Stavanger",
+        },
         description: {
           en: "After breakfast, a private transfer leads to the business aviation terminal for the first private flight of the journey. On arrival in Norway, the afternoon provides a first introduction to Stavanger and the surrounding coastal and fjord landscape. The evening is spent together over dinner.",
           de: "Nach dem Frühstück führt ein privater Transfer zum Business-Aviation-Terminal für den ersten Privatflug der Journey. Bei der Ankunft in Norwegen bringt der Nachmittag eine erste Annäherung an Stavanger und die umliegende Küsten- und Fjordlandschaft. Der Abend klingt bei einem gemeinsamen Dinner aus.",

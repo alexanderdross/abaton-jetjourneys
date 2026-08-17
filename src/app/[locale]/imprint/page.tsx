@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { LegalLayout } from "@/components/LegalLayout";
+import { LegalReviewNote, LegalGap } from "@/components/LegalReviewNote";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { company } from "@/lib/site";
 import { altLinks } from "@/lib/i18n-urls";
@@ -36,13 +37,44 @@ export default async function ImprintPage({ params }: PageProps) {
         />
       }
     >
+      <LegalReviewNote
+        heading={
+          de
+            ? "Für die anwaltliche Prüfung, vor Veröffentlichung ausfüllen"
+            : "For legal review, complete before publishing"
+        }
+      >
+        <p>
+          {de
+            ? "Die folgenden Pflichtangaben nach § 5 DDG fehlen uns noch und sind im Text gelb hervorgehoben:"
+            : "The following mandatory details pursuant to § 5 DDG are still missing and are highlighted in amber in the text below:"}
+        </p>
+        <ul className="ml-5 list-disc space-y-1">
+          <li>
+            {de
+              ? "Registergericht (zuständiges Amtsgericht)"
+              : "Register court (competent local court)"}
+          </li>
+          <li>
+            {de
+              ? "Umsatzsteuer-Identifikationsnummer (USt-IdNr. nach § 27a UStG)"
+              : "VAT identification number (pursuant to § 27a of the German VAT Act)"}
+          </li>
+        </ul>
+        <p>
+          {de
+            ? "Bitte zusätzlich bestätigen: die Geschäftsanschrift (die Datenschutzerklärung nannte Gehrenstr. 11, Footer und Impressum verwenden Gehrenstraße 7) sowie die Formulierung zur Verbraucherstreitbeilegung."
+            : "Please also confirm: the business address (the privacy policy stated Gehrenstr. 11, while the footer and imprint use Gehrenstraße 7) and the wording on consumer dispute resolution."}
+        </p>
+      </LegalReviewNote>
+
       <h2>
         {de ? "Angaben gemäß § 5 DDG" : "Information pursuant to § 5 DDG"}
       </h2>
       <p>
         <strong>{company.name}</strong>
         <br />
-        {company.street}
+        <LegalGap>{company.street}</LegalGap>
         <br />
         {company.postalCode} {company.city}
         <br />
@@ -69,31 +101,36 @@ export default async function ImprintPage({ params }: PageProps) {
         {de
           ? "Eintragung im Handelsregister."
           : "Entry in the commercial register."}
+        <br />
+        {de ? "Registergericht" : "Register court"}:{" "}
         {company.registerCourt ? (
-          <>
-            <br />
-            {de ? "Registergericht" : "Register court"}: {company.registerCourt}
-          </>
-        ) : null}
+          company.registerCourt
+        ) : (
+          <LegalGap>
+            {de ? "ausstehend, bitte ergänzen" : "outstanding, to be provided"}
+          </LegalGap>
+        )}
         <br />
         {de ? "Registernummer" : "Register number"}: {company.registerNumber}
       </p>
 
-      {company.vatId ? (
-        <>
-          <h2>
-            {de
-              ? "Umsatzsteuer-Identifikationsnummer"
-              : "VAT identification number"}
-          </h2>
-          <p>
-            {de
-              ? "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
-              : "VAT identification number pursuant to § 27a of the German VAT Act:"}{" "}
-            {company.vatId}
-          </p>
-        </>
-      ) : null}
+      <h2>
+        {de
+          ? "Umsatzsteuer-Identifikationsnummer"
+          : "VAT identification number"}
+      </h2>
+      <p>
+        {de
+          ? "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:"
+          : "VAT identification number pursuant to § 27a of the German VAT Act:"}{" "}
+        {company.vatId ? (
+          company.vatId
+        ) : (
+          <LegalGap>
+            {de ? "ausstehend, bitte ergänzen" : "outstanding, to be provided"}
+          </LegalGap>
+        )}
+      </p>
 
       <h2>
         {de
