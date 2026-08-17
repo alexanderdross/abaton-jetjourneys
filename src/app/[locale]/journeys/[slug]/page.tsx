@@ -18,6 +18,7 @@ import { JourneyJsonLd, JourneyFaqJsonLd } from "@/components/JsonLd";
 import { ConvertedPrice } from "@/components/fx/ConvertedPrice";
 import { FxNote } from "@/components/fx/FxNote";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FaqAccordion } from "@/components/FaqAccordion";
 import {
   getJourneyBySlug,
   getPublishedJourneys,
@@ -516,23 +517,16 @@ export default async function JourneyDetailPage({ params }: PageProps) {
             </Reveal>
             <div className="mt-10">
               {journey.faq.map((item) => (
-                <details
+                <FaqAccordion
                   key={item.question.en}
+                  title={pick(item.question, locale)}
                   className="group border-b border-line py-5"
+                  summaryClassName="flex cursor-pointer items-start justify-between gap-6 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer items-start justify-between gap-6 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden">
-                    {pick(item.question, locale)}
-                    <span
-                      className="mt-1 shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
-                      aria-hidden
-                    >
-                      +
-                    </span>
-                  </summary>
                   <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
                     {pick(item.answer, locale)}
                   </p>
-                </details>
+                </FaqAccordion>
               ))}
             </div>
             <p className="mt-8 text-sm text-slate">
