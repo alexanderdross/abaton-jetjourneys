@@ -7,7 +7,8 @@ import { LinkButton } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { JourneyCard } from "@/components/JourneyCard";
-import { getFeaturedJourney, pick } from "@/lib/journeys";
+import { JourneyStatusBadge } from "@/components/JourneyStatusBadge";
+import { getFeaturedJourney, pick, formatEUR } from "@/lib/journeys";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { FxNote } from "@/components/fx/FxNote";
 
@@ -25,6 +26,17 @@ export default async function HomePage({ params }: PageProps) {
     title: t(`pillar${n}Title` as "pillar1Title"),
     body: t(`pillar${n}Body` as "pillar1Body"),
   }));
+
+  // Facts line under the featured journey, mirroring the client home layout:
+  // dates, nights, group size and hub, whichever are set.
+  const featuredFacts = featured
+    ? [
+        featured.nextDeparture ? pick(featured.nextDeparture, locale) : null,
+        featured.nights ? jt("nights", { count: featured.nights }) : null,
+        pick(featured.guestsLabel, locale),
+        featured.departureCity ? pick(featured.departureCity, locale) : null,
+      ].filter((f): f is string => Boolean(f))
+    : [];
 
   return (
     <>
@@ -139,6 +151,9 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="eyebrow text-champagne-light">
                   {t("featuredEyebrow")}
                 </p>
+                <div className="mt-4">
+                  <JourneyStatusBadge status={featured.status} tone="dark" />
+                </div>
                 <h2 className="display-serif mt-5 text-4xl text-bone">
                   {pick(featured.title, locale)}
                 </h2>
@@ -150,6 +165,18 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="mt-6 text-lg text-bone/70 leading-relaxed">
                   {pick(featured.summary, locale)}
                 </p>
+                {featuredFacts.length > 0 && (
+                  <p className="mt-6 text-sm text-bone/80">
+                    {featuredFacts.join(" · ")}
+                  </p>
+                )}
+                {featured.priceFrom && (
+                  <p className="mt-2 font-serif text-2xl text-bone">
+                    {t("featuredPrice", {
+                      price: formatEUR(featured.priceFrom, locale),
+                    })}
+                  </p>
+                )}
                 <div className="mt-8">
                   <RouteLineDark route={featured.route} />
                 </div>
@@ -173,6 +200,29 @@ export default async function HomePage({ params }: PageProps) {
           </Container>
         </Section>
       )}
+
+      {/* Collection CTA */}
+      <Section tone="bone">
+        <Container size="narrow" className="text-center">
+          <Reveal>
+            <h2 className="display-serif text-3xl sm:text-4xl">
+              {t("collectionTitle")}
+            </h2>
+            <p className="mt-6 text-lg text-slate leading-relaxed">
+              {t("collectionBody")}
+            </p>
+            <div className="mt-10">
+              <LinkButton
+                href="/journeys"
+                variant="outline"
+                title={nav("journeysTitle")}
+              >
+                {t("collectionCta")}
+              </LinkButton>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
 
       {/* Founder */}
       <Section tone="white">
