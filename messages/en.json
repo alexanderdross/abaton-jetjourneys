@@ -302,6 +302,8 @@
     "consultNote": "Personal consultations can take place by telephone or video call."
   },
   "RequestForm": {
+    "personalDetails": "Personal details",
+    "privacyHeading": "Privacy",
     "journeyLabel": "Journey of interest",
     "journeyPlaceholder": "General enquiry",
     "firstName": "First name",

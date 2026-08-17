@@ -393,6 +393,14 @@ export const collectionJourneys = [
     guestsLabel: guests,
     departureCity: { en: "Zurich to Zurich", de: "Zürich nach Zürich" },
     hotelCategory: hotels,
+    seoTitle: {
+      en: "Mediterranean Essence | Private Jet Journey through Southern Europe | ABATON",
+      de: "Mediterrane Essenz | Privatjet-Reise durch Südeuropa | ABATON",
+    },
+    seoDescription: {
+      en: "A founder-hosted private jet journey for six to eight guests through the French Riviera, San Sebastián, Tuscany and South Tyrol. Join the private interest list.",
+      de: "Eine vom Gründer begleitete Privatjet-Reise für sechs bis acht Gäste durch die Französische Riviera, San Sebastián, die Toskana und Südtirol. Auf die private Interessentenliste.",
+    },
     route: [
       "Zurich",
       "French Riviera",
@@ -684,6 +692,14 @@ export const collectionJourneys = [
     guestsLabel: guests,
     departureCity: { en: "Budapest to Budapest", de: "Budapest nach Budapest" },
     hotelCategory: hotels,
+    seoTitle: {
+      en: "Fascinating Balkan | Private Jet Journey through Central & Southeast Europe | ABATON",
+      de: "Faszinierender Balkan | Privatjet-Reise durch Mittel- & Südosteuropa | ABATON",
+    },
+    seoDescription: {
+      en: "A founder-hosted private jet journey for six to eight guests from Budapest and Transylvania to the Bay of Kotor, Istria and Salzburg. Join the private interest list.",
+      de: "Eine vom Gründer begleitete Privatjet-Reise für sechs bis acht Gäste von Budapest und Transsilvanien über die Bucht von Kotor und Istrien bis Salzburg. Auf die private Interessentenliste.",
+    },
     route: ["Budapest", "Transylvania", "Bay of Kotor", "Istria", "Salzburg"],
     heroImage: {
       src: "/images/aircraft/pc12.jpg",
@@ -958,6 +974,14 @@ export const collectionJourneys = [
       de: "Kopenhagen nach Kopenhagen",
     },
     hotelCategory: hotels,
+    seoTitle: {
+      en: "Wild Scandinavia | Private Jet Journey through Norway, Denmark & Finland | ABATON",
+      de: "Wildes Skandinavien | Privatjet-Reise durch Norwegen, Dänemark & Finnland | ABATON",
+    },
+    seoDescription: {
+      en: "A founder-hosted private jet journey for six to eight guests from Copenhagen and the Norwegian fjords to Northern Norway and Finnish Lapland. Join the private interest list.",
+      de: "Eine vom Gründer begleitete Privatjet-Reise für sechs bis acht Gäste von Kopenhagen und den norwegischen Fjorden bis Nordnorwegen und ins finnische Lappland. Auf die private Interessentenliste.",
+    },
     route: [
       "Copenhagen",
       "Stavanger & the Fjords",

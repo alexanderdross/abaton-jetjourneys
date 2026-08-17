@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FxProvider } from "@/components/fx/FxProvider";
+import { getUpcomingJourneys } from "@/lib/journeys";
 import { siteUrl, noindex } from "@/lib/site";
 import { altLinks } from "@/lib/i18n-urls";
 import type { Locale } from "@/i18n/routing";
@@ -78,6 +79,10 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Nav" });
 
+  // Journeys on the interest list carry no price, so their pages hide the
+  // currency selector (client brief, journey detail section).
+  const interestSlugs = getUpcomingJourneys().map((j) => j.slug);
+
   return (
     <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-screen flex flex-col">
@@ -89,7 +94,7 @@ export default async function LocaleLayout({
             >
               {t("skipToContent")}
             </a>
-            <Header />
+            <Header interestSlugs={interestSlugs} />
             <main id="main" className="flex-1">
               {children}
             </main>

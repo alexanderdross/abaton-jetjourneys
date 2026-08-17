@@ -14,6 +14,7 @@ deployed to **Cloudflare Workers** via the OpenNext adapter.
 | [docs/BRIEFING-ELEGANT-ISLANDS-2027.md](./docs/BRIEFING-ELEGANT-ISLANDS-2027.md) | The 2027 Elegant Islands relaunch briefing. Supersedes the routing in SPEC section 13. |
 | [docs/GAP-ANALYSIS.md](./docs/GAP-ANALYSIS.md) | What is built vs. what the spec asks for, with file references. Start here. |
 | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) | Questions only the client can answer. Several block launch. |
+| [docs/OFFENE-INHALTE.md](./docs/OFFENE-INHALTE.md) | Checklist (in German) of content and assets the client still needs to deliver. |
 | [docs/CIRCLE-BACKLOG.md](./docs/CIRCLE-BACKLOG.md) | The member portal, deferred and not started. |
 
 > Several journeys in `src/content/journeys/` carry routes the client has since

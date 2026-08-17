@@ -302,6 +302,8 @@
     "consultNote": "Persönliche Beratungen können telefonisch oder per Videocall stattfinden."
   },
   "RequestForm": {
+    "personalDetails": "Persönliche Angaben",
+    "privacyHeading": "Datenschutz",
     "journeyLabel": "Journey von Interesse",
     "journeyPlaceholder": "Allgemeine Anfrage",
     "firstName": "Vorname",

@@ -13,10 +13,12 @@ export function RequestForm({
   defaultJourney,
   journeySlug,
   submitLabel,
+  grouped = false,
 }: {
   defaultJourney?: string;
   journeySlug?: string;
   submitLabel?: string;
+  grouped?: boolean;
 }) {
   const t = useTranslations("RequestForm");
   const locale = useLocale();
@@ -59,6 +61,8 @@ export function RequestForm({
           readOnly={Boolean(defaultJourney)}
         />
       </Field>
+
+      {grouped && <SectionHeading>{t("personalDetails")}</SectionHeading>}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t("firstName")} required>
@@ -122,6 +126,8 @@ export function RequestForm({
         />
       </Field>
 
+      {grouped && <SectionHeading>{t("privacyHeading")}</SectionHeading>}
+
       <label className="flex items-start gap-3 text-sm text-slate cursor-pointer">
         <input
           type="checkbox"
@@ -159,6 +165,14 @@ export function RequestForm({
 
 const inputClass =
   "w-full border-b border-line bg-transparent py-3 text-ink placeholder:text-slate/50 focus:border-champagne focus:outline-none transition-colors";
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs uppercase tracking-[0.16em] text-champagne-ink">
+      {children}
+    </p>
+  );
+}
 
 function Field({
   label,
