@@ -10,6 +10,7 @@ import { Media } from "@/components/ui/Media";
 import { PillarGrid } from "@/components/ui/PillarGrid";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { altLinks } from "@/lib/i18n-urls";
+import { ogImage } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -22,8 +23,17 @@ export async function generateMetadata({
     title: t("title"),
     description: t("lead"),
     alternates: altLinks(locale, "/experience"),
-    openGraph: { type: "website", title: t("title"), description: t("lead") },
-    twitter: { title: t("title"), description: t("lead") },
+    openGraph: {
+      type: "website",
+      title: t("title"),
+      description: t("lead"),
+      images: [ogImage],
+    },
+    twitter: {
+      title: t("title"),
+      description: t("lead"),
+      images: [ogImage.url],
+    },
   };
 }
 
@@ -68,8 +78,7 @@ export default async function ExperiencePage({ params }: PageProps) {
           <div className="mt-8">
             <LinkButton
               href="/journeys"
-              variant="outline"
-              className="text-bone"
+              variant="heroSecondary"
               title={nav("journeysTitle")}
             >
               {t("exploreCta")}

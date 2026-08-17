@@ -19,8 +19,14 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
       data={{
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        name: company.name,
+        // Stable @id so other nodes (WebSite.publisher) can reference this
+        // organisation instead of duplicating it.
+        "@id": `${siteUrl}/#organization`,
+        name: company.shortName,
+        legalName: company.name,
         url: absoluteUrl(locale, "/"),
+        logo: `${siteUrl}/logos/abaton-gold.png`,
+        image: `${siteUrl}/og-image.jpg`,
         telephone: company.phone,
         email: company.email,
         address: {
@@ -30,9 +36,36 @@ export function OrganizationJsonLd({ locale }: { locale: Locale }) {
           addressLocality: company.city,
           addressCountry: "DE",
         },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: company.phone,
+          email: company.email,
+          contactType: "customer service",
+          areaServed: "Europe",
+          availableLanguage: ["en", "de"],
+        },
         areaServed: "Europe",
+        // sameAs (official social profiles) is added once the URLs are
+        // confirmed, see docs/OFFENE-INHALTE.md item 3.2.
         description:
-          "Founder-led boutique offering private jet roundtrips through Europe for six to eight guests.",
+          "Founder-led boutique offering private jet journeys through Europe for six to eight guests.",
+      }}
+    />
+  );
+}
+
+/** WebSite node, home page only. No SearchAction: the site has no search. */
+export function WebSiteJsonLd({ locale }: { locale: Locale }) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: absoluteUrl(locale, "/"),
+        name: company.shortName,
+        inLanguage: locale === "de" ? "de-DE" : "en-US",
+        publisher: { "@id": `${siteUrl}/#organization` },
       }}
     />
   );

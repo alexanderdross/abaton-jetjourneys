@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { altLinks } from "@/lib/i18n-urls";
+import { ogImage } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -17,8 +18,17 @@ export async function generateMetadata({
     title: t("title"),
     description: t("intro"),
     alternates: altLinks(locale, "/good-to-know"),
-    openGraph: { type: "website", title: t("title"), description: t("intro") },
-    twitter: { title: t("title"), description: t("intro") },
+    openGraph: {
+      type: "website",
+      title: t("title"),
+      description: t("intro"),
+      images: [ogImage],
+    },
+    twitter: {
+      title: t("title"),
+      description: t("intro"),
+      images: [ogImage.url],
+    },
   };
 }
 
