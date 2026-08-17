@@ -18,6 +18,7 @@ import { JourneyJsonLd, JourneyFaqJsonLd } from "@/components/JsonLd";
 import { ConvertedPrice } from "@/components/fx/ConvertedPrice";
 import { FxNote } from "@/components/fx/FxNote";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HashAccordion } from "@/components/HashAccordion";
 import {
   getJourneyBySlug,
   getPublishedJourneys,
@@ -284,30 +285,37 @@ export default async function JourneyDetailPage({ params }: PageProps) {
               {journey.itinerary.map((d, i) => (
                 <Reveal key={d.day} delay={Math.min(i * 60, 300)}>
                   <li>
-                    <details className="group border-t border-line last:border-b">
-                      <summary className="grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-6 py-6 marker:content-none [&::-webkit-details-marker]:hidden">
-                        <span className="font-serif text-3xl text-champagne-ink">
-                          {String(d.day).padStart(2, "0")}
-                        </span>
-                        <span>
-                          <span className="block text-xs uppercase tracking-[0.14em] text-slate">
-                            {t("day")} {d.day}
+                    <HashAccordion
+                      title={pick(d.title, locale)}
+                      slugSource={`${t("day")}-${d.day}-${pick(d.title, locale)}`}
+                      className="group border-t border-line last:border-b"
+                      summaryClassName="grid cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-6 py-6 marker:content-none [&::-webkit-details-marker]:hidden"
+                      summary={
+                        <>
+                          <span className="font-serif text-3xl text-champagne-ink">
+                            {String(d.day).padStart(2, "0")}
                           </span>
-                          <span className="font-serif text-xl text-ink">
-                            {pick(d.title, locale)}
+                          <span>
+                            <span className="block text-xs uppercase tracking-[0.14em] text-slate">
+                              {t("day")} {d.day}
+                            </span>
+                            <span className="font-serif text-xl text-ink">
+                              {pick(d.title, locale)}
+                            </span>
                           </span>
-                        </span>
-                        <span
-                          className="shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
-                          aria-hidden
-                        >
-                          +
-                        </span>
-                      </summary>
+                          <span
+                            className="shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
+                            aria-hidden
+                          >
+                            +
+                          </span>
+                        </>
+                      }
+                    >
                       <p className="max-w-2xl pb-8 pl-[calc(2.5rem+1.5rem)] text-sm leading-relaxed text-slate">
                         {pick(d.description, locale)}
                       </p>
-                    </details>
+                    </HashAccordion>
                   </li>
                 </Reveal>
               ))}
@@ -516,23 +524,16 @@ export default async function JourneyDetailPage({ params }: PageProps) {
             </Reveal>
             <div className="mt-10">
               {journey.faq.map((item) => (
-                <details
+                <HashAccordion
                   key={item.question.en}
+                  title={pick(item.question, locale)}
                   className="group border-b border-line py-5"
+                  summaryClassName="flex cursor-pointer items-start justify-between gap-6 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer items-start justify-between gap-6 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden">
-                    {pick(item.question, locale)}
-                    <span
-                      className="mt-1 shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
-                      aria-hidden
-                    >
-                      +
-                    </span>
-                  </summary>
                   <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
                     {pick(item.answer, locale)}
                   </p>
-                </details>
+                </HashAccordion>
               ))}
             </div>
             <p className="mt-8 text-sm text-slate">

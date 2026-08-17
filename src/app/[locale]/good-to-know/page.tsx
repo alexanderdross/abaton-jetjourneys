@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HashAccordion } from "@/components/HashAccordion";
 import { altLinks } from "@/lib/i18n-urls";
 import { ogImage } from "@/lib/site";
 
@@ -133,20 +134,15 @@ function Item({
   children: React.ReactNode;
 }) {
   return (
-    <details className="group border-b border-line first:border-t">
-      <summary className="flex cursor-pointer items-start justify-between gap-6 py-5 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden">
-        {title}
-        <span
-          className="mt-1 shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
-          aria-hidden
-        >
-          +
-        </span>
-      </summary>
+    <HashAccordion
+      title={title}
+      className="group border-b border-line first:border-t"
+      summaryClassName="flex cursor-pointer items-start justify-between gap-6 py-5 font-serif text-lg text-ink marker:content-none [&::-webkit-details-marker]:hidden"
+    >
       <div className="max-w-2xl space-y-4 pb-6 text-sm leading-relaxed text-slate">
         {children}
       </div>
-    </details>
+    </HashAccordion>
   );
 }
 
