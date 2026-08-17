@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { altLinks } from "@/lib/i18n-urls";
+import { ogImage } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -20,7 +21,12 @@ export async function generateMetadata({
     title: t("title"),
     description: t("lead"),
     alternates: altLinks(locale, "/about"),
-    openGraph: { type: "website", title: t("title"), description: t("lead") },
+    openGraph: {
+      type: "website",
+      title: t("title"),
+      description: t("lead"),
+      images: [ogImage],
+    },
   };
 }
 

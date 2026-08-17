@@ -9,7 +9,7 @@ import { Media } from "@/components/ui/Media";
 import { JourneyCard } from "@/components/JourneyCard";
 import { JourneyStatusBadge } from "@/components/JourneyStatusBadge";
 import { getFeaturedJourney, pick, formatEUR } from "@/lib/journeys";
-import { OrganizationJsonLd } from "@/components/JsonLd";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { FxNote } from "@/components/fx/FxNote";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -41,6 +41,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <OrganizationJsonLd locale={locale} />
+      <WebSiteJsonLd locale={locale} />
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center">
@@ -72,8 +73,7 @@ export default async function HomePage({ params }: PageProps) {
               </LinkButton>
               <LinkButton
                 href="/experience"
-                variant="outline"
-                className="text-bone"
+                variant="heroSecondary"
                 title={nav("experienceTitle")}
               >
                 {t("heroSecondaryCta")}

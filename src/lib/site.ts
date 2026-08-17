@@ -43,3 +43,14 @@ export const buildYear = Number(
 export const social = {
   instagram: "https://www.instagram.com/",
 } as const;
+
+/**
+ * Default Open Graph / Twitter share image. Next.js does not inherit
+ * `openGraph.images` into a route that defines its own `openGraph`, so pages
+ * that set a per-page OG title/description spread this into their `images`.
+ */
+export const ogImage = {
+  url: "/og-image.jpg",
+  width: 1200,
+  height: 630,
+} as const;

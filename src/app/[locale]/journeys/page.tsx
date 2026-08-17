@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FxNote } from "@/components/fx/FxNote";
 import { getReleasedJourneys, getUpcomingJourneys } from "@/lib/journeys";
 import { altLinks } from "@/lib/i18n-urls";
+import { ogImage } from "@/lib/site";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -21,7 +22,12 @@ export async function generateMetadata({
     description: t("intro"),
     alternates: altLinks(locale, "/journeys"),
     // Without this the page inherits the site-default OG title/description.
-    openGraph: { type: "website", title: t("title"), description: t("intro") },
+    openGraph: {
+      type: "website",
+      title: t("title"),
+      description: t("intro"),
+      images: [ogImage],
+    },
   };
 }
 

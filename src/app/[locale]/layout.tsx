@@ -53,11 +53,20 @@ export async function generateMetadata({
       title: t("defaultTitle"),
       description: t("defaultDescription"),
       locale: locale === "de" ? "de_DE" : "en_US",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: t("siteName"),
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("defaultTitle"),
       description: t("defaultDescription"),
+      images: ["/og-image.jpg"],
     },
     icons: { icon: "/favicon.svg" },
     // Interim/staging domain: keep it out of search results.

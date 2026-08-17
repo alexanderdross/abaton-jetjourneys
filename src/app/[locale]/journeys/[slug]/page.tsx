@@ -25,6 +25,7 @@ import {
   formatEUR,
 } from "@/lib/journeys";
 import { altLinks } from "@/lib/i18n-urls";
+import { ogImage } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -58,8 +59,8 @@ export async function generateMetadata({
       pathname: "/journeys/[slug]",
       params: { slug },
     }),
-    openGraph: { title, description, type: "article" },
-    twitter: { title, description },
+    openGraph: { title, description, type: "article", images: [ogImage] },
+    twitter: { title, description, images: [ogImage.url] },
   };
 }
 

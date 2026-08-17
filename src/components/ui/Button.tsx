@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 
-type Variant = "primary" | "outline" | "ghost";
+type Variant = "primary" | "outline" | "ghost" | "heroSecondary";
 
 const base =
   "inline-flex items-center justify-center gap-2 text-sm tracking-[0.12em] uppercase font-medium transition-colors duration-300 px-7 py-3.5 rounded-[2px] touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none";
@@ -12,6 +12,12 @@ const variants: Record<Variant, string> = {
   outline:
     "bg-transparent text-current border border-current/40 hover:border-champagne hover:text-champagne",
   ghost: "bg-transparent text-current hover:text-champagne px-0 py-0",
+  // Secondary button over a photographic hero. A translucent dark backing keeps
+  // the bone label above the WCAG AA 4.5:1 contrast ratio regardless of how
+  // bright the image is behind it (a transparent outline would fail on a bright
+  // sky), while staying visually lighter than the solid primary.
+  heroSecondary:
+    "bg-ink/70 text-bone border border-bone/50 backdrop-blur-sm hover:bg-bone hover:text-ink hover:border-bone",
 };
 
 type LinkButtonProps = {
