@@ -5,9 +5,13 @@ import { z } from "zod";
 // Resend or the Cloudflare runtime.
 
 export const requestSchema = z.object({
-  name: z.string().trim().min(2).max(120),
+  // The client contact form (Seitenaufbau doc) splits the name and marks
+  // country of residence as required.
+  firstName: z.string().trim().min(1).max(80),
+  lastName: z.string().trim().min(1).max(80),
   email: z.string().trim().email().max(200),
   phone: z.string().trim().max(60).optional().or(z.literal("")),
+  country: z.string().trim().min(2).max(80),
   guests: z.string().trim().max(20).optional().or(z.literal("")),
   journey: z.string().trim().max(200).optional().or(z.literal("")),
   // Machine-readable counterpart to `journey`, submitted by the journey detail

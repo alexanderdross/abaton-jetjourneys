@@ -10,6 +10,7 @@ import { CurrencySwitcher } from "./fx/CurrencySwitcher";
 // `titleKey` supplies the SEO title attribute required on every link.
 const navItems = [
   { key: "journeys", titleKey: "journeysTitle", href: "/journeys" },
+  { key: "experience", titleKey: "experienceTitle", href: "/experience" },
   { key: "about", titleKey: "aboutTitle", href: "/about" },
   { key: "contact", titleKey: "contactTitle", href: "/contact" },
 ] as const;
@@ -21,6 +22,7 @@ function hasDarkHero(pathname: string): boolean {
   return (
     pathname === "/" ||
     pathname === "/about" ||
+    pathname === "/experience" ||
     (pathname.startsWith("/journeys/") && pathname !== "/journeys")
   );
 }

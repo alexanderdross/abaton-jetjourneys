@@ -13,11 +13,39 @@ export function Footer() {
   // edge render would make the output non-deterministic across cached responses.
   const year = buildYear;
 
+  // The Explore column mirrors the client footer (Seitenaufbau / Briefing FINAL).
+  const explore = [
+    { href: "/", label: t("home"), title: nav("homeTitle") },
+    { href: "/journeys", label: nav("journeys"), title: nav("journeysTitle") },
+    {
+      href: "/experience",
+      label: nav("experience"),
+      title: nav("experienceTitle"),
+    },
+    { href: "/about", label: nav("about"), title: nav("aboutTitle") },
+    {
+      href: "/good-to-know",
+      label: nav("goodToKnow"),
+      title: nav("goodToKnowTitle"),
+    },
+    { href: "/contact", label: nav("contact"), title: nav("contactTitle") },
+  ] as const;
+
+  const legal = [
+    {
+      href: "/terms-conditions",
+      label: t("terms"),
+      title: t("termsTitle"),
+    },
+    { href: "/imprint", label: t("imprint"), title: t("imprintTitle") },
+    { href: "/privacy", label: t("privacy"), title: t("privacyTitle") },
+  ] as const;
+
   return (
     <footer className="bg-ink text-bone/80">
       <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-4">
-          <div className="md:col-span-2">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div>
             <div className="relative h-9 w-44">
               <Image
                 src="/logos/abaton-white.png"
@@ -37,33 +65,36 @@ export function Footer() {
               {t("explore")}
             </h3>
             <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link
-                  href="/journeys"
-                  title={nav("journeysTitle")}
-                  className="hover:text-champagne transition-colors"
-                >
-                  {nav("journeys")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  title={nav("aboutTitle")}
-                  className="hover:text-champagne transition-colors"
-                >
-                  {nav("about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  title={nav("contactTitle")}
-                  className="hover:text-champagne transition-colors"
-                >
-                  {nav("contact")}
-                </Link>
-              </li>
+              {explore.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    title={item.title}
+                    className="hover:text-champagne transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs uppercase tracking-[0.2em] text-champagne mb-4">
+              {t("legal")}
+            </h3>
+            <ul className="space-y-2.5 text-sm">
+              {legal.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    title={item.title}
+                    className="hover:text-champagne transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -72,19 +103,11 @@ export function Footer() {
               {t("contact")}
             </h3>
             <address className="not-italic space-y-2.5 text-sm text-bone/60">
+              <p>{t("company")}</p>
               <p>
                 {company.street}
                 <br />
-                {company.postalCode} {company.city}
-              </p>
-              <p>
-                <a
-                  href={`tel:${company.phoneHref}`}
-                  title={t("phoneTitle")}
-                  className="hover:text-champagne transition-colors"
-                >
-                  {company.phone}
-                </a>
+                {company.postalCode} {company.city}, {company.country}
               </p>
               <p>
                 <a
@@ -93,6 +116,15 @@ export function Footer() {
                   className="hover:text-champagne transition-colors"
                 >
                   {company.email}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={`tel:${company.phoneHref}`}
+                  title={t("phoneTitle")}
+                  className="hover:text-champagne transition-colors"
+                >
+                  {company.phone}
                 </a>
               </p>
             </address>
@@ -105,18 +137,18 @@ export function Footer() {
               © {year} {t("company")}. {t("rights")}
             </span>
             <Link
-              href="/imprint"
-              title={t("imprintTitle")}
-              className="hover:text-champagne transition-colors"
-            >
-              {t("imprint")}
-            </Link>
-            <Link
               href="/terms-conditions"
               title={t("termsTitle")}
               className="hover:text-champagne transition-colors"
             >
               {t("terms")}
+            </Link>
+            <Link
+              href="/imprint"
+              title={t("imprintTitle")}
+              className="hover:text-champagne transition-colors"
+            >
+              {t("imprint")}
             </Link>
             <Link
               href="/privacy"

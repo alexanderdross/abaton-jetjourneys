@@ -1,15 +1,20 @@
-// Additional journeys of the ABATON collection.
+// The ABATON collection: four journeys, per the final client documents
+// "ABATON_Seitenaufbau_und_Texte_UEBERARBEITET" (public copy + portfolio) and
+// "ABATON_Website_Briefing_FINAL" (structure, footer, legal).
 //
-// Content reflects the ABATON 2026 brochure: real routes, included services,
-// "from" pricing and scheduled departures. The full itinerary and final detail
-// are shared in the personal brochure on request.
+// Portfolio, confirmed by the client:
+//   - Elegant Islands       status: open          (the single 2027 booking)
+//   - Mediterranean Essence status: interest_list  (new journey)
+//   - Fascinating Balkan    status: interest_list  (route reworked)
+//   - Wild Scandinavia      status: interest_list  (route reworked, stays Copenhagen)
 //
-// ! CONTESTED CONTENT. Section 13 of docs/SPEC.md records route and portfolio
-// changes that this file does not yet reflect. The per-journey notes below say
-// which parts are superseded. Do NOT "correct" them from the spec alone: the
-// rewrites need Isabell's confirmation plus new day-by-day copy, and are
-// tracked in docs/OPEN-DECISIONS.md. Guessing produces a plausible itinerary
-// that ABATON cannot actually operate.
+// Retired with client sign-off (legacy URLs 301 to /journeys/ via
+// src/lib/legacy-redirects.ts): Finest of Europe, Secrets of Europe.
+//
+// Interest-list journeys deliberately carry no price, no single price and no
+// fixed departure: price and dates appear only once a journey is released for
+// reservations. JourneyCard and JsonLd already render price/offer conditionally
+// on `priceFrom`, so omitting it hides both automatically.
 
 const guests = { en: "6–8 guests", de: "6–8 Gäste" } as const;
 const hotels = {
@@ -45,183 +50,24 @@ const gallery = [
 
 export const collectionJourneys = [
   {
-    // OPEN DECISION 1.5: overlaps geographically with the newly designed
-    // Mediterranean Essence route (San Sebastian, Provence, Sardinia, Suedtirol),
-    // which does not exist in this repo. Isabell to confirm whether Mediterranean
-    // Essence replaces this journey or both run.
-    slug: "secrets-of-europe",
-    published: true,
-    status: "interest_list",
-    featured: false,
-    order: 3,
-    title: { en: "Secrets of Europe", de: "Geheimnisse Europas" },
-    tagline: {
-      en: "Europe's quieter icons, shaped by taste.",
-      de: "Europas stille Ikonen, geformt vom Geschmack.",
-    },
-    summary: {
-      en: "A journey through Europe's quieter icons, shaped by taste, tradition and elegance. From Lake Como and San Sebastián to Porto, Provence, Florence and Salzburg, each stop reveals culture through cuisine, atmosphere and local character.",
-      de: "Eine Journey durch Europas stillere Ikonen, geformt von Geschmack, Tradition und Eleganz. Vom Comer See über San Sebastián bis Porto, die Provence, Florenz und Salzburg enthüllt jede Station Kultur durch Küche, Atmosphäre und lokalen Charakter.",
-    },
-    nights: 8,
-    guestsLabel: guests,
-    departureCity: { en: "Zürich", de: "Zürich" },
-    hotelCategory: hotels,
-    priceFrom: 30980,
-    priceFromSingle: 35980,
-    nextDeparture: { en: "11–19 June 2027", de: "11.–19. Juni 2027" },
-    route: [
-      "Zürich",
-      "Lake Como",
-      "San Sebastián",
-      "Porto",
-      "Provence",
-      "Florence",
-      "Salzburg",
-    ],
-    heroImage: {
-      src: "/images/experiences/cultural-discovery.jpg",
-      alt: { en: "Cultural discoveries", de: "Kulturelle Entdeckungen" },
-    },
-    gallery,
-    overview: {
-      en: [
-        "Secrets of Europe reveals grace in understatement and luxury in simplicity. It begins in Zurich, where alpine elegance meets lake serenity, wandering the Old Town's hidden courtyards before the journey ahead.",
-        "From the shores of Lake Como to the coast of San Sebastián, the vineyards of Porto, the lavender of Provence, the Renaissance of Florence and a baroque farewell in Salzburg, each stop is reached privately and lived unhurried.",
-      ],
-      de: [
-        "Geheimnisse Europas offenbart Anmut im Understatement und Luxus in der Einfachheit. Es beginnt in Zürich, wo alpine Eleganz auf die Ruhe des Sees trifft, mit einem Streifzug durch die verborgenen Höfe der Altstadt vor der bevorstehenden Journey.",
-        "Von den Ufern des Comer Sees über die Küste San Sebastiáns, die Weinberge von Porto, den Lavendel der Provence und die Renaissance von Florenz bis zum barocken Abschied in Salzburg wird jede Station privat erreicht und ohne Eile erlebt.",
-      ],
-    },
-    itinerary: [
-      {
-        day: 1,
-        city: "Zürich",
-        title: { en: "Alpine Welcome", de: "Alpines Willkommen" },
-        description: {
-          en: "We begin in Zurich, where alpine elegance meets lake serenity, wandering the Old Town's hidden courtyards and toasting the journey ahead.",
-          de: "Wir beginnen in Zürich, wo alpine Eleganz auf die Ruhe des Sees trifft, streifen durch die verborgenen Höfe der Altstadt und stoßen auf die kommende Journey an.",
-        },
-      },
-      {
-        day: 2,
-        city: "Zürich → Lake Como",
-        title: { en: "Lakes & Villas", de: "Seen & Villen" },
-        description: {
-          en: "We fly south and meander along the storied shores of Lake Como, with a visit to a secluded villa and lunch by the water.",
-          de: "Wir fliegen südwärts und ziehen entlang der berühmten Ufer des Comer Sees, mit dem Besuch einer abgeschiedenen Villa und einem Mittagessen am Wasser.",
-        },
-      },
-      {
-        day: 3,
-        city: "Lake Como → San Sebastián",
-        title: { en: "Coast & Gastronomy", de: "Küste & Gastronomie" },
-        description: {
-          en: "San Sebastián welcomes us with its relaxed coastal rhythm and world-renowned gastronomy, where pintxos and sea air create their own kind of poetry.",
-          de: "San Sebastián empfängt uns mit entspanntem Küstenrhythmus und weltbekannter Gastronomie, wo Pintxos und Meeresluft ihre eigene Poesie schaffen.",
-        },
-      },
-      {
-        day: 4,
-        city: "San Sebastián → Porto",
-        title: { en: "Douro & Vineyards", de: "Douro & Weinberge" },
-        description: {
-          en: "In Porto we glide down the Douro past vineyard-covered hills before a countryside tasting deep in wine country.",
-          de: "In Porto gleiten wir den Douro hinab, vorbei an weinbedeckten Hügeln, vor einer Verkostung tief im Weinland.",
-        },
-      },
-      {
-        day: 5,
-        city: "Porto → Provence",
-        title: { en: "Lavender & Light", de: "Lavendel & Licht" },
-        description: {
-          en: "Provence follows, bathed in lavender and light, where hilltop villages and golden evenings stir the senses, with a dinner among olive groves.",
-          de: "Es folgt die Provence, gebadet in Lavendel und Licht, wo Bergdörfer und goldene Abende die Sinne wecken, mit einem Dinner zwischen Olivenhainen.",
-        },
-      },
-      {
-        day: 6,
-        city: "Provence → Florence",
-        title: { en: "Renaissance Bloom", de: "Renaissance in voller Blüte" },
-        description: {
-          en: "Florence arrives in full Renaissance bloom, with private access to artistic treasures and intimate encounters with local artisans.",
-          de: "Florenz erscheint in voller Renaissance-Blüte, mit privatem Zugang zu Kunstschätzen und persönlichen Begegnungen mit lokalen Handwerkern.",
-        },
-      },
-      {
-        day: 7,
-        city: "Florence",
-        title: { en: "Art & Artisans", de: "Kunst & Handwerk" },
-        description: {
-          en: "A day for the Uffizi and the workshops where past and present connect in rich detail.",
-          de: "Ein Tag für die Uffizien und die Werkstätten, in denen sich Vergangenheit und Gegenwart in reichem Detail verbinden.",
-        },
-      },
-      {
-        day: 8,
-        city: "Florence → Salzburg",
-        title: { en: "Baroque Farewell", de: "Barocker Abschied" },
-        description: {
-          en: "Salzburg offers a baroque farewell, Mozart melodies in grand halls and a candlelit dinner to close this graceful exploration of Europe's hidden elegance.",
-          de: "Salzburg schenkt einen barocken Abschied, Mozart-Melodien in prächtigen Sälen und ein Dinner bei Kerzenschein, das diese anmutige Erkundung von Europas verborgener Eleganz beschließt.",
-        },
-      },
-      {
-        day: 9,
-        city: "Salzburg → Homeward",
-        title: { en: "Homeward", de: "Heimwärts" },
-        description: {
-          en: "We take our leave after a final Alpine morning.",
-          de: "Wir verabschieden uns nach einem letzten alpinen Morgen.",
-        },
-      },
-    ] as Day[],
-    inclusions: {
-      en: [
-        "Private jet travel throughout",
-        "Luxury ground transport",
-        "8 nights in 4★/5★ hotels with breakfast",
-        "7 lunches and 8 dinners",
-        "Scenic boat drive on Lake Como",
-        "Pintxos tasting in San Sebastián",
-        "Douro River cruise in Porto",
-        "Wine estate visit in Porto",
-        "Lavender fields tour in Provence (season permitting)",
-        "Uffizi Gallery tour in Florence",
-        "Classical concert in Salzburg",
-      ],
-      de: [
-        "Privatjet-Flüge während der gesamten Journey",
-        "Luxuriöse Bodentransporte",
-        "8 Nächte in 4★-/5★-Hotels mit Frühstück",
-        "7 Mittagessen und 8 Abendessen",
-        "Panorama-Bootsfahrt auf dem Comer See",
-        "Pintxos-Verkostung in San Sebastián",
-        "Douro-Flusskreuzfahrt in Porto",
-        "Besuch eines Weinguts in Porto",
-        "Lavendelfeld-Tour in der Provence (je nach Saison)",
-        "Führung durch die Uffizien in Florenz",
-        "Klassisches Konzert in Salzburg",
-      ],
-    },
-  },
-
-  {
-    // Content follows the client briefing "ABATON Elegant Islands Website
-    // Relaunch Briefing 2027" (docs/BRIEFING-ELEGANT-ISLANDS-2027.md), which
-    // supersedes the earlier Galway/Dublin routing. Deliberately withheld per
-    // section 18 of that briefing: Knock as a destination, Inverness as a
-    // headline stop, airport-selection logic and operator names.
+    // Content follows the final client documents. The corrected five-chapter
+    // route (London, Killarney, Ashford Castle, Scottish Highlands, Edinburgh)
+    // and the 2027 briefing stand. Deliberately withheld per that briefing:
+    // Knock as a destination, Inverness as a headline, airport-selection logic
+    // and operator names.
     slug: "elegant-islands",
     published: true,
     status: "open",
     featured: true,
     order: 1,
     title: { en: "Elegant Islands", de: "Elegante Inseln" },
+    countries: {
+      en: "England · Ireland · Scotland",
+      de: "England · Irland · Schottland",
+    },
     tagline: {
-      en: "Castles, wild landscapes and timeless traditions, connected by private jet across Ireland and Scotland.",
-      de: "Schlösser, wilde Landschaften und zeitlose Traditionen, per Privatjet durch Irland und Schottland verbunden.",
+      en: "Castles, wild landscapes and traditions across Ireland and Scotland, connected by private jet.",
+      de: "Schlösser, wilde Landschaften und Traditionen in Irland und Schottland, per Privatjet verbunden.",
     },
     summary: {
       en: "A founder-hosted private jet journey through Ireland and Scotland for just six to eight guests, from the lakes of Killarney and the estate life of Ashford Castle to the Scottish Highlands and historic Edinburgh.",
@@ -261,80 +107,56 @@ export const collectionJourneys = [
     gallery,
     overview: {
       en: [
-        "Some of Europe's most memorable places are also among the least effortless to combine. Elegant Islands moves beyond the obvious city itinerary, connecting the lakes of Killarney, the grandeur of Ashford Castle, the untamed Scottish Highlands and historic Edinburgh in one seamless journey.",
-        "Travelling in a small group of just six to eight guests, private flights replace lengthy transfers and inconvenient commercial connections. Days are shaped around landscape, culture, gastronomy and carefully chosen experiences, with time deliberately left to enjoy the places themselves.",
-        "Every Elegant Islands departure is personally hosted by ABATON founder and private pilot Isabell Buchner, creating a journey that feels less like a traditional group tour and more like travelling within a private circle.",
+        "Elegant Islands is a founder-hosted private jet journey through Ireland and Scotland for just six to eight guests. The journey begins in London before continuing to Killarney, Ashford Castle, the Scottish Highlands and Edinburgh.",
+        "Private flights connect the different regions and allow the itinerary to follow a natural route across Ireland and Scotland. Days are shaped around landscape, culture, local traditions and cuisine, with enough time to enjoy the hotels and surroundings along the way.",
+        "Each departure is personally hosted by ABATON founder and private pilot Isabell Buchner.",
       ],
       de: [
-        "Einige der eindrücklichsten Orte Europas gehören zugleich zu den am schwersten zu verbindenden. Elegante Inseln geht über die naheliegende Städtereise hinaus und verbindet die Seen von Killarney, die Erhabenheit von Ashford Castle, die ungezähmten schottischen Highlands und das historische Edinburgh zu einer durchgängigen Journey.",
-        "In einer kleinen Gruppe von nur sechs bis acht Gästen ersetzen private Flüge lange Transfers und unbequeme Linienverbindungen. Die Tage folgen Landschaft, Kultur, Gastronomie und sorgfältig gewählten Erlebnissen, mit bewusst freigehaltener Zeit für die Orte selbst.",
-        "Jede Abreise von Elegante Inseln wird persönlich von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet. So entsteht eine Journey, die weniger einer klassischen Gruppenreise gleicht als dem Reisen in einem privaten Kreis.",
+        "Elegante Inseln ist eine vom Gründer begleitete Privatjet-Journey durch Irland und Schottland für nur sechs bis acht Gäste. Die Journey beginnt in London und führt weiter nach Killarney, Ashford Castle, in die schottischen Highlands und nach Edinburgh.",
+        "Private Flüge verbinden die einzelnen Regionen und lassen die Route einem natürlichen Verlauf durch Irland und Schottland folgen. Die Tage folgen Landschaft, Kultur, lokalen Traditionen und Küche, mit genügend Zeit, Hotels und Umgebung zu genießen.",
+        "Jede Abreise wird persönlich von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet.",
       ],
     },
     signatureMoments: [
       {
         title: {
-          en: "Killarney by carriage and lake",
-          de: "Killarney per Kutsche und Boot",
+          en: "Killarney & the Lakes",
+          de: "Killarney & die Seen",
         },
         description: {
-          en: "A private journey through the landscapes of Killarney National Park, followed by time on the famous lakes.",
-          de: "Eine private Fahrt durch die Landschaften des Killarney-Nationalparks, gefolgt von Zeit auf den berühmten Seen.",
-        },
-      },
-      {
-        title: { en: "The Gap of Dunloe", de: "Der Gap of Dunloe" },
-        description: {
-          en: "Cross one of Ireland's most dramatic mountain passes in a privately arranged combination of traditional carriage and boat.",
-          de: "Überqueren Sie einen der dramatischsten Bergpässe Irlands in einer privat arrangierten Kombination aus traditioneller Kutsche und Boot.",
+          en: "Discover the landscapes around Killarney through selected private experiences on land and water.",
+          de: "Entdecken Sie die Landschaften rund um Killarney bei ausgewählten privaten Erlebnissen zu Land und zu Wasser.",
         },
       },
       {
         title: { en: "Life at Ashford Castle", de: "Leben auf Ashford Castle" },
         description: {
-          en: "Experience the rhythm of a historic Irish estate, from falconry and country pursuits to an elegant castle dinner.",
-          de: "Erleben Sie den Rhythmus eines historischen irischen Anwesens, von Falknerei und ländlichen Aktivitäten bis zum eleganten Dinner im Schloss.",
-        },
-      },
-      {
-        title: { en: "Across Lough Corrib", de: "Über den Lough Corrib" },
-        description: {
-          en: "Take to the water from Ashford Castle for a private perspective on the west of Ireland.",
-          de: "Gehen Sie von Ashford Castle aus aufs Wasser und erleben Sie den Westen Irlands aus privater Perspektive.",
-        },
-      },
-      {
-        title: { en: "Wild Highlands", de: "Wilde Highlands" },
-        description: {
-          en: "Discover Wester Ross through a privately guided landscape experience, shaped to the interests and activity level of the group.",
-          de: "Entdecken Sie Wester Ross bei einem privat geführten Landschaftserlebnis, abgestimmt auf Interessen und Aktivitätsniveau der Gruppe.",
-        },
-      },
-      {
-        title: { en: "Whisky in its homeland", de: "Whisky in seiner Heimat" },
-        description: {
-          en: "Explore Scotland through its most famous spirit, from Highland malts to an intimate tasting in Edinburgh.",
-          de: "Erkunden Sie Schottland über seine berühmteste Spirituose, von Highland-Malts bis zu einer privaten Verkostung in Edinburgh.",
+          en: "Spend two nights on one of Ireland's historic estates, with time for selected country pursuits, the grounds and the atmosphere of the castle.",
+          de: "Verbringen Sie zwei Nächte auf einem der historischen Anwesen Irlands, mit Zeit für ausgewählte ländliche Aktivitäten, den Park und die Atmosphäre des Schlosses.",
         },
       },
       {
         title: {
-          en: "Loch Ness by private boat",
-          de: "Loch Ness im privaten Boot",
+          en: "The Scottish Highlands",
+          de: "Die schottischen Highlands",
         },
         description: {
-          en: "Experience Scotland's most legendary loch from the water before continuing to the capital.",
-          de: "Erleben Sie Schottlands legendärsten See vom Wasser aus, bevor es weiter in die Hauptstadt geht.",
+          en: "Experience the landscapes of the Highlands through a privately guided day shaped around the region and the interests of the group.",
+          de: "Erleben Sie die Landschaften der Highlands bei einem privat geführten Tag, abgestimmt auf die Region und die Interessen der Gruppe.",
         },
       },
       {
-        title: {
-          en: "A final evening in Edinburgh",
-          de: "Ein letzter Abend in Edinburgh",
-        },
+        title: { en: "Loch Ness", de: "Loch Ness" },
         description: {
-          en: "Historic architecture, whisky culture and an elegant farewell dinner close the journey.",
-          de: "Historische Architektur, Whiskykultur und ein elegantes Abschiedsdinner beschließen die Journey.",
+          en: "See one of Scotland's best known landscapes from the water as the journey continues towards Edinburgh.",
+          de: "Erleben Sie eine der bekanntesten Landschaften Schottlands vom Wasser aus, während die Journey weiter nach Edinburgh führt.",
+        },
+      },
+      {
+        title: { en: "Edinburgh", de: "Edinburgh" },
+        description: {
+          en: "Finish the journey among the historic streets of Edinburgh, with Scottish culture, cuisine and a final evening together.",
+          de: "Beschließen Sie die Journey in den historischen Gassen Edinburghs, mit schottischer Kultur, Küche und einem letzten gemeinsamen Abend.",
         },
       },
     ],
@@ -433,6 +255,10 @@ export const collectionJourneys = [
         },
       },
     ] as Day[],
+    programmeNote: {
+      en: "The itinerary describes the planned character and route of Elegant Islands. Hotels, restaurants, individual activities, timings and selected programme details are finalised according to availability, season and local conditions and are communicated in the final journey programme.",
+      de: "Der Reiseverlauf beschreibt den geplanten Charakter und die Route von Elegante Inseln. Hotels, Restaurants, einzelne Aktivitäten, Zeiten und ausgewählte Programmdetails werden nach Verfügbarkeit, Saison und örtlichen Bedingungen festgelegt und im finalen Reiseprogramm mitgeteilt.",
+    },
     stays: [
       {
         title: { en: "London", de: "London" },
@@ -472,36 +298,36 @@ export const collectionJourneys = [
     ],
     inclusions: {
       en: [
-        "8 nights in carefully selected five-star hotels and historic properties",
-        "Private flights between the journey regions, in an aircraft appropriate to the route and group size",
-        "Private airport and scheduled programme transfers during the journey",
-        "Daily breakfast, and selected lunches and dinners as described in the final journey programme",
-        "Curated private and small-group experiences throughout Ireland and Scotland",
-        "Personal hosting by the ABATON founder for the duration of the journey",
-        "Access to the private ABATON guest area after booking confirmation",
-        "Pre-departure concierge support and personal travel-preference management",
+        "8 nights in carefully selected hotels and character properties",
+        "Private flights between the journey regions according to the final itinerary",
+        "Private airport transfers and scheduled ground transportation during the journey",
+        "Daily breakfast, and selected lunches and dinners according to the final programme",
+        "Curated cultural, landscape and culinary experiences",
+        "Personal hosting throughout the journey",
+        "Pre-departure travel coordination",
+        "Access to the private ABATON Circle after booking confirmation",
       ],
       de: [
-        "8 Nächte in sorgfältig ausgewählten Fünf-Sterne-Hotels und historischen Häusern",
-        "Private Flüge zwischen den Regionen der Journey, in einem der Route und Gruppengröße angemessenen Flugzeug",
-        "Private Flughafen- und Programmtransfers während der Journey",
-        "Täglich Frühstück sowie ausgewählte Mittag- und Abendessen gemäß dem finalen Reiseprogramm",
-        "Kuratierte private und exklusive Erlebnisse in ganz Irland und Schottland",
-        "Persönliche Begleitung durch die ABATON-Gründerin während der gesamten Journey",
-        "Zugang zum privaten ABATON-Gästebereich nach Buchungsbestätigung",
-        "Concierge-Betreuung vor der Abreise und persönliche Verwaltung Ihrer Reisepräferenzen",
+        "8 Nächte in sorgfältig ausgewählten Hotels und Charakterhäusern",
+        "Private Flüge zwischen den Regionen der Journey gemäß dem finalen Reiseverlauf",
+        "Private Flughafentransfers und Bodentransporte gemäß Programm während der Journey",
+        "Täglich Frühstück sowie ausgewählte Mittag- und Abendessen gemäß dem finalen Programm",
+        "Kuratierte kulturelle, landschaftliche und kulinarische Erlebnisse",
+        "Persönliche Begleitung während der gesamten Journey",
+        "Reisekoordination vor der Abreise",
+        "Zugang zum privaten ABATON Circle nach Buchungsbestätigung",
       ],
     },
     exclusions: {
       en: [
-        "International flights to and from London",
+        "International travel to and from London",
         "Personal pre- and post-journey hotel nights, unless explicitly included",
         "Individual chauffeur requests outside the published programme",
         "Spa treatments and personal purchases",
         "Travel insurance, unless offered as a defined package component",
       ],
       de: [
-        "Internationale Flüge nach und von London",
+        "Internationale An- und Abreise nach und von London",
         "Persönliche Hotelnächte vor und nach der Journey, sofern nicht ausdrücklich enthalten",
         "Individuelle Chauffeurwünsche außerhalb des veröffentlichten Programms",
         "Spa-Anwendungen und persönliche Einkäufe",
@@ -511,32 +337,12 @@ export const collectionJourneys = [
     faq: [
       {
         question: {
-          en: "Is this a private charter for one couple or family?",
-          de: "Ist dies ein Privatcharter für ein Paar oder eine Familie?",
+          en: "Where does Elegant Islands begin and end?",
+          de: "Wo beginnt und endet Elegante Inseln?",
         },
         answer: {
-          en: "Elegant Islands is a hosted small-group journey limited to six to eight guests. The private aircraft is shared exclusively by the ABATON group during the published flight sectors.",
-          de: "Elegante Inseln ist eine begleitete Journey in kleiner Gruppe, begrenzt auf sechs bis acht Gäste. Das private Flugzeug wird während der veröffentlichten Flugabschnitte ausschließlich von der ABATON-Gruppe genutzt.",
-        },
-      },
-      {
-        question: {
-          en: "Which aircraft will be used?",
-          de: "Welches Flugzeug kommt zum Einsatz?",
-        },
-        answer: {
-          en: "ABATON selects an aircraft suitable for the route, group size and operational requirements. The final aircraft and operator are confirmed before departure and may vary from the illustrative aircraft shown.",
-          de: "ABATON wählt ein Flugzeug, das zu Route, Gruppengröße und betrieblichen Anforderungen passt. Das endgültige Flugzeug und der Betreiber werden vor der Abreise bestätigt und können von der beispielhaft gezeigten Maschine abweichen.",
-        },
-      },
-      {
-        question: {
-          en: "How much luggage can I bring?",
-          de: "Wie viel Gepäck kann ich mitnehmen?",
-        },
-        answer: {
-          en: "Private aircraft have different baggage limitations from commercial airlines. Guests receive a journey-specific baggage guide before departure; soft-sided luggage is generally recommended.",
-          de: "Für private Flugzeuge gelten andere Gepäckgrenzen als für Linienfluggesellschaften. Die Gäste erhalten vor der Abreise einen reisespezifischen Gepäckleitfaden; weiches Gepäck wird generell empfohlen.",
+          en: "The journey begins and ends in London. Guests arrange their individual international travel to and from London.",
+          de: "Die Journey beginnt und endet in London. Die Gäste organisieren ihre individuelle internationale An- und Abreise nach und von London selbst.",
         },
       },
       {
@@ -545,18 +351,8 @@ export const collectionJourneys = [
           de: "Wie aktiv ist die Journey?",
         },
         answer: {
-          en: "The itinerary balances cultural visits and outdoor experiences with free time. Selected activities can be adapted to different comfort and activity levels wherever possible.",
-          de: "Das Programm verbindet kulturelle Besuche und Erlebnisse im Freien mit freier Zeit. Ausgewählte Aktivitäten lassen sich, wo immer möglich, an unterschiedliche Komfort- und Aktivitätsniveaus anpassen.",
-        },
-      },
-      {
-        question: {
-          en: "Can dietary requirements be accommodated?",
-          de: "Können besondere Ernährungswünsche berücksichtigt werden?",
-        },
-        answer: {
-          en: "Yes. Booked guests can provide allergies, intolerances and preferences in the private guest area before departure. These are shared with the relevant hospitality partners.",
-          de: "Ja. Gebuchte Gäste können Allergien, Unverträglichkeiten und Vorlieben vor der Abreise im privaten Gästebereich hinterlegen. Diese werden an die jeweiligen Gastgeber weitergegeben.",
+          en: "Elegant Islands combines cultural, landscape and outdoor experiences with regular periods of free time. Selected activities can be adapted according to individual interests and activity levels.",
+          de: "Elegante Inseln verbindet kulturelle, landschaftliche und Erlebnisse im Freien mit regelmäßiger freier Zeit. Ausgewählte Aktivitäten lassen sich an individuelle Interessen und Aktivitätsniveaus anpassen.",
         },
       },
       {
@@ -565,67 +361,327 @@ export const collectionJourneys = [
           de: "Kann ich früher in London ankommen oder länger bleiben?",
         },
         answer: {
-          en: "Yes. Additional hotel nights and individual chauffeur arrangements can be requested through the ABATON concierge service.",
-          de: "Ja. Zusätzliche Hotelnächte und individuelle Chauffeurarrangements können über den ABATON-Concierge-Service angefragt werden.",
-        },
-      },
-      {
-        question: {
-          en: "When is the departure confirmed?",
-          de: "Wann gilt die Abreise als bestätigt?",
-        },
-        answer: {
-          en: "The booking documentation will state the conditions under which the journey is confirmed, including any applicable minimum participant requirement.",
-          de: "Die Buchungsunterlagen nennen die Bedingungen, unter denen die Journey bestätigt wird, einschließlich einer etwaigen Mindestteilnehmerzahl.",
-        },
-      },
-      {
-        question: {
-          en: "Will every programme detail be exactly as published?",
-          de: "Wird jedes Programmdetail genau wie veröffentlicht stattfinden?",
-        },
-        answer: {
-          en: "The character and principal destinations of the journey remain as described. Individual timings, restaurants, activities or routing details may be adjusted where operational conditions or local availability require an equivalent or improved alternative.",
-          de: "Charakter und Hauptziele der Journey bleiben wie beschrieben. Einzelne Zeiten, Restaurants, Aktivitäten oder Routenführungen können angepasst werden, wenn betriebliche Umstände oder örtliche Verfügbarkeit eine gleichwertige oder bessere Alternative erfordern.",
+          en: "Yes. Additional hotel nights, airport transfers and individual arrangements before or after the journey can be requested separately.",
+          de: "Ja. Zusätzliche Hotelnächte, Flughafentransfers und individuelle Arrangements vor oder nach der Journey können separat angefragt werden.",
         },
       },
     ],
   },
 
   {
-    // OPEN DECISION 1.2: route below is SUPERSEDED. Sofia and Ljubljana have
-    // been removed; the current version is Budapest, Brasov, Rovinj/Pula, Kotor,
-    // Albanian Riviera (Vlora), still 4 stations.
+    // New journey, per the final client document (section 3.1.2). Interest List:
+    // no price, no departure date. Route replaces the retired Secrets of Europe.
+    slug: "mediterranean-essence",
+    published: true,
+    status: "interest_list",
+    featured: false,
+    order: 2,
+    title: { en: "Mediterranean Essence", de: "Mediterrane Essenz" },
+    countries: {
+      en: "Switzerland · France · Spain · Italy",
+      de: "Schweiz · Frankreich · Spanien · Italien",
+    },
+    tagline: {
+      en: "Mediterranean coastlines, regional cuisine, Tuscan landscapes and the mountains of South Tyrol.",
+      de: "Mediterrane Küsten, regionale Küche, toskanische Landschaften und die Berge Südtirols.",
+    },
+    summary: {
+      en: "Mediterranean Essence connects some of Southern Europe's most distinctive regions in one private jet journey for six to eight guests, from the French Riviera and San Sebastián to the Tuscan countryside and the Dolomites.",
+      de: "Mediterrane Essenz verbindet einige der markantesten Regionen Südeuropas zu einer Privatjet-Journey für sechs bis acht Gäste, von der Französischen Riviera und San Sebastián bis in die toskanische Landschaft und die Dolomiten.",
+    },
+    nights: 8,
+    guestsLabel: guests,
+    departureCity: { en: "Zurich to Zurich", de: "Zürich nach Zürich" },
+    hotelCategory: hotels,
+    route: [
+      "Zurich",
+      "French Riviera",
+      "San Sebastián",
+      "Tuscany",
+      "South Tyrol & the Dolomites",
+    ],
+    heroImage: {
+      src: "/images/experiences/dining.jpg",
+      alt: {
+        en: "Regional Mediterranean cuisine",
+        de: "Regionale mediterrane Küche",
+      },
+    },
+    gallery,
+    overview: {
+      en: [
+        "Mediterranean Essence connects some of Southern Europe's most distinctive regions in one private jet journey for six to eight guests. Beginning in Zurich, the route continues to the French Riviera, San Sebastián, the Tuscan countryside and South Tyrol before returning to Switzerland.",
+        "Each region brings a different perspective to the journey. Mediterranean coastlines and art give way to the food culture of the Basque Country, the vineyards and landscapes of Tuscany and the mountains of the Dolomites. Private flights connect the different chapters of the route, while personally selected hotels, local cuisine and regional experiences shape the time on the ground.",
+        "Each departure is personally hosted by ABATON founder and private pilot Isabell Buchner.",
+      ],
+      de: [
+        "Mediterrane Essenz verbindet einige der markantesten Regionen Südeuropas zu einer Privatjet-Journey für sechs bis acht Gäste. Beginnend in Zürich führt die Route weiter an die Französische Riviera, nach San Sebastián, in die toskanische Landschaft und nach Südtirol, bevor sie in die Schweiz zurückkehrt.",
+        "Jede Region bringt eine eigene Perspektive in die Journey. Mediterrane Küsten und Kunst weichen der Esskultur des Baskenlands, den Weinbergen und Landschaften der Toskana und den Bergen der Dolomiten. Private Flüge verbinden die einzelnen Kapitel der Route, während persönlich ausgewählte Hotels, lokale Küche und regionale Erlebnisse die Zeit vor Ort prägen.",
+        "Jede Abreise wird persönlich von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet.",
+      ],
+    },
+    signatureMoments: [
+      {
+        title: { en: "The French Riviera", de: "Die Französische Riviera" },
+        description: {
+          en: "Experience the Mediterranean through selected coastal, cultural and culinary moments along the Côte d'Azur.",
+          de: "Erleben Sie das Mittelmeer bei ausgewählten Momenten an Küste, Kultur und Küche entlang der Côte d'Azur.",
+        },
+      },
+      {
+        title: { en: "San Sebastián", de: "San Sebastián" },
+        description: {
+          en: "Discover one of Europe's most recognised culinary destinations, with time for the city, the coast and the food culture of the Basque Country.",
+          de: "Entdecken Sie eines der renommiertesten kulinarischen Ziele Europas, mit Zeit für die Stadt, die Küste und die Esskultur des Baskenlands.",
+        },
+      },
+      {
+        title: { en: "The Tuscan Countryside", de: "Die toskanische Landschaft" },
+        description: {
+          en: "Spend two nights among vineyards, historic towns and rural landscapes, with a programme shaped around regional food, wine and local life.",
+          de: "Verbringen Sie zwei Nächte zwischen Weinbergen, historischen Städtchen und ländlichen Landschaften, mit einem Programm rund um regionale Küche, Wein und lokales Leben.",
+        },
+      },
+      {
+        title: { en: "South Tyrol", de: "Südtirol" },
+        description: {
+          en: "Experience the meeting of Alpine and Mediterranean culture through mountain landscapes, regional cuisine and locally rooted hospitality.",
+          de: "Erleben Sie das Zusammentreffen von alpiner und mediterraner Kultur durch Bergwelten, regionale Küche und lokal verwurzelte Gastlichkeit.",
+        },
+      },
+      {
+        title: { en: "The Dolomites", de: "Die Dolomiten" },
+        description: {
+          en: "Finish the journey in one of Europe's most distinctive mountain regions, with time for the landscape and a slower final chapter before returning to Zurich.",
+          de: "Beschließen Sie die Journey in einer der markantesten Bergregionen Europas, mit Zeit für die Landschaft und einem ruhigeren Schlusskapitel vor der Rückkehr nach Zürich.",
+        },
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        city: "Zurich",
+        title: { en: "Zurich", de: "Zürich" },
+        description: {
+          en: "Guests arrive individually in Zurich and settle into the first hotel. The group meets in the evening for a welcome dinner and the beginning of the journey.",
+          de: "Die Gäste reisen individuell in Zürich an und kommen im ersten Hotel an. Am Abend trifft sich die Gruppe zu einem Willkommensdinner und zum Auftakt der Journey.",
+        },
+      },
+      {
+        day: 2,
+        city: "Zurich → French Riviera",
+        title: {
+          en: "Zurich to the French Riviera",
+          de: "Zürich an die Französische Riviera",
+        },
+        description: {
+          en: "The first private flight takes the group from Switzerland to the Mediterranean. The afternoon is spent discovering selected places along the French Riviera, with time for the coast and the atmosphere of the region before dinner.",
+          de: "Der erste Privatflug bringt die Gruppe von der Schweiz ans Mittelmeer. Der Nachmittag gilt ausgewählten Orten entlang der Französischen Riviera, mit Zeit für die Küste und die Atmosphäre der Region vor dem Dinner.",
+        },
+      },
+      {
+        day: 3,
+        city: "French Riviera → San Sebastián",
+        title: {
+          en: "French Riviera to San Sebastián",
+          de: "Französische Riviera nach San Sebastián",
+        },
+        description: {
+          en: "The morning leaves time for a final Riviera experience before the journey continues by private jet to northern Spain. On arrival, San Sebastián introduces a different side of the journey, shaped by the sea, the old town and its food culture.",
+          de: "Der Morgen lässt Zeit für ein letztes Riviera-Erlebnis, bevor die Journey per Privatjet nach Nordspanien führt. Bei der Ankunft zeigt San Sebastián eine andere Seite der Journey, geprägt vom Meer, der Altstadt und ihrer Esskultur.",
+        },
+      },
+      {
+        day: 4,
+        city: "San Sebastián",
+        title: {
+          en: "San Sebastián & the Basque Country",
+          de: "San Sebastián & das Baskenland",
+        },
+        description: {
+          en: "A full day is dedicated to the city and its surrounding region. The programme combines local food culture with selected experiences along the Basque coast and leaves time to enjoy San Sebastián independently.",
+          de: "Ein ganzer Tag gehört der Stadt und ihrer Umgebung. Das Programm verbindet lokale Esskultur mit ausgewählten Erlebnissen entlang der baskischen Küste und lässt Zeit, San Sebastián auf eigene Faust zu genießen.",
+        },
+      },
+      {
+        day: 5,
+        city: "San Sebastián → Tuscany",
+        title: {
+          en: "San Sebastián to Tuscany",
+          de: "San Sebastián in die Toskana",
+        },
+        description: {
+          en: "The journey continues by private jet to Italy. From the airport, a private transfer leads into the Tuscan countryside, where vineyards, historic villages and a more rural rhythm define the next two nights.",
+          de: "Die Journey führt per Privatjet weiter nach Italien. Vom Flughafen bringt ein privater Transfer in die toskanische Landschaft, wo Weinberge, historische Dörfer und ein ländlicherer Rhythmus die nächsten zwei Nächte bestimmen.",
+        },
+      },
+      {
+        day: 6,
+        city: "Tuscany",
+        title: { en: "Tuscany", de: "Toskana" },
+        description: {
+          en: "The day is shaped around the landscape and traditions of Tuscany. Depending on the final programme, experiences may include regional wine, local producers, historic towns, art or a privately guided exploration of the countryside. Time at the hotel forms part of the day.",
+          de: "Der Tag richtet sich nach Landschaft und Traditionen der Toskana. Je nach finalem Programm können Erlebnisse regionalen Wein, lokale Erzeuger, historische Städtchen, Kunst oder eine privat geführte Erkundung der Landschaft umfassen. Zeit im Hotel gehört zum Tag.",
+        },
+      },
+      {
+        day: 7,
+        city: "Tuscany → South Tyrol",
+        title: {
+          en: "Tuscany to South Tyrol",
+          de: "Toskana nach Südtirol",
+        },
+        description: {
+          en: "A private flight connects central Italy with the Alpine north. The journey continues into South Tyrol and the Dolomites, where the final chapter combines mountain landscapes with regional hospitality.",
+          de: "Ein Privatflug verbindet Mittelitalien mit dem alpinen Norden. Die Journey führt weiter nach Südtirol und in die Dolomiten, wo das Schlusskapitel Bergwelten mit regionaler Gastlichkeit verbindet.",
+        },
+      },
+      {
+        day: 8,
+        city: "South Tyrol & the Dolomites",
+        title: {
+          en: "South Tyrol & the Dolomites",
+          de: "Südtirol & die Dolomiten",
+        },
+        description: {
+          en: "The day is dedicated to the mountains. The programme is adapted to the season and the interests of the group and may combine landscape, local culture, cuisine and selected outdoor experiences. The final evening is spent together over dinner.",
+          de: "Der Tag gehört den Bergen. Das Programm richtet sich nach Saison und Interessen der Gruppe und kann Landschaft, lokale Kultur, Küche und ausgewählte Erlebnisse im Freien verbinden. Der letzte Abend klingt bei einem gemeinsamen Dinner aus.",
+        },
+      },
+      {
+        day: 9,
+        city: "South Tyrol → Zurich",
+        title: { en: "South Tyrol to Zurich", de: "Südtirol nach Zürich" },
+        description: {
+          en: "After breakfast, the final private flight returns the group to Zurich. Individual onward travel can continue after arrival.",
+          de: "Nach dem Frühstück bringt der letzte Privatflug die Gruppe zurück nach Zürich. Die individuelle Weiterreise kann nach der Ankunft fortgesetzt werden.",
+        },
+      },
+    ] as Day[],
+    programmeNote: {
+      en: "The itinerary describes the planned character and route of Mediterranean Essence. The departure date, hotels, restaurants, individual activities, timings and selected programme details are confirmed when the journey is released for reservations and according to availability, season and local conditions.",
+      de: "Der Reiseverlauf beschreibt den geplanten Charakter und die Route von Mediterrane Essenz. Abreisedatum, Hotels, Restaurants, einzelne Aktivitäten, Zeiten und ausgewählte Programmdetails werden bestätigt, sobald die Journey für Reservierungen freigegeben ist, sowie nach Verfügbarkeit, Saison und örtlichen Bedingungen.",
+    },
+    stays: [
+      {
+        title: { en: "Zurich", de: "Zürich" },
+        description: {
+          en: "A refined Swiss city hotel as a calm starting point before the journey south.",
+          de: "Ein kultiviertes Schweizer Stadthotel als ruhiger Ausgangspunkt vor der Reise gen Süden.",
+        },
+      },
+      {
+        title: { en: "French Riviera", de: "Französische Riviera" },
+        description: {
+          en: "A characterful property on the Côte d'Azur, close to the sea and the light of the Mediterranean.",
+          de: "Ein charaktervolles Haus an der Côte d'Azur, nah am Meer und am Licht des Mittelmeers.",
+        },
+      },
+      {
+        title: { en: "San Sebastián", de: "San Sebastián" },
+        description: {
+          en: "A historic address in the centre of San Sebastián, within reach of the bay and the old town.",
+          de: "Ein historisches Haus im Zentrum von San Sebastián, in Reichweite von Bucht und Altstadt.",
+        },
+      },
+      {
+        title: { en: "Tuscany", de: "Toskana" },
+        description: {
+          en: "An owner-managed Tuscan estate among vineyards and countryside for two unhurried nights.",
+          de: "Ein inhabergeführtes toskanisches Anwesen zwischen Weinbergen und Landschaft für zwei ruhige Nächte.",
+        },
+      },
+      {
+        title: { en: "South Tyrol", de: "Südtirol" },
+        description: {
+          en: "A locally rooted hotel in South Tyrol, where the mountains set the pace for the final chapter.",
+          de: "Ein lokal verwurzeltes Hotel in Südtirol, in dem die Berge den Takt für das Schlusskapitel vorgeben.",
+        },
+      },
+    ],
+    inclusions: {
+      en: [
+        "8 nights in carefully selected hotels and character properties",
+        "Private flights between the journey regions according to the final itinerary",
+        "Private airport transfers and scheduled ground transportation",
+        "Daily breakfast, and selected lunches and dinners",
+        "Curated cultural, culinary and landscape experiences",
+        "Personal hosting throughout the journey",
+        "Pre-departure travel coordination",
+        "Access to the private ABATON Circle after booking confirmation",
+      ],
+      de: [
+        "8 Nächte in sorgfältig ausgewählten Hotels und Charakterhäusern",
+        "Private Flüge zwischen den Regionen der Journey gemäß dem finalen Reiseverlauf",
+        "Private Flughafentransfers und Bodentransporte gemäß Programm",
+        "Täglich Frühstück sowie ausgewählte Mittag- und Abendessen",
+        "Kuratierte kulturelle, kulinarische und landschaftliche Erlebnisse",
+        "Persönliche Begleitung während der gesamten Journey",
+        "Reisekoordination vor der Abreise",
+        "Zugang zum privaten ABATON Circle nach Buchungsbestätigung",
+      ],
+    },
+    faq: [
+      {
+        question: {
+          en: "Where will Mediterranean Essence begin and end?",
+          de: "Wo wird Mediterrane Essenz beginnen und enden?",
+        },
+        answer: {
+          en: "The journey is planned to begin and end in Zurich.",
+          de: "Die Journey soll in Zürich beginnen und enden.",
+        },
+      },
+      {
+        question: {
+          en: "When will reservations open?",
+          de: "Wann werden Reservierungen geöffnet?",
+        },
+        answer: {
+          en: "Registered guests receive priority information when the next departure is released.",
+          de: "Registrierte Gäste erhalten vorrangig Informationen, sobald die nächste Abreise freigegeben wird.",
+        },
+      },
+      {
+        question: {
+          en: "How active will the journey be?",
+          de: "Wie aktiv wird die Journey sein?",
+        },
+        answer: {
+          en: "The programme will combine cultural, culinary and landscape experiences with time at the hotels and destinations. Selected activities will be adapted to the season and the interests of the group.",
+          de: "Das Programm verbindet kulturelle, kulinarische und landschaftliche Erlebnisse mit Zeit in den Hotels und an den Zielen. Ausgewählte Aktivitäten werden an Saison und Interessen der Gruppe angepasst.",
+        },
+      },
+    ],
+  },
+
+  {
+    // Route reworked per the final client document (section 3.1.3): Budapest,
+    // Transylvania, Bay of Kotor, Istria, Salzburg. The earlier Sofia, Pula,
+    // Rovinj and Ljubljana stops are retired.
     slug: "fascinating-balkan",
     published: true,
     status: "interest_list",
     featured: false,
-    order: 4,
+    order: 3,
     title: { en: "Fascinating Balkan", de: "Faszinierender Balkan" },
+    countries: {
+      en: "Hungary · Romania · Montenegro · Croatia · Austria",
+      de: "Ungarn · Rumänien · Montenegro · Kroatien · Österreich",
+    },
     tagline: {
-      en: "High-contrast Balkans, raw and refined.",
-      de: "Kontrastreicher Balkan, roh und raffiniert.",
+      en: "Historic cities, mountain landscapes and the Adriatic coast, from Central Europe to the sea.",
+      de: "Historische Städte, Bergwelten und die Adriaküste, von Mitteleuropa ans Meer.",
     },
     summary: {
-      en: "A high-contrast journey through the Balkans, shaped by old cultures, history and coastal beauty. From historic cities to the Bay of Kotor, tradition meets a new kind of elegance. Raw, authentic and surprisingly refined.",
-      de: "Eine kontrastreiche Journey durch den Balkan, geprägt von alten Kulturen, Geschichte und Küstenschönheit. Von historischen Städten bis zur Bucht von Kotor trifft Tradition auf eine neue Art von Eleganz. Roh, authentisch und überraschend raffiniert.",
+      en: "A private jet journey through Central and Southeast Europe for six to eight guests, from Budapest and Transylvania to the Bay of Kotor, Istria and Salzburg.",
+      de: "Eine Privatjet-Journey durch Mittel- und Südosteuropa für sechs bis acht Gäste, von Budapest und Transsilvanien über die Bucht von Kotor und Istrien bis Salzburg.",
     },
     nights: 8,
     guestsLabel: guests,
-    departureCity: { en: "Budapest", de: "Budapest" },
+    departureCity: { en: "Budapest to Budapest", de: "Budapest nach Budapest" },
     hotelCategory: hotels,
-    priceFrom: 28850,
-    priceFromSingle: 32850,
-    nextDeparture: { en: "17–25 September 2027", de: "17.–25. September 2027" },
-    route: [
-      "Budapest",
-      "Brașov",
-      "Sofia",
-      "Kotor",
-      "Pula",
-      "Rovinj",
-      "Ljubljana",
-    ],
+    route: ["Budapest", "Transylvania", "Bay of Kotor", "Istria", "Salzburg"],
     heroImage: {
       src: "/images/aircraft/pc12.jpg",
       alt: { en: "The Pilatus PC-12", de: "Die Pilatus PC-12" },
@@ -633,160 +689,278 @@ export const collectionJourneys = [
     gallery,
     overview: {
       en: [
-        "Fascinating Balkan leads deep into the cultural crossroads of Europe, where the Balkans unfold with striking contrasts and bold character. It begins in Budapest, the regal capital of thermal baths and baroque façades, before flying into the heart of Transylvania.",
-        "In Brașov, history and myth come alive; Sofia layers Orthodox spirituality with cutting-edge cuisine; and the Adriatic coast, from Kotor to Rovinj, closes the tour in Ljubljana, Slovenia's green, poetic capital.",
+        "Fascinating Balkan connects a series of regions shaped by different histories, landscapes and cultural influences. The journey begins in Budapest before continuing into Transylvania, the Bay of Kotor, Istria and Salzburg and returning to the Hungarian capital.",
+        "Private flights make it possible to move naturally between inland Europe, the Adriatic coast and the Alps while keeping the journey to eight nights. Historic cities, rural landscapes, locally rooted hotels, regional cuisine and time by the sea give each chapter its own character.",
+        "Each departure is personally hosted by ABATON founder and private pilot Isabell Buchner.",
       ],
       de: [
-        "Faszinierender Balkan führt tief in die kulturelle Kreuzung Europas, wo sich der Balkan mit auffälligen Kontrasten und markantem Charakter entfaltet. Es beginnt in Budapest, der königlichen Hauptstadt der Thermalbäder und barocken Fassaden, bevor es ins Herz Transsilvaniens geht.",
-        "In Brașov erwachen Geschichte und Mythos; Sofia verbindet orthodoxe Spiritualität mit avantgardistischer Küche; und die Adriaküste, von Kotor bis Rovinj, beschließt die Reise in Ljubljana, Sloweniens grüner, poetischer Hauptstadt.",
+        "Faszinierender Balkan verbindet eine Reihe von Regionen, geprägt von unterschiedlichen Geschichten, Landschaften und kulturellen Einflüssen. Die Journey beginnt in Budapest und führt weiter nach Transsilvanien, in die Bucht von Kotor, nach Istrien und Salzburg, bevor sie in die ungarische Hauptstadt zurückkehrt.",
+        "Private Flüge machen es möglich, natürlich zwischen dem europäischen Binnenland, der Adriaküste und den Alpen zu wechseln und die Journey dennoch auf acht Nächte zu halten. Historische Städte, ländliche Landschaften, lokal verwurzelte Hotels, regionale Küche und Zeit am Meer geben jedem Kapitel seinen eigenen Charakter.",
+        "Jede Abreise wird persönlich von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet.",
       ],
     },
+    signatureMoments: [
+      {
+        title: { en: "Budapest", de: "Budapest" },
+        description: {
+          en: "Begin among the architecture, history and café culture of the Hungarian capital.",
+          de: "Beginnen Sie zwischen Architektur, Geschichte und Kaffeehauskultur der ungarischen Hauptstadt.",
+        },
+      },
+      {
+        title: { en: "Transylvania", de: "Transsilvanien" },
+        description: {
+          en: "Explore a region of historic towns, mountain landscapes, castles and rural traditions.",
+          de: "Erkunden Sie eine Region historischer Städtchen, Bergwelten, Schlösser und ländlicher Traditionen.",
+        },
+      },
+      {
+        title: { en: "Bay of Kotor", de: "Bucht von Kotor" },
+        description: {
+          en: "Spend two nights by the Adriatic, with time on the water and among the historic towns of the bay.",
+          de: "Verbringen Sie zwei Nächte an der Adria, mit Zeit auf dem Wasser und in den historischen Orten der Bucht.",
+        },
+      },
+      {
+        title: { en: "Istria", de: "Istrien" },
+        description: {
+          en: "Discover a quieter side of Croatia through coastal towns, vineyards, olive oil, regional produce and local cuisine.",
+          de: "Entdecken Sie eine stillere Seite Kroatiens durch Küstenorte, Weinberge, Olivenöl, regionale Erzeugnisse und lokale Küche.",
+        },
+      },
+      {
+        title: { en: "Salzburg", de: "Salzburg" },
+        description: {
+          en: "Finish the journey with Alpine surroundings, historic architecture and the cultural traditions of Salzburg.",
+          de: "Beschließen Sie die Journey mit alpiner Umgebung, historischer Architektur und den kulturellen Traditionen Salzburgs.",
+        },
+      },
+    ],
     itinerary: [
       {
         day: 1,
         city: "Budapest",
-        title: { en: "Thermal City", de: "Thermalstadt" },
+        title: { en: "Budapest", de: "Budapest" },
         description: {
-          en: "We begin in Budapest, the regal capital of thermal baths and baroque façades.",
-          de: "Wir beginnen in Budapest, der königlichen Hauptstadt der Thermalbäder und barocken Fassaden.",
+          en: "Guests arrive individually in Budapest and settle into the first hotel. The group meets in the evening for a welcome dinner.",
+          de: "Die Gäste reisen individuell in Budapest an und kommen im ersten Hotel an. Am Abend trifft sich die Gruppe zu einem Willkommensdinner.",
         },
       },
       {
         day: 2,
-        city: "Budapest → Brașov",
-        title: { en: "Into Transylvania", de: "Nach Transsilvanien" },
+        city: "Budapest → Transylvania",
+        title: {
+          en: "Budapest to Transylvania",
+          de: "Budapest nach Transsilvanien",
+        },
         description: {
-          en: "We fly directly into the heart of Transylvania. In Brașov, history and myth come alive as we wander cobbled streets and visit a mystic castle nestled in the shadows of the Carpathians.",
-          de: "Wir fliegen direkt ins Herz Transsilvaniens. In Brașov erwachen Geschichte und Mythos, während wir durch Kopfsteinpflastergassen streifen und ein mystisches Schloss im Schatten der Karpaten besuchen.",
+          en: "The first private flight takes the group east towards Transylvania. After arrival, a private transfer leads into the region and provides a first impression of its architecture, landscape and local traditions.",
+          de: "Der erste Privatflug bringt die Gruppe ostwärts nach Transsilvanien. Nach der Ankunft führt ein privater Transfer in die Region und vermittelt einen ersten Eindruck ihrer Architektur, Landschaft und lokalen Traditionen.",
         },
       },
       {
         day: 3,
-        city: "Brașov → Sofia",
-        title: { en: "Sacred & Surreal", de: "Heilig & surreal" },
+        city: "Transylvania",
+        title: { en: "Transylvania", de: "Transsilvanien" },
         description: {
-          en: "Sofia welcomes us with layers of Orthodox spirituality and Balkan eccentricity, from gold-domed cathedrals to an avant-garde dinner where storytelling meets gastronomy.",
-          de: "Sofia empfängt uns mit Schichten orthodoxer Spiritualität und balkanischer Exzentrik, von golden gekuppelten Kathedralen bis zu einem avantgardistischen Dinner, in dem Erzählkunst auf Gastronomie trifft.",
+          en: "A full day is dedicated to the region. The programme may combine historic towns, castles, local culture and countryside, with time to enjoy the hotel and surroundings.",
+          de: "Ein ganzer Tag gehört der Region. Das Programm kann historische Städtchen, Schlösser, lokale Kultur und Landschaft verbinden, mit Zeit, Hotel und Umgebung zu genießen.",
         },
       },
       {
         day: 4,
-        city: "Sofia → Kotor",
-        title: { en: "The Bay of Kotor", de: "Die Bucht von Kotor" },
+        city: "Transylvania → Bay of Kotor",
+        title: {
+          en: "Transylvania to the Bay of Kotor",
+          de: "Transsilvanien in die Bucht von Kotor",
+        },
         description: {
-          en: "In Kotor, mountains meet the Adriatic. The medieval old town and the bay are explored by private boat over two nights.",
-          de: "In Kotor treffen Berge auf die Adria. Die mittelalterliche Altstadt und die Bucht werden über zwei Nächte per privatem Boot erkundet.",
+          en: "The journey turns south towards the Adriatic. After the private flight, the group continues to the Bay of Kotor, where mountain scenery meets the sea. The remainder of the afternoon follows a relaxed coastal rhythm.",
+          de: "Die Journey wendet sich südwärts zur Adria. Nach dem Privatflug fährt die Gruppe weiter zur Bucht von Kotor, wo Bergkulisse auf das Meer trifft. Der restliche Nachmittag folgt einem entspannten Küstenrhythmus.",
         },
       },
       {
         day: 5,
-        city: "Kotor",
-        title: { en: "Adriatic Charms", de: "Reize der Adria" },
+        city: "Bay of Kotor",
+        title: { en: "Bay of Kotor", de: "Bucht von Kotor" },
         description: {
-          en: "Time to enjoy the region's quiet Mediterranean character at an unhurried pace.",
-          de: "Zeit, den stillen mediterranen Charakter der Region in aller Ruhe zu genießen.",
+          en: "The day explores the bay from both land and water. Historic towns, the coastline and selected regional experiences provide a closer understanding of Montenegro before the group comes together again for dinner.",
+          de: "Der Tag erkundet die Bucht zu Land und zu Wasser. Historische Orte, die Küste und ausgewählte regionale Erlebnisse eröffnen ein näheres Verständnis Montenegros, bevor die Gruppe zum Dinner wieder zusammenkommt.",
         },
       },
       {
         day: 6,
-        city: "Kotor → Pula",
-        title: { en: "Roman Coast", de: "Römische Küste" },
+        city: "Bay of Kotor → Istria",
+        title: {
+          en: "Bay of Kotor to Istria",
+          de: "Bucht von Kotor nach Istrien",
+        },
         description: {
-          en: "The day leads to Pula, where a short visit introduces its Roman heritage and coastal setting.",
-          de: "Der Tag führt nach Pula, wo ein kurzer Besuch das römische Erbe und die Küstenlage vorstellt.",
+          en: "A private flight follows the Adriatic coast north towards Istria. The afternoon introduces the region through its landscape, coastal towns and local food culture.",
+          de: "Ein Privatflug folgt der Adriaküste nordwärts nach Istrien. Der Nachmittag führt in die Region ein, mit ihrer Landschaft, den Küstenorten und der lokalen Esskultur.",
         },
       },
       {
         day: 7,
-        city: "Pula → Rovinj",
-        title: { en: "Coastal Charms", de: "Küstenreize" },
+        city: "Istria",
+        title: { en: "Istria", de: "Istrien" },
         description: {
-          en: "The journey continues to Rovinj, where two nights allow time to explore the old town, walk along the sea and enjoy relaxed dining above the Mediterranean.",
-          de: "Die Journey führt weiter nach Rovinj, wo zwei Nächte Zeit lassen, die Altstadt zu erkunden, am Meer entlangzugehen und entspanntes Dining über dem Mittelmeer zu genießen.",
+          en: "A full day is dedicated to the Istrian countryside and coast. The programme is shaped around regional producers, wine, olive oil, historic towns and time to enjoy the Mediterranean surroundings.",
+          de: "Ein ganzer Tag gehört der istrischen Landschaft und Küste. Das Programm richtet sich nach regionalen Erzeugern, Wein, Olivenöl, historischen Städtchen und Zeit, die mediterrane Umgebung zu genießen.",
         },
       },
       {
         day: 8,
-        city: "Rovinj → Ljubljana",
-        title: { en: "Poetic Finale", de: "Poetisches Finale" },
+        city: "Istria → Salzburg",
+        title: { en: "Istria to Salzburg", de: "Istrien nach Salzburg" },
         description: {
-          en: "Finally we land in Ljubljana, Slovenia's green, poetic capital, exploring riverside cafés, charming bridges and quiet castle views before a farewell dinner of seasonal alpine cuisine and local wine.",
-          de: "Schließlich landen wir in Ljubljana, Sloweniens grüner, poetischer Hauptstadt, erkunden Cafés am Fluss, charmante Brücken und stille Schlossblicke vor einem Abschiedsdinner mit saisonaler alpiner Küche und lokalem Wein.",
+          en: "The journey continues by private jet towards the Alps. The final afternoon introduces Salzburg and its historic centre before a farewell dinner together.",
+          de: "Die Journey führt per Privatjet weiter in die Alpen. Der letzte Nachmittag führt zu Salzburg und seiner historischen Altstadt, bevor ein gemeinsames Abschiedsdinner folgt.",
         },
       },
       {
         day: 9,
-        city: "Ljubljana → Homeward",
-        title: { en: "Homeward", de: "Heimwärts" },
+        city: "Salzburg → Budapest",
+        title: { en: "Salzburg to Budapest", de: "Salzburg nach Budapest" },
         description: {
-          en: "We take our leave after a final morning by the river.",
-          de: "Wir verabschieden uns nach einem letzten Morgen am Fluss.",
+          en: "After breakfast, the final private flight returns the group to Budapest. Individual onward travel can continue after arrival.",
+          de: "Nach dem Frühstück bringt der letzte Privatflug die Gruppe zurück nach Budapest. Die individuelle Weiterreise kann nach der Ankunft fortgesetzt werden.",
         },
       },
     ] as Day[],
+    programmeNote: {
+      en: "The itinerary describes the planned character and route of Fascinating Balkan. The departure date, hotels, restaurants, individual activities, timings and selected programme details are confirmed when the journey is released for reservations and according to availability, season and local conditions.",
+      de: "Der Reiseverlauf beschreibt den geplanten Charakter und die Route von Faszinierender Balkan. Abreisedatum, Hotels, Restaurants, einzelne Aktivitäten, Zeiten und ausgewählte Programmdetails werden bestätigt, sobald die Journey für Reservierungen freigegeben ist, sowie nach Verfügbarkeit, Saison und örtlichen Bedingungen.",
+    },
+    stays: [
+      {
+        title: { en: "Budapest", de: "Budapest" },
+        description: {
+          en: "A refined city address in Budapest as the starting point of the journey.",
+          de: "Ein kultiviertes Stadthaus in Budapest als Ausgangspunkt der Journey.",
+        },
+      },
+      {
+        title: { en: "Transylvania", de: "Transsilvanien" },
+        description: {
+          en: "A small retreat in Transylvania, close to the region's towns and mountain landscapes.",
+          de: "Ein kleines Refugium in Transsilvanien, nah an den Städtchen und Bergwelten der Region.",
+        },
+      },
+      {
+        title: { en: "Bay of Kotor", de: "Bucht von Kotor" },
+        description: {
+          en: "A boutique property by the Bay of Kotor for two nights on the Adriatic.",
+          de: "Ein Boutique-Haus an der Bucht von Kotor für zwei Nächte an der Adria.",
+        },
+      },
+      {
+        title: { en: "Istria", de: "Istrien" },
+        description: {
+          en: "An Istrian countryside hotel among vineyards, olive groves and coastal towns.",
+          de: "Ein istrisches Landhotel zwischen Weinbergen, Olivenhainen und Küstenorten.",
+        },
+      },
+      {
+        title: { en: "Salzburg", de: "Salzburg" },
+        description: {
+          en: "A historic house in Salzburg for the final night, within reach of the old town.",
+          de: "Ein historisches Haus in Salzburg für die letzte Nacht, in Reichweite der Altstadt.",
+        },
+      },
+    ],
     inclusions: {
       en: [
-        "Private jet travel throughout",
-        "Luxury ground transport",
-        "8 nights in 4★/5★ hotels with breakfast",
-        "7 lunches and 8 dinners",
-        "Castle visit in Transylvania",
-        "City tour of Sofia",
-        "Private boat tour in Kotor",
-        "Pula city tour",
-        "Rovinj city tour",
-        "Private Ljubljana exploration",
+        "8 nights in carefully selected hotels and character properties",
+        "Private flights between the journey regions",
+        "Private airport transfers and scheduled ground transportation",
+        "Daily breakfast, and selected lunches and dinners",
+        "Curated cultural, landscape and culinary experiences",
+        "Personal hosting throughout the journey",
+        "Pre-departure travel coordination",
+        "Access to the private ABATON Circle after booking confirmation",
       ],
       de: [
-        "Privatjet-Flüge während der gesamten Journey",
-        "Luxuriöse Bodentransporte",
-        "8 Nächte in 4★-/5★-Hotels mit Frühstück",
-        "7 Mittagessen und 8 Abendessen",
-        "Schlossbesuch in Transsilvanien",
-        "Stadttour in Sofia",
-        "Private Bootstour in Kotor",
-        "Stadttour in Pula",
-        "Stadttour in Rovinj",
-        "Private Erkundung von Ljubljana",
+        "8 Nächte in sorgfältig ausgewählten Hotels und Charakterhäusern",
+        "Private Flüge zwischen den Regionen der Journey",
+        "Private Flughafentransfers und Bodentransporte gemäß Programm",
+        "Täglich Frühstück sowie ausgewählte Mittag- und Abendessen",
+        "Kuratierte kulturelle, landschaftliche und kulinarische Erlebnisse",
+        "Persönliche Begleitung während der gesamten Journey",
+        "Reisekoordination vor der Abreise",
+        "Zugang zum privaten ABATON Circle nach Buchungsbestätigung",
       ],
     },
+    faq: [
+      {
+        question: {
+          en: "Where will the journey begin and end?",
+          de: "Wo wird die Journey beginnen und enden?",
+        },
+        answer: {
+          en: "The journey is planned to begin and end in Budapest.",
+          de: "Die Journey soll in Budapest beginnen und enden.",
+        },
+      },
+      {
+        question: {
+          en: "When will reservations open?",
+          de: "Wann werden Reservierungen geöffnet?",
+        },
+        answer: {
+          en: "Guests on the Private Interest List receive priority information when the next departure is released.",
+          de: "Gäste auf der privaten Interessentenliste erhalten vorrangig Informationen, sobald die nächste Abreise freigegeben wird.",
+        },
+      },
+      {
+        question: {
+          en: "How active will the journey be?",
+          de: "Wie aktiv wird die Journey sein?",
+        },
+        answer: {
+          en: "The programme will combine cities, cultural visits, landscapes and time by the Adriatic. Selected activities will be adapted to the season and the interests of the group.",
+          de: "Das Programm verbindet Städte, kulturelle Besuche, Landschaften und Zeit an der Adria. Ausgewählte Aktivitäten werden an Saison und Interessen der Gruppe angepasst.",
+        },
+      },
+    ],
   },
 
   {
-    // OPEN DECISION 1.3: route below is SUPERSEDED. The redesign starts and ends
-    // in Hamburg, not Copenhagen, with Bergen, Tromsoe, Rovaniemi, Stockholm.
-    // The "Preview 2028" departure also needs confirming. This journey is in
-    // development but renders identically to a bookable one, because the model
-    // has no `status` field yet (spec section 5).
+    // Route reworked per the final client document (section 3.1.4). Keeps
+    // Copenhagen as the hub (this document supersedes the earlier Hamburg note).
+    // Country list is Denmark, Norway, Finland only, the stray "Sweden" from the
+    // old overview listing is deliberately not carried over.
     slug: "wild-scandinavia",
     published: true,
     status: "interest_list",
     featured: false,
-    order: 5,
+    order: 4,
     title: { en: "Wild Scandinavia", de: "Wildes Skandinavien" },
+    countries: {
+      en: "Denmark · Norway · Finland",
+      de: "Dänemark · Norwegen · Finnland",
+    },
     tagline: {
-      en: "Raw north, from fjords to Arctic light.",
-      de: "Roher Norden, von Fjorden bis zum arktischen Licht.",
+      en: "Fjords, Arctic landscapes and Nordic traditions across Europe's far north.",
+      de: "Fjorde, arktische Landschaften und nordische Traditionen im hohen Norden Europas.",
     },
     summary: {
-      en: "An upcoming journey through Norway, Sweden and Finland, defined by raw landscapes and Nordic understatement. Expect design-led hotels, seasonal cuisine and curated nature experiences in true Scandinavian style.",
-      de: "Eine kommende Journey durch Norwegen, Schweden und Finnland, geprägt von rauen Landschaften und nordischem Understatement. Es erwarten Sie designstarke Hotels, saisonale Küche und kuratierte Naturerlebnisse in echtem skandinavischem Stil.",
+      en: "A founder-hosted private jet journey through Denmark, Norway and Finland for six to eight guests, from Copenhagen and the Norwegian fjords to Northern Norway and Finnish Lapland.",
+      de: "Eine vom Gründer begleitete Privatjet-Journey durch Dänemark, Norwegen und Finnland für sechs bis acht Gäste, von Kopenhagen und den norwegischen Fjorden bis Nordnorwegen und ins finnische Lappland.",
     },
     nights: 8,
     guestsLabel: guests,
-    departureCity: { en: "Copenhagen", de: "Kopenhagen" },
+    departureCity: {
+      en: "Copenhagen to Copenhagen",
+      de: "Kopenhagen nach Kopenhagen",
+    },
     hotelCategory: hotels,
-    priceFrom: 33650,
-    priceFromSingle: 36850,
-    nextDeparture: { en: "Preview 2028", de: "Vorschau 2028" },
     route: [
       "Copenhagen",
-      "Stavanger",
-      "Trondheim",
-      "Andenes",
-      "Lapland",
-      "Helsinki",
-      "Stockholm",
+      "Stavanger & the Fjords",
+      "Ålesund & Sunnmøre",
+      "Northern Norway",
+      "Finnish Lapland",
     ],
     heroImage: {
       src: "/images/aircraft/citation-departure.jpg",
@@ -798,124 +972,265 @@ export const collectionJourneys = [
     gallery,
     overview: {
       en: [
-        "Wild Scandinavia discovers the majestic vastness of Northern Europe on an exclusive journey through Norway, Sweden and Finland, where raw nature meets Nordic elegance.",
-        "From glacier-strewn fjords to serene Arctic tundra, past the Northern Lights and through design-led cities, it brings you closer to the wild beauty of the North than ever before.",
+        "Wild Scandinavia is a founder-hosted private jet journey through Denmark, Norway and Finland for just six to eight guests. The journey begins in Copenhagen before continuing to Norway's west coast, the fjords and mountains of Sunnmøre, Northern Norway and finally Finnish Lapland.",
+        "Private flights connect regions separated by considerable distances and allow the journey to move naturally further north. Coastal landscapes and deep fjords gradually give way to the more remote scenery of the Arctic and the forests and open landscapes of Finnish Lapland.",
+        "Days are shaped around nature, local traditions, regional cuisine and selected experiences, with time to enjoy the hotels, lodges and surroundings along the way. Each departure is personally hosted by ABATON founder and private pilot Isabell Buchner.",
       ],
       de: [
-        "Wildes Skandinavien entdeckt die majestätische Weite Nordeuropas auf einer exklusiven Journey durch Norwegen, Schweden und Finnland, wo rohe Natur auf nordische Eleganz trifft.",
-        "Von gletscherdurchzogenen Fjorden bis zur stillen arktischen Tundra, vorbei am Nordlicht und durch designstarke Städte, bringt es Sie der wilden Schönheit des Nordens näher als je zuvor.",
+        "Wildes Skandinavien ist eine vom Gründer begleitete Privatjet-Journey durch Dänemark, Norwegen und Finnland für nur sechs bis acht Gäste. Die Journey beginnt in Kopenhagen und führt weiter an Norwegens Westküste, zu den Fjorden und Bergen von Sunnmøre, nach Nordnorwegen und schließlich ins finnische Lappland.",
+        "Private Flüge verbinden Regionen, die durch große Distanzen getrennt sind, und lassen die Journey natürlich weiter nach Norden ziehen. Küstenlandschaften und tiefe Fjorde weichen allmählich der abgelegeneren Szenerie der Arktis und den Wäldern und weiten Landschaften des finnischen Lapplands.",
+        "Die Tage folgen Natur, lokalen Traditionen, regionaler Küche und ausgewählten Erlebnissen, mit Zeit, Hotels, Lodges und Umgebung zu genießen. Jede Abreise wird persönlich von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet.",
       ],
     },
+    signatureMoments: [
+      {
+        title: {
+          en: "Stavanger & the Fjords",
+          de: "Stavanger & die Fjorde",
+        },
+        description: {
+          en: "Begin the Norwegian chapter among dramatic coastal landscapes, mountains and some of the country's best known fjords.",
+          de: "Beginnen Sie das norwegische Kapitel zwischen dramatischen Küstenlandschaften, Bergen und einigen der bekanntesten Fjorde des Landes.",
+        },
+      },
+      {
+        title: { en: "Ålesund & Sunnmøre", de: "Ålesund & Sunnmøre" },
+        description: {
+          en: "Discover a region shaped by deep fjords, mountain scenery and small coastal communities, with time both on land and on the water.",
+          de: "Entdecken Sie eine Region aus tiefen Fjorden, Bergkulissen und kleinen Küstenorten, mit Zeit zu Land und zu Wasser.",
+        },
+      },
+      {
+        title: { en: "Northern Norway", de: "Nordnorwegen" },
+        description: {
+          en: "Travel further north into a landscape of Arctic coastline, mountains and remote communities, with experiences shaped around the season and natural surroundings.",
+          de: "Reisen Sie weiter nach Norden in eine Landschaft aus arktischer Küste, Bergen und abgelegenen Orten, mit Erlebnissen, die sich nach Saison und Natur richten.",
+        },
+      },
+      {
+        title: { en: "Finnish Lapland", de: "Finnisches Lappland" },
+        description: {
+          en: "Spend two nights surrounded by forests and open Arctic landscapes, with time for local culture, nature and the distinctive atmosphere of Lapland.",
+          de: "Verbringen Sie zwei Nächte umgeben von Wäldern und weiten arktischen Landschaften, mit Zeit für lokale Kultur, Natur und die besondere Atmosphäre Lapplands.",
+        },
+      },
+      {
+        title: { en: "The Journey North", de: "Der Weg nach Norden" },
+        description: {
+          en: "Experience the changing character of Northern Europe as each private flight connects increasingly remote landscapes from Denmark to the Arctic.",
+          de: "Erleben Sie den wechselnden Charakter Nordeuropas, während jeder Privatflug zunehmend abgelegene Landschaften von Dänemark bis in die Arktis verbindet.",
+        },
+      },
+    ],
     itinerary: [
       {
         day: 1,
         city: "Copenhagen",
-        title: { en: "The North Begins", de: "Der Norden beginnt" },
+        title: { en: "Copenhagen", de: "Kopenhagen" },
         description: {
-          en: "We gather in Copenhagen, the graceful gateway to the North.",
-          de: "Wir versammeln uns in Kopenhagen, dem anmutigen Tor zum Norden.",
+          en: "Guests arrive individually in Copenhagen and settle into the first hotel of the journey. In the evening, the ABATON group meets for the first time over a welcome dinner.",
+          de: "Die Gäste reisen individuell in Kopenhagen an und kommen im ersten Hotel der Journey an. Am Abend trifft sich die ABATON-Gruppe zum ersten Mal bei einem Willkommensdinner.",
         },
       },
       {
         day: 2,
         city: "Copenhagen → Stavanger",
-        title: { en: "Fjords & Frontiers", de: "Fjorde & Grenzen" },
+        title: { en: "Copenhagen to Stavanger", de: "Kopenhagen nach Stavanger" },
         description: {
-          en: "We fly to Norway's rugged coast and speed through the Lysefjord on a private RIB safari past towering cliffs and waterfalls.",
-          de: "Wir fliegen an Norwegens raue Küste und rasen auf einer privaten RIB-Safari durch den Lysefjord, vorbei an aufragenden Klippen und Wasserfällen.",
+          en: "After breakfast, a private transfer leads to the business aviation terminal for the first private flight of the journey. On arrival in Norway, the afternoon provides a first introduction to Stavanger and the surrounding coastal and fjord landscape. The evening is spent together over dinner.",
+          de: "Nach dem Frühstück führt ein privater Transfer zum Business-Aviation-Terminal für den ersten Privatflug der Journey. Bei der Ankunft in Norwegen bringt der Nachmittag eine erste Annäherung an Stavanger und die umliegende Küsten- und Fjordlandschaft. Der Abend klingt bei einem gemeinsamen Dinner aus.",
         },
       },
       {
         day: 3,
-        city: "Stavanger → Trondheim",
-        title: { en: "Viking Heritage", de: "Wikingererbe" },
+        city: "Stavanger → Ålesund & Sunnmøre",
+        title: {
+          en: "Stavanger to Ålesund & Sunnmøre",
+          de: "Stavanger nach Ålesund & Sunnmøre",
+        },
         description: {
-          en: "In Trondheim we discover Viking heritage, explore the grand Nidaros Cathedral and taste local farm delicacies in the scenic countryside.",
-          de: "In Trondheim entdecken wir das Wikingererbe, erkunden den prächtigen Nidarosdom und probieren lokale Hofdelikatessen in malerischer Landschaft.",
+          en: "The morning leaves time for a final experience in the Stavanger region before the journey continues north by private jet. After arrival, a private transfer leads into the landscapes of Sunnmøre, where mountains and fjords define the next chapter of the journey. The remainder of the day is deliberately unhurried.",
+          de: "Der Morgen lässt Zeit für ein letztes Erlebnis in der Region Stavanger, bevor die Journey per Privatjet weiter nach Norden führt. Nach der Ankunft führt ein privater Transfer in die Landschaften von Sunnmøre, wo Berge und Fjorde das nächste Kapitel bestimmen. Der restliche Tag bleibt bewusst unaufgeregt.",
         },
       },
       {
         day: 4,
-        city: "Trondheim → Andenes",
-        title: { en: "Arctic Wonders", de: "Arktische Wunder" },
+        city: "Ålesund & Sunnmøre",
+        title: { en: "Ålesund & Sunnmøre", de: "Ålesund & Sunnmøre" },
         description: {
-          en: "Andenes welcomes us to the edge of the Arctic. We set sail on a luxury catamaran for whale watching, then unwind in a Sami-inspired spa before an Arctic feast under the Northern Lights.",
-          de: "Andenes empfängt uns am Rand der Arktis. Wir stechen auf einem Luxus-Katamaran zur Walbeobachtung in See, entspannen dann in einem Sami-inspirierten Spa vor einem arktischen Festmahl unter dem Nordlicht.",
+          en: "A full day is dedicated to the landscapes of Sunnmøre. A privately arranged experience brings together some of the region's fjords, mountains and local character, with the final programme shaped around the season and conditions. There is also time to enjoy the hotel and surroundings at a slower pace.",
+          de: "Ein ganzer Tag gehört den Landschaften von Sunnmøre. Ein privat arrangiertes Erlebnis verbindet einige der Fjorde, Berge und den lokalen Charakter der Region, das finale Programm richtet sich nach Saison und Bedingungen. Zudem bleibt Zeit, Hotel und Umgebung in Ruhe zu genießen.",
         },
       },
       {
         day: 5,
-        city: "Andenes → Lapland",
-        title: { en: "Frozen Forests", de: "Gefrorene Wälder" },
+        city: "Sunnmøre → Northern Norway",
+        title: {
+          en: "Sunnmøre to Northern Norway",
+          de: "Sunnmøre nach Nordnorwegen",
+        },
         description: {
-          en: "In Finnish Lapland we race through frozen forests on a husky sled and savour wild flavours in a secluded lodge.",
-          de: "Im finnischen Lappland rasen wir mit dem Husky-Schlitten durch gefrorene Wälder und genießen wilde Aromen in einer abgeschiedenen Lodge.",
+          en: "The journey continues north by private jet. On arrival in Northern Norway, the landscape becomes increasingly remote, with mountains, coastline and Arctic scenery setting a different rhythm for the next two nights. The afternoon is left for a first introduction to the surroundings and time at the hotel or lodge.",
+          de: "Die Journey führt per Privatjet weiter nach Norden. Bei der Ankunft in Nordnorwegen wird die Landschaft zunehmend abgelegener, mit Bergen, Küste und arktischer Szenerie, die den nächsten zwei Nächten einen anderen Rhythmus geben. Der Nachmittag bleibt einer ersten Annäherung an die Umgebung und Zeit im Hotel oder in der Lodge.",
         },
       },
       {
         day: 6,
-        city: "Lapland → Helsinki",
-        title: { en: "Nordic Design", de: "Nordisches Design" },
+        city: "Northern Norway",
+        title: { en: "Northern Norway", de: "Nordnorwegen" },
         description: {
-          en: "We arrive in Helsinki for a journey through Nordic design and innovation.",
-          de: "Wir kommen in Helsinki an, für eine Reise durch nordisches Design und Innovation.",
+          en: "A full day is dedicated to the landscapes and culture of Northern Norway. Selected private experiences are shaped around the season, local conditions and the interests of the group and may take place on land or water. The programme also allows time to enjoy the surroundings and the character of the property.",
+          de: "Ein ganzer Tag gehört den Landschaften und der Kultur Nordnorwegens. Ausgewählte private Erlebnisse richten sich nach Saison, örtlichen Bedingungen und den Interessen der Gruppe und können zu Land oder zu Wasser stattfinden. Das Programm lässt zudem Zeit, die Umgebung und den Charakter des Hauses zu genießen.",
         },
       },
       {
         day: 7,
-        city: "Helsinki → Stockholm",
-        title: { en: "Archipelago Elegance", de: "Eleganz der Schären" },
+        city: "Northern Norway → Finnish Lapland",
+        title: {
+          en: "Northern Norway to Finnish Lapland",
+          de: "Nordnorwegen ins finnische Lappland",
+        },
         description: {
-          en: "In Stockholm we cruise through the archipelago and walk the royal streets of Gamla Stan.",
-          de: "In Stockholm kreuzen wir durch den Schärengarten und gehen durch die königlichen Gassen von Gamla Stan.",
+          en: "The private jet carries the group further east across the Arctic north into Finland. After arrival, a private transfer leads into Finnish Lapland, where forests, lakes and open landscapes create another change in atmosphere. The remainder of the day is spent settling into the surroundings.",
+          de: "Der Privatjet bringt die Gruppe weiter ostwärts über den arktischen Norden nach Finnland. Nach der Ankunft führt ein privater Transfer ins finnische Lappland, wo Wälder, Seen und weite Landschaften erneut die Stimmung wandeln. Der restliche Tag gilt dem Ankommen in der Umgebung.",
         },
       },
       {
         day: 8,
-        city: "Stockholm",
-        title: { en: "A Grand Finale", de: "Ein großes Finale" },
+        city: "Finnish Lapland",
+        title: { en: "Finnish Lapland", de: "Finnisches Lappland" },
         description: {
-          en: "We toast to a grand finale in a historic palace hotel.",
-          de: "Wir stoßen auf ein großes Finale in einem historischen Palasthotel an.",
+          en: "The final full day is dedicated to Lapland. The programme combines nature, local traditions and selected privately arranged experiences according to the season and conditions. Time at the hotel or lodge forms an important part of the day before the group comes together for a final dinner.",
+          de: "Der letzte volle Tag gehört Lappland. Das Programm verbindet Natur, lokale Traditionen und ausgewählte privat arrangierte Erlebnisse je nach Saison und Bedingungen. Zeit im Hotel oder in der Lodge ist ein wichtiger Teil des Tages, bevor die Gruppe zu einem letzten Dinner zusammenkommt.",
         },
       },
       {
         day: 9,
-        city: "Stockholm → Copenhagen",
-        title: { en: "Homeward", de: "Heimwärts" },
+        city: "Finnish Lapland → Copenhagen",
+        title: {
+          en: "Finnish Lapland to Copenhagen",
+          de: "Finnisches Lappland nach Kopenhagen",
+        },
         description: {
-          en: "A final flight to Copenhagen closes this unforgettable odyssey through ice, fire and the untamed beauty of the North.",
-          de: "Ein letzter Flug nach Kopenhagen beschließt diese unvergessliche Odyssee durch Eis, Feuer und die ungezähmte Schönheit des Nordens.",
+          en: "After breakfast, the final private flight returns the group to Copenhagen. The journey ends on arrival, with individual onward travel continuing from Copenhagen.",
+          de: "Nach dem Frühstück bringt der letzte Privatflug die Gruppe zurück nach Kopenhagen. Die Journey endet mit der Ankunft, die individuelle Weiterreise wird von Kopenhagen aus fortgesetzt.",
         },
       },
     ] as Day[],
+    programmeNote: {
+      en: "The itinerary describes the planned character and route of Wild Scandinavia. The specific destinations within Northern Norway and Finnish Lapland, as well as hotels, lodges, restaurants, individual activities, timings and selected programme details, are finalised when the journey is released for reservations and according to season, availability, weather and local conditions.",
+      de: "Der Reiseverlauf beschreibt den geplanten Charakter und die Route von Wildes Skandinavien. Die genauen Ziele in Nordnorwegen und im finnischen Lappland sowie Hotels, Lodges, Restaurants, einzelne Aktivitäten, Zeiten und ausgewählte Programmdetails werden festgelegt, sobald die Journey für Reservierungen freigegeben ist, sowie nach Saison, Verfügbarkeit, Wetter und örtlichen Bedingungen.",
+    },
+    stays: [
+      {
+        title: { en: "Copenhagen", de: "Kopenhagen" },
+        description: {
+          en: "A refined city hotel in Copenhagen as the graceful gateway to the North.",
+          de: "Ein kultiviertes Stadthotel in Kopenhagen als anmutiges Tor zum Norden.",
+        },
+      },
+      {
+        title: { en: "Stavanger & the Fjords", de: "Stavanger & die Fjorde" },
+        description: {
+          en: "A characterful property on Norway's west coast, close to the fjords and the sea.",
+          de: "Ein charaktervolles Haus an Norwegens Westküste, nah an Fjorden und Meer.",
+        },
+      },
+      {
+        title: { en: "Ålesund & Sunnmøre", de: "Ålesund & Sunnmøre" },
+        description: {
+          en: "A locally rooted hotel among the mountains and fjords of Sunnmøre.",
+          de: "Ein lokal verwurzeltes Hotel zwischen den Bergen und Fjorden von Sunnmøre.",
+        },
+      },
+      {
+        title: { en: "Northern Norway", de: "Nordnorwegen" },
+        description: {
+          en: "A retreat in the Arctic north, where location and the landscape matter as much as the classification.",
+          de: "Ein Refugium im arktischen Norden, wo Lage und Landschaft ebenso zählen wie die Klassifizierung.",
+        },
+      },
+      {
+        title: { en: "Finnish Lapland", de: "Finnisches Lappland" },
+        description: {
+          en: "A lodge among the forests and open landscapes of Finnish Lapland for the final two nights.",
+          de: "Eine Lodge zwischen den Wäldern und weiten Landschaften des finnischen Lapplands für die letzten zwei Nächte.",
+        },
+      },
+    ],
     inclusions: {
       en: [
-        "Private jet travel throughout",
-        "Luxury ground transport",
-        "8 nights in 4★/5★ hotels with breakfast",
-        "7 lunches and 8 dinners",
-        "RIB safari in the Lysefjord, Norway",
-        "Trondheim city and farm visit",
-        "Whale watching in Andenes",
-        "Husky sledding in Lapland (season permitting)",
-        "Private sauna experience in Lapland",
-        "Design tour in Helsinki",
-        "Stockholm archipelago cruise",
+        "8 nights in carefully selected hotels, lodges and character properties",
+        "Private flights between the journey regions according to the final itinerary",
+        "Private airport transfers and scheduled ground transportation during the journey",
+        "Daily breakfast, and selected lunches and dinners according to the final programme",
+        "Curated landscape, cultural and culinary experiences",
+        "Personal hosting throughout the journey",
+        "Pre-departure travel coordination",
+        "Access to the private ABATON Circle after booking confirmation",
       ],
       de: [
-        "Privatjet-Flüge während der gesamten Journey",
-        "Luxuriöse Bodentransporte",
-        "8 Nächte in 4★-/5★-Hotels mit Frühstück",
-        "7 Mittagessen und 8 Abendessen",
-        "RIB-Safari im Lysefjord, Norwegen",
-        "Stadt- und Hofbesuch in Trondheim",
-        "Walbeobachtung in Andenes",
-        "Husky-Schlittenfahrt in Lappland (je nach Saison)",
-        "Privates Sauna-Erlebnis in Lappland",
-        "Design-Tour in Helsinki",
-        "Schärengarten-Kreuzfahrt in Stockholm",
+        "8 Nächte in sorgfältig ausgewählten Hotels, Lodges und Charakterhäusern",
+        "Private Flüge zwischen den Regionen der Journey gemäß dem finalen Reiseverlauf",
+        "Private Flughafentransfers und Bodentransporte gemäß Programm während der Journey",
+        "Täglich Frühstück sowie ausgewählte Mittag- und Abendessen gemäß dem finalen Programm",
+        "Kuratierte landschaftliche, kulturelle und kulinarische Erlebnisse",
+        "Persönliche Begleitung während der gesamten Journey",
+        "Reisekoordination vor der Abreise",
+        "Zugang zum privaten ABATON Circle nach Buchungsbestätigung",
       ],
     },
+    faq: [
+      {
+        question: {
+          en: "Where will Wild Scandinavia begin and end?",
+          de: "Wo wird Wildes Skandinavien beginnen und enden?",
+        },
+        answer: {
+          en: "The journey is planned to begin and end in Copenhagen. Guests arrange their individual international travel to and from Copenhagen.",
+          de: "Die Journey soll in Kopenhagen beginnen und enden. Die Gäste organisieren ihre individuelle internationale An- und Abreise nach und von Kopenhagen selbst.",
+        },
+      },
+      {
+        question: {
+          en: "Which regions will be included?",
+          de: "Welche Regionen sind enthalten?",
+        },
+        answer: {
+          en: "The planned route connects Copenhagen with Stavanger, Sunnmøre, Northern Norway and Finnish Lapland. The specific locations within Northern Norway and Finnish Lapland are confirmed with the final journey programme.",
+          de: "Die geplante Route verbindet Kopenhagen mit Stavanger, Sunnmøre, Nordnorwegen und dem finnischen Lappland. Die genauen Orte in Nordnorwegen und im finnischen Lappland werden mit dem finalen Reiseprogramm bestätigt.",
+        },
+      },
+      {
+        question: {
+          en: "When will Wild Scandinavia take place?",
+          de: "Wann wird Wildes Skandinavien stattfinden?",
+        },
+        answer: {
+          en: "The departure date has not yet been released. Guests on the Private Interest List receive priority information when reservations are prepared to open.",
+          de: "Das Abreisedatum ist noch nicht freigegeben. Gäste auf der privaten Interessentenliste erhalten vorrangig Informationen, sobald Reservierungen geöffnet werden.",
+        },
+      },
+      {
+        question: {
+          en: "How active will the journey be?",
+          de: "Wie aktiv wird die Journey sein?",
+        },
+        answer: {
+          en: "Wild Scandinavia combines landscape based experiences, local culture and time outdoors with regular periods at the hotels and lodges. Selected activities are adapted to the season, conditions and interests of the group.",
+          de: "Wildes Skandinavien verbindet landschaftliche Erlebnisse, lokale Kultur und Zeit im Freien mit regelmäßigen Aufenthalten in den Hotels und Lodges. Ausgewählte Aktivitäten werden an Saison, Bedingungen und Interessen der Gruppe angepasst.",
+        },
+      },
+      {
+        question: {
+          en: "What happens if weather affects an activity?",
+          de: "Was geschieht, wenn das Wetter eine Aktivität beeinträchtigt?",
+        },
+        answer: {
+          en: "The programme in Northern Europe is designed with seasonal and weather conditions in mind. Individual experiences may be adjusted where necessary while maintaining the overall character of the journey.",
+          de: "Das Programm in Nordeuropa berücksichtigt saisonale und Wetterbedingungen. Einzelne Erlebnisse können bei Bedarf angepasst werden, während der Gesamtcharakter der Journey erhalten bleibt.",
+        },
+      },
+    ],
   },
 ];

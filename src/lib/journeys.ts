@@ -80,6 +80,10 @@ export const journeySchema = z.object({
   // Optional SEO overrides. Without them the page falls back to title/summary.
   seoTitle: localized(z.string()).optional(),
   seoDescription: localized(z.string()).optional(),
+  // Countries shown under the journey title (e.g. "England · Ireland · Scotland").
+  countries: localized(z.string()).optional(),
+  // Closing note under the day-by-day: what is finalised later (hotels, timings).
+  programmeNote: localized(z.string()).optional(),
   route: z.array(z.string()).default([]),
   gallery: z.array(imageSchema).default([]),
   overview: localizedList.default({ en: [], de: [] }),

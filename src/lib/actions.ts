@@ -39,9 +39,11 @@ export async function submitRequest(
   const env = getEnv();
 
   const parsed = requestSchema.safeParse({
-    name: formData.get("name"),
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
     email: formData.get("email"),
     phone: formData.get("phone") ?? "",
+    country: formData.get("country"),
     guests: formData.get("guests") ?? "",
     journey: formData.get("journey") ?? "",
     journeySlug: formData.get("journeySlug") ?? "",
@@ -84,10 +86,13 @@ export async function submitRequest(
     ? `Journey enquiry, ${data.journey}`
     : "New enquiry, ABATON JetJourneys";
 
+  const fullName = `${data.firstName} ${data.lastName}`;
+
   const rows: [string, string][] = [
-    ["Name", data.name],
+    ["Name", fullName],
     ["Email", data.email],
     ["Phone", data.phone || "-"],
+    ["Country", data.country],
     ["Guests", data.guests || "-"],
     ["Journey", data.journey || "General enquiry"],
     ["Journey slug", data.journeySlug || "-"],
