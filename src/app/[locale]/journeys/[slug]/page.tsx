@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
-import { RouteLine } from "@/components/RouteLine";
+import { RouteMap } from "@/components/RouteMap";
 import { RequestForm } from "@/components/RequestForm";
 import { BulletGrid } from "@/components/ui/BulletGrid";
 import { PillarGrid } from "@/components/ui/PillarGrid";
@@ -177,7 +177,7 @@ export default async function JourneyDetailPage({ params }: PageProps) {
                 {journey.route.length >= 2 && (
                   <div className="mt-10">
                     <p className="eyebrow mb-4">{t("route")}</p>
-                    <RouteLine route={journey.route} />
+                    <RouteMap route={journey.route} tone="light" />
                   </div>
                 )}
               </div>

@@ -44,7 +44,7 @@ bespoke, redaktionellen Look aus dem Briefing braucht es eigenes Material.
 |---|---|---|---|
 | 2.1 | **Destinations-/Editorial-Fotografie** pro Journey (z. B. Elegant Islands: Mayfair, Killarney, Ashford Castle, Highlands, Edinburgh, dezente Aviation) | `public/images/journeys/…`, `public/images/experiences/…` | **[Qualität]** offen |
 | 2.2 | **Journey-Highlights als Bildkarten**: je Highlight ein Bild (Briefing: „five visual cards with one image each") | Highlight-Bereich der Detailseite | **[Qualität]** offen |
-| 2.3 | **Reise-Karten (illustrierte Maps)** pro Journey in ABATON-Farben, dazu die einfache Textroute darunter | „The Route"-Element der Detailseite | **[Qualität]** offen |
+| 2.3 | **Reise-Karten (illustrierte Maps)** pro Journey in ABATON-Farben | „The Route"-Element der Detailseite | **[Qualität]** Zwischenlösung live (gebrandetes Routendiagramm, `RouteMap`); finale handillustrierte Geo-Karte offen |
 | 2.4 | **Founder-Porträt** von Isabell Buchner (warm, kein Stock), optional ein authentisches Aviation-Bild | About-Seite, Founder-Bereich | **[Qualität]** offen |
 | 2.5 | **Open-Graph-/Share-Bild** (mind. ein Marken-Motiv 1200x630) für Vorschau in Social Media und Suchmaschinen | `og:image` (Layout/Metadaten) | **[Qualität]** offen |
 
