@@ -27,11 +27,17 @@ function hasDarkHero(pathname: string): boolean {
   );
 }
 
-export function Header() {
+export function Header({ interestSlugs = [] }: { interestSlugs?: string[] }) {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Hide the currency selector on interest-list journey pages: those carry no
+  // price, so there is nothing to convert.
+  const hideCurrency = interestSlugs.some(
+    (slug) => pathname === `/journeys/${slug}`,
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -99,10 +105,12 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-6">
-            <CurrencySwitcher
-              className={light ? "text-bone" : "text-ink"}
-              light={light}
-            />
+            {!hideCurrency && (
+              <CurrencySwitcher
+                className={light ? "text-bone" : "text-ink"}
+                light={light}
+              />
+            )}
             <LanguageSwitcher
               className={light ? "text-bone" : "text-ink"}
               light={light}
@@ -156,7 +164,7 @@ export function Header() {
           <div className="mt-8 flex items-center justify-between">
             <div className="flex items-center gap-5">
               <LanguageSwitcher className="text-ink" />
-              <CurrencySwitcher className="text-ink" />
+              {!hideCurrency && <CurrencySwitcher className="text-ink" />}
             </div>
             <Link
               href="/contact"

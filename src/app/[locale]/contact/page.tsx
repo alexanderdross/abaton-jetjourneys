@@ -121,7 +121,7 @@ export default async function ContactPage({ params }: PageProps) {
 
           <Reveal delay={120}>
             <div className="bg-white border border-line rounded-[2px] p-8 sm:p-10">
-              <RequestForm />
+              <RequestForm grouped />
             </div>
           </Reveal>
         </div>
