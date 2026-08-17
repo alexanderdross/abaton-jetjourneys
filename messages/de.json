@@ -46,6 +46,10 @@
     "pillar4Body": "Jede Journey wird von ABATON-Gründerin und Privatpilotin Isabell Buchner begleitet.",
     "featuredEyebrow": "Featured Journey",
     "featuredCta": "Journey ansehen",
+    "featuredPrice": "Ab {price} pro Person",
+    "collectionTitle": "Alle Journeys entdecken",
+    "collectionBody": "Entdecken Sie die gesamte ABATON Kollektion, einschließlich ausgewählter kommender Journeys, die über unsere private Interessentenliste verfügbar sind.",
+    "collectionCta": "Alle Journeys entdecken",
     "founderEyebrow": "Die Gründerin",
     "founderTitle": "Persönlich gestaltet. Persönlich begleitet.",
     "founderBody1": "ABATON wurde von Isabell Buchner gegründet, einer Privatpilotin mit langjähriger Verbindung zur europäischen Hotellerie.",
@@ -116,7 +120,8 @@
     "releasedTitle": "Aktuell freigegeben",
     "upcomingTitle": "Journeys in Entwicklung",
     "upcomingIntro": "Pro Jahr wird nur eine begrenzte Zahl an ABATON Journeys freigegeben. Gäste auf unserer privaten Interessentenliste werden vorrangig informiert, sobald eine neue Abreise angekündigt wird.",
-    "joinInterestList": "Auf die Interessentenliste"
+    "joinInterestList": "Auf die Interessentenliste",
+    "notYetOpen": "Buchungen sind noch nicht geöffnet."
   },
   "GoodToKnow": {
     "eyebrow": "Gut zu wissen",

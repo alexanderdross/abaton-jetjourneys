@@ -53,6 +53,9 @@ export function JourneyCard({
         <p className="mt-2 text-sm text-slate leading-relaxed line-clamp-2">
           {pick(journey.tagline, locale)}
         </p>
+        {journey.status !== "open" && (
+          <p className="mt-3 text-xs italic text-slate/70">{t("notYetOpen")}</p>
+        )}
         <div className="mt-4 flex items-center justify-between gap-3">
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-champagne-ink">
             {journey.status === "open"
