@@ -3,10 +3,26 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { slugifyHeading } from "@/lib/slug";
 
-type FaqAccordionProps = {
-  /** Headline text. Doubles as the SEO `title` attribute and the hash slug. */
+type HashAccordionProps = {
+  /**
+   * Headline text. Used for the SEO `title` attribute on the summary and, by
+   * default, as the source for the hash slug.
+   */
   title: string;
+  /** Body content revealed when the item is open. */
   children: ReactNode;
+  /**
+   * Custom summary content. Defaults to the title text plus a "+" indicator.
+   * Provide this for accordions whose headline is a richer layout (e.g. the
+   * itinerary day row with its day number and label).
+   */
+  summary?: ReactNode;
+  /**
+   * Overrides the string the hash slug is derived from. Use when the visible
+   * title is not guaranteed unique on the page (e.g. itinerary days). The SEO
+   * `title` attribute still uses `title`.
+   */
+  slugSource?: string;
   /** Classes for the outer `<details>` element. */
   className?: string;
   /** Classes for the `<summary>` headline. */
@@ -14,7 +30,7 @@ type FaqAccordionProps = {
 };
 
 /**
- * A single deep-linkable FAQ accordion.
+ * A single deep-linkable accordion.
  *
  * Requirements (client brief):
  *  - the headline carries an SEO `title` attribute;
@@ -25,13 +41,15 @@ type FaqAccordionProps = {
  * The element `id` and the location hash are the same headline slug, so links
  * like `/good-to-know#stornierung` deep-link straight to an answer.
  */
-export function FaqAccordion({
+export function HashAccordion({
   title,
   children,
+  summary,
+  slugSource,
   className,
   summaryClassName,
-}: FaqAccordionProps) {
-  const id = slugifyHeading(title);
+}: HashAccordionProps) {
+  const id = slugifyHeading(slugSource ?? title);
   const ref = useRef<HTMLDetailsElement>(null);
 
   // Open + scroll to this item when its slug is (or becomes) the URL hash.
@@ -76,13 +94,17 @@ export function FaqAccordion({
       className={`scroll-mt-32 ${className ?? ""}`}
     >
       <summary title={title} className={summaryClassName}>
-        {title}
-        <span
-          className="mt-1 shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
-          aria-hidden
-        >
-          +
-        </span>
+        {summary ?? (
+          <>
+            {title}
+            <span
+              className="mt-1 shrink-0 text-champagne-ink transition-transform group-open:rotate-45"
+              aria-hidden
+            >
+              +
+            </span>
+          </>
+        )}
       </summary>
       {children}
     </details>
