@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { JourneyCard } from "@/components/JourneyCard";
 import { JourneyStatusBadge } from "@/components/JourneyStatusBadge";
+import { RouteMap } from "@/components/RouteMap";
 import { getFeaturedJourney, pick, formatEUR } from "@/lib/journeys";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { FxNote } from "@/components/fx/FxNote";
@@ -178,7 +179,7 @@ export default async function HomePage({ params }: PageProps) {
                   </p>
                 )}
                 <div className="mt-8">
-                  <RouteLineDark route={featured.route} />
+                  <RouteMap route={featured.route} tone="dark" />
                 </div>
                 <div className="mt-10">
                   <LinkButton
@@ -283,24 +284,6 @@ export default async function HomePage({ params }: PageProps) {
         </Container>
       </Section>
     </>
-  );
-}
-
-// Dark variant of the route line for the ink section.
-function RouteLineDark({ route }: { route: string[] }) {
-  return (
-    <ol className="flex flex-wrap items-center gap-x-3 gap-y-3 text-bone/80">
-      {route.map((city, i) => (
-        <li key={`${city}-${i}`} className="flex items-center gap-3">
-          <span className="text-sm tracking-wide">{city}</span>
-          {i < route.length - 1 && (
-            <span className="text-champagne/70" aria-hidden>
-              ✈
-            </span>
-          )}
-        </li>
-      ))}
-    </ol>
   );
 }
 
